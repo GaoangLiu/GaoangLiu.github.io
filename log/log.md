@@ -8,4 +8,5 @@ README
 ### Log: 
 ```
 * Tue 01/01/19/08:21:17: First commit to first repo of 2019
+* Wed 01/02/19/11:40:30: [new blog]: python regular expression, search, findall, match comparisons
 ```

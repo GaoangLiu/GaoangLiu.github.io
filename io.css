@@ -1,0 +1,62 @@
+a {
+    text-decoration: none;
+}
+body{
+    margin: 20px 15% 20px 15%;
+    background-color: #ECEFF1;
+    font-size: normal;
+}
+
+emph{
+    color: blue;
+}
+
+hr {clear:both;}
+/* Create two equal columns that floats next to each other */
+.column {
+    float: left;
+    border-radius: 10px; 		 	
+}
+
+.left {width: 60%;}
+.right {width: 30%;}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.bg{
+    /*background-color: lightgrey;*/
+    width: 97%;
+    text-align: right;
+    /*border: .1px solid blue;*/
+    /*border-radius: 5px; */
+    /*padding: 5px;*/
+    /*margin: 5px;*/
+}
+
+pre, code {
+    white-space: pre-line;
+}
+
+pre {
+    border-radius: 10px;
+    width: 70%;
+    border: 1px solid #ac9;
+    padding: .2em 1em .3em ; 
+    background: #DAF7A6  ;
+}
+
+table, th, td {
+  border: 1px solid black;
+}
+
+th, td {
+  padding: 5px;
+}
+th {
+  text-align: left;
+}

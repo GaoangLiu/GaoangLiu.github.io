@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Matplotlib Experience</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="codes.css">
+  </head>
+  <body>
+    <h1>Matplotlib</h1>
+    <h2>Pyplot Tutorial</h2>
+
+    <p> Let's start with a a simple draw with Pyplot.</p>
+    <div class="row">
+      <div class="column">
+		<iframe class="codes" src="codes/sample-a.py" width="90%"></iframe>  	
+      </div>
+      <div class="column">
+	  	<img src="media/sample-a.png", width="90%">
+      </div>
+    </div>
+
+    <p> <code> plot() </code> is a versatile command, and will take an arbitrary number of arguments. For example, to plot x versus y, we can issue the command:
+    	<pre>
+    		plt.plot([1, 2, 3, 4], [1, 4, 9, 16])
+    		# plt.plot([1, 2, 3, 4], [1, 4, 9, 16], 'ro')
+    	</pre>
+	Note that, there is an optional <strong>third argument</strong> which is the format string that indicates the color and line type of the plot. For example, 'ro' in the above code means <strong>red circles.</strong>
+    </p>
+
+  </body>
+</html>
