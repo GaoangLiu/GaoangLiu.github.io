@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Python Logger</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="../io.css">
+  </head>
+  <body>
+  	<p align="right"><a href="https://docs.python.org/3/library/logging.html">logging document</a> /
+  		<a href="https://docs.python.org/3/howto/logging-cookbook.html#logging-cookbook"> logging cookbook </a>
+  	</p>
+
+  	<h2>A quick start</h2>
+  	<pre id='quickstart'>
+  		import logging
+		logging.warning('Watch out!')  # will print a message to the console
+		logging.info('I told you so')  # will not print anything
+  	</pre>
+  	<p> The methods resemble  <code>print()</code> but can do more that, as we shall see below. </p>
+
+
+  	<h2>Why and when we need logger ?</h2>
+  	<p> Software crash is inevitable, this is true even for very simple scripts with a few line. Based my personal experiences on a script (<code>panel.py</code> as I call it) of monitoring my VPS usage (data, disk, network, cpu etc.), it crashes every few days. I tried my best to improve it every time it crashes, but I know it will never be perfect. Even when the code itself is flawless, the system that executes is probably not. </p>
+
+  	<p> For this reason, I need to know what caused the crash and how to fix it. </p>
+
+  	<p> At first, I use tons of <code>print()</code> method to print out the message, and redirect the output to a local file. But the whole procedure is cumbersome and inefficient. So now I'm looking for more efficient and professional way to handle my codes. </p>
+
+  	<p> The <code>logging</code> module of Python is very powerful with its functionality and flexibility. 
+  		The key benefit of having the logging API provided by a standard library module is that <emph> all Python modules can participate in logging </emph>, so our application log can include our own messages integrated with messages from third-party modules.
+  	</p>
+
+  	<h2> How to use it? </h2>
+  	<p>  The <a href="#quickstart">first example</a> will print out "watch out" but hide 'I told you so' from the console. There is a default level (<strong>WARNING</strong>) for the codes, only messages that are assigned with an equal or higher debug level will be printed.
+	</p>  		
+
+  		<table>
+  			<tr>
+  				<th>Level </th>
+  				<th>When it is used</th>
+  			</tr>
+  			<tr> 
+  				<td>DEBUG</td>
+  				<td>Detailed information, typically of interest only when diagnosing problems.</td>
+  			</tr>
+  			<tr>
+  				<td>INFO</td>
+  				<td>Like <code>print()</code>, to confirm the program is running as expected </td>
+  			</tr>
+  			<tr>
+  				<td>WARNING</td>
+  				<td> The program is still working as expected, but some problems should be concerned. Low disk space for example.</td>
+  			</tr>
+  			<tr>
+  				<td>ERROR</td>
+  				<td>Functions or methods failed, some functionalities of the program may be disabled </td>
+  			</tr>
+  			<tr>
+  				<td>CRITICAL</td>
+  				<td>A serious error. The whole software or program is crashing. </td>
+  			</tr>
+  		</table>
+
+
+
+
+  	<h2> Any traps ?</h2>
+
+
+  </body>
+</html>

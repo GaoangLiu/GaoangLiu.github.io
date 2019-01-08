@@ -26,5 +26,21 @@
   	</p>
 
 
+    <h3>iter</h3>
+    <p> This is what I've seen from a discussion on a Leetcode problem.
+      <pre class="brush: python">
+        def is_subsequence(s, t):
+        /    it = iter(t)
+        /    return all(c in it for c in s)        
+      </pre>
+      The interesting thing is: <strong> every time a character c is checked </strong> against <code>it</code>, the <code>__next__()</code> method is called. For two strings <code> s, t = 'abc', 'abdc2323z' </code>, if we run :
+      <pre>
+        it = iter(t)
+        for c in s: print(c, c in it)
+        print(next(it)) # 2
+      </pre>
+    </p>
+
+
   </body>
 </html>

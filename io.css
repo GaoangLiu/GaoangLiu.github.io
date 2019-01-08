@@ -4,7 +4,7 @@ a {
 body{
     margin: 20px 15% 20px 15%;
     background-color: #ECEFF1;
-    font-size: normal;
+    font-family: Arial;
 }
 
 emph{
@@ -50,12 +50,20 @@ pre {
     background: #DAF7A6  ;
 }
 
+table {
+     border-radius:10px;
+    -moz-border-radius:10px;
+    -webkit-border-radius:10px;
+}
+
 table, th, td {
-  border: 1px solid black;
+    border: 1px solid black;
+    font-family: Arial;
+    font-size: 11pt;
 }
 
 th, td {
-  padding: 5px;
+  padding: 1px;
 }
 th {
   text-align: left;
