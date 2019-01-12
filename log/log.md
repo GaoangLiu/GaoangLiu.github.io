@@ -11,4 +11,5 @@ README
 * Wed 01/02/19/11:40:30: [new blog]: python regular expression, search, findall, match comparisons
 * Sat 01/05/19/10:38:02: [new file] tricks.html for noting python tricks
 * Tue 01/08/19/15:03:35: [update] to logger.
+* Sat 01/12/19/10:31:00: [New blog] written: reboot router with webdriver
 ```

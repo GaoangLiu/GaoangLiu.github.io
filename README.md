@@ -1,4 +1,4 @@
 
 
-## <p align="center"> This is a gitpage blog. Visit it at [here](ssrzz.github.io). </p>
+## <p align="center"> This is a GitHub Pages repository. Visit [here](https://ssrzz.github.io)  for the blog website. </p>
 
