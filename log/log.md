@@ -12,4 +12,5 @@ README
 * Sat 01/05/19/10:38:02: [new file] tricks.html for noting python tricks
 * Tue 01/08/19/15:03:35: [update] to logger.
 * Sat 01/12/19/10:31:00: [New blog] written: reboot router with webdriver
+* Wed 01/16/19/10:01:59: [new section] for articles added
 ```
