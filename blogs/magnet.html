@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>reboot router with selenium</title>
+    <title>magnet</title>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="../io.css">
   </head>
@@ -18,15 +18,28 @@
       </pre>   
       参数
       <ul>
-        <li>dn（显示名称）- 文件名</li>
+        <li>dn（display name/显示名称）- 向用户显示的文件名，可选</li>
         <li>xl（绝对长度）- 文件字节数</li>
-        <li>xt（eXact Topic）- 包含文件散列函数值的URN</li>
+        <li>xt（eXact Topic）- 包含文件散列函数值的URN（统一资源名称）。BTIH（BitTorrent Info Hash）表示哈希方法名，还可以使用ED2K，AICH，SHA1和MD5等。这个值是文件的标识符，必选。</li>
         <li>as（可接受来源） - 在线文件的网络链接</li>
         <li>kt（关键字）- 用于搜索的关键字</li>
         <li>mt（文件列表）- 链接到一个包含磁力链接的元文件 (MAGMA - MAGnet MAnifest）</li>
-        <li>tr（Tracker地址）- BT下载的Tracker URL</li>
+        <li>tr（Tracker地址）- tracker服务器地址，可选。</li>
       </ul>
-
     </p>
+
+    <h1>优劣</h1>
+    <p>
+      优势：
+      <ul>
+        <li>网络的可靠性有保障；不存在“被拔线”的风险。由于不存在所谓的中央节点，审查将变得更加困难，不存在“单点失效”的问题。</li>
+        <li>开放性和跨平台性：一个磁力链接可被运行在几乎所有平台上的应用程序们使用以下载一个文件。因为磁力链接十分简洁且为纯文本格式，所以用户可以很方便地将其复制到电子邮件或即时消息中，比如种子文件。</li>
+      </ul>
+    </p>
+
+
+    <h1> 小结 </h1>
+    <p> 一条链接可以精简成<code>magnet:?xt=urn:btih:c4232f87b067ec9befde48a0e8cdeb4831a15bef</code>的形式，对于推特、微博用户来说是一件好事。
+    </p>`
   </body>
 </html>
