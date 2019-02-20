@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>reboot router with selenium</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="../io.css">
+  </head>
+  <body style="font-family: serif;">
+
+    <h1> Abstract </h1>
+    <p> 磁力链接 (Magnet URI scheme）是类似下面这样以“magnet:?xt=urn:btih:”开头的字符串；“磁力链接”的主要作用是通过“点对点技术（即：P2P）”来识别并下载文件。这种链接是通过不同文件内容的Hash结果生成一个纯文本的“数字指纹”，来识别文件的。而不是基于文件的位置或者名称。 </p>
+
+    <h1> 结构 </h1>
+    <p> 
+      磁力链接可以包括一个或多个参数，之间用'&'隔开。参数的顺序在文件在标准中没有记录。有一些参数的值对于客户端正确解析磁力链接很重要。
+      <pre style="width: 90%;">
+         magnet:? xl = [字节大小]& dn = [文件名（已编码URL）]& xt = urn: tree: tiger: [ TTH hash（Base32）]
+      </pre>   
+      参数
+      <ul>
+        <li>dn（显示名称）- 文件名</li>
+        <li>xl（绝对长度）- 文件字节数</li>
+        <li>xt（eXact Topic）- 包含文件散列函数值的URN</li>
+        <li>as（可接受来源） - 在线文件的网络链接</li>
+        <li>kt（关键字）- 用于搜索的关键字</li>
+        <li>mt（文件列表）- 链接到一个包含磁力链接的元文件 (MAGMA - MAGnet MAnifest）</li>
+        <li>tr（Tracker地址）- BT下载的Tracker URL</li>
+      </ul>
+
+    </p>
+  </body>
+</html>
