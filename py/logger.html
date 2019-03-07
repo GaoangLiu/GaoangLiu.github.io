@@ -65,7 +65,18 @@
 
 
   	<h2> Any traps ?</h2>
-
+    <p>  <ul>
+      <li> If you want to <strong>record logging events into a file </strong>, the call to <code>basicConfig()</code> should come before any calls to <code> debug(), info() </code> etc.
+        The right way to do it is: <pre>
+        logging.basicConfig(filename='example.log',level=logging.DEBUG)
+        logging.debug('This message should go to the log file')
+        logging.info('So should this')
+        logging.warning('And this, too')
+      </pre>
+      But if you put <code>logging.debug</code> or any other commands before <code>basicConfig</code>, you wont get what you want. 
+      </li>
+    </ul>      
+    </p>
 
   </body>
 </html>
