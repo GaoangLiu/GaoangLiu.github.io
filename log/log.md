@@ -18,4 +18,5 @@ README
 * Wed 02/20/19/10:00:33: [udpate] blog on magnet / advan v.s. disadvan / usage / theories
 * Thu 03/07/19/17:48:07: [python logger] how to add handler
 * Thu 03/14/19/10:54:27: add spotify playlist
+* Sun 03/17/19/09:55:41: Add vps.sh script
 ```
