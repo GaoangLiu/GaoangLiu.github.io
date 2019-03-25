@@ -21,4 +21,5 @@ README
 * Sun 03/17/19/09:55:41: Add vps.sh script
 * Fri 03/22/19/23:45:59: Simplify vps.sh
 * Mon 03/25/19/09:02:16: Add ssr.sh script
+* Mon 03/25/19/12:24:10: Add simple ss script
 ```
