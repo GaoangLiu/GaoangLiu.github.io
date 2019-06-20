@@ -1,55 +1,42 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Traveling in Codes</title>
-	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="io.css">
-</head>
-<body>
+---
+layout: page
+description: "无序的生活是理想主义者的牢笼"
+---
 
-	<ul>
-		<li> <a href="py/fluentpython.html">Fluent Python</a> </li>
-		<li> Python Learning </li>
-		<ul>
-			<li><a href="py/matplotlib.html"> Matplotlib Experience </a></li>
-			<li><a href="py/modules.html"> Interesting Modules </a></li>			
-			<li> <a href="py/re.html">re, search, match, find</a> </li>
-			<li> <a href="py/tricks.html">Python tricks</a> </li>	
-			<li> <a href="py/logger.html">Logger</a></li>		
-		</ul>
-	</ul>
+{% for post in paginator.posts %}
+<div class="post-preview">
+    <a href="{{ post.url | prepend: site.baseurl }}">
+        <h2 class="post-title">
+            {{ post.title }}
+        </h2>
+        {% if post.subtitle %}
+        <h3 class="post-subtitle">
+            {{ post.subtitle }}
+        </h3>
+        {% endif %}
+        <div class="post-content-preview">
+            {{ post.content | strip_html | truncate:200 }}
+        </div>
+    </a>
+    <p class="post-meta">
+        Posted by {% if post.author %}{{ post.author }}{% else %}{{ site.title }}{% endif %} on {{ post.date | date: "%B %-d, %Y" }}
+    </p>
+</div>
+<hr>
+{% endfor %}
 
-
-	<h3> Blog </h3>
-	<p>
-		<ul>
-			<li><a href="py/reboot_router.html"><code>selenium</code> 模拟登陆并重启TP-Link路由 </a></li>
-			<li><a href="blogs/magnet.html">走近<code>Magnet</code> </a></li>			
-		</ul>
-	</p>
-	
-
-	<h3> Book Notes </h3>
-	<ul>
-		<li> <a href="notes/ml.html">Hands-On Machine Learning with Scikit-Learn & TensorFlow</a> </li>
-	</ul>
-
-
-
-	<footer>
-		<p align="center" style="color: white; font-family: serif;"> Proudly powered by <a style="color: white;" href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5">HTML5</a>, <a style="color: white;" href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS3">CSS3</a> and <a style="color: white;" href="https://pages.github.com">Github Pages</a> : </p>
-	</footer>
-
-	<h3>Articles</h3>
-	<ul>
-		<li>
-		<a href="https://research.fb.com/wp-content/uploads/2017/12/hpca-2018-facebook.pdf"> Applied Machine Learning at Facebook: A Datacenter Infrastructure Perspective</a> (READ x 1) </li>
-	</ul>
-
-	<h2>others</h2>
-	<p>
-		<a href="https://open.spotify.com/user/eajwesnoqxqyj32cb9speylzn/playlist/200nKlxq70ACmaX2Byjt9b?si=4hcyINkmRG6AVJKYR_0w6w"> Spotify Playlist(imported from NetEase)</a>
-	</p>
-
-</body>
-</html>
+<!-- Pager -->
+{% if paginator.total_pages > 1 %}
+<ul class="pager">
+    {% if paginator.previous_page %}
+    <li class="previous">
+        <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&larr; Newer Posts</a>
+    </li>
+    {% endif %}
+    {% if paginator.next_page %}
+    <li class="next">
+        <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Older Posts &rarr;</a>
+    </li>
+    {% endif %}
+</ul>
+{% endif %}
