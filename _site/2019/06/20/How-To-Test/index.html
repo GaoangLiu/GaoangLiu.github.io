@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="May the force be with you">
+    <meta name="keywords"  content="BY, BY Blog, Linux, Python, C++, AI, ML">
+    <meta name="theme-color" content="#000000">
+    
+    <title>Just another test - Pluto-C137 博客</title>
+
+    <!-- Web App Manifest -->
+    <link rel="manifest" href="/pwa/manifest.json">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <!-- Safari Webpage Icon    by-BY -->
+    <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="http://localhost:4000/2019/06/20/How-To-Test/">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/hux-blog.min.css">
+
+    <!-- Pygments Github CSS -->
+    <link rel="stylesheet" href="/css/syntax.css">
+
+    <!-- Custom Fonts -->
+    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
+    <!-- Hux change font-awesome CDN to qiniu -->
+    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
+    <!-- Hux Delete, sad but pending in China
+    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
+    css'>
+    -->
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Github_Blog</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/about/">About</a>
+                    </li>
+                    
+                    <li>
+                        <a href="/tags/">Tags</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    var __HuxNav__ = {
+        close: function(){
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        },
+        open: function(){
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+
+    // Bind Event
+    $toggle.addEventListener('click', function(e){
+        if ($navbar.className.indexOf('in') > 0) {
+            __HuxNav__.close()
+        }else{
+            __HuxNav__.open()
+        }
+    })
+
+    /**
+     * Since Fastclick is used to delegate 'touchstart' globally
+     * to hack 300ms delay in iOS by performing a fake 'click',
+     * Using 'e.stopPropagation' to stop 'touchstart' event from 
+     * $toggle/$collapse will break global delegation.
+     * 
+     * Instead, we use a 'e.target' filter to prevent handler
+     * added to document close HuxNav.  
+     *
+     * Also, we use 'click' instead of 'touchstart' as compromise
+     */
+    document.addEventListener('click', function(e){
+        if(e.target == $toggle) return;
+        if(e.target.className == 'icon-bar') return;
+        __HuxNav__.close();
+    })
+</script>
+
+
+    <!-- Image to hack wechat -->
+<!-- <img src="/img/icon_wechat.png" width="0" height="0"> -->
+<!-- <img src="/img/post-bg-desk.jpg" width="0" height="0"> -->
+
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        position: relative;
+        background-image: url('/img/post-bg-desk.jpg')
+    }
+
+    
+</style>
+<header class="intro-header" >
+    <div class="header-mask"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="post-heading">
+                    <div class="tags">
+                        
+                        <a class="tag" href="/tags/#Python" title="Python">Python</a>
+                        
+                    </div>
+                    <h1>Just another test</h1>
+                    
+                    
+                    <h2 class="subheading">when we need it?</h2>
+                    
+                    <span class="meta">Posted by ssrzz on June 20, 2019</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+    <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+				<h1 id="custom-display-logic">Custom Display Logic</h1>
+
+<h2 id="overview">Overview</h2>
+
+<p>As described in the <a href="Rich%20Output.ipynb">Rich Output</a> tutorial, the IPython display system can display rich representations of objects in the following formats:</p>
+
+<ul>
+  <li>JavaScript</li>
+  <li>HTML</li>
+  <li>PNG</li>
+  <li>JPEG</li>
+  <li>SVG</li>
+  <li>LaTeX</li>
+  <li>PDF</li>
+</ul>
+
+<p>This Notebook shows how you can add custom display logic to your own classes, so that they can be displayed using these rich representations. There are two ways of accomplishing this:</p>
+
+<ol>
+  <li>Implementing special display methods such as <code class="highlighter-rouge">_repr_html_</code> when you define your class.</li>
+  <li>Registering a display function for a particular existing class.</li>
+</ol>
+
+<p>This Notebook describes and illustrates both approaches.</p>
+
+<p>Import the IPython display functions.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">display</span><span class="p">,</span> <span class="n">display_html</span><span class="p">,</span> <span class="n">display_png</span><span class="p">,</span> <span class="n">display_svg</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<p>Parts of this notebook need the matplotlib inline backend:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+</code></pre></div></div>
+
+<h2 id="special-display-methods">Special display methods</h2>
+
+<p>The main idea of the first approach is that you have to implement special display methods when you define your class, one for each representation you want to use. Here is a list of the names of the special methods and the values they must return:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">_repr_html_</code>: return raw HTML as a string</li>
+  <li><code class="highlighter-rouge">_repr_json_</code>: return a JSONable dict</li>
+  <li><code class="highlighter-rouge">_repr_jpeg_</code>: return raw JPEG data</li>
+  <li><code class="highlighter-rouge">_repr_png_</code>: return raw PNG data</li>
+  <li><code class="highlighter-rouge">_repr_svg_</code>: return raw SVG data as a string</li>
+  <li><code class="highlighter-rouge">_repr_latex_</code>: return LaTeX commands in a string surrounded by “$”.</li>
+</ul>
+
+<p>As an illustration, we build a class that holds data generated by sampling a Gaussian distribution with given mean and standard deviation. Here is the definition of the <code class="highlighter-rouge">Gaussian</code> class, which has a custom PNG and LaTeX representation.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">IPython.core.pylabtools</span> <span class="kn">import</span> <span class="n">print_figure</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">SVG</span><span class="p">,</span> <span class="n">Math</span>
+
+<span class="k">class</span> <span class="nc">Gaussian</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="s">"""A simple object holding data sampled from a Gaussian distribution.
+    """</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mean</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">std</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">mean</span><span class="p">,</span> <span class="n">std</span><span class="p">,</span> <span class="n">size</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mean</span> <span class="o">=</span> <span class="n">mean</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">std</span> <span class="o">=</span> <span class="n">std</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="n">size</span>
+        <span class="c1"># For caching plots that may be expensive to compute
+</span>        <span class="bp">self</span><span class="o">.</span><span class="n">_png_data</span> <span class="o">=</span> <span class="bp">None</span>
+        
+    <span class="k">def</span> <span class="nf">_figure_data</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">format</span><span class="p">):</span>
+        <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_repr_latex_</span><span class="p">())</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">10.0</span><span class="p">,</span><span class="mf">10.0</span><span class="p">)</span>
+        <span class="n">data</span> <span class="o">=</span> <span class="n">print_figure</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="nb">format</span><span class="p">)</span>
+        <span class="c1"># We MUST close the figure, otherwise IPython's display machinery
+</span>        <span class="c1"># will pick it up and send it as output, resulting in a double display
+</span>        <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">data</span>
+        
+    <span class="k">def</span> <span class="nf">_repr_png_</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_png_data</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_png_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_figure_data</span><span class="p">(</span><span class="s">'png'</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_png_data</span>
+    
+    <span class="k">def</span> <span class="nf">_repr_latex_</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="s">r'$\mathcal{N}(\mu=</span><span class="si">%.2</span><span class="s">g, \sigma=</span><span class="si">%.2</span><span class="s">g),\ N=</span><span class="si">%</span><span class="s">d$'</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mean</span><span class="p">,</span>
+                                                                 <span class="bp">self</span><span class="o">.</span><span class="n">std</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Create an instance of the Gaussian distribution and return it to display the default representation:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x</span> <span class="o">=</span> <span class="n">Gaussian</span><span class="p">(</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+<span class="n">x</span>
+</code></pre></div></div>
+
+<p>$\mathcal{N}(\mu=2, \sigma=1),\ N=1000$</p>
+
+<p>You can also pass the object to the <code class="highlighter-rouge">display</code> function to display the default representation:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">display</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>$\mathcal{N}(\mu=2, \sigma=1),\ N=1000$</p>
+
+<p>Use <code class="highlighter-rouge">display_png</code> to view the PNG representation:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">display_png</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><img src="output_16_0.png" alt="png" /></p>
+
+<div class="alert alert-success">
+It is important to note a subtle different between <code>display</code> and <code>display_png</code>. The former computes <em>all</em> representations of the object, and lets the notebook UI decide which to display. The later only computes the PNG representation.
+</div>
+
+<p>Create a new Gaussian with different parameters:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">x2</span> <span class="o">=</span> <span class="n">Gaussian</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2000</span><span class="p">)</span>
+<span class="n">x2</span>
+</code></pre></div></div>
+
+<p>$\mathcal{N}(\mu=0, \sigma=2),\ N=2000$</p>
+
+<p>You can then compare the two Gaussians by displaying their histograms:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">display_png</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">display_png</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><img src="output_21_0.png" alt="png" /></p>
+
+<p><img src="output_21_1.png" alt="png" /></p>
+
+<p>Note that like <code class="highlighter-rouge">print</code>, you can call any of the <code class="highlighter-rouge">display</code> functions multiple times in a cell.</p>
+
+<h2 id="adding-ipython-display-support-to-existing-objects">Adding IPython display support to existing objects</h2>
+
+<p>When you are directly writing your own classes, you can adapt them for display in IPython by following the above approach.  But in practice, you often need to work with existing classes that you can’t easily modify. We now illustrate how to add rich output capabilities to existing objects. We will use the NumPy polynomials and change their default representation to be a formatted LaTeX expression.</p>
+
+<p>First, consider how a NumPy polynomial object renders by default:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polynomial</span><span class="o">.</span><span class="n">Polynomial</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
+<span class="n">p</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Polynomial([ 1.,  2.,  3.], [-10.,  10.], [-1,  1])
+</code></pre></div></div>
+
+<p>Next, define a function that pretty-prints a polynomial as a LaTeX string:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">poly_to_latex</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
+    <span class="n">terms</span> <span class="o">=</span> <span class="p">[</span><span class="s">'</span><span class="si">%.2</span><span class="s">g'</span> <span class="o">%</span> <span class="n">p</span><span class="o">.</span><span class="n">coef</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">term</span> <span class="o">=</span> <span class="s">'x'</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">coef</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">c</span><span class="o">!=</span><span class="mi">1</span><span class="p">:</span>
+            <span class="n">term</span> <span class="o">=</span> <span class="p">(</span><span class="s">'</span><span class="si">%.2</span><span class="s">g '</span> <span class="o">%</span> <span class="n">c</span><span class="p">)</span> <span class="o">+</span> <span class="n">term</span>
+        <span class="n">terms</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">term</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">p</span><span class="p">)):</span>
+            <span class="n">term</span> <span class="o">=</span> <span class="s">'x^</span><span class="si">%</span><span class="s">d'</span> <span class="o">%</span> <span class="n">i</span>
+            <span class="n">c</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">coef</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">c</span><span class="o">!=</span><span class="mi">1</span><span class="p">:</span>
+                <span class="n">term</span> <span class="o">=</span> <span class="p">(</span><span class="s">'</span><span class="si">%.2</span><span class="s">g '</span> <span class="o">%</span> <span class="n">c</span><span class="p">)</span> <span class="o">+</span> <span class="n">term</span>
+            <span class="n">terms</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">term</span><span class="p">)</span>
+    <span class="n">px</span> <span class="o">=</span> <span class="s">'$P(x)=</span><span class="si">%</span><span class="s">s$'</span> <span class="o">%</span> <span class="s">'+'</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">terms</span><span class="p">)</span>
+    <span class="n">dom</span> <span class="o">=</span> <span class="s">r', $x \in [</span><span class="si">%.2</span><span class="s">g,\ </span><span class="si">%.2</span><span class="s">g]$'</span> <span class="o">%</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">domain</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">px</span><span class="o">+</span><span class="n">dom</span>
+</code></pre></div></div>
+
+<p>This produces, on our polynomial <code class="highlighter-rouge">p</code>, the following:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">poly_to_latex</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>'$P(x)=1+2 x+3 x^2$, $x \\in [-10,\\ 10]$'
+</code></pre></div></div>
+
+<p>You can render this string using the <code class="highlighter-rouge">Latex</code> class:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Latex</span>
+<span class="n">Latex</span><span class="p">(</span><span class="n">poly_to_latex</span><span class="p">(</span><span class="n">p</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p>$P(x)=1+2 x+3 x^2$, $x \in [-10,\ 10]$</p>
+
+<p>However, you can configure IPython to do this automatically by registering the <code class="highlighter-rouge">Polynomial</code> class and the <code class="highlighter-rouge">poly_to_latex</code> function with an IPython display formatter. Let’s look at the default formatters provided by IPython:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ip</span> <span class="o">=</span> <span class="n">get_ipython</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">mime</span><span class="p">,</span> <span class="n">formatter</span> <span class="ow">in</span> <span class="n">ip</span><span class="o">.</span><span class="n">display_formatter</span><span class="o">.</span><span class="n">formatters</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">'</span><span class="si">%24</span><span class="s">s : </span><span class="si">%</span><span class="s">s'</span> <span class="o">%</span> <span class="p">(</span><span class="n">mime</span><span class="p">,</span> <span class="n">formatter</span><span class="o">.</span><span class="n">__class__</span><span class="o">.</span><span class="n">__name__</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>               image/png : PNGFormatter
+         application/pdf : PDFFormatter
+               text/html : HTMLFormatter
+              image/jpeg : JPEGFormatter
+              text/plain : PlainTextFormatter
+           text/markdown : MarkdownFormatter
+        application/json : JSONFormatter
+  application/javascript : JavascriptFormatter
+              text/latex : LatexFormatter
+           image/svg+xml : SVGFormatter
+</code></pre></div></div>
+
+<p>The <code class="highlighter-rouge">formatters</code> attribute is a dictionary keyed by MIME types. To define a custom LaTeX display function, you want a handle on the <code class="highlighter-rouge">text/latex</code> formatter:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">ip</span> <span class="o">=</span> <span class="n">get_ipython</span><span class="p">()</span>
+<span class="n">latex_f</span> <span class="o">=</span> <span class="n">ip</span><span class="o">.</span><span class="n">display_formatter</span><span class="o">.</span><span class="n">formatters</span><span class="p">[</span><span class="s">'text/latex'</span><span class="p">]</span>
+</code></pre></div></div>
+
+<p>The formatter object has a couple of methods for registering custom display functions for existing types.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">help</span><span class="p">(</span><span class="n">latex_f</span><span class="o">.</span><span class="n">for_type</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Help on method for_type in module IPython.core.formatters:
+
+for_type(typ, func=None) method of IPython.core.formatters.LatexFormatter instance
+    Add a format function for a given type.
+    
+    Parameters
+    -----------
+    typ : type or '__module__.__name__' string for a type
+        The class of the object that will be formatted using `func`.
+    func : callable
+        A callable for computing the format data.
+        `func` will be called with the object to be formatted,
+        and will return the raw data in this formatter's format.
+        Subclasses may use a different call signature for the
+        `func` argument.
+        
+        If `func` is None or not specified, there will be no change,
+        only returning the current value.
+    
+    Returns
+    -------
+    oldfunc : callable
+        The currently registered callable.
+        If you are registering a new formatter,
+        this will be the previous value (to enable restoring later).
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">help</span><span class="p">(</span><span class="n">latex_f</span><span class="o">.</span><span class="n">for_type_by_name</span><span class="p">)</span>
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Help on method for_type_by_name in module IPython.core.formatters:
+
+for_type_by_name(type_module, type_name, func=None) method of IPython.core.formatters.LatexFormatter instance
+    Add a format function for a type specified by the full dotted
+    module and name of the type, rather than the type of the object.
+    
+    Parameters
+    ----------
+    type_module : str
+        The full dotted name of the module the type is defined in, like
+        ``numpy``.
+    type_name : str
+        The name of the type (the class name), like ``dtype``
+    func : callable
+        A callable for computing the format data.
+        `func` will be called with the object to be formatted,
+        and will return the raw data in this formatter's format.
+        Subclasses may use a different call signature for the
+        `func` argument.
+        
+        If `func` is None or unspecified, there will be no change,
+        only returning the current value.
+    
+    Returns
+    -------
+    oldfunc : callable
+        The currently registered callable.
+        If you are registering a new formatter,
+        this will be the previous value (to enable restoring later).
+</code></pre></div></div>
+
+<p>In this case, we will use <code class="highlighter-rouge">for_type_by_name</code> to register <code class="highlighter-rouge">poly_to_latex</code> as the display function for the <code class="highlighter-rouge">Polynomial</code> type:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">latex_f</span><span class="o">.</span><span class="n">for_type_by_name</span><span class="p">(</span><span class="s">'numpy.polynomial.polynomial'</span><span class="p">,</span>
+                                 <span class="s">'Polynomial'</span><span class="p">,</span> <span class="n">poly_to_latex</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Once the custom display function has been registered, all NumPy <code class="highlighter-rouge">Polynomial</code> instances will be represented by their LaTeX form instead:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">p</span>
+</code></pre></div></div>
+
+<p>$P(x)=1+2 x+3 x^2$, $x \in [-10,\ 10]$</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">p2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polynomial</span><span class="o">.</span><span class="n">Polynomial</span><span class="p">([</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="mi">71</span><span class="p">,</span> <span class="o">-</span><span class="mi">15</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">p2</span>
+</code></pre></div></div>
+
+<p>$P(x)=-20+71 x+-15 x^2+x^3$, $x \in [-1,\ 1]$</p>
+
+<h2 id="more-complex-display-with-_ipython_display_">More complex display with <code class="highlighter-rouge">_ipython_display_</code></h2>
+
+<p>Rich output special methods and functions can only display one object or MIME type at a time. Sometimes this is not enough if you want to display multiple objects or MIME types at once. An example of this would be to use an HTML representation to put some HTML elements in the DOM and then use a JavaScript representation to add events to those elements.</p>
+
+<p><strong>IPython 2.0</strong> recognizes another display method, <code class="highlighter-rouge">_ipython_display_</code>, which allows your objects to take complete control of displaying themselves. If this method is defined, IPython will call it, and make no effort to display the object using the above described <code class="highlighter-rouge">_repr_*_</code> methods for custom display functions. It’s a way for you to say “Back off, IPython, I can display this myself.” Most importantly, your <code class="highlighter-rouge">_ipython_display_</code> method can make multiple calls to the top-level <code class="highlighter-rouge">display</code> functions to accomplish its goals.</p>
+
+<p>Here is an object that uses <code class="highlighter-rouge">display_html</code> and <code class="highlighter-rouge">display_javascript</code> to make a plot using the <a href="http://www.flotcharts.org/">Flot</a> JavaScript plotting library:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">uuid</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display_javascript</span><span class="p">,</span> <span class="n">display_html</span><span class="p">,</span> <span class="n">display</span>
+
+<span class="k">class</span> <span class="nc">FlotPlot</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">uuid</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid4</span><span class="p">())</span>
+    
+    <span class="k">def</span> <span class="nf">_ipython_display_</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">json_data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="p">)))</span>
+        <span class="n">display_html</span><span class="p">(</span><span class="s">'&lt;div id="{}" style="height: 300px; width:80</span><span class="si">%</span><span class="s">;"&gt;&lt;/div&gt;'</span><span class="o">.</span><span class="nb">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">uuid</span><span class="p">),</span>
+            <span class="n">raw</span><span class="o">=</span><span class="bp">True</span>
+        <span class="p">)</span>
+        <span class="n">display_javascript</span><span class="p">(</span><span class="s">"""
+        require(["//cdnjs.cloudflare.com/ajax/libs/flot/0.8.2/jquery.flot.min.js"], function() {
+          var line = JSON.parse("</span><span class="si">%</span><span class="s">s");
+          console.log(line);
+          $.plot("#</span><span class="si">%</span><span class="s">s", [line]);
+        });
+        """</span> <span class="o">%</span> <span class="p">(</span><span class="n">json_data</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">uuid</span><span class="p">),</span> <span class="n">raw</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">FlotPlot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+</code></pre></div></div>
+
+<div id="4ad544ff-a161-4493-ba2c-f99531e317bd" style="height: 300px; width:80%;"></div>
+
+
+
+                <hr style="visibility: hidden;">
+
+                <ul class="pager">
+                    
+                    
+                    <li class="next">
+                        <a href="/2019/06/20/Python-Generator/" data-toggle="tooltip" data-placement="top" title="Python generator">
+                        Next<br>
+                        <span>Python generator</span>
+                        </a>
+                    </li>
+                    
+                </ul>
+
+
+                <!--Gitalk评论start  -->
+                
+                <!-- 引入Gitalk评论插件  -->
+                <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+                <script src="https://unpkg.com/gitalk@latest/dist/gitalk.min.js"></script>
+                <div id="gitalk-container"></div>
+                <!-- 引入一个生产md5的js，用于对id值进行处理，防止其过长 -->
+                <!-- Thank DF:https://github.com/NSDingFan/NSDingFan.github.io/issues/3#issuecomment-407496538 -->
+                <script src="/js/md5.min.js"></script>
+                <script type="text/javascript">
+                    var gitalk = new Gitalk({
+                    clientID: 'ff0780c2422d2030dcb7',
+                    clientSecret: '485da2c930c535b6b612b776f3202ca7e1d392a3',
+                    repo: 'ssrzz.github.io',
+                    owner: 'ssrzz',
+                    admin: ['ssrzz'],
+                    distractionFreeMode: true,
+                    id: md5(location.pathname),
+                    });
+                    gitalk.render('gitalk-container');
+                </script>
+                
+                <!-- Gitalk end -->
+
+                
+
+            </div>  
+
+    <!-- Side Catalog Container -->
+        
+            <div class="
+                col-lg-2 col-lg-offset-0
+                visible-lg-block
+                sidebar-container
+                catalog-container">
+                <div class="side-catalog">
+                    <hr class="hidden-sm hidden-xs">
+                    <h5>
+                        <a class="catalog-toggle" href="#">CATALOG</a>
+                    </h5>
+                    <ul class="catalog-body"></ul>
+                </div>
+            </div>
+        
+
+    <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <hr class="hidden-sm hidden-xs">
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+        				
+                            
+                				<a href="/tags/#Python" title="Python" rel="2">
+                                    Python
+                                </a>
+                            
+        				
+        			</div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("//cdnjs.cloudflare.com/ajax/libs/anchor-js/1.1.1/anchor.min.js",function(){
+        // BY Fix:去除标题前的‘#’ issues:<https://github.com/qiubaiying/qiubaiying.github.io/issues/137>
+        // anchors.options = {
+        //   visible: 'always',
+        //   placement: 'right',
+        //   icon: '#'
+        // };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+<style>
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+                    
+                    <!-- add jianshu add target = "_blank" to <a> by BY -->
+                    
+                            <li>
+                                <a target="_blank" href="https://www.jianshu.com/u/None">
+                                    <span class="fa-stack fa-lg">
+                                        <i class="fa fa-circle fa-stack-2x"></i>
+                                        <i class="fa  fa-stack-1x fa-inverse">简</i>
+                                    </span>
+                                </a>
+                            </li>
+                    
+                    
+
+                    <!-- add Weibo, Zhihu by Hux, add target = "_blank" to <a> by Hux -->
+                    
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/None">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+
+
+                    
+                    <li>
+                        <a target="_blank" href="https://www.facebook.com/None">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                    <li>
+                        <a target="_blank" href="https://github.com/ssrzz">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                    
+                    
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Github_Blog 2019
+                    <br>
+                    Theme on <a href="https://github.com/ssrzz/ssrzz.github.io.git">GitHub</a> |
+                    <iframe
+                        style="margin-left: 2px; margin-bottom:-5px;"
+                        frameborder="0" scrolling="0" width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=ssrzz&repo=ssrzz.github.io&type=star&count=true" >
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- jQuery -->
+<script src="/js/jquery.min.js "></script>
+
+<!-- Bootstrap Core JavaScript -->
+<script src="/js/bootstrap.min.js "></script>
+
+<!-- Custom Theme JavaScript -->
+<script src="/js/hux-blog.min.js "></script>
+
+<!-- Service Worker -->
+
+<script type="text/javascript">
+    if(navigator.serviceWorker){
+        // For security reasons, a service worker can only control the pages that are in the same directory level or below it. That's why we put sw.js at ROOT level.
+        navigator.serviceWorker
+            .register('/sw.js')
+            .then((registration) => {console.log('Service Worker Registered. ', registration)})
+            .catch((error) => {console.log('ServiceWorker registration failed: ', error)})
+    }
+</script>
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+<!-- 
+     Because of the native support for backtick-style fenced code blocks 
+     right within the Markdown is landed in Github Pages, 
+     From V1.6, There is no need for Highlight.js, 
+     so Huxblog drops it officially.
+
+     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
+     - https://help.github.com/articles/creating-and-highlighting-code-blocks/ 
+     - https://github.com/jneen/rouge/wiki/list-of-supported-languages-and-lexers   
+-->
+<!--
+    <script>
+        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
+            hljs.initHighlightingOnLoad();
+        })
+    </script>
+    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
+-->
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async('/js/jquery.tagcloud.js',function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+
+<!-- Baidu Tongji -->
+
+
+
+
+<!-- Side Catalog -->
+
+<script type="text/javascript">
+    function generateCatalog (selector) {
+        var P = $('div.post-container'),a,n,t,l,i,c;
+        a = P.find('h1,h2,h3,h4,h5,h6');
+        a.each(function () {
+            n = $(this).prop('tagName').toLowerCase();
+            i = "#"+$(this).prop('id');
+            t = $(this).text();
+            c = $('<a href="'+i+'" rel="nofollow">'+t+'</a>');
+            l = $('<li class="'+n+'_nav"></li>').append(c);
+            $(selector).append(l);
+        });
+        return true;    
+    }
+
+    generateCatalog(".catalog-body");
+
+    // toggle side catalog
+    $(".catalog-toggle").click((function(e){
+        e.preventDefault();
+        $('.side-catalog').toggleClass("fold")
+    }))
+
+    /*
+     * Doc: https://github.com/davist11/jQuery-One-Page-Nav
+     * Fork by Hux to support padding
+     */
+    async("/js/jquery.nav.js", function () {
+        $('.catalog-body').onePageNav({
+            currentClass: "active",
+            changeHash: !1,
+            easing: "swing",
+            filter: "",
+            scrollSpeed: 700,
+            scrollOffset: 0,
+            scrollThreshold: .2,
+            begin: null,
+            end: null,
+            scrollChange: null,
+            padding: 80
+        });
+    });
+</script>
+
+
+
+
+
+<!-- Image to hack wechat -->
+<img src="/img/apple-touch-icon.png" width="0" height="0" />
+<!-- Migrate from head to bottom, no longer block render and still work -->
+
+</body>
+
+</html>

@@ -4,7 +4,6 @@ title:      Python generator
 subtitle:   when we need it?
 date:       2019-06-20
 author:     ssrzz
-header-img: img/post-bg-cook.jpg
 catalog: true
 tags:
     - Python
