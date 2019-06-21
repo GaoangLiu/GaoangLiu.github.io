@@ -4,7 +4,11 @@
 .highlight pre code * {
 	font-family: "Courier New";
 	font-size: medium;
+<<<<<<< HEAD
 	white-space: nowrap;    // this sets all children inside to nowrap
+=======
+  white-space: nowrap;    // this sets all children inside to nowrap
+>>>>>>> sz-blog
 }
 
 .highlight pre {
