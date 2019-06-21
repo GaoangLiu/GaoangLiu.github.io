@@ -10,7 +10,7 @@
     <meta name="keywords"  content="BY, BY Blog, Linux, Python, C++, AI, ML">
     <meta name="theme-color" content="#000000">
     
-    <title>Python generator - Pluto-C137 博客</title>
+    <title>Jekyll & Gitpages - Pluto-C137 博客</title>
 
     <!-- Web App Manifest -->
     <link rel="manifest" href="/pwa/manifest.json">
@@ -22,7 +22,7 @@
     <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
     
     <!-- Canonical URL -->
-    <link rel="canonical" href="http://localhost:4000/2019/06/20/Python-Generator/">
+    <link rel="canonical" href="http://localhost:4000/jekylltutorial">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -173,13 +173,15 @@
                 <div class="post-heading">
                     <div class="tags">
                         
-                        <a class="tag" href="/tags/#Python" title="Python">Python</a>
+                        <a class="tag" href="/tags/#jekyll" title="jekyll">jekyll</a>
+                        
+                        <a class="tag" href="/tags/#gitpages" title="gitpages">gitpages</a>
                         
                     </div>
-                    <h1>Python generator</h1>
+                    <h1>Jekyll & Gitpages</h1>
                     
                     
-                    <h2 class="subheading">when we need it?</h2>
+                    <h2 class="subheading">一些资料与教程</h2>
                     
                     <span class="meta">Posted by ssrzz on June 20, 2019</span>
                 </div>
@@ -199,28 +201,38 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-				<h2 id="preface">preface</h2>
-
-<p>Oh, this is …</p>
-
-<p><img src="https://images.ifanr.cn/wp-content/uploads/2018/06/WWDC-10.jpg" alt="" /></p>
+				<h2 id="jekyll资料">Jekyll资料</h2>
 
 <ul>
-  <li><a href="https://sspai.com/post/44816">苹果 WWDC 2018：最全总结看这里，不错过任何重点</a></li>
+  <li>官网 <a href="https://www.jekyll.com.cn/">jekyll</a>: 有简单的中文教程，但细节、后续配置主要还是English</li>
+  <li><a href="https://www.youtube.com/watch?v=T1itpPvFWHI&amp;list=PLLAZ4kZ9dFpOPV5C5Ay0pHaa0RJFhcmcB&amp;index=1">youtube: walk you through jekyll</a> 有19个小节，每个小节不到10分钟(差不多一上午看完)。  大致讲解如何让Jekyll跑起来，并做一些进行简单的配置</li>
 </ul>
+
+<h2 id="前方有坑">前方有坑</h2>
+
+<ol>
+  <li>
+    <p>使用<a href="http://www.disqus.com">disqus</a>添加评论模块没有成功，最终使用了Gitalk，相关博客参考：</p>
+
+    <ul>
+      <li><a href="http://minghao23.com/2019/02/02/BlogBuild/">使用Github Pages搭建你的个人网站</a></li>
+      <li><a href="http://objcoding.com/2017/11/28/Gitalk/">使用Gitalk搭建博客评论模块</a></li>
+    </ul>
+  </li>
+  <li>
+    <p>设置代码默认字体 <code class="highlighter-rouge">css/syntax.css</code>， 在<code class="highlighter-rouge">.highlight pre code *</code>中添加 <code class="highlighter-rouge">font-family: "Courier New"</code>. 代码效果如下:</p>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">say</span><span class="p">():</span>
+  <span class="k">print</span><span class="p">(</span><span class="s">"Hello Jekyll."</span><span class="p">)</span>
+</code></pre></div>    </div>
+  </li>
+</ol>
 
 
 
                 <hr style="visibility: hidden;">
 
                 <ul class="pager">
-                    
-                    <li class="previous">
-                        <a href="/2019/06/20/How-To-Test/" data-toggle="tooltip" data-placement="top" title="Just another test">
-                        Previous<br>
-                        <span>Just another test</span>
-                        </a>
-                    </li>
                     
                     
                 </ul>
@@ -285,9 +297,7 @@
                     <div class="tags">
         				
                             
-                				<a href="/tags/#Python" title="Python" rel="2">
-                                    Python
-                                </a>
+        				
                             
         				
         			</div>
@@ -351,40 +361,13 @@
                     
                     <!-- add jianshu add target = "_blank" to <a> by BY -->
                     
-                            <li>
-                                <a target="_blank" href="https://www.jianshu.com/u/None">
-                                    <span class="fa-stack fa-lg">
-                                        <i class="fa fa-circle fa-stack-2x"></i>
-                                        <i class="fa  fa-stack-1x fa-inverse">简</i>
-                                    </span>
-                                </a>
-                            </li>
-                    
                     
 
                     <!-- add Weibo, Zhihu by Hux, add target = "_blank" to <a> by Hux -->
                     
-                    <li>
-                        <a target="_blank" href="https://www.zhihu.com/people/None">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa  fa-stack-1x fa-inverse">知</i>
-                            </span>
-                        </a>
-                    </li>
-                    
                     
 
 
-                    
-                    <li>
-                        <a target="_blank" href="https://www.facebook.com/None">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                    </li>
                     
                     
                     <li>

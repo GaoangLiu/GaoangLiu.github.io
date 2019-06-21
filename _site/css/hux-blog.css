@@ -219,9 +219,11 @@ hr.small {
 }
 pre,
 .table-responsive {
+  font-family: "Courier New";  
   -webkit-overflow-scrolling: touch;
 }
 pre code {
+  font-family: "Courier New";
   display: block;
   width: auto;
   white-space: pre;
