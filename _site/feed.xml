@@ -5,8 +5,8 @@
     <description>May the force be with you</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Fri, 21 Jun 2019 16:34:04 +0800</pubDate>
-    <lastBuildDate>Fri, 21 Jun 2019 16:34:04 +0800</lastBuildDate>
+    <pubDate>Fri, 21 Jun 2019 16:48:33 +0800</pubDate>
+    <lastBuildDate>Fri, 21 Jun 2019 16:48:33 +0800</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
     
       <item>
@@ -40,8 +40,8 @@
 
 </description>
         <pubDate>Thu, 20 Jun 2019 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/jekylltutorial</link>
-        <guid isPermaLink="true">http://localhost:4000/jekylltutorial</guid>
+        <link>http://localhost:4000/2019/06/20/Jekyll/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/06/20/Jekyll/</guid>
         
         <category>jekyll</category>
         
