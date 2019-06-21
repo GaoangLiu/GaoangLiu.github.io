@@ -12,7 +12,7 @@ github_repo: "https://github.com/ssrzz/ssrzz.github.io.git" # you code repositor
 # Sidebar settings
 sidebar: true                           # whether or not using Sidebar.
 sidebar-about-description: "work hard, work smart"
-sidebar-avatar: /img/avatar_pikaqiu.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
+sidebar-avatar: /img/black_kid.jpg      # use absolute URL, seeing it's used in both `/` and `/about/`
 
 
 
@@ -37,7 +37,7 @@ anchorjs: true                          # if you want to customize anchor. check
 
 # Gems
 # from PR#40, to support local preview for Jekyll 3.0
-gems: [jekyll-paginate]
+plugins: [jekyll-paginate]
 
 
 

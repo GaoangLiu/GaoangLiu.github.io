@@ -5,8 +5,8 @@
     <description>May the force be with you</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Fri, 21 Jun 2019 08:32:52 +0800</pubDate>
-    <lastBuildDate>Fri, 21 Jun 2019 08:32:52 +0800</lastBuildDate>
+    <pubDate>Fri, 21 Jun 2019 16:25:46 +0800</pubDate>
+    <lastBuildDate>Fri, 21 Jun 2019 16:25:46 +0800</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
     
       <item>
@@ -27,6 +27,47 @@
         <guid isPermaLink="true">http://localhost:4000/2019/06/20/Python-Generator/</guid>
         
         <category>Python</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Jekyll &amp; Gitpages</title>
+        <description>&lt;h2 id=&quot;jekyll资料&quot;&gt;Jekyll资料&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;官网 &lt;a href=&quot;https://www.jekyll.com.cn/&quot;&gt;jekyll&lt;/a&gt;: 有简单的中文教程，但细节、后续配置主要还是English&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=T1itpPvFWHI&amp;amp;list=PLLAZ4kZ9dFpOPV5C5Ay0pHaa0RJFhcmcB&amp;amp;index=1&quot;&gt;youtube: walk you through jekyll&lt;/a&gt; 有19个小节，每个小节不到10分钟(差不多一上午看完)。  大致讲解如何让Jekyll跑起来，并做一些进行简单的配置&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;前方有坑&quot;&gt;前方有坑&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;使用&lt;a href=&quot;http://www.disqus.com&quot;&gt;disqus&lt;/a&gt;添加评论模块没有成功，最终使用了Gitalk，相关博客参考：&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;http://minghao23.com/2019/02/02/BlogBuild/&quot;&gt;使用Github Pages搭建你的个人网站&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;http://objcoding.com/2017/11/28/Gitalk/&quot;&gt;使用Gitalk搭建博客评论模块&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;设置代码默认字体 &lt;code class=&quot;highlighter-rouge&quot;&gt;css/syntax.css&lt;/code&gt;， 在&lt;code class=&quot;highlighter-rouge&quot;&gt;.highlight pre code *&lt;/code&gt;中添加 &lt;code class=&quot;highlighter-rouge&quot;&gt;font-family: &quot;Courier New&quot;&lt;/code&gt;. 代码效果如下:&lt;/p&gt;
+
+    &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;say&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Hello Jekyll.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+</description>
+        <pubDate>Thu, 20 Jun 2019 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/jekylltutorial</link>
+        <guid isPermaLink="true">http://localhost:4000/jekylltutorial</guid>
+        
+        <category>jekyll</category>
+        
+        <category>gitpages</category>
         
         
       </item>
