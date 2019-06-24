@@ -10,7 +10,7 @@
     <meta name="keywords"  content="Linux, Python, C++, AI, ML">
     <meta name="theme-color" content="#000000">
     
-    <title>Jekyll & Gitpages - Pluto-C137 博客</title>
+    <title>Golden section search - Pluto-C137 博客</title>
 
     <!-- Web App Manifest -->
     <link rel="manifest" href="/pwa/manifest.json">
@@ -22,7 +22,7 @@
     <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
     
     <!-- Canonical URL -->
-    <link rel="canonical" href="http://localhost:4000/2019/06/20/Jekyll/">
+    <link rel="canonical" href="http://localhost:4000/2019/06/23/golden-section-search/">
 
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="/css/bootstrap.min.css">
@@ -172,17 +172,17 @@
                 <div class="post-heading">
                     <div class="tags">
                         
-                        <a class="tag" style="color: blue;" href="/tags/#jekyll" title="jekyll">jekyll</a>
+                        <a class="tag" style="color: blue;" href="/tags/#algorithm" title="algorithm">algorithm</a>
                         
-                        <a class="tag" style="color: blue;" href="/tags/#gitpages" title="gitpages">gitpages</a>
+                        <a class="tag" style="color: blue;" href="/tags/#golden-section" title="golden-section">golden-section</a>
                         
                     </div>
-                    <h1>Jekyll & Gitpages</h1> <h3 class="subheading">一些资料与教程</h3>
+                    <h1>Golden section search</h1> <h3 class="subheading">求区间最小/大值</h3>
                     
                     
-                    <!-- <h2 class="subheading">一些资料与教程</h2> -->
+                    <!-- <h2 class="subheading">求区间最小/大值</h2> -->
                     
-                    <span class="meta" >Posted by ssrzz on June 20, 2019</span>
+                    <span class="meta" >Posted by ssrzz on June 23, 2019</span>
                 </div>
             </div>
         </div>
@@ -199,32 +199,42 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-				<h2 id="jekyll资料">Jekyll资料</h2>
+				<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
 
-<ul>
-  <li>官网 <a href="https://www.jekyll.com.cn/">jekyll</a>: 有简单的中文教程，但细节、后续配置主要还是English</li>
-  <li><a href="https://www.youtube.com/watch?v=T1itpPvFWHI&amp;list=PLLAZ4kZ9dFpOPV5C5Ay0pHaa0RJFhcmcB&amp;index=1">youtube: walk you through jekyll</a> 有19个小节，每个小节不到10分钟(差不多一上午看完)。  大致讲解如何让Jekyll跑起来，并做一些进行简单的配置</li>
-</ul>
+<h2 id="gssgolden-section-search">GSS(golden section search)</h2>
 
-<h2 id="前方有坑">前方有坑</h2>
+<p>GSS is the limit of <a href="https://en.wikipedia.org/wiki/Golden-section_search">Fibonacci search</a>. 通过不断缩小搜索空间，在一个单锋函数(unimodal function)寻找最值。</p>
 
-<ol>
-  <li>
-    <p>使用<a href="http://www.disqus.com">disqus</a>添加评论模块没有成功，最终使用了Gitalk，相关博客参考：</p>
+<p>以下为寻找<code class="highlighter-rouge">[a, b]</code>间使得<code class="highlighter-rouge">f(x) = (x -2 )**2</code>最小的<code class="highlighter-rouge">x</code>的Python代码</p>
 
-    <ul>
-      <li><a href="http://minghao23.com/2019/02/02/BlogBuild/">使用Github Pages搭建你的个人网站</a></li>
-      <li><a href="http://objcoding.com/2017/11/28/Gitalk/">使用Gitalk搭建博客评论模块</a></li>
-    </ul>
-  </li>
-  <li>
-    <p>设置代码默认字体 <code class="highlighter-rouge">css/syntax.css</code>， 在<code class="highlighter-rouge">.highlight pre code *</code>中添加 <code class="highlighter-rouge">font-family: "Courier New"</code>. 代码效果如下:</p>
+<h3 id="idea">idea</h3>
 
-    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">say</span><span class="p">():</span>
-  <span class="k">print</span><span class="p">(</span><span class="s">"Hello Jekyll."</span><span class="p">)</span>
-</code></pre></div>    </div>
-  </li>
-</ol>
+<p>假设 $f(x)$是一个二次函数，在区间<code class="highlighter-rouge">[a,b]</code>存在极小值(也必然是最小值，设为)，在<code class="highlighter-rouge">[a,b]</code>间选择两个点<code class="highlighter-rouge">c, d (a &lt; c &lt; d &lt; b)</code>,显然有f(c) &lt; max(f(a), f(d)), f(d) &lt; max(f(a), f(d)) .</p>
+
+<p>如果f(c) &lt; f(d)  $x_2$</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="s">"""python progra m for golden section search. """</span>
+<span class="n">gr</span> <span class="o">=</span> <span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+<span class="k">def</span> <span class="nf">gss</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-5</span><span class="p">):</span>
+    <span class="s">'''
+    golden section search
+    to find the minimum of f on [a,b]
+    f: a strictly unimodal function on [a,b], example: f = lambda x: (x-2)**2
+    '''</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">b</span> <span class="o">-</span> <span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span> <span class="o">/</span> <span class="n">gr</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span> <span class="o">/</span> <span class="n">gr</span> 
+    <span class="k">while</span> <span class="nb">abs</span><span class="p">(</span><span class="n">c</span> <span class="o">-</span> <span class="n">d</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">eps</span><span class="p">:</span> <span class="c1"># eps = 10**-9
+</span>        <span class="k">if</span> <span class="n">f</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">f</span><span class="p">(</span><span class="n">d</span><span class="p">):</span>
+            <span class="n">b</span> <span class="o">=</span> <span class="n">d</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">a</span> <span class="o">=</span> <span class="n">c</span>
+
+        <span class="c1"># recompute both c and d here to avoid loss of precision which may lead to incorrect results or infinite loop
+</span>        <span class="n">c</span> <span class="o">=</span> <span class="n">b</span> <span class="o">-</span> <span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span> <span class="o">/</span> <span class="n">gr</span>
+        <span class="n">d</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span> <span class="o">/</span> <span class="n">gr</span>
+
+    <span class="k">return</span> <span class="p">(</span><span class="n">b</span> <span class="o">+</span> <span class="n">a</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+</code></pre></div></div>
 
 
 
@@ -232,14 +242,14 @@
 
                 <ul class="pager">
                     
-                    
-                    <li class="next">
-                        <a href="/2019/06/23/golden-section-search/" data-toggle="tooltip" data-placement="top" title="Golden section search"
+                    <li class="previous">
+                        <a href="/2019/06/20/Jekyll/" data-toggle="tooltip" data-placement="top" title="Jekyll & Gitpages" 
                         style="border-radius: 20px;">
-                        next blog<br>
-                        <span>Golden section search</span>
+                        previous blog<br>
+                        <span>Jekyll & Gitpages</span>
                         </a>
                     </li>
+                    
                     
                 </ul>
 
