@@ -10,8 +10,6 @@ tags:
   - golden-section
 ---
 
-<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
-
 ## GSS(golden section search)
 
 GSS is the limit of [Fibonacci search](https://en.wikipedia.org/wiki/Golden-section_search). 通过不断缩小搜索空间，在一个单锋函数(unimodal function)寻找最值。
