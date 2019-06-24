@@ -38,6 +38,9 @@
     <!-- Hux change font-awesome CDN to qiniu -->
     <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
+    <script type="text/javascript" async
+      src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+    </script>
 
     <!-- Hux Delete, sad but pending in China
     <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
@@ -199,11 +202,13 @@ GSS(golden section search)
 
 GSS is the limit of Fibonacci search. 通过不断缩小搜索空间，在一个单锋函数(unimodal function)寻找最值。
 
-以下为寻找[a, b]间使得f(x) = (x -2 )**2最小的x的Python代码
+以下为寻找间使得最小的x的Python代码
 
 idea
 
-假设 $f(x)$是一个二次函数，在区间[a,b]存在极小值(也必...
+假设 是一个二次函数，在区间存在极小值(也必然是最小值，设为 )，在间选择两个点,显然有 .
+
+如果  ，the...
         </div>
     </a>
     <p class="post-meta">
