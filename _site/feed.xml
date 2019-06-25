@@ -5,9 +5,44 @@
     <description>May the force be with you</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Mon, 24 Jun 2019 16:53:47 +0800</pubDate>
-    <lastBuildDate>Mon, 24 Jun 2019 16:53:47 +0800</lastBuildDate>
+    <pubDate>Tue, 25 Jun 2019 11:17:16 +0800</pubDate>
+    <lastBuildDate>Tue, 25 Jun 2019 11:17:16 +0800</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
+    
+      <item>
+        <title>Machine Learning notes</title>
+        <description>&lt;h2 id=&quot;define-ml&quot;&gt;Define ML&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Arthur Samule(1959): fields of study that gives computers ability to learn without being explicitly programmed.&lt;/p&gt;
+
+    &lt;blockquote&gt;
+      &lt;p&gt;Samule 曾写了个跳棋(checker)程序，不断训练让程序学习什么是好的move，什么是坏的。尽管Samule本人并不擅长checker，但一个不擅长checker的人在1950s能编写并训练出一个比自己更擅长checker的程序，这是一件很了不起的事情。&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Tom Mitchell(1998): A computer program is said to learn some experience &lt;script type=&quot;math/tex&quot;&gt;E&lt;/script&gt; w.r.t. some task &lt;script type=&quot;math/tex&quot;&gt;T&lt;/script&gt; and some performance &lt;script type=&quot;math/tex&quot;&gt;P&lt;/script&gt;, if its performance &lt;script type=&quot;math/tex&quot;&gt;P&lt;/script&gt;, as measured by &lt;script type=&quot;math/tex&quot;&gt;T&lt;/script&gt;, improves with experience &lt;script type=&quot;math/tex&quot;&gt;E&lt;/script&gt;.&lt;/p&gt;
+
+    &lt;p&gt;i.e., 关于任务&lt;script type=&quot;math/tex&quot;&gt;T&lt;/script&gt;的程序&lt;script type=&quot;math/tex&quot;&gt;Pr&lt;/script&gt; 的成绩&lt;script type=&quot;math/tex&quot;&gt;P&lt;/script&gt;， 正比于从&lt;script type=&quot;math/tex&quot;&gt;T&lt;/script&gt;中学习到的经验&lt;script type=&quot;math/tex&quot;&gt;E&lt;/script&gt;.&lt;/p&gt;
+
+    &lt;script type=&quot;math/tex; mode=display&quot;&gt;P(Pr_T) \propto E(Pr_T)&lt;/script&gt;
+
+    &lt;blockquote&gt;
+      &lt;p&gt;上述定义其实是“针对” good ML program，如果一个算法越学越差，本质上也是一个ML算法，但只能算是一个糟糕的算法 (分类问题+准确率极低的算法+结果取反 = 一个准确率还不错的算法？)。&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;THOUGHTS: AI的本质是: 人类所赋予机器(or 工具)的一种能够解决具备一定难度的问题的能力(the ability to solve certain difficult problems — difficult in the sense that they are not easily solved by humans)，这种能力越强，就能越好的解决问题(e.g., 准确率更高的分类器)。&lt;/p&gt;
+</description>
+        <pubDate>Tue, 25 Jun 2019 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2019/06/25/ml-notes/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/06/25/ml-notes/</guid>
+        
+        <category>ml</category>
+        
+        
+      </item>
     
       <item>
         <title>Golden section search</title>
