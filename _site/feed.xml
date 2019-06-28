@@ -5,13 +5,14 @@
     <description>May the force be with you</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Tue, 25 Jun 2019 11:17:16 +0800</pubDate>
-    <lastBuildDate>Tue, 25 Jun 2019 11:17:16 +0800</lastBuildDate>
+    <pubDate>Wed, 26 Jun 2019 11:36:34 +0800</pubDate>
+    <lastBuildDate>Wed, 26 Jun 2019 11:36:34 +0800</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
     
       <item>
         <title>Machine Learning notes</title>
         <description>&lt;h2 id=&quot;define-ml&quot;&gt;Define ML&lt;/h2&gt;
+
 &lt;ul&gt;
   &lt;li&gt;
     &lt;p&gt;Arthur Samule(1959): fields of study that gives computers ability to learn without being explicitly programmed.&lt;/p&gt;
@@ -33,13 +34,84 @@
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;THOUGHTS: AI的本质是: 人类所赋予机器(or 工具)的一种能够解决具备一定难度的问题的能力(the ability to solve certain difficult problems — difficult in the sense that they are not easily solved by humans)，这种能力越强，就能越好的解决问题(e.g., 准确率更高的分类器)。&lt;/p&gt;
+&lt;h3 id=&quot;quick-question-what-do-you-think-about-ai&quot;&gt;Quick question: what do you think about AI?&lt;/h3&gt;
+
+&lt;p&gt;AI的本质是, 人类所赋予机器(or 工具)的一种能够解决具备一定难度的问题的能力(the ability to solve certain difficult problems — difficult in the sense that they are not easily solved by humans)，这种能力越强，就能越好的解决问题(e.g., 准确率更高的分类器)。&lt;/p&gt;
+
+&lt;p&gt;但机器所被赋予的intelligence，在相当长一段时间内都是比较单一、针对一个或者一类具对问题的能力，它们很难做到像人类一样进行逻辑推理、反思总结并把结果推广到其他问题上。未来的技术有可能创造出&lt;a href=&quot;https://zh.wikipedia.org/zh-hans/终结者&quot;&gt;终结者&lt;/a&gt;这样的AI — 目的单一：杀死Sara，阻碍John Connor的诞生(其用到的人脸识别、运动中识别并跨越、躲避障碍物的技术都将在未来数年内得到大幅提升)。但行动自然、可以熟练运用计谋、同情心、美色诱惑并欺骗人类以逃离的&lt;a href=&quot;https://zh.wikipedia.org/zh-hans/机械姬&quot;&gt;机械姬 Ex Machina&lt;/a&gt;则不太可能。&lt;/p&gt;
+
+&lt;p&gt;AI很难做出人类的复本，但也可能完全没有这个必要 。飞机像鸟类一样飞翔，但不必振动机翼。&lt;/p&gt;
+
+&lt;h3 id=&quot;问题分类&quot;&gt;问题分类&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;regression problem v.s. classification
+    &lt;ul&gt;
+      &lt;li&gt;主要区别：预测结果是连续的(continuous valued output)还是离散的(discrete)。问题可以相互转化，二者界线也并非那么绝对。房价是连续的，但可以划分为离散的区间 (A: 0-10Million, B:10~20M, C:…)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;supervised v.s. unsupervised
+    &lt;ul&gt;
+      &lt;li&gt;supervised: each example has a label (“right” answer), we teach program how to learn&lt;/li&gt;
+      &lt;li&gt;unsupervised&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;linear-regression&quot;&gt;Linear Regression&lt;/h2&gt;
+
+&lt;h3 id=&quot;hypothesis-h&quot;&gt;Hypothesis &lt;script type=&quot;math/tex&quot;&gt;h&lt;/script&gt;&lt;/h3&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;h_\theta(x^i) = \theta \cdot x^i =  \theta_0 + \theta_1 x_1^i + \cdots + \theta_n x _n^i&lt;/script&gt;
+
+&lt;p&gt;###Why prediction function is called hypothesis ?&lt;/p&gt;
+
+&lt;p&gt;历史残留原因，早期ml领域采用了这个术语，一直沿袭至今。&lt;/p&gt;
+
+&lt;h4 id=&quot;parameters-theta--theta_0--theta_n&quot;&gt;Parameters &lt;script type=&quot;math/tex&quot;&gt;\theta = (\theta_0, …, \theta_n)&lt;/script&gt;&lt;/h4&gt;
+
+&lt;h4 id=&quot;goal&quot;&gt;Goal&lt;/h4&gt;
+
+&lt;p&gt;代价函数&lt;script type=&quot;math/tex&quot;&gt;J(\theta) = \frac{1}{2m} \mid h_\theta(X) - Y \mid ^2 =\frac{1}{2m} \Sigma_{i=1}^m \mid h(x^i) - y^i \mid ^2&lt;/script&gt;, 找到 &lt;script type=&quot;math/tex&quot;&gt;\theta&lt;/script&gt; 使得 &lt;script type=&quot;math/tex&quot;&gt;\text{minimize} J(\theta)&lt;/script&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;why-square-error-function&quot;&gt;Why square error function?&lt;/h3&gt;
+
+&lt;p&gt;对于多数regression问题来说，sef 都是一个不错的选择&lt;/p&gt;
+
+&lt;h2 id=&quot;gdgradient-descent&quot;&gt;GD(gradient descent)&lt;/h2&gt;
+
+&lt;h3 id=&quot;batch-gd&quot;&gt;“Batch” GD&lt;/h3&gt;
+
+&lt;p&gt;batch : Each step of GD uses all the training examples&lt;/p&gt;
+
+&lt;p&gt;​	&lt;script type=&quot;math/tex&quot;&gt;\text{repeat} \{ \theta_j = \theta_j - \frac{\partial}{ \partial \theta_j} J(\theta) \}  = \theta_j - \alpha/m \Sigma_1^m(h_\theta(x^{(i)} -y^{(i)} ) x_j^{(i)} )&lt;/script&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;feature-scaling&quot;&gt;Feature scaling&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;why ? 从以上GD的迭代过程看到，&lt;strong&gt;&lt;script type=&quot;math/tex&quot;&gt;\theta_j&lt;/script&gt;的更新幅度与&lt;script type=&quot;math/tex&quot;&gt;x_j&lt;/script&gt;相关&lt;/strong&gt;。如果某个&lt;script type=&quot;math/tex&quot;&gt;x_j&lt;/script&gt;的尺度相较其他维度特征大很多，势必造成该维度对应的参数&lt;script type=&quot;math/tex&quot;&gt;\theta_j&lt;/script&gt;的更新非常剧烈，而其他维度特征对应的参数更新相对缓和，这样造成迭代过程中很多轮次实际上是为了消除特征尺度上的不一致，而不是快速的找到最优点，最终极大影响收敛速度。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;How ? E.g., mean normalization (均值标准化？)&lt;/p&gt;
+
+    &lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;x_i  = \frac{x_i - u_i}{s_i}&lt;/script&gt;，其中  &lt;script type=&quot;math/tex&quot;&gt;u_i = 1/\mid x_i\mid \sum(x_i^j), s_i = \text{max}(x_i) - \text{min}(x_i)&lt;/script&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;dirty-notes&quot;&gt;Dirty notes&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Octave lib (Prof. Andrew Ng 建议初学者使用)˘&lt;/li&gt;
+&lt;/ul&gt;
 </description>
         <pubDate>Tue, 25 Jun 2019 00:00:00 +0800</pubDate>
         <link>http://localhost:4000/2019/06/25/ml-notes/</link>
         <guid isPermaLink="true">http://localhost:4000/2019/06/25/ml-notes/</guid>
         
         <category>ml</category>
+        
+        <category>tutorial</category>
         
         
       </item>
