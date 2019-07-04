@@ -5,9 +5,72 @@
     <description>May the force be with you</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Wed, 26 Jun 2019 11:36:34 +0800</pubDate>
-    <lastBuildDate>Wed, 26 Jun 2019 11:36:34 +0800</lastBuildDate>
+    <pubDate>Thu, 04 Jul 2019 13:14:17 +0800</pubDate>
+    <lastBuildDate>Thu, 04 Jul 2019 13:14:17 +0800</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
+    
+      <item>
+        <title>Leetcode solutions</title>
+        <description>&lt;h2 id=&quot;313-super-ugly-numbers&quot;&gt;313 super ugly numbers&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://leetcode.com/problems/super-ugly-number/&quot;&gt;Que&lt;/a&gt;:  Super ugly numbers (SUN hereafter) are positive numbers whose all prime factors are in the  given prime list primes of size &lt;script type=&quot;math/tex&quot;&gt;k&lt;/script&gt;,  (e.g., primes = [2, 7, 13, 19])  Write a program to find the &lt;script type=&quot;math/tex&quot;&gt;n&lt;/script&gt;-th super ugly number.&lt;/p&gt;
+
+&lt;h3 id=&quot;method-1-brute-force&quot;&gt;Method 1: Brute Force&lt;/h3&gt;
+
+&lt;p&gt;Idea: searching from 1 to some &lt;script type=&quot;math/tex&quot;&gt;m&gt;&gt;n&lt;/script&gt; to find the &lt;script type=&quot;math/tex&quot;&gt;n&lt;/script&gt;-th number which is super ugly.&lt;/p&gt;
+
+&lt;p&gt;Comment: bad solution when &lt;script type=&quot;math/tex&quot;&gt;n&lt;/script&gt; is large, as we have to decompose each number &lt;script type=&quot;math/tex&quot;&gt;% &lt;![CDATA[
+1 &lt; i &lt; m %]]&gt;&lt;/script&gt; to figure out whether it is super ugly.&lt;/p&gt;
+
+&lt;h3 id=&quot;method-2-generating-suns-incrementally&quot;&gt;Method 2: Generating SUNs incrementally&lt;/h3&gt;
+
+&lt;p&gt;Idea:  First SUN is surely &lt;script type=&quot;math/tex&quot;&gt;1&lt;/script&gt;, the second SUN is &lt;script type=&quot;math/tex&quot;&gt;\text{min}(primes) = 2&lt;/script&gt; (assuming &lt;script type=&quot;math/tex&quot;&gt;primes=[2,7,13,19]&lt;/script&gt;) , the third ? We have to do some calculations, let &lt;script type=&quot;math/tex&quot;&gt;U = [1, 2]&lt;/script&gt; be the first two generated SUNs, &lt;script type=&quot;math/tex&quot;&gt;C = [p * u  \text{ for } p \in primes \text{  for  } u \in U ] \backslash U&lt;/script&gt;. Then &lt;script type=&quot;math/tex&quot;&gt;U_3 = \text{min}(C) = 4&lt;/script&gt; , making &lt;script type=&quot;math/tex&quot;&gt;U=[1,2,4]&lt;/script&gt;.&lt;/p&gt;
+
+&lt;p&gt;By repeating the previous procedure, we can find the &lt;script type=&quot;math/tex&quot;&gt;n&lt;/script&gt;-th SUN within time &lt;script type=&quot;math/tex&quot;&gt;O(n^2 * m)&lt;/script&gt;, where &lt;script type=&quot;math/tex&quot;&gt;m&lt;/script&gt; is the size of &lt;script type=&quot;math/tex&quot;&gt;primes&lt;/script&gt;.&lt;/p&gt;
+
+&lt;p&gt;Or, we can speed up the procedure by keeping track of numbers we’ve calculated before using an auxiliary array &lt;script type=&quot;math/tex&quot;&gt;idx&lt;/script&gt; , &lt;script type=&quot;math/tex&quot;&gt;idx[i]&lt;/script&gt; means previous  &lt;script type=&quot;math/tex&quot;&gt;(idx[i]-1)&lt;/script&gt; SUNs with one prime factor being &lt;script type=&quot;math/tex&quot;&gt;primes[i]&lt;/script&gt; have been calcuated, with the results stored either in &lt;script type=&quot;math/tex&quot;&gt;U&lt;/script&gt;, or in the candidiate set &lt;script type=&quot;math/tex&quot;&gt;C&lt;/script&gt;.&lt;/p&gt;
+
+&lt;p&gt;More specifically, initialize &lt;script type=&quot;math/tex&quot;&gt;idx = [0,0,0,0] , U = [1], C = [p * u  \text{ for } p \in primes \text{  for  } u \in U ] \backslash U = primes&lt;/script&gt; , the second SUN is &lt;script type=&quot;math/tex&quot;&gt;\text{min} (C) = 1 * 2&lt;/script&gt;, we update &lt;script type=&quot;math/tex&quot;&gt;idx = [1(0+1),0,0,0]&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;3-rd SUN is &lt;script type=&quot;math/tex&quot;&gt;min(C')&lt;/script&gt;, where &lt;script type=&quot;math/tex&quot;&gt;C'  = [U_{idx[0]} * primes[0], U_{idx[1]} * primes[1], …] = [4,7,13,19]&lt;/script&gt;. At this time, the lucky &lt;script type=&quot;math/tex&quot;&gt;primes[i]&lt;/script&gt; remains &lt;script type=&quot;math/tex&quot;&gt;2&lt;/script&gt; with &lt;script type=&quot;math/tex&quot;&gt;i == 0&lt;/script&gt;, so we update &lt;script type=&quot;math/tex&quot;&gt;idx = [2(1+1),0,0,0]&lt;/script&gt;.&lt;/p&gt;
+
+&lt;p&gt;4-th: &lt;script type=&quot;math/tex&quot;&gt;C'' = [8,7,13,19], U = [1,2,4,7], idx = [2,1,0,0]&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;5-th: &lt;script type=&quot;math/tex&quot;&gt;C'' = [8,14,13,19], U = [1,2,4,7,8], idx = [3,1,0,0]&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;6-th: &lt;script type=&quot;math/tex&quot;&gt;C'' = [14,14,13,19], U = [1,2,4,7,8,13], idx = [3,1,1,0]&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;…&lt;/p&gt;
+
+&lt;p&gt;Loop until we find the &lt;script type=&quot;math/tex&quot;&gt;n&lt;/script&gt;-th SUN. Time Complexity &lt;script type=&quot;math/tex&quot;&gt;O(n*m)&lt;/script&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;python-code&quot;&gt;Python code&lt;/h3&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;nthSuperUglyNumber&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;primes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;ugly&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;factors&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;primes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[:]&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;idx&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;primes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;ugly&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;min&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;factors&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;primes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)):&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;factors&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ugly&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt;
+                    &lt;span class=&quot;n&quot;&gt;idx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+                    &lt;span class=&quot;n&quot;&gt;factors&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;primes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ugly&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;idx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ugly&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+</description>
+        <pubDate>Wed, 03 Jul 2019 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2019/07/03/leetcode-solutions/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/07/03/leetcode-solutions/</guid>
+        
+        <category>algorithm</category>
+        
+        <category>python</category>
+        
+        
+      </item>
     
       <item>
         <title>Machine Learning notes</title>
@@ -72,7 +135,7 @@
 
 &lt;h4 id=&quot;goal&quot;&gt;Goal&lt;/h4&gt;
 
-&lt;p&gt;代价函数&lt;script type=&quot;math/tex&quot;&gt;J(\theta) = \frac{1}{2m} \mid h_\theta(X) - Y \mid ^2 =\frac{1}{2m} \Sigma_{i=1}^m \mid h(x^i) - y^i \mid ^2&lt;/script&gt;, 找到 &lt;script type=&quot;math/tex&quot;&gt;\theta&lt;/script&gt; 使得 &lt;script type=&quot;math/tex&quot;&gt;\text{minimize} J(\theta)&lt;/script&gt;&lt;/p&gt;
+&lt;p&gt;代价函数&lt;script type=&quot;math/tex&quot;&gt;J(\theta) = \frac{1}{2m} \mid h_\theta(X) - Y \mid ^2 =\frac{1}{2m} \Sigma_{i=1}^m \mid h(x^i) - y^i \mid ^2&lt;/script&gt;, 找到 &lt;script type=&quot;math/tex&quot;&gt;\theta&lt;/script&gt; 使得 &lt;script type=&quot;math/tex&quot;&gt;\text{minimize}_{\theta} J(\theta)&lt;/script&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;why-square-error-function&quot;&gt;Why square error function?&lt;/h3&gt;
 
@@ -99,11 +162,69 @@
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;dirty-notes&quot;&gt;Dirty notes&lt;/h3&gt;
+&lt;h2 id=&quot;logistic-regression&quot;&gt;Logistic Regression&lt;/h2&gt;
+
+&lt;h3 id=&quot;cost-function&quot;&gt;Cost function&lt;/h3&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;J(\theta)  = \frac{1}{m} \sum C(h_\theta(x^{(i)}), y^{(i)})&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;C(h_\theta(x), y) = -log(h_\theta(x)) \text{  if  } y == 1 \text{ else } -log(1 - h_\theta(x))&lt;/script&gt;
+
+&lt;p&gt;因为&lt;script type=&quot;math/tex&quot;&gt;y&lt;/script&gt;总是取0 or 1， 上式可改写为 &lt;script type=&quot;math/tex&quot;&gt;C(h_\theta(x), y)  = - y log(h_\theta(x))  - (1-y) log(1 - h_\theta(x))&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;直觉，如果假设与真实值相差很大，e.g., &lt;script type=&quot;math/tex&quot;&gt;y = 1 , h_\theta(x) = 0&lt;/script&gt; 那么代价函数也将极大。&lt;/p&gt;
+
+&lt;h4 id=&quot;qestion-为何选择这个cf&quot;&gt;Qestion: 为何选择这个CF?&lt;/h4&gt;
+
+&lt;p&gt;原则上，CF是度量假设&lt;script type=&quot;math/tex&quot;&gt;h&lt;/script&gt;与真实值&lt;script type=&quot;math/tex&quot;&gt;y&lt;/script&gt;差异的函数。 一个好的CF应该xxx，并且能很好的指导如果去调整参数&lt;script type=&quot;math/tex&quot;&gt;\theta&lt;/script&gt;. 如果使用linear regression中的代价函数是non-convex函数，&lt;/p&gt;
+
+&lt;h2 id=&quot;overfitting&quot;&gt;Overfitting&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;减少特征数目 / reduce number of features
+    &lt;ul&gt;
+      &lt;li&gt;手动选择重要的features&lt;/li&gt;
+      &lt;li&gt;model selection algorithms 会自动选择相关的特征&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;正则化
+    &lt;ul&gt;
+      &lt;li&gt;保留所有features，但减小&lt;script type=&quot;math/tex&quot;&gt;\theta_j&lt;/script&gt;的值&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;system-design&quot;&gt;System design&lt;/h2&gt;
+
+&lt;h3 id=&quot;结果标准&quot;&gt;结果标准&lt;/h3&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;Octave lib (Prof. Andrew Ng 建议初学者使用)˘&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;正确率(precision)  &lt;script type=&quot;math/tex&quot;&gt;P = \text{TP} / (\text{TP} + \text{FP})&lt;/script&gt; ，即所有预测为1的示例中真实结果为1的概率. E.g., 97(real spam) / 100 predicted spam、98 (real cancer) / 101(predicted cancer)&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;召回率(recall) &lt;script type=&quot;math/tex&quot;&gt;R=\text{TP}/(\text{TP} + \text{FN})&lt;/script&gt;，即真实结果为positive的示例被正确预测出来的概率. E.g., 97(real spam) / 100 (total spam)  , 98 (real cancer) / 101 (total cancer)&lt;/p&gt;
+
+    &lt;p&gt;precision / recall 不可兼得。&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;\mathcal{F}_1&lt;/script&gt; Score (&lt;script type=&quot;math/tex&quot;&gt;\mathcal{F}&lt;/script&gt; score) = &lt;script type=&quot;math/tex&quot;&gt;2\frac{PR}{P+R}&lt;/script&gt;&lt;/p&gt;
+  &lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;h3 id=&quot;正则&quot;&gt;正则&lt;/h3&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;J(\theta) =\frac{1}{2m} [\Sigma_{i=1}^m \mid h(x^i) - y^i \mid ^2  + 	\lambda \Sigma_j^n\theta_n^2]&lt;/script&gt;,&lt;/p&gt;
+
+&lt;h2 id=&quot;推荐系统recommender-systems&quot;&gt;推荐系统(recommender systems)&lt;/h2&gt;
+
+&lt;h3 id=&quot;messy-notes&quot;&gt;Messy notes&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Octave lib (Prof. Andrew Ng 建议初学者使用)˘˘&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;˘˘&lt;/p&gt;
 </description>
         <pubDate>Tue, 25 Jun 2019 00:00:00 +0800</pubDate>
         <link>http://localhost:4000/2019/06/25/ml-notes/</link>
