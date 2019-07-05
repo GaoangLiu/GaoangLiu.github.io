@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      停机问题
+title:      Halting Problem
 subtitle:   
 date:       2019-07-05
 author:     ssrzz

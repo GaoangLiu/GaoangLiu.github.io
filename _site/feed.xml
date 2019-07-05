@@ -5,9 +5,66 @@
     <description>May the force be with you</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Thu, 04 Jul 2019 20:31:07 +0800</pubDate>
-    <lastBuildDate>Thu, 04 Jul 2019 20:31:07 +0800</lastBuildDate>
+    <pubDate>Fri, 05 Jul 2019 12:16:40 +0800</pubDate>
+    <lastBuildDate>Fri, 05 Jul 2019 12:16:40 +0800</lastBuildDate>
     <generator>Jekyll v3.8.5</generator>
+    
+      <item>
+        <title>Sorting Algorithms</title>
+        <description>&lt;h2 id=&quot;quick-sort&quot;&gt;Quick Sort&lt;/h2&gt;
+
+&lt;p&gt;todo&lt;/p&gt;
+
+</description>
+        <pubDate>Fri, 05 Jul 2019 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2019/07/05/Sorting-Algorithms/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/07/05/Sorting-Algorithms/</guid>
+        
+        <category>quick sort</category>
+        
+        <category>merge sort</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Halting Problem</title>
+        <description>&lt;h2 id=&quot;halting-problem&quot;&gt;Halting Problem&lt;/h2&gt;
+
+&lt;p&gt;停机问题: 判断任意一个程序是否能在有限的时间之内结束运行的问题。等价于如下判定问题：是否存在一个程序&lt;script type=&quot;math/tex&quot;&gt;P&lt;/script&gt;，对于任意输入的程序&lt;script type=&quot;math/tex&quot;&gt;\omega&lt;/script&gt;，能够判断&lt;script type=&quot;math/tex&quot;&gt;\omega&lt;/script&gt;会在有限时间内结束或者死循环。&lt;/p&gt;
+
+&lt;p&gt;HP是不可判定的，本质上是 &lt;strong&gt;一阶逻辑的不自洽性&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;h2 id=&quot;一个简单的证明&quot;&gt;一个简单的证明&lt;/h2&gt;
+
+&lt;p&gt;Source &lt;a href=&quot;https://www.youtube.com/watch?v=92WHN-pAFCs&quot;&gt;计算机不是万能的&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;假设存在一个机器 &lt;script type=&quot;math/tex&quot;&gt;T&lt;/script&gt; ，它总能判定另外一机器 &lt;script type=&quot;math/tex&quot;&gt;H&lt;/script&gt; 对于任意输入 &lt;script type=&quot;math/tex&quot;&gt;\omega&lt;/script&gt; 都能停机&lt;/li&gt;
+  &lt;li&gt;引入机器 &lt;script type=&quot;math/tex&quot;&gt;D&lt;/script&gt;, 对于任意输入 &lt;script type=&quot;math/tex&quot;&gt;\omega&lt;/script&gt;， 复制并输出两份 &lt;script type=&quot;math/tex&quot;&gt;\omega&lt;/script&gt; ; 机器 &lt;script type=&quot;math/tex&quot;&gt;R&lt;/script&gt; 读入 &lt;script type=&quot;math/tex&quot;&gt;\omega \in \{ \text{stuck}, \text{not stuck} \}&lt;/script&gt;，输出 &lt;script type=&quot;math/tex&quot;&gt;\neg \omega&lt;/script&gt;&lt;/li&gt;
+  &lt;li&gt;拼接以上3个机器 &lt;script type=&quot;math/tex&quot;&gt;D -&gt; T -&gt; R&lt;/script&gt; 得到 &lt;script type=&quot;math/tex&quot;&gt;X&lt;/script&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Question: &lt;script type=&quot;math/tex&quot;&gt;X&lt;/script&gt; 输入 &lt;script type=&quot;math/tex&quot;&gt;X&lt;/script&gt; (written as &lt;script type=&quot;math/tex&quot;&gt;X(X)&lt;/script&gt;) 是否停机 ？&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;停机 ： =&amp;gt; &lt;script type=&quot;math/tex&quot;&gt;R&lt;/script&gt; 的读入为&lt;em&gt;不停机&lt;/em&gt;，=&amp;gt;  &lt;script type=&quot;math/tex&quot;&gt;T&lt;/script&gt; 读入 &lt;script type=&quot;math/tex&quot;&gt;(X, X)&lt;/script&gt; 输出为不停机 ，=&amp;gt; &lt;script type=&quot;math/tex&quot;&gt;X(X)&lt;/script&gt;不停机，矛盾 ;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;不停机： =&amp;gt; &lt;script type=&quot;math/tex&quot;&gt;R&lt;/script&gt; 的读入为&lt;em&gt;停机&lt;/em&gt;，=&amp;gt;  &lt;script type=&quot;math/tex&quot;&gt;T&lt;/script&gt; 读入 &lt;script type=&quot;math/tex&quot;&gt;(X, X)&lt;/script&gt; 输出为停机 ，=&amp;gt; &lt;script type=&quot;math/tex&quot;&gt;X(X)&lt;/script&gt;停机，矛盾 。&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+</description>
+        <pubDate>Fri, 05 Jul 2019 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/2019/07/05/Halting-Problem/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/07/05/Halting-Problem/</guid>
+        
+        <category>halting problem</category>
+        
+        
+      </item>
     
       <item>
         <title>SSH Defense</title>
@@ -107,8 +164,8 @@
 
 </description>
         <pubDate>Wed, 03 Jul 2019 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2019/07/03/ssh-protection/</link>
-        <guid isPermaLink="true">http://localhost:4000/2019/07/03/ssh-protection/</guid>
+        <link>http://localhost:4000/2019/07/03/SSH-Defense/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/07/03/SSH-Defense/</guid>
         
         <category>SSH</category>
         
@@ -116,7 +173,7 @@
       </item>
     
       <item>
-        <title>Leetcode solutions</title>
+        <title>Leetcode Solutions</title>
         <description>&lt;h2 id=&quot;313-super-ugly-numbers&quot;&gt;313 super ugly numbers&lt;/h2&gt;
 
 &lt;p&gt;&lt;a href=&quot;https://leetcode.com/problems/super-ugly-number/&quot;&gt;Que&lt;/a&gt;:  Super ugly numbers (SUN hereafter) are positive numbers whose all prime factors are in the  given prime list primes of size &lt;script type=&quot;math/tex&quot;&gt;k&lt;/script&gt;,  (e.g., primes = [2, 7, 13, 19])  Write a program to find the &lt;script type=&quot;math/tex&quot;&gt;n&lt;/script&gt;-th super ugly number.&lt;/p&gt;
@@ -168,8 +225,8 @@
 
 </description>
         <pubDate>Wed, 03 Jul 2019 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2019/07/03/leetcode-solutions/</link>
-        <guid isPermaLink="true">http://localhost:4000/2019/07/03/leetcode-solutions/</guid>
+        <link>http://localhost:4000/2019/07/03/Leetcode-Solutions/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/07/03/Leetcode-Solutions/</guid>
         
         <category>algorithm</category>
         
@@ -333,8 +390,8 @@
 &lt;p&gt;˘˘&lt;/p&gt;
 </description>
         <pubDate>Tue, 25 Jun 2019 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2019/06/25/ml-notes/</link>
-        <guid isPermaLink="true">http://localhost:4000/2019/06/25/ml-notes/</guid>
+        <link>http://localhost:4000/2019/06/25/Machine-Learning-notes/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/06/25/Machine-Learning-notes/</guid>
         
         <category>ml</category>
         
@@ -422,8 +479,8 @@ abs(a-b) &lt; eps \to 0 %]]&gt;&lt;/script&gt;。那么问题是：&lt;/p&gt;
 
 </description>
         <pubDate>Sun, 23 Jun 2019 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2019/06/23/golden-section-search/</link>
-        <guid isPermaLink="true">http://localhost:4000/2019/06/23/golden-section-search/</guid>
+        <link>http://localhost:4000/2019/06/23/Golden-section-search/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/06/23/Golden-section-search/</guid>
         
         <category>algorithm</category>
         
@@ -463,8 +520,8 @@ abs(a-b) &lt; eps \to 0 %]]&gt;&lt;/script&gt;。那么问题是：&lt;/p&gt;
 
 </description>
         <pubDate>Thu, 20 Jun 2019 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2019/06/20/Jekyll/</link>
-        <guid isPermaLink="true">http://localhost:4000/2019/06/20/Jekyll/</guid>
+        <link>http://localhost:4000/2019/06/20/Jekyll-&-Gitpages/</link>
+        <guid isPermaLink="true">http://localhost:4000/2019/06/20/Jekyll-&-Gitpages/</guid>
         
         <category>jekyll</category>
         

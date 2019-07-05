@@ -1,7 +1,7 @@
 ---
 layout:     post
-title:      Leetcode solutions
-subtitle:   
+title:      Leetcode Solutions
+subtitle:   题解与思路
 date:       2019-07-03
 author:     ssrzz
 catalog: 	true
