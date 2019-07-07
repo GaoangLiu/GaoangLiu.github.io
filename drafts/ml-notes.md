@@ -45,29 +45,33 @@ AI很难做出人类的复本，但也可能完全没有这个必要 。飞机�
 
 
 
-## Linear Regression
+## 线性模型
 
-### Hypothesis $$h$$
+### Linear regression
+
+线性回归，也称普通最小二乘法(ordinary least squares, OLS)，回归问题最简单也最经典的线性方法。线性回归寻找参数 $$w$$与$$b$$，使得对训练集的预测值与真实的回归目标值 $$y$$之间的**均方误差**最小。
+
+####Hypothesis $$h$$
 
 $$h_\theta(x^i) = \theta \cdot x^i =  \theta_0 + \theta_1 x_1^i + \cdots + \theta_n x _n^i$$
 
-###Why prediction function is called hypothesis ?
+####Why prediction function is called hypothesis ?
 
 历史残留原因，早期ml领域采用了这个术语，一直沿袭至今。
-
-
-
-#### Parameters $$\theta = (\theta_0, …, \theta_n)$$
 
 #### Goal
 
 代价函数$$J(\theta) = \frac{1}{2m} \mid h_\theta(X) - Y \mid ^2 =\frac{1}{2m} \Sigma_{i=1}^m \mid h(x^i) - y^i \mid ^2$$, 找到 $$\theta$$ 使得 $$\text{minimize}_{\theta} J(\theta) $$
 
-### Why square error function?
+#### Why square error function?
 
 对于多数regression问题来说，sef 都是一个不错的选择
 
+### 岭回归(ridge regression)
 
+对于高维数据集(即有大量特征的数据集)，线性模型过拟合的可能性变大。 在岭回归中，对系数$$w$$的选择不仅要在训练数据上得到好的预测结果，还要**拟合附加约束**(E.g., 正则化)。 
+
+Ridge模型在模型的简单性(系统都接近于0)与训练集性能之间做出权衡。
 
 
 
@@ -141,7 +145,9 @@ $$J(\theta) =\frac{1}{2m} [\Sigma_{i=1}^m \mid h(x^i) - y^i \mid ^2  + 	\lambda 
 
 
 
-## 推荐系统(recommender systems)
+## CNN 卷积神经网络
+
+CNN(convolutional neural networks) 
 
 
 

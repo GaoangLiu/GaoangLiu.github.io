@@ -63,3 +63,40 @@ Loop until we find the $$n$$-th SUN. Time Complexity $$O(n*m)$$
 
 
 
+# Algorithm
+
+## Reservoir sampling
+
+从包含$$n$$个项目的集合中选取$$k$$个样本，其中$$n$$为一很大或未知的数量，尤其适用于不能把所有项目都存放到内存的情况。
+
+```python
+# S is the (large) list
+res = [0] * k
+for i in range(k):
+  res[i] = S[i]
+
+cnt = k
+for n in S[k:]:
+  j = random.randint(0,cnt)
+  if j < k:
+    res[j] = n
+  cnt += 1
+
+# when k = 1
+for n in S[k:]:
+  j = random.randint(0, cnt)
+  if j == 0: res = n
+  cnt += 1
+```
+
+证明每个样本被抽取的概率为 $$1/n$$ . 考虑第$$j \in [0 .. n -1]$$ 个元素被最终抽到的可能性：
+
+$$P_j = \frac{1}{j+1} \prod_{i=j+1}^{n-1}1 - \frac{1}{i+1})  = \frac{1}{j+1} \cdot \frac{j+1}{j+2} \cdot \frac{j+2}{j+3} \cdots \frac{n-1}{n-1+1} = \frac{1}{n} $$
+
+特别的，当 $$j==n-1, P_{n-1} = \frac{1}{n}$$ 直接从算法中得出。 
+
+应用 
+
+- [Linked List Random Node](https://leetcode.com/problems/linked-list-random-node/description/) 
+- Todo
+
