@@ -1,35 +1,47 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Pluto C-137</title>
-    <description>May the force be with you</description>
-    <link>http://localhost:4000/</link>
-    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Fri, 05 Jul 2019 12:16:40 +0800</pubDate>
-    <lastBuildDate>Fri, 05 Jul 2019 12:16:40 +0800</lastBuildDate>
-    <generator>Jekyll v3.8.5</generator>
-    
-      <item>
-        <title>Sorting Algorithms</title>
-        <description>&lt;h2 id=&quot;quick-sort&quot;&gt;Quick Sort&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-07-08T12:48:09+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">pluto137’s blog</title><subtitle>blog</subtitle><author><name>ssrzz</name></author><entry><title type="html">Kaggle Competitions</title><link href="http://localhost:4000/2019/07/05/Kaggle-Competitions/" rel="alternate" type="text/html" title="Kaggle Competitions" /><published>2019-07-05T00:00:00+08:00</published><updated>2019-07-05T00:00:00+08:00</updated><id>http://localhost:4000/2019/07/05/Kaggle-Competitions</id><content type="html" xml:base="http://localhost:4000/2019/07/05/Kaggle-Competitions/">&lt;h2 id=&quot;mnist---digit-recognizer&quot;&gt;MNIST - Digit Recognizer&lt;/h2&gt;
 
-&lt;p&gt;todo&lt;/p&gt;
+&lt;p&gt;MNIST (“Modified National Institute of Standards and Technology”) — ML领域的“HELLO WORLD”.&lt;/p&gt;
 
-</description>
-        <pubDate>Fri, 05 Jul 2019 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2019/07/05/Sorting-Algorithms/</link>
-        <guid isPermaLink="true">http://localhost:4000/2019/07/05/Sorting-Algorithms/</guid>
-        
-        <category>quick sort</category>
-        
-        <category>merge sort</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>Halting Problem</title>
-        <description>&lt;h2 id=&quot;halting-problem&quot;&gt;Halting Problem&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;https://www.kaggle.com/c/digit-recognizer/leaderboard&quot;&gt;Digit Recognizer&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Train set 42000, label 为数字，图片以像素向量的形式给出(&lt;script type=&quot;math/tex&quot;&gt;[pixel_0, … , pixel_{783}]&lt;/script&gt;)&lt;/li&gt;
+  &lt;li&gt;Test set 28000。目的：尽可能提高图片中数字识别率&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;随机森林&quot;&gt;随机森林&lt;/h3&gt;
+
+&lt;p&gt;直接调用&lt;code class=&quot;highlighter-rouge&quot;&gt;sklearn&lt;/code&gt;中RandomForest分类器进行学习验证。&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sklearn.ensemble&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;RandomForestClassifier&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;forest&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;forest_clf&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;RandomForestClassifier&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;random_state&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;42&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n_estimators&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;forest_clf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;x_train&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y_train&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;test&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;read_csv&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'test.csv'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;final_pred&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;forest_clf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;predict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;test&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;结果：0.96542, 大约排在2400+/3200+的位置，&lt;/p&gt;
+
+&lt;h3 id=&quot;cnn&quot;&gt;CNN&lt;/h3&gt;
+
+&lt;p&gt;卷积神经网络 2 层（1层32filters， 1层 64 filters)&lt;/p&gt;
+
+&lt;p&gt;Echos = 6, train:test ratio 19:2(3800:400), result : 0.98528 (1630 / 3200+)&lt;/p&gt;
+
+&lt;p&gt;Echos = 16, train:test ratio 20: 1, result : 0.98642 基本上没有多大提升&lt;/p&gt;
+
+&lt;h2 id=&quot;colab&quot;&gt;Colab&lt;/h2&gt;
+
+&lt;h3 id=&quot;colab-挂载google-drive方法&quot;&gt;Colab 挂载Google Drive方法&lt;/h3&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;from google.colab import drive
+drive.mount&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'/gdrive'&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# list files&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;ls&lt;/span&gt; /gdrive/&lt;span class=&quot;s1&quot;&gt;'My Drive'&lt;/span&gt;/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;第一次挂载需要验证绑定账号，挂载成功后在 &lt;code class=&quot;highlighter-rouge&quot;&gt;My Drive&lt;/code&gt;中建文件夹、上传数据都可以通过 &lt;code class=&quot;highlighter-rouge&quot;&gt;/gdrive/'My Drive'&lt;/code&gt;打开。&lt;/p&gt;</content><author><name>ssrzz</name></author><category term="machine learning" /><category term="CNN" /><category term="TensorFlow" /><category term="Keras" /><summary type="html">MNIST - Digit Recognizer</summary></entry><entry><title type="html">Halting Problem</title><link href="http://localhost:4000/2019/07/05/Halting-Problem/" rel="alternate" type="text/html" title="Halting Problem" /><published>2019-07-05T00:00:00+08:00</published><updated>2019-07-05T00:00:00+08:00</updated><id>http://localhost:4000/2019/07/05/Halting-Problem</id><content type="html" xml:base="http://localhost:4000/2019/07/05/Halting-Problem/">&lt;h2 id=&quot;halting-problem&quot;&gt;Halting Problem&lt;/h2&gt;
 
 &lt;p&gt;停机问题: 判断任意一个程序是否能在有限的时间之内结束运行的问题。等价于如下判定问题：是否存在一个程序&lt;script type=&quot;math/tex&quot;&gt;P&lt;/script&gt;，对于任意输入的程序&lt;script type=&quot;math/tex&quot;&gt;\omega&lt;/script&gt;，能够判断&lt;script type=&quot;math/tex&quot;&gt;\omega&lt;/script&gt;会在有限时间内结束或者死循环。&lt;/p&gt;
 
@@ -54,21 +66,40 @@
   &lt;li&gt;
     &lt;p&gt;不停机： =&amp;gt; &lt;script type=&quot;math/tex&quot;&gt;R&lt;/script&gt; 的读入为&lt;em&gt;停机&lt;/em&gt;，=&amp;gt;  &lt;script type=&quot;math/tex&quot;&gt;T&lt;/script&gt; 读入 &lt;script type=&quot;math/tex&quot;&gt;(X, X)&lt;/script&gt; 输出为停机 ，=&amp;gt; &lt;script type=&quot;math/tex&quot;&gt;X(X)&lt;/script&gt;停机，矛盾 。&lt;/p&gt;
   &lt;/li&gt;
-&lt;/ol&gt;
+&lt;/ol&gt;</content><author><name>ssrzz</name></author><category term="halting problem" /><summary type="html">Halting Problem</summary></entry><entry><title type="html">Sorting Algorithms</title><link href="http://localhost:4000/2019/07/05/Sorting-Algorithms/" rel="alternate" type="text/html" title="Sorting Algorithms" /><published>2019-07-05T00:00:00+08:00</published><updated>2019-07-05T00:00:00+08:00</updated><id>http://localhost:4000/2019/07/05/Sorting-Algorithms</id><content type="html" xml:base="http://localhost:4000/2019/07/05/Sorting-Algorithms/">&lt;h2 id=&quot;quick-sort&quot;&gt;Quick Sort&lt;/h2&gt;
 
-</description>
-        <pubDate>Fri, 05 Jul 2019 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2019/07/05/Halting-Problem/</link>
-        <guid isPermaLink="true">http://localhost:4000/2019/07/05/Halting-Problem/</guid>
-        
-        <category>halting problem</category>
-        
-        
-      </item>
+&lt;div class=&quot;language-py highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;quicksort&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;start&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;start&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;pindex&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;partition&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;quicksort&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pindex&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;quicksort&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pindex&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;partition&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;pivot&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;pindex&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;start&lt;/span&gt;
     
-      <item>
-        <title>SSH Defense</title>
-        <description>&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;lastb&lt;/code&gt;  查看失败的SSH登录尝试历史，如果一段时间内出现一连段的相同或相近的IP，那么恭喜，这台服务器被盯上了。&lt;/p&gt;
+    &lt;span class=&quot;c&quot;&gt;# move all elements less than pivot to left of pindex&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;start&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pivot&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pindex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pindex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;pindex&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pindex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pindex&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pindex&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Inplace recursive 算法&lt;/li&gt;
+  &lt;li&gt;Time complexity &lt;script type=&quot;math/tex&quot;&gt;O(n  \cdot  logn)&lt;/script&gt;， worst-case running time &lt;script type=&quot;math/tex&quot;&gt;O(n^2)&lt;/script&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;merge-sort&quot;&gt;Merge sort&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Not inplace&lt;/li&gt;
+  &lt;li&gt;Time complexity &lt;script type=&quot;math/tex&quot;&gt;O(n \cdot logn)&lt;/script&gt;, space complexity &lt;script type=&quot;math/tex&quot;&gt;O(n)&lt;/script&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>ssrzz</name></author><category term="quick sort" /><category term="merge sort" /><summary type="html">Quick Sort</summary></entry><entry><title type="html">SSH Defense</title><link href="http://localhost:4000/2019/07/03/SSH-Defense/" rel="alternate" type="text/html" title="SSH Defense" /><published>2019-07-03T00:00:00+08:00</published><updated>2019-07-03T00:00:00+08:00</updated><id>http://localhost:4000/2019/07/03/SSH-Defense</id><content type="html" xml:base="http://localhost:4000/2019/07/03/SSH-Defense/">&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;lastb&lt;/code&gt;  查看失败的SSH登录尝试历史，如果一段时间内出现一连段的相同或相近的IP，那么恭喜，这台服务器被盯上了。&lt;/p&gt;
 
 &lt;p&gt;注： 防护工具也只是工具，不能保护服务器100%安全。 保护好服务器，首先要排除错误选项，包括但不限于： &lt;strong&gt;弱密码、默认端口、不重视异常登录&lt;/strong&gt;.&lt;/p&gt;
 
@@ -160,21 +191,7 @@
 
 &lt;p&gt;更改配置后 &lt;code class=&quot;highlighter-rouge&quot;&gt;systemctl restart fail2ban.service&lt;/code&gt;重启fail2ban.&lt;/p&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;fail2ban-client status ssh&lt;/code&gt;  获取禁止的 IP ， &lt;code class=&quot;highlighter-rouge&quot;&gt;fail2ban-client set ssh unbanip 1.2.3.4&lt;/code&gt;来释放被ban掉的IP.&lt;/p&gt;
-
-</description>
-        <pubDate>Wed, 03 Jul 2019 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2019/07/03/SSH-Defense/</link>
-        <guid isPermaLink="true">http://localhost:4000/2019/07/03/SSH-Defense/</guid>
-        
-        <category>SSH</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>Leetcode Solutions</title>
-        <description>&lt;h2 id=&quot;313-super-ugly-numbers&quot;&gt;313 super ugly numbers&lt;/h2&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;fail2ban-client status ssh&lt;/code&gt;  获取禁止的 IP ， &lt;code class=&quot;highlighter-rouge&quot;&gt;fail2ban-client set ssh unbanip 1.2.3.4&lt;/code&gt;来释放被ban掉的IP.&lt;/p&gt;</content><author><name>ssrzz</name></author><category term="SSH" /><summary type="html">lastb 查看失败的SSH登录尝试历史，如果一段时间内出现一连段的相同或相近的IP，那么恭喜，这台服务器被盯上了。</summary></entry><entry><title type="html">Leetcode Solutions</title><link href="http://localhost:4000/2019/07/03/Leetcode-Solutions/" rel="alternate" type="text/html" title="Leetcode Solutions" /><published>2019-07-03T00:00:00+08:00</published><updated>2019-07-03T00:00:00+08:00</updated><id>http://localhost:4000/2019/07/03/Leetcode-Solutions</id><content type="html" xml:base="http://localhost:4000/2019/07/03/Leetcode-Solutions/">&lt;h2 id=&quot;313-super-ugly-numbers&quot;&gt;313 super ugly numbers&lt;/h2&gt;
 
 &lt;p&gt;&lt;a href=&quot;https://leetcode.com/problems/super-ugly-number/&quot;&gt;Que&lt;/a&gt;:  Super ugly numbers (SUN hereafter) are positive numbers whose all prime factors are in the  given prime list primes of size &lt;script type=&quot;math/tex&quot;&gt;k&lt;/script&gt;,  (e.g., primes = [2, 7, 13, 19])  Write a program to find the &lt;script type=&quot;math/tex&quot;&gt;n&lt;/script&gt;-th super ugly number.&lt;/p&gt;
 
@@ -223,21 +240,43 @@
 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-</description>
-        <pubDate>Wed, 03 Jul 2019 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2019/07/03/Leetcode-Solutions/</link>
-        <guid isPermaLink="true">http://localhost:4000/2019/07/03/Leetcode-Solutions/</guid>
-        
-        <category>algorithm</category>
-        
-        <category>python</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>Machine Learning notes</title>
-        <description>&lt;h2 id=&quot;define-ml&quot;&gt;Define ML&lt;/h2&gt;
+&lt;h1 id=&quot;algorithm&quot;&gt;Algorithm&lt;/h1&gt;
+
+&lt;h2 id=&quot;reservoir-sampling&quot;&gt;Reservoir sampling&lt;/h2&gt;
+
+&lt;p&gt;从包含&lt;script type=&quot;math/tex&quot;&gt;n&lt;/script&gt;个项目的集合中选取&lt;script type=&quot;math/tex&quot;&gt;k&lt;/script&gt;个样本，其中&lt;script type=&quot;math/tex&quot;&gt;n&lt;/script&gt;为一很大或未知的数量，尤其适用于不能把所有项目都存放到内存的情况。&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# S is the (large) list&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;res&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;S&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;cnt&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;S&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:]:&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;random&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;randint&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;cnt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;cnt&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# when k = 1&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;S&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:]:&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;random&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;randint&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cnt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;res&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;cnt&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;证明每个样本被抽取的概率为 &lt;script type=&quot;math/tex&quot;&gt;1/n&lt;/script&gt; . 考虑第&lt;script type=&quot;math/tex&quot;&gt;j \in [0 .. n -1]&lt;/script&gt; 个元素被最终抽到的可能性：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;P_j = \frac{1}{j+1} \prod_{i=j+1}^{n-1}1 - \frac{1}{i+1})  = \frac{1}{j+1} \cdot \frac{j+1}{j+2} \cdot \frac{j+2}{j+3} \cdots \frac{n-1}{n-1+1} = \frac{1}{n}&lt;/script&gt;
+
+&lt;p&gt;特别的，当 &lt;script type=&quot;math/tex&quot;&gt;j==n-1, P_{n-1} = \frac{1}{n}&lt;/script&gt; 直接从算法中得出。&lt;/p&gt;
+
+&lt;p&gt;应用&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://leetcode.com/problems/linked-list-random-node/description/&quot;&gt;Linked List Random Node&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Todo&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>ssrzz</name></author><category term="algorithm" /><category term="python" /><summary type="html">313 super ugly numbers</summary></entry><entry><title type="html">Machine Learning notes</title><link href="http://localhost:4000/2019/06/25/Machine-Learning-notes/" rel="alternate" type="text/html" title="Machine Learning notes" /><published>2019-06-25T00:00:00+08:00</published><updated>2019-06-25T00:00:00+08:00</updated><id>http://localhost:4000/2019/06/25/Machine-Learning-notes</id><content type="html" xml:base="http://localhost:4000/2019/06/25/Machine-Learning-notes/">&lt;h2 id=&quot;define-ml&quot;&gt;Define ML&lt;/h2&gt;
 
 &lt;ul&gt;
   &lt;li&gt;
@@ -284,25 +323,33 @@
   &lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h2 id=&quot;linear-regression&quot;&gt;Linear Regression&lt;/h2&gt;
+&lt;h2 id=&quot;线性模型&quot;&gt;线性模型&lt;/h2&gt;
 
-&lt;h3 id=&quot;hypothesis-h&quot;&gt;Hypothesis &lt;script type=&quot;math/tex&quot;&gt;h&lt;/script&gt;&lt;/h3&gt;
+&lt;h3 id=&quot;linear-regression&quot;&gt;Linear regression&lt;/h3&gt;
+
+&lt;p&gt;线性回归，也称普通最小二乘法(ordinary least squares, OLS)，回归问题最简单也最经典的线性方法。线性回归寻找参数 &lt;script type=&quot;math/tex&quot;&gt;w&lt;/script&gt;与&lt;script type=&quot;math/tex&quot;&gt;b&lt;/script&gt;，使得对训练集的预测值与真实的回归目标值 &lt;script type=&quot;math/tex&quot;&gt;y&lt;/script&gt;之间的&lt;strong&gt;均方误差&lt;/strong&gt;最小。&lt;/p&gt;
+
+&lt;p&gt;####Hypothesis &lt;script type=&quot;math/tex&quot;&gt;h&lt;/script&gt;&lt;/p&gt;
 
 &lt;script type=&quot;math/tex; mode=display&quot;&gt;h_\theta(x^i) = \theta \cdot x^i =  \theta_0 + \theta_1 x_1^i + \cdots + \theta_n x _n^i&lt;/script&gt;
 
-&lt;p&gt;###Why prediction function is called hypothesis ?&lt;/p&gt;
+&lt;p&gt;####Why prediction function is called hypothesis ?&lt;/p&gt;
 
 &lt;p&gt;历史残留原因，早期ml领域采用了这个术语，一直沿袭至今。&lt;/p&gt;
-
-&lt;h4 id=&quot;parameters-theta--theta_0--theta_n&quot;&gt;Parameters &lt;script type=&quot;math/tex&quot;&gt;\theta = (\theta_0, …, \theta_n)&lt;/script&gt;&lt;/h4&gt;
 
 &lt;h4 id=&quot;goal&quot;&gt;Goal&lt;/h4&gt;
 
 &lt;p&gt;代价函数&lt;script type=&quot;math/tex&quot;&gt;J(\theta) = \frac{1}{2m} \mid h_\theta(X) - Y \mid ^2 =\frac{1}{2m} \Sigma_{i=1}^m \mid h(x^i) - y^i \mid ^2&lt;/script&gt;, 找到 &lt;script type=&quot;math/tex&quot;&gt;\theta&lt;/script&gt; 使得 &lt;script type=&quot;math/tex&quot;&gt;\text{minimize}_{\theta} J(\theta)&lt;/script&gt;&lt;/p&gt;
 
-&lt;h3 id=&quot;why-square-error-function&quot;&gt;Why square error function?&lt;/h3&gt;
+&lt;h4 id=&quot;why-square-error-function&quot;&gt;Why square error function?&lt;/h4&gt;
 
 &lt;p&gt;对于多数regression问题来说，sef 都是一个不错的选择&lt;/p&gt;
+
+&lt;h3 id=&quot;岭回归ridge-regression&quot;&gt;岭回归(ridge regression)&lt;/h3&gt;
+
+&lt;p&gt;对于高维数据集(即有大量特征的数据集)，线性模型过拟合的可能性变大。 在岭回归中，对系数&lt;script type=&quot;math/tex&quot;&gt;w&lt;/script&gt;的选择不仅要在训练数据上得到好的预测结果，还要&lt;strong&gt;拟合附加约束&lt;/strong&gt;(E.g., 正则化)。&lt;/p&gt;
+
+&lt;p&gt;Ridge模型在模型的简单性(系统都接近于0)与训练集性能之间做出权衡。&lt;/p&gt;
 
 &lt;h2 id=&quot;gdgradient-descent&quot;&gt;GD(gradient descent)&lt;/h2&gt;
 
@@ -379,7 +426,15 @@
 
 &lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;J(\theta) =\frac{1}{2m} [\Sigma_{i=1}^m \mid h(x^i) - y^i \mid ^2  + 	\lambda \Sigma_j^n\theta_n^2]&lt;/script&gt;,&lt;/p&gt;
 
-&lt;h2 id=&quot;推荐系统recommender-systems&quot;&gt;推荐系统(recommender systems)&lt;/h2&gt;
+&lt;h1 id=&quot;cnn-卷积神经网络&quot;&gt;CNN 卷积神经网络&lt;/h1&gt;
+
+&lt;p&gt;CNN(convolutional neural networks)&lt;/p&gt;
+
+&lt;p&gt;CNN的基石是卷积层(convolutional layer)。Input layer的接收野(receptive fields, 一个&lt;script type=&quot;math/tex&quot;&gt;m \times n&lt;/script&gt; 像素矩阵)连接第一卷积层的一个神经元，同样，第1卷积层的一个 &lt;script type=&quot;math/tex&quot;&gt;k \times l&lt;/script&gt; 神经元矩阵连接到第2层卷积层。因此，第&lt;script type=&quot;math/tex&quot;&gt;i&lt;/script&gt;层卷积层的第 &lt;script type=&quot;math/tex&quot;&gt;j, j+1&lt;/script&gt;个神经元所对应的第 &lt;script type=&quot;math/tex&quot;&gt;i-1&lt;/script&gt; 层神经元矩阵可能是重叠的(&lt;script type=&quot;math/tex&quot;&gt;k = l = 1&lt;/script&gt;就不重叠)。&lt;/p&gt;
+
+&lt;p&gt;有时候为了使第 &lt;script type=&quot;math/tex&quot;&gt;i, i+1&lt;/script&gt; 卷积层长宽一致，会在卷积层周围添加一些 0, 称为&lt;strong&gt;0填充&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/posts/zeropadding.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;messy-notes&quot;&gt;Messy notes&lt;/h3&gt;
 
@@ -387,22 +442,7 @@
   &lt;li&gt;Octave lib (Prof. Andrew Ng 建议初学者使用)˘˘&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;˘˘&lt;/p&gt;
-</description>
-        <pubDate>Tue, 25 Jun 2019 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2019/06/25/Machine-Learning-notes/</link>
-        <guid isPermaLink="true">http://localhost:4000/2019/06/25/Machine-Learning-notes/</guid>
-        
-        <category>ml</category>
-        
-        <category>tutorial</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>Golden section search</title>
-        <description>&lt;h2 id=&quot;gssgolden-section-search&quot;&gt;GSS(golden section search)&lt;/h2&gt;
+&lt;p&gt;˘˘&lt;/p&gt;</content><author><name>ssrzz</name></author><category term="ml" /><category term="tutorial" /><summary type="html">Define ML</summary></entry><entry><title type="html">Golden section search</title><link href="http://localhost:4000/2019/06/23/Golden-section-search/" rel="alternate" type="text/html" title="Golden section search" /><published>2019-06-23T00:00:00+08:00</published><updated>2019-06-23T00:00:00+08:00</updated><id>http://localhost:4000/2019/06/23/Golden-section-search</id><content type="html" xml:base="http://localhost:4000/2019/06/23/Golden-section-search/">&lt;h2 id=&quot;gssgolden-section-search&quot;&gt;GSS(golden section search)&lt;/h2&gt;
 
 &lt;p&gt;GSS is the limit of &lt;a href=&quot;https://en.wikipedia.org/wiki/Golden-section_search&quot;&gt;Fibonacci search&lt;/a&gt;. 通过不断缩小搜索空间，在一个单锋函数(unimodal function)寻找最值。&lt;/p&gt;
 
@@ -436,14 +476,14 @@ abs(a-b) &lt; eps \to 0 %]]&gt;&lt;/script&gt;。那么问题是：&lt;/p&gt;
     '''&lt;/span&gt;
     &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gr&lt;/span&gt;
     &lt;span class=&quot;n&quot;&gt;d&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gr&lt;/span&gt; 
-    &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;abs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;eps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# eps = 10**-9
-&lt;/span&gt;        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;abs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;eps&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;c&quot;&gt;# eps = 10**-9&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;f&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
             &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;
         &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
             &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;
 
-        &lt;span class=&quot;c1&quot;&gt;# recompute both c and d here to avoid loss of precision which may lead to incorrect results or infinite loop
-&lt;/span&gt;        &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gr&lt;/span&gt;
+        &lt;span class=&quot;c&quot;&gt;# recompute both c and d here to avoid loss of precision which may lead to incorrect results or infinite loop&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gr&lt;/span&gt;
         &lt;span class=&quot;n&quot;&gt;d&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gr&lt;/span&gt;
 
     &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;b&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
@@ -472,26 +512,10 @@ abs(a-b) &lt; eps \to 0 %]]&gt;&lt;/script&gt;。那么问题是：&lt;/p&gt;
 			&lt;span class=&quot;n&quot;&gt;x2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x1&lt;/span&gt;
 			&lt;span class=&quot;n&quot;&gt;x1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;chooseC&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 	&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-	&lt;span class=&quot;c1&quot;&gt;# 列表非连接函数，最终x1,x2未必能刚好达到 x1 == x2，以上方法目的将搜索区间快速缩小到一个常数范围，然后暴力求解
-&lt;/span&gt;
-	
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+	&lt;span class=&quot;c&quot;&gt;# 列表非连接函数，最终x1,x2未必能刚好达到 x1 == x2，以上方法目的将搜索区间快速缩小到一个常数范围，然后暴力求解&lt;/span&gt;
 
-</description>
-        <pubDate>Sun, 23 Jun 2019 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2019/06/23/Golden-section-search/</link>
-        <guid isPermaLink="true">http://localhost:4000/2019/06/23/Golden-section-search/</guid>
-        
-        <category>algorithm</category>
-        
-        <category>golden-section</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>Jekyll &amp; Gitpages</title>
-        <description>&lt;h2 id=&quot;jekyll资料&quot;&gt;Jekyll资料&lt;/h2&gt;
+	
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>ssrzz</name></author><category term="algorithm" /><category term="golden-section" /><summary type="html">GSS(golden section search)</summary></entry><entry><title type="html">Jekyll &amp;amp; Gitpages</title><link href="http://localhost:4000/2019/06/20/Jekyll-&-Gitpages/" rel="alternate" type="text/html" title="Jekyll &amp; Gitpages" /><published>2019-06-20T00:00:00+08:00</published><updated>2019-06-20T00:00:00+08:00</updated><id>http://localhost:4000/2019/06/20/Jekyll-&amp;-Gitpages</id><content type="html" xml:base="http://localhost:4000/2019/06/20/Jekyll-&amp;-Gitpages/">&lt;h2 id=&quot;jekyll资料&quot;&gt;Jekyll资料&lt;/h2&gt;
 
 &lt;ul&gt;
   &lt;li&gt;官网 &lt;a href=&quot;https://www.jekyll.com.cn/&quot;&gt;jekyll&lt;/a&gt;: 有简单的中文教程，但细节、后续配置主要还是English&lt;/li&gt;
@@ -516,19 +540,4 @@ abs(a-b) &lt; eps \to 0 %]]&gt;&lt;/script&gt;。那么问题是：&lt;/p&gt;
   &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Hello Jekyll.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
   &lt;/li&gt;
-&lt;/ol&gt;
-
-</description>
-        <pubDate>Thu, 20 Jun 2019 00:00:00 +0800</pubDate>
-        <link>http://localhost:4000/2019/06/20/Jekyll-&-Gitpages/</link>
-        <guid isPermaLink="true">http://localhost:4000/2019/06/20/Jekyll-&-Gitpages/</guid>
-        
-        <category>jekyll</category>
-        
-        <category>gitpages</category>
-        
-        
-      </item>
-    
-  </channel>
-</rss>
+&lt;/ol&gt;</content><author><name>ssrzz</name></author><category term="jekyll" /><category term="gitpages" /><summary type="html">Jekyll资料</summary></entry></feed>

@@ -1,607 +1,338 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="zh-cmn-Hans" prefix="og: http://ogp.me/ns#" class="han-init">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="May the force be with you">
-    <meta name="keywords"  content="Linux, Python, C++, AI, ML">
-    <meta name="theme-color" content="#000000">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <title>pluto137's blog</title>
+    <link rel="stylesheet" href="http://localhost:4000/assets/vendor/primer-css/css/primer.css">
+    <link rel="stylesheet" href="http://localhost:4000/assets/vendor/primer-markdown/dist/user-content.min.css">
+    <link rel="stylesheet" href="http://localhost:4000/assets/vendor/octicons/octicons/octicons.css">
+    <link rel="stylesheet" href="http://localhost:4000/assets/css/components/collection.css">
+    <link rel="stylesheet" href="http://localhost:4000/assets/css/components/repo-card.css">
+    <link rel="stylesheet" href="http://localhost:4000/assets/css/sections/repo-list.css">
+    <link rel="stylesheet" href="http://localhost:4000/assets/css/sections/mini-repo-list.css">
+    <link rel="stylesheet" href="http://localhost:4000/assets/css/components/boxed-group.css">
+    <link rel="stylesheet" href="http://localhost:4000/assets/css/globals/common.css">
+    <link rel="stylesheet" href="http://localhost:4000/assets/vendor/share.js/dist/css/share.min.css">
+    <link rel="stylesheet" href="http://localhost:4000/assets/css/globals/responsive.css">
+    <link rel="stylesheet" href="http://localhost:4000/assets/css/posts/index.css">
+    <!-- Latest compiled and minified CSS -->
     
-    <title>Pluto-C137 博客</title>
-
-    <!-- Web App Manifest -->
-    <link rel="manifest" href="/pwa/manifest.json">
-
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="/img/favicon.ico">
-
-    <!-- Safari Webpage Icon    by-BY -->
-    <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+    <link rel="stylesheet" href="http://localhost:4000/assets/css/pages/index.css">
     
-    <!-- Canonical URL -->
+
+    
     <link rel="canonical" href="http://localhost:4000/">
-
-    <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="/css/hux-blog.min.css">
-
-    <!-- Pygments Github CSS -->
-    <link rel="stylesheet" href="/css/syntax.css">
-
-    <!-- Custom Fonts -->
-    <!-- <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"> -->
-    <!-- Hux change font-awesome CDN to qiniu -->
-    <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-    <script type="text/javascript" async
-      src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
-    </script>
-
-    <!-- Hux Delete, sad but pending in China
-    <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/
-    css'>
-    -->
-
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-    <!-- ga & ba script hoook -->
-    <script></script>
+    <link rel="alternate" type="application/atom+xml" title="pluto137's blog" href="http://localhost:4000/feed.xml">
+    <link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+    
+    <meta name="keywords" content="ML">
+    <meta name="description" content="blog">
+    
+    
+        
+    
+    <meta property="og:url" content="http://localhost:4000/">
+    <meta property="og:site_name" content="pluto137's blog">
+    <meta property="og:type" content="article">
+    <meta property="og:locale" content="zh_CN" />
+    
+    <script src="http://localhost:4000/assets/vendor/jquery/dist/jquery.min.js"></script>
+    <script src="http://localhost:4000/assets/js/jquery-ui.js"></script>
+    <script src="http://localhost:4000/assets/js/main.js"></script>
 </head>
-
-
-<!-- hack iOS CSS :active style -->
-<body ontouchstart="">
-
-    <!-- Navigation -->
-<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header page-scroll">
-            <button type="button" class="navbar-toggle">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
+<body class="home" data-mz="home">
+    <header class="site-header">
+        <div class="container">
+            <h1><a href="http://localhost:4000/" title="pluto137's blog"><span class="octicon octicon-mark-github"></span> pluto137's blog</a></h1>
+            <button class="collapsed mobile-visible" type="button" onclick="toggleMenu();">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">Pluto C-137</a>
+            <nav class="site-header-nav" role="navigation">
+                
+                <a href="http://localhost:4000/" class=" site-header-nav-item" target="" title="首页">首页</a>
+                
+                <a href="http://localhost:4000/archives/" class=" site-header-nav-item" target="" title="归档">归档</a>
+                
+                <a href="http://localhost:4000/wiki/" class=" site-header-nav-item" target="" title="wiki">wiki</a>
+                
+                <a href="http://localhost:4000/about/" class=" site-header-nav-item" target="" title="关于">关于</a>
+                
+            </nav>
         </div>
+    </header>
+    <!-- / header -->
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div id="huxblog_navbar">
-            <div class="navbar-collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="/">Home</a>
-                    </li>
+    <section class="banner">
+    <div class="collection-head">
+        <div class="container">
+            <div class="collection-title">
+              <h1 class="collection-header" id="sub-title"><span></span></h1>
+                <div class="collection-info">
+                    <span class="meta-info mobile-hidden">
+                        <span class="octicon octicon-location"></span>
+                        NULL, China
+                    </span>
                     
-                    <li>
-                        <a href="/about/">About</a>
-                    </li>
-                    
-                    <li>
-                        <a href="/tags/">Tags</a>
-                    </li>
-                    
-                </ul>
-            </div>
-        </div>
-        <!-- /.navbar-collapse -->
-    </div>
-    <!-- /.container -->
-</nav>
-<script>
-    // Drop Bootstarp low-performance Navbar
-    // Use customize navbar with high-quality material design animation
-    // in high-perf jank-free CSS3 implementation
-    var $body   = document.body;
-    var $toggle = document.querySelector('.navbar-toggle');
-    var $navbar = document.querySelector('#huxblog_navbar');
-    var $collapse = document.querySelector('.navbar-collapse');
-
-    var __HuxNav__ = {
-        close: function(){
-            $navbar.className = " ";
-            // wait until animation end.
-            setTimeout(function(){
-                // prevent frequently toggle
-                if($navbar.className.indexOf('in') < 0) {
-                    $collapse.style.height = "0px"
-                }
-            },400)
-        },
-        open: function(){
-            $collapse.style.height = "auto"
-            $navbar.className += " in";
-        }
-    }
-
-    // Bind Event
-    $toggle.addEventListener('click', function(e){
-        if ($navbar.className.indexOf('in') > 0) {
-            __HuxNav__.close()
-        }else{
-            __HuxNav__.open()
-        }
-    })
-
-    /**
-     * Since Fastclick is used to delegate 'touchstart' globally
-     * to hack 300ms delay in iOS by performing a fake 'click',
-     * Using 'e.stopPropagation' to stop 'touchstart' event from 
-     * $toggle/$collapse will break global delegation.
-     * 
-     * Instead, we use a 'e.target' filter to prevent handler
-     * added to document close HuxNav.  
-     *
-     * Also, we use 'click' instead of 'touchstart' as compromise
-     */
-    document.addEventListener('click', function(e){
-        if(e.target == $toggle) return;
-        if(e.target.className == 'icon-bar') return;
-        __HuxNav__.close();
-    })
-</script>
-
-
-    <!-- Page Header -->
-<header class="intro-header" style="background-image: url('/img/post-bg-universe.jpg')">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1 ">
-                <div class="site-heading">
-                    <h1>Pluto C-137</h1>
-                    <!--<hr class="small">-->
-                    <span class="subheading">无序的生活是理想主义者的牢笼</span>
+                     <span class="meta-info">
+                        <span class="octicon octicon-mark-github"></span>
+                        <a href="https://github.com/ssrzz" target="_blank">ssrzz</a>
+                    </span>
                 </div>
             </div>
         </div>
     </div>
-</header>
-
-<!-- Main Content -->
-<div class="container">
-	<div class="row">
-        
-
-<!-- USE SIDEBAR -->
-    <!-- PostList Container -->
-    		<div class="
-                col-lg-8 col-lg-offset-1
-                col-md-8 col-md-offset-1
-                col-sm-12
-                col-xs-12
-                postlist-container
-            ">
-    			
-<div class="post-preview">
-    <a href="/2019/07/05/Sorting-Algorithms/">
-        <h2 class="post-title">
-            Sorting Algorithms
-        </h2>
-        
-        <div class="post-content-preview">
-            Quick Sort
-
-todo
-
-
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by ssrzz on July 5, 2019
-    </p>
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="/2019/07/05/Halting-Problem/">
-        <h2 class="post-title">
-            Halting Problem
-        </h2>
-        
-        <div class="post-content-preview">
-            Halting Problem
-
-停机问题: 判断任意一个程序是否能在有限的时间之内结束运行的问题。等价于如下判定问题：是否存在一个程序，对于任意输入的程序，能够判断会在有限时间内结束或者死循环。
-
-HP是不可判定的，本质上是 一阶逻辑的不自洽性。
-
-一个简单的证明
-
-Source 计算机不是万能的
-
-
-  假设存在一个机器  ，它总能判定另外一机器  对于任意输入  都能停机
-  引入机器...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by ssrzz on July 5, 2019
-    </p>
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="/2019/07/03/SSH-Defense/">
-        <h2 class="post-title">
-            SSH Defense
-        </h2>
-        
-        <h3 class="post-subtitle">
-            How to keep your servers safe?
-        </h3>
-        
-        <div class="post-content-preview">
-            lastb  查看失败的SSH登录尝试历史，如果一段时间内出现一连段的相同或相近的IP，那么恭喜，这台服务器被盯上了。
-
-注： 防护工具也只是工具，不能保护服务器100%安全。 保护好服务器，首先要排除错误选项，包括但不限于： 弱密码、默认端口、不重视异常登录.
-
-Endlessh
-
-Endlessh is an SSH tarpit that very slowly sends an en...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by ssrzz on July 3, 2019
-    </p>
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="/2019/07/03/Leetcode-Solutions/">
-        <h2 class="post-title">
-            Leetcode Solutions
-        </h2>
-        
-        <h3 class="post-subtitle">
-            题解与思路
-        </h3>
-        
-        <div class="post-content-preview">
-            313 super ugly numbers
-
-Que:  Super ugly numbers (SUN hereafter) are positive numbers whose all prime factors are in the  given prime list primes of size ,  (e.g., primes = [2, 7, 13, 19])  Write a...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by ssrzz on July 3, 2019
-    </p>
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="/2019/06/25/Machine-Learning-notes/">
-        <h2 class="post-title">
-            Machine Learning notes
-        </h2>
-        
-        <div class="post-content-preview">
-            Define ML
-
-
-  
-    Arthur Samule(1959): fields of study that gives computers ability to learn without being explicitly programmed.
-
-    
-      Samule 曾写了个跳棋(checker)程序，不断训练让程序学习什么是好的move，什么是坏的。尽管Sa...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by ssrzz on June 25, 2019
-    </p>
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="/2019/06/23/Golden-section-search/">
-        <h2 class="post-title">
-            Golden section search
-        </h2>
-        
-        <h3 class="post-subtitle">
-            求区间最小/大值
-        </h3>
-        
-        <div class="post-content-preview">
-            GSS(golden section search)
-
-GSS is the limit of Fibonacci search. 通过不断缩小搜索空间，在一个单锋函数(unimodal function)寻找最值。
-
-以下为寻找间使得最小的x的Python代码
-
-idea
-
-假设 是一个二次函数，在区间存在极小值(也必然是最小值，设为 )，在间选择两个点,显然有 .
-
-如果  ，then ...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by ssrzz on June 23, 2019
-    </p>
-</div>
-<hr>
-
-<div class="post-preview">
-    <a href="/2019/06/20/Jekyll-&-Gitpages/">
-        <h2 class="post-title">
-            Jekyll & Gitpages
-        </h2>
-        
-        <h3 class="post-subtitle">
-            一些资料与教程
-        </h3>
-        
-        <div class="post-content-preview">
-            Jekyll资料
-
-
-  官网 jekyll: 有简单的中文教程，但细节、后续配置主要还是English
-  youtube: walk you through jekyll 有19个小节，每个小节不到10分钟(差不多一上午看完)。  大致讲解如何让Jekyll跑起来，并做一些进行简单的配置
-
-
-前方有坑
-
-
-  
-    使用disqus添加评论模块没有成功，最终使用了Gitalk，相关博...
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by ssrzz on June 20, 2019
-    </p>
-</div>
-<hr>
-
-
-<!-- Pager -->
-
-
-    		</div>
-    <!-- Sidebar Container -->
-            <div class="
-                col-lg-3 col-lg-offset-0
-                col-md-3 col-md-offset-0
-                col-sm-12
-                col-xs-12
-                sidebar-container
-            ">
-                <!-- Featured Tags -->
+</section>
+<!-- /.banner -->
+<section class="container content">
+    <div class="columns">
+        <div class="column two-thirds" >
+            <ol class="repo-list">
                 
-                <section>
-                    <hr class="hidden-sm hidden-xs">
-                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
-                    <div class="tags">
+                <li class="repo-list-item">
+                    <h3 class="repo-list-name">
+                      <a href="http://localhost:4000/2019/07/05/Sorting-Algorithms/">Sorting Algorithms</a>
+                    </h3>
+                    <p class="repo-list-description">
+                        Quick Sort
+                    </p>
+                    <p class="repo-list-meta">
+                        <span class="meta-info">
+                          <span class="octicon octicon-calendar"></span> 2019/07/05
+                        </span>
                         
-                            
-                        
-                            
-                        
-                            
-                                <a href="/tags/#algorithm" title="algorithm" rel="2">
-                                    algorithm
-                                </a>
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                            
-                        
-                    </div>
-                </section>
+                    </p>
+                </li>
                 
-
-                <!-- Short About -->
-                <section class="visible-md visible-lg">
-                    <hr><h5><a href="/about/">ABOUT ME</a></h5>
-                    <div class="short-about">
+                <li class="repo-list-item">
+                    <h3 class="repo-list-name">
+                      <a href="http://localhost:4000/2019/07/05/Kaggle-Competitions/">Kaggle Competitions</a>
+                    </h3>
+                    <p class="repo-list-description">
+                        MNIST - Digit Recognizer
+                    </p>
+                    <p class="repo-list-meta">
+                        <span class="meta-info">
+                          <span class="octicon octicon-calendar"></span> 2019/07/05
+                        </span>
                         
-                            <a href="/about">
-                                <img src="/img/black_kid.jpg"/>
-                            </a>
-                        
-                        
-                            <p>work hard, work smart</p>
-                        
-                        <!-- SNS Link -->
-                        <ul class="list-inline">
-                            
-                            <!-- add jianshu add target = "_blank" to <a> by BY -->
-                            
-                            
-                            
-                            
-                            
-                            
-                            <li>
-                                <a target="_blank" href="https://github.com/ssrzz">
-                                    <span class="fa-stack fa-lg">
-                                        <i class="fa fa-circle fa-stack-2x"></i>
-                                        <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                                    </span>
-                                </a>
-                            </li>
-                            
-                            
-                        </ul>
-                        
-                            <p>✉️ ssrzz at pm.me</p>
-                        
-                    </div>
-                </section>
-                <!-- Friends Blog -->
+                    </p>
+                </li>
                 
-    		</div>
-        
-	</div>
+                <li class="repo-list-item">
+                    <h3 class="repo-list-name">
+                      <a href="http://localhost:4000/2019/07/05/Halting-Problem/">Halting Problem</a>
+                    </h3>
+                    <p class="repo-list-description">
+                        Halting Problem
+                    </p>
+                    <p class="repo-list-meta">
+                        <span class="meta-info">
+                          <span class="octicon octicon-calendar"></span> 2019/07/05
+                        </span>
+                        
+                    </p>
+                </li>
+                
+                <li class="repo-list-item">
+                    <h3 class="repo-list-name">
+                      <a href="http://localhost:4000/2019/07/03/SSH-Defense/">SSH Defense</a>
+                    </h3>
+                    <p class="repo-list-description">
+                        lastb  查看失败的SSH登录尝试历史，如果一段时间内出现一连段的相同或相近的IP，那么恭喜，这台服务器被盯上了。
+                    </p>
+                    <p class="repo-list-meta">
+                        <span class="meta-info">
+                          <span class="octicon octicon-calendar"></span> 2019/07/03
+                        </span>
+                        
+                    </p>
+                </li>
+                
+                <li class="repo-list-item">
+                    <h3 class="repo-list-name">
+                      <a href="http://localhost:4000/2019/07/03/Leetcode-Solutions/">Leetcode Solutions</a>
+                    </h3>
+                    <p class="repo-list-description">
+                        313 super ugly numbers
+                    </p>
+                    <p class="repo-list-meta">
+                        <span class="meta-info">
+                          <span class="octicon octicon-calendar"></span> 2019/07/03
+                        </span>
+                        
+                    </p>
+                </li>
+                
+                <li class="repo-list-item">
+                    <h3 class="repo-list-name">
+                      <a href="http://localhost:4000/2019/06/25/Machine-Learning-notes/">Machine Learning notes</a>
+                    </h3>
+                    <p class="repo-list-description">
+                        Define ML
+                    </p>
+                    <p class="repo-list-meta">
+                        <span class="meta-info">
+                          <span class="octicon octicon-calendar"></span> 2019/06/25
+                        </span>
+                        
+                    </p>
+                </li>
+                
+                <li class="repo-list-item">
+                    <h3 class="repo-list-name">
+                      <a href="http://localhost:4000/2019/06/23/Golden-section-search/">Golden section search</a>
+                    </h3>
+                    <p class="repo-list-description">
+                        GSS(golden section search)
+                    </p>
+                    <p class="repo-list-meta">
+                        <span class="meta-info">
+                          <span class="octicon octicon-calendar"></span> 2019/06/23
+                        </span>
+                        
+                    </p>
+                </li>
+                
+                <li class="repo-list-item">
+                    <h3 class="repo-list-name">
+                      <a href="http://localhost:4000/2019/06/20/Jekyll-&-Gitpages/">Jekyll & Gitpages</a>
+                    </h3>
+                    <p class="repo-list-description">
+                        Jekyll资料
+                    </p>
+                    <p class="repo-list-meta">
+                        <span class="meta-info">
+                          <span class="octicon octicon-calendar"></span> 2019/06/20
+                        </span>
+                        
+                    </p>
+                </li>
+                
+            </ol>
+        </div>
+        <div class="column one-third">
+            
+<h3>Search</h3>
+<div id="site_search">
+    <input type="text" id="search_box" placeholder="Search">
 </div>
 
+<ul id="search_results"></ul>
 
-    <!-- Footer -->
-<footer>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <ul class="list-inline text-center">
-                    
-                    <!-- add jianshu add target = "_blank" to <a> by BY -->
-                    
-                    
-
-                    <!-- add Weibo, Zhihu by Hux, add target = "_blank" to <a> by Hux -->
-                    
-                    
-
-
-                    
-                    
-                    <li>
-                        <a target="_blank" href="https://github.com/ssrzz">
-                            <span class="fa-stack fa-lg">
-                                <i class="fa fa-circle fa-stack-2x"></i>
-                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
-                            </span>
-                        </a>
-                    </li>
-                    
-                    
-                </ul>
-                <p class="copyright text-muted">
-                    Copyright &copy; Pluto C-137 2019
-                    <br>
-                    Theme on <a href="https://github.com/ssrzz/ssrzz.github.io.git">GitHub</a> |
-                    <iframe
-                        style="margin-left: 2px; margin-bottom:-5px;"
-                        frameborder="0" scrolling="0" width="100px" height="20px"
-                        src="https://ghbtns.com/github-btn.html?user=ssrzz&repo=ssrzz.github.io&type=star&count=true" >
-                    </iframe>
-                </p>
-            </div>
-        </div>
-    </div>
-</footer>
-
-<!-- jQuery -->
-<script src="/js/jquery.min.js "></script>
-
-<!-- Bootstrap Core JavaScript -->
-<script src="/js/bootstrap.min.js "></script>
-
-<!-- Custom Theme JavaScript -->
-<script src="/js/hux-blog.min.js "></script>
-
-<!-- Service Worker -->
+<link rel="stylesheet" type="text/css" href="http://localhost:4000/assets/css/modules/sidebar-search.css">
+<script src="http://localhost:4000/assets/js/simple-jekyll-search.min.js"></script>
+<script src="http://localhost:4000/assets/js/search.js"></script>
 
 <script type="text/javascript">
-    if(navigator.serviceWorker){
-        // For security reasons, a service worker can only control the pages that are in the same directory level or below it. That's why we put sw.js at ROOT level.
-        navigator.serviceWorker
-            .register('/sw.js')
-            .then((registration) => {console.log('Service Worker Registered. ', registration)})
-            .catch((error) => {console.log('ServiceWorker registration failed: ', error)})
-    }
+SimpleJekyllSearch({
+    searchInput: document.getElementById('search_box'),
+    resultsContainer: document.getElementById('search_results'),
+    json: 'http://localhost:4000/assets/search_data.json',
+    searchResultTemplate: '<li><a href="{url}" title="{desc}">{title}</a></li>',
+    noResultsText: 'No results found',
+    limit: 10,
+    fuzzy: false,
+    exclude: ['Welcome']
+})
 </script>
 
+            
+
+            <!-- <h3>My Popular Repositories</h3>
 
 
-<!-- async load function -->
-<script>
-    function async(u, c) {
-      var d = document, t = 'script',
-          o = d.createElement(t),
-          s = d.getElementsByTagName(t)[0];
-      o.src = u;
-      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
-      s.parentNode.insertBefore(o, s);
-    }
-</script>
 
-<!-- 
-     Because of the native support for backtick-style fenced code blocks 
-     right within the Markdown is landed in Github Pages, 
-     From V1.6, There is no need for Highlight.js, 
-     so Huxblog drops it officially.
 
-     - https://github.com/blog/2100-github-pages-now-faster-and-simpler-with-jekyll-3-0  
-     - https://help.github.com/articles/creating-and-highlighting-code-blocks/ 
-     - https://github.com/jneen/rouge/wiki/list-of-supported-languages-and-lexers   
--->
-<!--
+ -->
+        </div>
+    </div>
+    <div class="pagination text-align">
+      <div class="btn-group">
+        
+            <button disabled="disabled" href="javascript:;" class="btn btn-outline">&laquo;</button>
+        
+        
+            <a href="javascript:;" class="active btn btn-outline">1</a>
+        
+        
+        
+            <button disabled="disabled" href="javascript:;" class="btn btn-outline">&raquo;</button>
+        
+        </div>
+    </div>
+    <!-- /pagination -->
+</section>
+<!-- /section.content -->
+
+    <footer class="container">
+        <div class="site-footer" role="contentinfo">
+            <div class="copyright left mobile-block">
+                    © 2015
+                    <span title="ssrzz">ssrzz</span>
+                    <a href="javascript:window.scrollTo(0,0)" class="right mobile-visible">TOP</a>
+            </div>
+
+            <ul class="site-footer-links right mobile-hidden">
+                <li>
+                    <a href="javascript:window.scrollTo(0,0)" >TOP</a>
+                </li>
+            </ul>
+            <a href="https://github.com/mzlogin/mzlogin.github.io" target="_blank" aria-label="view source code">
+                <span class="mega-octicon octicon-mark-github" title="GitHub"></span>
+            </a>
+            <ul class="site-footer-links mobile-hidden">
+                
+                <li>
+                    <a href="http://localhost:4000/" title="首页" target="">首页</a>
+                </li>
+                
+                <li>
+                    <a href="http://localhost:4000/archives/" title="归档" target="">归档</a>
+                </li>
+                
+                <li>
+                    <a href="http://localhost:4000/wiki/" title="wiki" target="">wiki</a>
+                </li>
+                
+                <li>
+                    <a href="http://localhost:4000/about/" title="关于" target="">关于</a>
+                </li>
+                
+                <li><a href="http://localhost:4000/feed.xml"><span class="octicon octicon-rss" style="color:orange;"></span></a></li>
+            </ul>
+
+        </div>
+    </footer>
+    <div class="tools-wrapper">
+      <a class="gotop" href="#" title="回到顶部"><span class="octicon octicon-arrow-up"></span></a>
+    </div>
+    <!-- / footer -->
+    <script src="http://localhost:4000/assets/vendor/share.js/dist/js/share.min.js"></script>
+    <script src="http://localhost:4000/assets/js/geopattern.js"></script>
+    <script src="http://localhost:4000/assets/js/prism.js"></script>
+    <link rel="stylesheet" href="http://localhost:4000/assets/css/globals/prism.css">
     <script>
-        async("http://cdn.bootcss.com/highlight.js/8.6/highlight.min.js", function(){
-            hljs.initHighlightingOnLoad();
-        })
+      jQuery(document).ready(function($) {
+        // geopattern
+        $('.geopattern').each(function(){
+          $(this).geopattern($(this).data('pattern-id'));
+        });
+       // hljs.initHighlightingOnLoad();
+      });
     </script>
-    <link href="http://cdn.bootcss.com/highlight.js/8.6/styles/github.min.css" rel="stylesheet">
--->
 
+    
 
-<!-- jquery.tagcloud.js -->
-<script>
-    // only load tagcloud.js in tag.html
-    if($('#tag_cloud').length !== 0){
-        async('/js/jquery.tagcloud.js',function(){
-            $.fn.tagcloud.defaults = {
-                //size: {start: 1, end: 1, unit: 'em'},
-                color: {start: '#bbbbee', end: '#0085a1'},
-            };
-            $('#tag_cloud a').tagcloud();
-        })
-    }
-</script>
+    
 
-<!--fastClick.js -->
-<script>
-    async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
-        var $nav = document.querySelector("nav");
-        if($nav) FastClick.attach($nav);
-    })
-</script>
+    
 
+    
 
-<!-- Google Analytics -->
-
-
-
-<!-- Baidu Tongji -->
-
-
-
-
-<!-- Side Catalog -->
-
-
-
-
-
-<!-- Image to hack wechat -->
-<img src="/img/apple-touch-icon.png" width="0" height="0" />
-<!-- Migrate from head to bottom, no longer block render and still work -->
-
+    
 </body>
-
 </html>
