@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-07-08T12:48:09+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">pluto137’s blog</title><subtitle>blog</subtitle><author><name>ssrzz</name></author><entry><title type="html">Kaggle Competitions</title><link href="http://localhost:4000/2019/07/05/Kaggle-Competitions/" rel="alternate" type="text/html" title="Kaggle Competitions" /><published>2019-07-05T00:00:00+08:00</published><updated>2019-07-05T00:00:00+08:00</updated><id>http://localhost:4000/2019/07/05/Kaggle-Competitions</id><content type="html" xml:base="http://localhost:4000/2019/07/05/Kaggle-Competitions/">&lt;h2 id=&quot;mnist---digit-recognizer&quot;&gt;MNIST - Digit Recognizer&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-07-08T13:00:18+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">pluto137’s blog</title><subtitle>blog</subtitle><author><name>ssrzz</name></author><entry><title type="html">Kaggle Competitions</title><link href="http://localhost:4000/2019/07/05/Kaggle-Competitions/" rel="alternate" type="text/html" title="Kaggle Competitions" /><published>2019-07-05T00:00:00+08:00</published><updated>2019-07-05T00:00:00+08:00</updated><id>http://localhost:4000/2019/07/05/Kaggle-Competitions</id><content type="html" xml:base="http://localhost:4000/2019/07/05/Kaggle-Competitions/">&lt;h2 id=&quot;mnist---digit-recognizer&quot;&gt;MNIST - Digit Recognizer&lt;/h2&gt;
 
 &lt;p&gt;MNIST (“Modified National Institute of Standards and Technology”) — ML领域的“HELLO WORLD”.&lt;/p&gt;
 
@@ -276,7 +276,7 @@ drive.mount&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://leetcode.com/problems/linked-list-random-node/description/&quot;&gt;Linked List Random Node&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;Todo&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>ssrzz</name></author><category term="algorithm" /><category term="python" /><summary type="html">313 super ugly numbers</summary></entry><entry><title type="html">Machine Learning notes</title><link href="http://localhost:4000/2019/06/25/Machine-Learning-notes/" rel="alternate" type="text/html" title="Machine Learning notes" /><published>2019-06-25T00:00:00+08:00</published><updated>2019-06-25T00:00:00+08:00</updated><id>http://localhost:4000/2019/06/25/Machine-Learning-notes</id><content type="html" xml:base="http://localhost:4000/2019/06/25/Machine-Learning-notes/">&lt;h2 id=&quot;define-ml&quot;&gt;Define ML&lt;/h2&gt;
+&lt;/ul&gt;</content><author><name>ssrzz</name></author><category term="algorithm" /><category term="python" /><summary type="html">313 super ugly numbers</summary></entry><entry><title type="html">机器学习笔记</title><link href="http://localhost:4000/2019/06/25/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="alternate" type="text/html" title="机器学习笔记" /><published>2019-06-25T00:00:00+08:00</published><updated>2019-06-25T00:00:00+08:00</updated><id>http://localhost:4000/2019/06/25/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0</id><content type="html" xml:base="http://localhost:4000/2019/06/25/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">&lt;h2 id=&quot;define-ml&quot;&gt;Define ML&lt;/h2&gt;
 
 &lt;ul&gt;
   &lt;li&gt;
@@ -434,7 +434,9 @@ drive.mount&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1
 
 &lt;p&gt;有时候为了使第 &lt;script type=&quot;math/tex&quot;&gt;i, i+1&lt;/script&gt; 卷积层长宽一致，会在卷积层周围添加一些 0, 称为&lt;strong&gt;0填充&lt;/strong&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/images/posts/zeropadding.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;zero padding&quot;&gt;&amp;lt;p align=&quot;center&quot;&amp;gt;&lt;img src=&quot;img/zeropadding.png&quot; width=&quot;500&quot; /&gt;&amp;lt;/p&amp;gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;zeropadding.png&quot; alt=&quot;ks&quot; /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;messy-notes&quot;&gt;Messy notes&lt;/h3&gt;
 

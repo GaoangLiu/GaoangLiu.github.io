@@ -61,3 +61,39 @@ lsof -c Vim
 ```
 
 注意程序名区分大小写。
+
+### crontab 
+
+分 时 日 月 星期 要运行的命令
+
+第 $$i$$ 列，$$i = $$
+
+1. 分钟0～59
+2. 第2列小时0～23（0表示子夜）
+3. 第3列日1～31
+4. 第4列月1～12
+5. 第5列星期0～7（0和7表示星期天）
+6. 第6列要运行的命令
+
+```sh
+# DT:delete core files,at 3.30am on 1,7,14,21,26,26 days of each month
+30 3 1,7,14,21,26 * * /bin/find -name 'core' -exec rm {} \;
+```
+
+使用实例
+
+```sh
+* * * * * ls -lt /root/  # 每分钟执行一次命令 
+3,15 * * * * some_cmd  # 第小时的第3， 15分钟执行一次命令
+3,15 8-11 * * * some_cmd  # 在上午8点到11点的第3和第15分钟执行
+3,15 8-11 */2  * * some_cmd  # 每隔两天的上午8点到11点的第3和第15分钟执行
+10 1 * * 6,0 /etc/init.d/smb restart  # 每周六、周日的1 : 10重启smb
+
+$ crontab -l # 当前crontab 任务列表
+$ crontab -e # edit 
+@reboot some_cmd # 开机执行
+@daily some_cmd # 每天 00:00 执行 
+@hourly or @weekly or @monthly or @yearly some_cmd
+
+```
+
