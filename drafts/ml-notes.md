@@ -10,6 +10,12 @@ tags:
   - tutorial
 ---
 
+# 数据表示与特征工程
+
+* 什么是one-hot encoding? 为什么需要它?
+  * 也称N取一编码(one -out-of N encoding)，或者虚拟变量(dummy variable)。背后的思想是将**一个分类变量替换一个或者多个特征** ，新特征取值0或者1. 
+  * 算法(e.g., LR)不能处理非数值型分类变量时，需要对这些变量进行编码。比较直观的做法是采用**integer encoding** (or label encoding, 整数编码)，将变量映射到一个连续数值集，e.g., [1,2,3,4,…]。 这种方法的弊端在于：算法可能认为数值相近的变量有相关联系，比如{'black': 1, 'red':2, 'blue':3, gray': 4}，'black'编码后的值与'red'编码后相近，但实际上'black'与'gray'更为相关。 
+
 ## Define ML
 
 - Arthur Samule(1959): fields of study that gives computers ability to learn without being explicitly programmed. 
@@ -23,6 +29,10 @@ tags:
   $$P(Pr_T) \propto E(Pr_T)$$
 
   > 上述定义其实是“针对” good ML program，如果一个算法越学越差，本质上也是一个ML算法，但只能算是一个糟糕的算法 (分类问题+准确率极低的算法+结果取反 = 一个准确率还不错的算法？)。
+  
+* 符号主义人工智能 ？
+
+  * Symbolic AI: 通过编写足够多的明确规则来处理知识，就可以实现与人类水平相当的AI. 
 
 
 
@@ -159,20 +169,19 @@ CNN的基石是卷积层(convolutional layer)。Input layer的接收野(receptiv
 
 有时候为了使第 $$i, i+1$$ 卷积层长宽一致，会在卷积层周围添加一些 0, 称为**0填充**. 
 
-[<p align="center"><img src="img/zeropadding.png" width="500"/></p>](zero padding)
+![image](/img/zeropadding.png)
+
+
+
+* 下采样？
+  * 减少需要处理的特征图的元素个数 ； 通过让连续卷积层的观察窗口越来越大，从而引入空间过滤器的层级结构。 
+  * 最大池化、平均池化、步幅都可以实现下采样； 最大当化效果通常较好。 
+* VGG-16 v.s. VGG-19 
+  * VGG-16 结构图 ![image](/img/vgg16.png)
+  * VGG-16 包含16层深度神经网络层，VGG-19 19 层 
+  * 
 
 
 
 
 
-![ks](zeropadding.png)
-
-
-
-
-
-### Messy notes
-
-* Octave lib (Prof. Andrew Ng 建议初学者使用)˘˘
-
-˘˘

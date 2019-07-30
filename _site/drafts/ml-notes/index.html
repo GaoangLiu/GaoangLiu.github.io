@@ -100,7 +100,18 @@
 <div class="columns">
   <div class="column three-fourths" >
     <article class="article-content markdown-body">
-    <h2 id="define-ml">Define ML</h2>
+    <h1 id="数据表示与特征工程">数据表示与特征工程</h1>
+
+<ul>
+  <li>什么是one-hot encoding? 为什么需要它?
+    <ul>
+      <li>也称N取一编码(one -out-of N encoding)，或者虚拟变量(dummy variable)。背后的思想是将<strong>一个分类变量替换一个或者多个特征</strong> ，新特征取值0或者1.</li>
+      <li>算法(e.g., LR)不能处理非数值型分类变量时，需要对这些变量进行编码。比较直观的做法是采用<strong>integer encoding</strong> (or label encoding, 整数编码)，将变量映射到一个连续数值集，e.g., [1,2,3,4,…]。 这种方法的弊端在于：算法可能认为数值相近的变量有相关联系，比如{‘black’: 1, ‘red’:2, ‘blue’:3, gray’: 4}，’black’编码后的值与’red’编码后相近，但实际上’black’与’gray’更为相关。</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="define-ml">Define ML</h2>
 
 <ul>
   <li>
@@ -120,6 +131,13 @@
     <blockquote>
       <p>上述定义其实是“针对” good ML program，如果一个算法越学越差，本质上也是一个ML算法，但只能算是一个糟糕的算法 (分类问题+准确率极低的算法+结果取反 = 一个准确率还不错的算法？)。</p>
     </blockquote>
+  </li>
+  <li>
+    <p>符号主义人工智能 ？</p>
+
+    <ul>
+      <li>Symbolic AI: 通过编写足够多的明确规则来处理知识，就可以实现与人类水平相当的AI.</li>
+    </ul>
   </li>
 </ul>
 
@@ -147,27 +165,44 @@
   </li>
 </ol>
 
-<h2 id="线性模型">线性模型</h2>
+<h1 id="监督学习">监督学习</h1>
 
-<h3 id="linear-regression">Linear regression</h3>
+<ul>
+  <li>为什么要对数据进行归一化处理？
+    <ul>
+      <li>做为一个特征，我们希望看到数据的相对值差别对结果的影响，而不是其绝对值。特别地，未做归一化的数据中，取值范围最大的数据将主导诸如kNN算法的结果</li>
+    </ul>
+  </li>
+  <li>通俗解释过拟合、欠拟合？
+    <ul>
+      <li>前者指一个模型过分关注训练数据，但对新数据的泛化性能不好，后者指模型无法获取数据中的所有变化。</li>
+    </ul>
+  </li>
+  <li>kNN算法优缺点？
+    <ul>
+      <li>优势 精度高、对异常值不敏感、无数据输入假定</li>
+      <li>缺点 计算、空间复杂度高，无数给出数据的内在含义</li>
+    </ul>
+  </li>
+  <li>决策树优缺点？
+    <ul>
+      <li>计算复杂度不高，输出结果易于理解，对中间值的缺失不敏感，可以处理不相关特征数据</li>
+      <li>得到的模型很容易可视化，非专家也很容易理解</li>
+      <li>算法完全不受数据缩放的影响。每个特征被单独处理，数据的划分也不依赖于缩放，因此决策树算法不需要特征预处理，比如归一化或者标准化</li>
+      <li>缺点 容易过拟合</li>
+    </ul>
+  </li>
+  <li>Entropy ?
+    <ul>
+      <li>信息增益(information gain)，指对数据集进行处理之前之后发生的变化。对一个符号<script type="math/tex">x</script> 的信息定义为 <script type="math/tex">-\text{log}_2p(x)</script> 。这是一个 xxx</li>
+      <li>熵定义为信息的期望值 <script type="math/tex">H = - \Sigma_i^n p(x_i) \text{log}_2p(x_i)</script></li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="线性回归">线性回归</h3>
 
 <p>线性回归，也称普通最小二乘法(ordinary least squares, OLS)，回归问题最简单也最经典的线性方法。线性回归寻找参数 <script type="math/tex">w</script>与<script type="math/tex">b</script>，使得对训练集的预测值与真实的回归目标值 <script type="math/tex">y</script>之间的<strong>均方误差</strong>最小。</p>
-
-<p>####Hypothesis <script type="math/tex">h</script></p>
-
-<script type="math/tex; mode=display">h_\theta(x^i) = \theta \cdot x^i =  \theta_0 + \theta_1 x_1^i + \cdots + \theta_n x _n^i</script>
-
-<p>####Why prediction function is called hypothesis ?</p>
-
-<p>历史残留原因，早期ml领域采用了这个术语，一直沿袭至今。</p>
-
-<h4 id="goal">Goal</h4>
-
-<p>代价函数<script type="math/tex">J(\theta) = \frac{1}{2m} \mid h_\theta(X) - Y \mid ^2 =\frac{1}{2m} \Sigma_{i=1}^m \mid h(x^i) - y^i \mid ^2</script>, 找到 <script type="math/tex">\theta</script> 使得 <script type="math/tex">\text{minimize}_{\theta} J(\theta)</script></p>
-
-<h4 id="why-square-error-function">Why square error function?</h4>
-
-<p>对于多数regression问题来说，sef 都是一个不错的选择</p>
 
 <h3 id="岭回归ridge-regression">岭回归(ridge regression)</h3>
 
@@ -175,80 +210,94 @@
 
 <p>Ridge模型在模型的简单性(系统都接近于0)与训练集性能之间做出权衡。</p>
 
-<h2 id="gdgradient-descent">GD(gradient descent)</h2>
+<h3 id="决策树">决策树</h3>
 
-<h3 id="batch-gd">“Batch” GD</h3>
+<p>对数据反复进行递归划分，直到每个区域（叶结点）只包含单目标值（单一类别或单一回归值）。</p>
 
-<p>batch : Each step of GD uses all the training examples</p>
+<p>通常来说，构造决策树直到所有叶结点都是纯的，这会导致模型非常复杂，并且对训练数据高度拟合。典型的特征是：决策边界过于关注远离同类别样本的单个异常点。 这也是决策树的一个主要缺点之一。</p>
 
-<p>​	<script type="math/tex">\text{repeat} \{ \theta_j = \theta_j - \frac{\partial}{ \partial \theta_j} J(\theta) \}  = \theta_j - \alpha/m \Sigma_1^m(h_\theta(x^{(i)} -y^{(i)} ) x_j^{(i)} )</script></p>
-
-<h3 id="feature-scaling">Feature scaling</h3>
-
-<ul>
-  <li>
-    <p>why ? 从以上GD的迭代过程看到，<strong><script type="math/tex">\theta_j</script>的更新幅度与<script type="math/tex">x_j</script>相关</strong>。如果某个<script type="math/tex">x_j</script>的尺度相较其他维度特征大很多，势必造成该维度对应的参数<script type="math/tex">\theta_j</script>的更新非常剧烈，而其他维度特征对应的参数更新相对缓和，这样造成迭代过程中很多轮次实际上是为了消除特征尺度上的不一致，而不是快速的找到最优点，最终极大影响收敛速度。</p>
-  </li>
-  <li>
-    <p>How ? E.g., mean normalization (均值标准化？)</p>
-
-    <p><script type="math/tex">x_i  = \frac{x_i - u_i}{s_i}</script>，其中  <script type="math/tex">u_i = 1/\mid x_i\mid \sum(x_i^j), s_i = \text{max}(x_i) - \text{min}(x_i)</script></p>
-  </li>
-</ul>
-
-<h2 id="logistic-regression">Logistic Regression</h2>
-
-<h3 id="cost-function">Cost function</h3>
-
-<script type="math/tex; mode=display">J(\theta)  = \frac{1}{m} \sum C(h_\theta(x^{(i)}), y^{(i)})</script>
-
-<script type="math/tex; mode=display">C(h_\theta(x), y) = -log(h_\theta(x)) \text{  if  } y == 1 \text{ else } -log(1 - h_\theta(x))</script>
-
-<p>因为<script type="math/tex">y</script>总是取0 or 1， 上式可改写为 <script type="math/tex">C(h_\theta(x), y)  = - y log(h_\theta(x))  - (1-y) log(1 - h_\theta(x))</script></p>
-
-<p>直觉，如果假设与真实值相差很大，e.g., <script type="math/tex">y = 1 , h_\theta(x) = 0</script> 那么代价函数也将极大。</p>
-
-<h4 id="qestion-为何选择这个cf">Qestion: 为何选择这个CF?</h4>
-
-<p>原则上，CF是度量假设<script type="math/tex">h</script>与真实值<script type="math/tex">y</script>差异的函数。 一个好的CF应该xxx，并且能很好的指导如果去调整参数<script type="math/tex">\theta</script>. 如果使用linear regression中的代价函数是non-convex函数，</p>
-
-<h2 id="overfitting">Overfitting</h2>
+<p>防止过拟合：</p>
 
 <ol>
-  <li>减少特征数目 / reduce number of features
-    <ul>
-      <li>手动选择重要的features</li>
-      <li>model selection algorithms 会自动选择相关的特征</li>
-    </ul>
-  </li>
-  <li>正则化
-    <ul>
-      <li>保留所有features，但减小<script type="math/tex">\theta_j</script>的值</li>
-    </ul>
-  </li>
+  <li>预剪枝(pre-pruning)：限制树的最大深度、叶结点的最大数目、规定一个结点中数据点的最少数据数目</li>
+  <li>后剪枝(post-pruning) 先构造树，随后删除或折叠信息量很少的结点</li>
 </ol>
 
-<h2 id="system-design">System design</h2>
+<p>决策树的优点：</p>
 
-<h3 id="结果标准">结果标准</h3>
+<ol>
+  <li></li>
+</ol>
+
+<p>为了克服决策树过拟合的缺点，一个思路是合并多个决策树，即是构建：</p>
+
+<h3 id="随机森林">随机森林</h3>
+
+<p>随机森林本质是：<strong>多个决策树的组合</strong>。 背后思想：每棵（决策）树的预测可能都相对较好，但可能对部分数据过拟合，如果构造很多树，并且每棵树的预测都很好，但以不同的方式过拟合，那么对这些树的预测结果取平均值来降低过拟合（对于分类问题，可以采用“软投票(soft voting)”策略，即每个算法做出“软”预测，给出每个可能输出label的概率，所有概率求平均值，输出概率最大标签）。</p>
+
+<p>随机化方法</p>
 
 <ul>
-  <li>
-    <p>正确率(precision)  <script type="math/tex">P = \text{TP} / (\text{TP} + \text{FP})</script> ，即所有预测为1的示例中真实结果为1的概率. E.g., 97(real spam) / 100 predicted spam、98 (real cancer) / 101(predicted cancer)</p>
-  </li>
-  <li>
-    <p>召回率(recall) <script type="math/tex">R=\text{TP}/(\text{TP} + \text{FN})</script>，即真实结果为positive的示例被正确预测出来的概率. E.g., 97(real spam) / 100 (total spam)  , 98 (real cancer) / 101 (total cancer)</p>
-
-    <p>precision / recall 不可兼得。</p>
-  </li>
-  <li>
-    <p><script type="math/tex">\mathcal{F}_1</script> Score (<script type="math/tex">\mathcal{F}</script> score) = <script type="math/tex">2\frac{PR}{P+R}</script></p>
-  </li>
+  <li>通过选择用于构造树的数据点，比如使用<strong>自助采样(bootstrap sample)</strong>, 从n_samples个数据点中有放回地随机抽取样本</li>
+  <li>通过选择每次划分测试的特征，每个树随机选择特征的一个子集。潜在问题 a. max_features 过大，比如等于n_features，那么所有树都考虑了全部特征，那么将十分相似 ; b. Max_features过小，比如1，为了更好拟合数据，每棵树都很深</li>
 </ul>
 
-<h3 id="正则">正则</h3>
+<p>随机森林也可以给出特征重要性(由所有树的特征重要性求和再平均)，一般来说，比单棵树给出的可为可靠。</p>
 
-<p><script type="math/tex">J(\theta) =\frac{1}{2m} [\Sigma_{i=1}^m \mid h(x^i) - y^i \mid ^2  + 	\lambda \Sigma_j^n\theta_n^2]</script>,</p>
+<h4 id="优缺点">优、缺点</h4>
+
+<ul>
+  <li>方法强大：通常不需要反复调节参数就可以得到很好的结果，也不需要对数据进行缩放。有决策树所有优点，也弥补了其过拟合的缺陷。但如果需要以可视化方式向非专家总结预测过程，选单个决策树可能更好。</li>
+  <li>支持多核并行， n_jobs = 9 or -1</li>
+  <li>对于维度非常高的稀疏数据（比如文本数据），RF表现往往不是很好，线性模型可能更适合。</li>
+</ul>
+
+<h3 id="梯度提升机梯度提升回归树">梯度提升机（梯度提升回归树）</h3>
+
+<p>采用连续的方式构造树，每棵树都试图<strong>纠正前一棵树的错误</strong>。优势，通常使用深度很小(1~5)的树，占用内存少，预测速度更快。</p>
+
+<p>背后思想：<strong>合并多个简单的模型(弱学习器)，比如深度较小的树。每棵树只能对部分数据做出好的预测，通过添加更多的树，不断迭代提高性能</strong>。</p>
+
+<p>优点：</p>
+
+<ul>
+  <li>深度很小、占用内在少、预测速度很快 ; 表现很好</li>
+  <li>不需要数据缩放</li>
+</ul>
+
+<p>缺点：</p>
+
+<ul>
+  <li>需要仔细调参，训练时间可能会比较长</li>
+  <li>不适用于高维稀疏数据</li>
+</ul>
+
+<p>它对参数设置比rf更为敏感，如果设置得体，精度很高。故经常是ML竞赛优胜者。</p>
+
+<h3 id="核支持向量机">核支持向量机</h3>
+
+<p>Kernelized support vector machine 通常简称 svm</p>
+
+<h3 id="神经网络">神经网络</h3>
+
+<p>Q:  缺点？</p>
+
+<ul>
+  <li>功能越强大的神经网络，通常需要更长的训练时间; 还需要仔细的预处理数据</li>
+  <li>调参是一门艺术</li>
+  <li>在“均匀”的数据上表现良好，即特征都具有相似的含义。 如果数据包含不同种类的特征，那么基于树的模型可能表现的更好。</li>
+</ul>
+
+<h1 id="无监督学习">无监督学习</h1>
+
+<ul>
+  <li>如何评估无监督学习?
+    <ul>
+      <li>通常来说，评估监督算法的唯一方法就是 **人工检查 **。</li>
+    </ul>
+  </li>
+  <li></li>
+</ul>
 
 <h1 id="cnn-卷积神经网络">CNN 卷积神经网络</h1>
 
@@ -258,17 +307,24 @@
 
 <p>有时候为了使第 <script type="math/tex">i, i+1</script> 卷积层长宽一致，会在卷积层周围添加一些 0, 称为<strong>0填充</strong>.</p>
 
-<p><a href="zero padding">&lt;p align="center"&gt;<img src="img/zeropadding.png" width="500" />&lt;/p&gt;</a></p>
-
-<p><img src="zeropadding.png" alt="ks" /></p>
-
-<h3 id="messy-notes">Messy notes</h3>
+<p><img src="/drafts/img/zeropadding.png" alt="image" /></p>
 
 <ul>
-  <li>Octave lib (Prof. Andrew Ng 建议初学者使用)˘˘</li>
+  <li>下采样？
+    <ul>
+      <li>减少需要处理的特征图的元素个数 ； 通过让连续卷积层的观察窗口越来越大，从而引入空间过滤器的层级结构。</li>
+      <li>最大池化、平均池化、步幅都可以实现下采样； 最大当化效果通常较好。</li>
+    </ul>
+  </li>
+  <li>VGG-16 v.s. VGG-19
+    <ul>
+      <li>VGG-16 结构图 <img src="/img/vgg16.png" alt="image" /></li>
+      <li>VGG-16 包含16层深度神经网络层，VGG-19 19 层</li>
+      <li></li>
+    </ul>
+  </li>
 </ul>
 
-<p>˘˘</p>
 
     </article>
     <div class="share">

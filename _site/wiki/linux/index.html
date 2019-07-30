@@ -42,7 +42,7 @@
     <meta property="og:type" content="article">
     <meta property="og:locale" content="zh_CN" />
     
-    <meta property="article:published_time" content="2019-07-08">
+    <meta property="article:published_time" content="2019-07-30">
     
     <script src="http://localhost:4000/assets/vendor/jquery/dist/jquery.min.js"></script>
     <script src="http://localhost:4000/assets/js/jquery-ui.js"></script>
@@ -139,6 +139,42 @@
 </code></pre></div></div>
 
 <p>注意程序名区分大小写。</p>
+
+<h3 id="crontab">crontab</h3>
+
+<p>分 时 日 月 星期 要运行的命令</p>
+
+<p>第 <script type="math/tex">i</script> 列，<script type="math/tex">i =</script></p>
+
+<ol>
+  <li>分钟0～59</li>
+  <li>第2列小时0～23（0表示子夜）</li>
+  <li>第3列日1～31</li>
+  <li>第4列月1～12</li>
+  <li>第5列星期0～7（0和7表示星期天）</li>
+  <li>第6列要运行的命令</li>
+</ol>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># DT:delete core files,at 3.30am on 1,7,14,21,26,26 days of each month</span>
+30 3 1,7,14,21,26 <span class="k">*</span> <span class="k">*</span> /bin/find <span class="nt">-name</span> <span class="s1">'core'</span> <span class="nt">-exec</span> rm <span class="o">{}</span> <span class="se">\;</span>
+</code></pre></div></div>
+
+<p>使用实例</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">*</span> <span class="k">*</span> <span class="k">*</span> <span class="k">*</span> <span class="k">*</span> <span class="nb">ls</span> <span class="nt">-lt</span> /root/  <span class="c"># 每分钟执行一次命令 </span>
+3,15 <span class="k">*</span> <span class="k">*</span> <span class="k">*</span> <span class="k">*</span> some_cmd  <span class="c"># 第小时的第3， 15分钟执行一次命令</span>
+3,15 8-11 <span class="k">*</span> <span class="k">*</span> <span class="k">*</span> some_cmd  <span class="c"># 在上午8点到11点的第3和第15分钟执行</span>
+3,15 8-11 <span class="k">*</span>/2  <span class="k">*</span> <span class="k">*</span> some_cmd  <span class="c"># 每隔两天的上午8点到11点的第3和第15分钟执行</span>
+10 1 <span class="k">*</span> <span class="k">*</span> 6,0 /etc/init.d/smb restart  <span class="c"># 每周六、周日的1 : 10重启smb</span>
+
+<span class="nv">$ </span>crontab <span class="nt">-l</span> <span class="c"># 当前crontab 任务列表</span>
+<span class="nv">$ </span>crontab <span class="nt">-e</span> <span class="c"># edit </span>
+@reboot some_cmd <span class="c"># 开机执行</span>
+@daily some_cmd <span class="c"># 每天 00:00 执行 </span>
+@hourly or @weekly or @monthly or @yearly some_cmd
+
+</code></pre></div></div>
+
 
     </article>
     <div class="share">

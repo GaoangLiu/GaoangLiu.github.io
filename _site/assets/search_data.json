@@ -48,6 +48,13 @@
   
   
     {
+      "title"    : "Interesting Notes",
+      "url"      : "http://localhost:4000/drafts/interesting-notes/"
+    } ,
+  
+  
+  
+    {
       "title"    : "Jekyll &amp; Gitpages",
       "url"      : "http://localhost:4000/drafts/jekyll/"
     } ,
@@ -175,6 +182,13 @@
       "category" : "",
       
       "url"      : "http://localhost:4000/2019/07/05/Sorting-Algorithms/"
+    } ,
+  
+    {
+      "title"    : "Interesting Notes",
+      "category" : "",
+      
+      "url"      : "http://localhost:4000/2019/07/20/Interesting-Notes/"
     } ,
   
     {
