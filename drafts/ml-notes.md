@@ -36,26 +36,14 @@ tags:
 
 
 
-### Quick question: what do you think about AI?
+# 体系
 
-AI的本质是, 人类所赋予机器(or 工具)的一种能够解决具备一定难度的问题的能力(the ability to solve certain difficult problems — difficult in the sense that they are not easily solved by humans)，这种能力越强，就能越好的解决问题(e.g., 准确率更高的分类器)。 
-
-但机器所被赋予的intelligence，在相当长一段时间内都是比较单一、针对一个或者一类具对问题的能力，它们很难做到像人类一样进行逻辑推理、反思总结并把结果推广到其他问题上。未来的技术有可能创造出[终结者](https://zh.wikipedia.org/zh-hans/终结者)这样的AI — 目的单一：杀死Sara，阻碍John Connor的诞生(其用到的人脸识别、运动中识别并跨越、躲避障碍物的技术都将在未来数年内得到大幅提升)。但行动自然、可以熟练运用计谋、同情心、美色诱惑并欺骗人类以逃离的[机械姬 Ex Machina](https://zh.wikipedia.org/zh-hans/机械姬)则不太可能。
-
-AI很难做出人类的复本，但也可能完全没有这个必要 。飞机像鸟类一样飞翔，但不必振动机翼。
-
-### 问题分类
-
-1. regression problem v.s. classification
-   * 主要区别：预测结果是连续的(continuous valued output)还是离散的(discrete)。问题可以相互转化，二者界线也并非那么绝对。房价是连续的，但可以划分为离散的区间 (A: 0-10Million, B:10~20M, C:...)
-
-2. supervised v.s. unsupervised
-   * supervised: each example has a label ("right" answer), we teach program how to learn
-   * unsupervised
+* 什么是AI ?
+  * AI的本质是, 人类所赋予机器(or 工具)的一种能够解决具备一定难度的问题的能力(the ability to solve certain difficult problems — difficult in the sense that they are not easily solved by humans)，这种能力越强，就能越好的解决问题(e.g., 准确率更高的分类器)。 
 
 
 
-# 监督学习
+# 数据处理
 
 * 为什么要对数据进行归一化处理？
   * 做为一个特征，我们希望看到数据的相对值差别对结果的影响，而不是其绝对值。特别地，未做归一化的数据中，取值范围最大的数据将主导诸如kNN算法的结果
@@ -73,19 +61,15 @@ AI很难做出人类的复本，但也可能完全没有这个必要 。飞机�
   * 信息增益(information gain)，指对数据集进行处理之前之后发生的变化。对一个符号$$x$$ 的信息定义为 $$-\text{log}_2p(x)$$ 。这是一个 xxx 
   * 熵定义为信息的期望值 $$ H = - \Sigma_i^n p(x_i) \text{log}_2p(x_i)$$
 
-### 线性回归
-
-线性回归，也称普通最小二乘法(ordinary least squares, OLS)，回归问题最简单也最经典的线性方法。线性回归寻找参数 $$w$$与$$b$$，使得对训练集的预测值与真实的回归目标值 $$y$$之间的**均方误差**最小。
-
-### 岭回归(ridge regression)
-
-对于高维数据集(即有大量特征的数据集)，线性模型过拟合的可能性变大。 在岭回归中，对系数$$w$$的选择不仅要在训练数据上得到好的预测结果，还要**拟合附加约束**(E.g., 正则化)。 
-
-Ridge模型在模型的简单性(系统都接近于0)与训练集性能之间做出权衡。
+* 线性回归 ?
+  * 也称普通最小二乘法(ordinary least squares, OLS)，回归问题最简单也最经典的线性方法。线性回归寻找参数 $$w$$与$$b$$，使得对训练集的预测值与真实的回归目标值 $$y$$之间的**均方误差**最小。
+* 岭回归(ridge regression)
+  * 对于高维数据集(即有大量特征的数据集)，线性模型过拟合的可能性变大。 在岭回归中，对系数$$w$$的选择不仅要在训练数据上得到好的预测结果，还要**拟合附加约束**(E.g., 正则化)。 
+  * Ridge模型在模型的简单性(系统都接近于0)与训练集性能之间做出权衡。
 
 
 
-### 决策树
+#决策树、随机森林
 
 对数据反复进行递归划分，直到每个区域（叶结点）只包含单目标值（单一类别或单一回归值）。 
 
@@ -154,8 +138,10 @@ Q:  缺点？
 # 无监督学习
 
 * 如何评估无监督学习?
+  
   * 通常来说，评估监督算法的唯一方法就是 **人工检查 **。 
-* 
+  
+  
 
 
 
@@ -163,15 +149,9 @@ Q:  缺点？
 
 # CNN 卷积神经网络
 
-CNN(convolutional neural networks) 
-
-CNN的基石是卷积层(convolutional layer)。Input layer的接收野(receptive fields, 一个$$m \times n$$ 像素矩阵)连接第一卷积层的一个神经元，同样，第1卷积层的一个 $$k \times l $$ 神经元矩阵连接到第2层卷积层。因此，第$$i$$层卷积层的第 $$j, j+1$$个神经元所对应的第 $$i-1$$ 层神经元矩阵可能是重叠的($$k = l = 1$$就不重叠)。
-
-有时候为了使第 $$i, i+1$$ 卷积层长宽一致，会在卷积层周围添加一些 0, 称为**0填充**. 
-
-![image](/img/zeropadding.png)
-
-
+* CNN(convolutional neural networks) 
+  * CNN的基石是卷积层(convolutional layer)。Input layer的接收野(receptive fields, 一个$$m \times n$$ 像素矩阵)连接第一卷积层的一个神经元，同样，第1卷积层的一个 $$k \times l $$ 神经元矩阵连接到第2层卷积层。因此，第$$i$$层卷积层的第 $$j, j+1$$个神经元所对应的第 $$i-1$$ 层神经元矩阵可能是重叠的($$k = l = 1$$就不重叠)。有时候为了使第 $$i, i+1$$ 卷积层长宽一致，会在卷积层周围添加一些 0, 称为**0填充**. 
+  * ![image](/img/zeropadding.png)
 
 * 下采样？
   * 减少需要处理的特征图的元素个数 ； 通过让连续卷积层的观察窗口越来越大，从而引入空间过滤器的层级结构。 
