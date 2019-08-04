@@ -17,3 +17,4 @@ tags:
 * ML最终目的是得到良好的泛化，但你无法控制泛化，只能基于训练数据调节模型。
 * ffmpeg -i input.mkv -vf fps=5 face%04d.jpg -hide_banner 从input.mkv中抽取视频，每秒抽取5张
 * AI: 将认知过程自动化的所有尝试，换句话即是，思想的自动化
+* ffmpeg -i input.mp4 -ss 00:00:06.0 -c copy -to 00:01:54.0 output.mp4 To trim videos, time format HH:MM:SS.0 -ss start time -to end time
