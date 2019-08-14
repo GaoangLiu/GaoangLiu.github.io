@@ -141,31 +141,17 @@
   </li>
 </ul>
 
-<h3 id="quick-question-what-do-you-think-about-ai">Quick question: what do you think about AI?</h3>
+<h1 id="体系">体系</h1>
 
-<p>AI的本质是, 人类所赋予机器(or 工具)的一种能够解决具备一定难度的问题的能力(the ability to solve certain difficult problems — difficult in the sense that they are not easily solved by humans)，这种能力越强，就能越好的解决问题(e.g., 准确率更高的分类器)。</p>
-
-<p>但机器所被赋予的intelligence，在相当长一段时间内都是比较单一、针对一个或者一类具对问题的能力，它们很难做到像人类一样进行逻辑推理、反思总结并把结果推广到其他问题上。未来的技术有可能创造出<a href="https://zh.wikipedia.org/zh-hans/终结者">终结者</a>这样的AI — 目的单一：杀死Sara，阻碍John Connor的诞生(其用到的人脸识别、运动中识别并跨越、躲避障碍物的技术都将在未来数年内得到大幅提升)。但行动自然、可以熟练运用计谋、同情心、美色诱惑并欺骗人类以逃离的<a href="https://zh.wikipedia.org/zh-hans/机械姬">机械姬 Ex Machina</a>则不太可能。</p>
-
-<p>AI很难做出人类的复本，但也可能完全没有这个必要 。飞机像鸟类一样飞翔，但不必振动机翼。</p>
-
-<h3 id="问题分类">问题分类</h3>
-
-<ol>
-  <li>regression problem v.s. classification
+<ul>
+  <li>什么是AI ?
     <ul>
-      <li>主要区别：预测结果是连续的(continuous valued output)还是离散的(discrete)。问题可以相互转化，二者界线也并非那么绝对。房价是连续的，但可以划分为离散的区间 (A: 0-10Million, B:10~20M, C:…)</li>
+      <li>AI的本质是, 人类所赋予机器(or 工具)的一种能够解决具备一定难度的问题的能力(the ability to solve certain difficult problems — difficult in the sense that they are not easily solved by humans)，这种能力越强，就能越好的解决问题(e.g., 准确率更高的分类器)。</li>
     </ul>
   </li>
-  <li>supervised v.s. unsupervised
-    <ul>
-      <li>supervised: each example has a label (“right” answer), we teach program how to learn</li>
-      <li>unsupervised</li>
-    </ul>
-  </li>
-</ol>
+</ul>
 
-<h1 id="监督学习">监督学习</h1>
+<h1 id="数据处理">数据处理</h1>
 
 <ul>
   <li>为什么要对数据进行归一化处理？
@@ -198,19 +184,20 @@
       <li>熵定义为信息的期望值 <script type="math/tex">H = - \Sigma_i^n p(x_i) \text{log}_2p(x_i)</script></li>
     </ul>
   </li>
+  <li>线性回归 ?
+    <ul>
+      <li>也称普通最小二乘法(ordinary least squares, OLS)，回归问题最简单也最经典的线性方法。线性回归寻找参数 <script type="math/tex">w</script>与<script type="math/tex">b</script>，使得对训练集的预测值与真实的回归目标值 <script type="math/tex">y</script>之间的<strong>均方误差</strong>最小。</li>
+    </ul>
+  </li>
+  <li>岭回归(ridge regression)
+    <ul>
+      <li>对于高维数据集(即有大量特征的数据集)，线性模型过拟合的可能性变大。 在岭回归中，对系数<script type="math/tex">w</script>的选择不仅要在训练数据上得到好的预测结果，还要<strong>拟合附加约束</strong>(E.g., 正则化)。</li>
+      <li>Ridge模型在模型的简单性(系统都接近于0)与训练集性能之间做出权衡。</li>
+    </ul>
+  </li>
 </ul>
 
-<h3 id="线性回归">线性回归</h3>
-
-<p>线性回归，也称普通最小二乘法(ordinary least squares, OLS)，回归问题最简单也最经典的线性方法。线性回归寻找参数 <script type="math/tex">w</script>与<script type="math/tex">b</script>，使得对训练集的预测值与真实的回归目标值 <script type="math/tex">y</script>之间的<strong>均方误差</strong>最小。</p>
-
-<h3 id="岭回归ridge-regression">岭回归(ridge regression)</h3>
-
-<p>对于高维数据集(即有大量特征的数据集)，线性模型过拟合的可能性变大。 在岭回归中，对系数<script type="math/tex">w</script>的选择不仅要在训练数据上得到好的预测结果，还要<strong>拟合附加约束</strong>(E.g., 正则化)。</p>
-
-<p>Ridge模型在模型的简单性(系统都接近于0)与训练集性能之间做出权衡。</p>
-
-<h3 id="决策树">决策树</h3>
+<p>#决策树、随机森林</p>
 
 <p>对数据反复进行递归划分，直到每个区域（叶结点）只包含单目标值（单一类别或单一回归值）。</p>
 
@@ -291,25 +278,24 @@
 <h1 id="无监督学习">无监督学习</h1>
 
 <ul>
-  <li>如何评估无监督学习?
+  <li>
+    <p>如何评估无监督学习?</p>
+
     <ul>
       <li>通常来说，评估监督算法的唯一方法就是 **人工检查 **。</li>
     </ul>
   </li>
-  <li></li>
 </ul>
 
 <h1 id="cnn-卷积神经网络">CNN 卷积神经网络</h1>
 
-<p>CNN(convolutional neural networks)</p>
-
-<p>CNN的基石是卷积层(convolutional layer)。Input layer的接收野(receptive fields, 一个<script type="math/tex">m \times n</script> 像素矩阵)连接第一卷积层的一个神经元，同样，第1卷积层的一个 <script type="math/tex">k \times l</script> 神经元矩阵连接到第2层卷积层。因此，第<script type="math/tex">i</script>层卷积层的第 <script type="math/tex">j, j+1</script>个神经元所对应的第 <script type="math/tex">i-1</script> 层神经元矩阵可能是重叠的(<script type="math/tex">k = l = 1</script>就不重叠)。</p>
-
-<p>有时候为了使第 <script type="math/tex">i, i+1</script> 卷积层长宽一致，会在卷积层周围添加一些 0, 称为<strong>0填充</strong>.</p>
-
-<p><img src="/drafts/img/zeropadding.png" alt="image" /></p>
-
 <ul>
+  <li>CNN(convolutional neural networks)
+    <ul>
+      <li>CNN的基石是卷积层(convolutional layer)。Input layer的接收野(receptive fields, 一个<script type="math/tex">m \times n</script> 像素矩阵)连接第一卷积层的一个神经元，同样，第1卷积层的一个 <script type="math/tex">k \times l</script> 神经元矩阵连接到第2层卷积层。因此，第<script type="math/tex">i</script>层卷积层的第 <script type="math/tex">j, j+1</script>个神经元所对应的第 <script type="math/tex">i-1</script> 层神经元矩阵可能是重叠的(<script type="math/tex">k = l = 1</script>就不重叠)。有时候为了使第 <script type="math/tex">i, i+1</script> 卷积层长宽一致，会在卷积层周围添加一些 0, 称为<strong>0填充</strong>.</li>
+      <li><img src="/drafts/img/zeropadding.png" alt="image" /></li>
+    </ul>
+  </li>
   <li>下采样？
     <ul>
       <li>减少需要处理的特征图的元素个数 ； 通过让连续卷积层的观察窗口越来越大，从而引入空间过滤器的层级结构。</li>
@@ -325,6 +311,43 @@
   </li>
 </ul>
 
+<h1 id="深度学习">深度学习</h1>
+
+<h2 id="文本与序列">文本与序列</h2>
+
+<ul>
+  <li>文本向量化(vectorize)实现方法
+    <ul>
+      <li>将文本转化成数值张量的过程，有以下几种实现方式：</li>
+      <li>将文本分割成<strong>单词</strong>，并将每个单词转换成一个向量</li>
+      <li>将文本分割成<strong>字符</strong>，并将每个字符转换成一个向量</li>
+      <li>提取单词或字符的<strong>n-gram</strong>（多个连续单词或者字符的集合）, 并将每个n-gram转换为一个向量。</li>
+    </ul>
+  </li>
+  <li>标记(token) 与分词(tokenization) ?
+    <ul>
+      <li>Token，将文本分解而成的单元（单词、字符或n-gram)</li>
+      <li>Tokenization，文本分解成标记的过程。 所有vectorize过程都是应用某种分词方案，然后将数据向量与生成的标记相关联。</li>
+    </ul>
+  </li>
+  <li>关联向量与标记的方法 ？
+    <ul>
+      <li><strong>One-hot编码</strong>：每个单词(或字符)与一个唯一的整数索引相关联，然后将这个整数索引 $i$  转换成长度为 $N$（词表大小） 的二进制向量。</li>
+      <li><strong>词嵌入(word embedding)</strong>: xxx
+        <ul>
+          <li>完成主任务的同时学习词嵌入</li>
+          <li>预训练词嵌入(pretrained word embedding)，在不同于待解决问题的机器学习任务上预计算好词嵌入，然后将其加载到模型中</li>
+        </ul>
+      </li>
+      <li>区别：
+        <ul>
+          <li>one-hot 二进制、稀疏、高维度(维度大小=词表中单词个数)、硬编码；</li>
+          <li>词嵌入 密集、低维、从数据中学习得到</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
 
     </article>
     <div class="share">

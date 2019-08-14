@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <title>Interesting Notes &mdash; pluto137's blog</title>
+    <title>pluto137's blog</title>
     <link rel="stylesheet" href="http://localhost:4000/assets/vendor/primer-css/css/primer.css">
     <link rel="stylesheet" href="http://localhost:4000/assets/vendor/primer-markdown/dist/user-content.min.css">
     <link rel="stylesheet" href="http://localhost:4000/assets/vendor/octicons/octicons/octicons.css">
@@ -19,36 +19,30 @@
     <link rel="stylesheet" href="http://localhost:4000/assets/css/posts/index.css">
     <!-- Latest compiled and minified CSS -->
     
+    <link rel="stylesheet" href="http://localhost:4000/assets/css/pages/index.css">
+    
 
     
-    <link rel="canonical" href="http://localhost:4000/drafts/interesting-notes/">
+    <link rel="canonical" href="http://localhost:4000/page2/">
     <link rel="alternate" type="application/atom+xml" title="pluto137's blog" href="http://localhost:4000/feed.xml">
     <link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
     
-    <meta property="og:title" content="Interesting Notes">
-      
     <meta name="keywords" content="ML">
-    <meta name="og:keywords" content="ML">
-      
-    <meta name="description" content="">
-    <meta name="og:description" content="">
-      
+    <meta name="description" content="blog">
     
     
         
     
-    <meta property="og:url" content="http://localhost:4000/drafts/interesting-notes/">
+    <meta property="og:url" content="http://localhost:4000/page2/">
     <meta property="og:site_name" content="pluto137's blog">
     <meta property="og:type" content="article">
     <meta property="og:locale" content="zh_CN" />
-    
-    <meta property="article:published_time" content="2019-07-20">
     
     <script src="http://localhost:4000/assets/vendor/jquery/dist/jquery.min.js"></script>
     <script src="http://localhost:4000/assets/js/jquery-ui.js"></script>
     <script src="http://localhost:4000/assets/js/main.js"></script>
 </head>
-<body class="" data-mz="">
+<body class="home" data-mz="home">
     <header class="site-header">
         <div class="container">
             <h1><a href="http://localhost:4000/" title="pluto137's blog"><span class="octicon octicon-mark-github"></span> pluto137's blog</a></h1>
@@ -72,76 +66,51 @@
     </header>
     <!-- / header -->
 
-    <script type="text/javascript" async src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
-</script>
-
-
-<section class="collection-head small geopattern" data-pattern-id="Interesting Not">
-<div class="container">
-  <div class="columns">
-    <div class="column three-fourths">
-      <div class="collection-title">
-        <h1 class="collection-header">Interesting Notes</h1>
-        <div class="collection-info">
-          
-          <span class="meta-info">
-            <span class="octicon octicon-calendar"></span> 2019/07/20
-          </span>
-          
-          
+    <section class="banner">
+    <div class="collection-head">
+        <div class="container">
+            <div class="collection-title">
+              <h1 class="collection-header" id="sub-title"><span></span></h1>
+                <div class="collection-info">
+                    <span class="meta-info mobile-hidden">
+                        <span class="octicon octicon-location"></span>
+                        NULL, China
+                    </span>
+                    
+                     <span class="meta-info">
+                        <span class="octicon octicon-mark-github"></span>
+                        <a href="https://github.com/ssrzz" target="_blank">ssrzz</a>
+                    </span>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
-</div>
 </section>
-<!-- / .banner -->
+<!-- /.banner -->
 <section class="container content">
-<div class="columns">
-  <div class="column three-fourths" >
-    <article class="article-content markdown-body">
-    <ul>
-  <li>TPU 果然比 GPU快太多了</li>
-  <li>Ml 的根本问题是<strong>优化与泛化之间的对立</strong> 。 优化：调节模型以在训练数据上得到最佳性能； 泛化：训练好的模型在前所未见的数据上的性能好坏。 理想的模型是刚好在欠拟合和过拟合的界线上，在容量不足和容量过大的界线上。为了找到这条界线，你必须穿过它。</li>
-  <li>ML最终目的是得到良好的泛化，但你无法控制泛化，只能基于训练数据调节模型。</li>
-  <li>ffmpeg -i input.mkv -vf fps=5 face%04d.jpg -hide_banner 从input.mkv中抽取视频，每秒抽取5张</li>
-  <li>AI: 将认知过程自动化的所有尝试，换句话即是，思想的自动化</li>
-  <li>ffmpeg -i input.mp4 -ss 00:00:06.0 -c copy -to 00:01:54.0 output.mp4 To trim videos, time format HH:MM:SS.0 -ss start time -to end time</li>
-</ul>
-
-    </article>
-    <div class="share">
-      <div class="share-component"></div>
-    </div>
-    <div class="comment">
-      
-
-  
-
-  
-        <div id="gitalk-container"></div>
-        <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
-        <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
-        <script>
-        var gitalk = new Gitalk({
-            id: '/drafts/interesting-notes/',
-            clientID: 'ff0780c2422d2030dcb7',
-            clientSecret: '485da2c930c535b6b612b776f3202ca7e1d392a3',
-            repo: 'ssrzz.github.io',
-            owner: 'ssrzz',
-            admin: ['ssrzz'],
-            labels: ['gitment'],
-            perPage: 50,
-        })
-        gitalk.render('gitalk-container')
-        </script>
-  
-
-
-    </div>
-  </div>
-  <div class="column one-fourth">
-    
+    <div class="columns">
+        <div class="column two-thirds" >
+            <ol class="repo-list">
+                
+                <li class="repo-list-item">
+                    <h3 class="repo-list-name">
+                      <a href="http://localhost:4000/2019/06/20/Jekyll-&-Gitpages/">Jekyll & Gitpages</a>
+                    </h3>
+                    <p class="repo-list-description">
+                        Jekyll资料
+                    </p>
+                    <p class="repo-list-meta">
+                        <span class="meta-info">
+                          <span class="octicon octicon-calendar"></span> 2019/06/20
+                        </span>
+                        
+                    </p>
+                </li>
+                
+            </ol>
+        </div>
+        <div class="column one-third">
+            
 <h3>Search</h3>
 <div id="site_search">
     <input type="text" id="search_box" placeholder="Search">
@@ -166,27 +135,39 @@ SimpleJekyllSearch({
 })
 </script>
 
-    
+            
 
-    
-<h3 class="post-directory-title mobile-hidden">Table of Contents</h3>
-<div id="post-directory-module" class="mobile-hidden">
-  <section class="post-directory">
-  <!-- Links that trigger the jumping -->
-  <!-- Added by javascript below -->
-  <dl></dl>
-  </section>
-</div>
+            <!-- <h3>My Popular Repositories</h3>
 
-<script src="http://localhost:4000/assets/js/jquery.toc.js"></script>
 
-  </div>
-</div>
+
+
+ -->
+        </div>
+    </div>
+    <div class="pagination text-align">
+      <div class="btn-group">
+        
+          
+              <a href="http://localhost:4000/" class="btn btn-outline">&laquo;</a>
+          
+        
+        
+            <a href="http://localhost:4000/"  class="btn btn-outline">1</a>
+        
+        
+          
+              <a href="javascript:;"  class="active btn btn-outline">2</a>
+          
+        
+        
+            <button disabled="disabled" href="javascript:;" class="btn btn-outline">&raquo;</button>
+        
+        </div>
+    </div>
+    <!-- /pagination -->
 </section>
 <!-- /section.content -->
-
-
-
 
     <footer class="container">
         <div class="site-footer" role="contentinfo">

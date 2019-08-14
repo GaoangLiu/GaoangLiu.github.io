@@ -1,14 +1,129 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-07-30T10:12:36+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">pluto137’s blog</title><subtitle>blog</subtitle><author><name>ssrzz</name></author><entry><title type="html">Interesting Notes</title><link href="http://localhost:4000/2019/07/20/Interesting-Notes/" rel="alternate" type="text/html" title="Interesting Notes" /><published>2019-07-20T00:00:00+08:00</published><updated>2019-07-20T00:00:00+08:00</updated><id>http://localhost:4000/2019/07/20/Interesting-Notes</id><content type="html" xml:base="http://localhost:4000/2019/07/20/Interesting-Notes/">&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;TPU 果然比 GPU快太多了&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-08-14T18:24:09+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">pluto137’s blog</title><subtitle>blog</subtitle><author><name>ssrzz</name></author><entry><title type="html">深度学习-VGG16</title><link href="http://localhost:4000/2019/08/04/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-VGG16/" rel="alternate" type="text/html" title="深度学习-VGG16" /><published>2019-08-04T00:00:00+08:00</published><updated>2019-08-04T00:00:00+08:00</updated><id>http://localhost:4000/2019/08/04/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-VGG16</id><content type="html" xml:base="http://localhost:4000/2019/08/04/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-VGG16/">&lt;h1 id=&quot;资源&quot;&gt;资源&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;文献
+    &lt;ul&gt;
+      &lt;li&gt;VGG-16论文题目：Very Deep Convolutional Networks for Large-Scale Image Recognition K. Simonyan, A. Zisserman&lt;/li&gt;
+      &lt;li&gt;VGG-16论文Arxiv链接 https://arxiv.org/pdf/1409.1556.pdf&lt;/li&gt;
+    &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Ml 的根本问题是&lt;strong&gt;优化与泛化之间的对立&lt;/strong&gt; 。 优化：调节模型以在训练数据上得到最佳性能； 泛化：训练好的模型在前所未见的数据上的性能好坏。 理想的模型是刚好在欠拟合和过拟合的界线上，在容量不足和容量过大的界线上。为了找到这条界线，你必须穿过它。&lt;/p&gt;
+  &lt;li&gt;文件
+    &lt;ul&gt;
+      &lt;li&gt;VGG-16模型权重 https://www.cs.toronto.edu/~frossard/vgg16/vgg16_weights.npz&lt;/li&gt;
+      &lt;li&gt;TensorFlow 模型  https://www.cs.toronto.edu/~frossard/vgg16/vgg16.py&lt;/li&gt;
+    &lt;/ul&gt;
   &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;简介&quot;&gt;简介&lt;/h1&gt;
+
+&lt;p&gt;VGG(&lt;strong&gt;Visual Geometry Group&lt;/strong&gt;)是由K.Simonyan and A.Zisserman提出来的一个卷积神经网络模型。这个模型在ImageNet中 Top-5 测试准确率可达 92.7% （ImageNet要求从 1400 万张图片中分出1000 类)。&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;应用
+    &lt;ul&gt;
+      &lt;li&gt;给定图片 —&amp;gt; 找到对应图片的分类&lt;/li&gt;
+      &lt;li&gt;可适用于1000类图片&lt;/li&gt;
+      &lt;li&gt;图片输入尺寸 224 * 224 * 3 （RGB image)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;结构
+    &lt;ul&gt;
+      &lt;li&gt;卷积层&lt;/li&gt;
+      &lt;li&gt;最大池化层&lt;/li&gt;
+      &lt;li&gt;全连接层&lt;/li&gt;
+      &lt;li&gt;总计16层
+        &lt;ul&gt;
+          &lt;li&gt;Convolution using 64 filters&lt;/li&gt;
+          &lt;li&gt;Convolution using 64 filters + Max pooling&lt;/li&gt;
+          &lt;li&gt;Convolution using 128 filters&lt;/li&gt;
+          &lt;li&gt;Convolution using 128 filters + Max pooling&lt;/li&gt;
+          &lt;li&gt;Convolution using 256 filters&lt;/li&gt;
+          &lt;li&gt;Convolution using 256 filters&lt;/li&gt;
+          &lt;li&gt;Convolution using 256 filters + Max pooling&lt;/li&gt;
+          &lt;li&gt;Convolution using 512 filters&lt;/li&gt;
+          &lt;li&gt;Convolution using 512 filters&lt;/li&gt;
+          &lt;li&gt;Convolution using 512 filters + Max pooling&lt;/li&gt;
+          &lt;li&gt;Convolution using 512 filters&lt;/li&gt;
+          &lt;li&gt;Convolution using 512 filters&lt;/li&gt;
+          &lt;li&gt;Convolution using 512 filters + Max pooling&lt;/li&gt;
+          &lt;li&gt;Fully connected with 4096 nodes&lt;/li&gt;
+          &lt;li&gt;Fully connected with 4096 nodes&lt;/li&gt;
+          &lt;li&gt;Output layer with Softmax activation with 1000 nodes&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;属性
+    &lt;ul&gt;
+      &lt;li&gt;模型大小  528MB&lt;/li&gt;
+      &lt;li&gt;Top-1 Accuracy: 70.5%&lt;/li&gt;
+      &lt;li&gt;Top-5 Accuracy: 90.0%&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;预训练模型 &lt;a href=&quot;https://www.cs.toronto.edu/~frossard/vgg16/vgg16_weights.npz&quot;&gt;pre trained model&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;</content><author><name>ssrzz</name></author><category term="ml" /><category term="tutorial" /><summary type="html">资源</summary></entry><entry><title type="html">高斯混合模型</title><link href="http://localhost:4000/2019/08/03/%E9%AB%98%E6%96%AF%E6%B7%B7%E5%90%88%E6%A8%A1%E5%9E%8B/" rel="alternate" type="text/html" title="高斯混合模型" /><published>2019-08-03T00:00:00+08:00</published><updated>2019-08-03T00:00:00+08:00</updated><id>http://localhost:4000/2019/08/03/%E9%AB%98%E6%96%AF%E6%B7%B7%E5%90%88%E6%A8%A1%E5%9E%8B</id><content type="html" xml:base="http://localhost:4000/2019/08/03/%E9%AB%98%E6%96%AF%E6%B7%B7%E5%90%88%E6%A8%A1%E5%9E%8B/">&lt;h1 id=&quot;gaussian&quot;&gt;Gaussian&lt;/h1&gt;
+
+&lt;p&gt;Gaussian Mixture Model(GMM)是多个高斯分布函数的线性组合，理论上GMM可以拟合出任意类型的分布，通常用于解决同一集合下的数据包含多个不同的分布的情况（或者是同一类分布但参数不一样，或者是不同类型的分布，比如正态分布和伯努利分布）。&lt;/p&gt;
+
+&lt;h1 id=&quot;model-formula&quot;&gt;Model Formula&lt;/h1&gt;
+
+&lt;p&gt;假设随机变量为&lt;script type=&quot;math/tex&quot;&gt;X&lt;/script&gt; ,那么GMM可以表示为：&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;p(x) = \sum\limits_{k=1}^K \pi_k \mathcal{N}(x|\mu_k, \sigma_k)&lt;/script&gt;
+
+&lt;p&gt;其中&lt;script type=&quot;math/tex&quot;&gt;\mathcal{N}(x\mid\mu_k, \sigma_k)&lt;/script&gt; 为混合模型中的第&lt;script type=&quot;math/tex&quot;&gt;k&lt;/script&gt;个&lt;strong&gt;分量(component)&lt;/strong&gt;； &lt;script type=&quot;math/tex&quot;&gt;\pi_k&lt;/script&gt;为&lt;strong&gt;混合系统(mixture coefficient)&lt;/strong&gt; s.t. &lt;script type=&quot;math/tex&quot;&gt;\sum\limits_{k=1}^K \pi_k = 1&lt;/script&gt;，也可以认为是第&lt;script type=&quot;math/tex&quot;&gt;k&lt;/script&gt;个分量的权重。&lt;/p&gt;
+
+&lt;h1 id=&quot;应用&quot;&gt;应用&lt;/h1&gt;
+
+&lt;p&gt;将GMM用于聚类时，假设数据服从混合高斯分布（Mixture Gaussian Distribution），那么只要根据数据推出 GMM 的概率分布来即可。&lt;/p&gt;
+
+&lt;p&gt;GMM 的 $K$ 个分量实际上对应$K$个&lt;strong&gt;簇(cluster)&lt;/strong&gt; 。根据数据来推算概率密度通常被称作 density estimation 。特别地，当我已知（或假定）概率密度函数的形式，而要估计其中的参数的过程被称作&lt;strong&gt;参数估计&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;h2 id=&quot;参数估计&quot;&gt;参数估计&lt;/h2&gt;
+
+&lt;p&gt;当存在$K$个聚类，公式&lt;script type=&quot;math/tex&quot;&gt;p(x) = \sum\limits_{k=1}^K \pi_k \mathcal{N}(x\|\mu_k, \sigma_k)&lt;/script&gt;中存在 &lt;script type=&quot;math/tex&quot;&gt;3K&lt;/script&gt; 个未知参数 &lt;script type=&quot;math/tex&quot;&gt;\{\pi_k, \mu_k, \sigma_k\| k \in [1..K]\}&lt;/script&gt;。如何估算这些参数 ？Short answer:  &lt;strong&gt;最大似然估计&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;p&gt;TODO&lt;/p&gt;
+
+&lt;h2 id=&quot;在kaggle练手比赛中的应用&quot;&gt;在Kaggle(练手)比赛中的应用&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.kaggle.com/c/data-science-london-scikit-learn/&quot;&gt;Data-Science-londo-scikit-learn&lt;/a&gt; 给出一个简单的训练集(1000 x 40)，存在40个特征，要求对9000个测试样本进行预测。使用简单的KNN/RandomForest算法，通过网格搜索最佳参数，最终预测结果：0.89828&lt;/p&gt;
+
+&lt;p&gt;而采用GMM对数据进行处理后，再使用KNN/随机森林，预测结果可达：0.99143 （前20名的水平）&lt;/p&gt;
+
+&lt;h2 id=&quot;sklearn--gmm&quot;&gt;Sklearn &amp;amp; GMM&lt;/h2&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;matplotlib.pyplot&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;seaborn&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sns&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;numpy&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sklearn.datasets.samples_generator&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;make_blobs&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# Produce experiment data, 4 clusters&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;make_blobs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n_samples&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;400&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;centers&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cluster_std&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.60&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;random_state&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sklearn.mixture&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;GaussianMixture&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;gmm&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;GaussianMixture&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n_components&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;labels&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;gmm&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;predict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;plt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scatter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[:,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;X&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[:,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;labels&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;40&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cmap&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'viridis'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;聚类&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/img/gmm.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;参考文献&quot;&gt;参考文献&lt;/h1&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;https://blog.csdn.net/jinping_shi/article/details/59613054&quot;&gt;高斯混合模型（GMM）及其EM算法的理解&lt;/a&gt;，阿拉丁吃米粉，CSDN blog&lt;/li&gt;
+  &lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;</content><author><name>ssrzz</name></author><category term="ML" /><category term="GMM" /><summary type="html">Gaussian</summary></entry><entry><title type="html">Interesting Notes</title><link href="http://localhost:4000/2019/07/20/Interesting-Notes/" rel="alternate" type="text/html" title="Interesting Notes" /><published>2019-07-20T00:00:00+08:00</published><updated>2019-07-20T00:00:00+08:00</updated><id>http://localhost:4000/2019/07/20/Interesting-Notes</id><content type="html" xml:base="http://localhost:4000/2019/07/20/Interesting-Notes/">&lt;ul&gt;
+  &lt;li&gt;TPU 果然比 GPU快太多了&lt;/li&gt;
+  &lt;li&gt;Ml 的根本问题是&lt;strong&gt;优化与泛化之间的对立&lt;/strong&gt; 。 优化：调节模型以在训练数据上得到最佳性能； 泛化：训练好的模型在前所未见的数据上的性能好坏。 理想的模型是刚好在欠拟合和过拟合的界线上，在容量不足和容量过大的界线上。为了找到这条界线，你必须穿过它。&lt;/li&gt;
   &lt;li&gt;ML最终目的是得到良好的泛化，但你无法控制泛化，只能基于训练数据调节模型。&lt;/li&gt;
-  &lt;li&gt;you are stronger than you thought.&lt;/li&gt;
-  &lt;li&gt;ffmpeg -i input.mkv -vf fps=5 face%04d.jpg -hide_banner 从input.mkv中抽取视频，每秒抽取5个&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>ssrzz</name></author><category term="AI" /><category term="ML" /><summary type="html">TPU 果然比 GPU快太多了</summary></entry><entry><title type="html">Kaggle Competitions</title><link href="http://localhost:4000/2019/07/05/Kaggle-Competitions/" rel="alternate" type="text/html" title="Kaggle Competitions" /><published>2019-07-05T00:00:00+08:00</published><updated>2019-07-05T00:00:00+08:00</updated><id>http://localhost:4000/2019/07/05/Kaggle-Competitions</id><content type="html" xml:base="http://localhost:4000/2019/07/05/Kaggle-Competitions/">&lt;h2 id=&quot;mnist---digit-recognizer&quot;&gt;MNIST - Digit Recognizer&lt;/h2&gt;
+  &lt;li&gt;ffmpeg -i input.mkv -vf fps=5 face%04d.jpg -hide_banner 从input.mkv中抽取视频，每秒抽取5张&lt;/li&gt;
+  &lt;li&gt;AI: 将认知过程自动化的所有尝试，换句话即是，思想的自动化&lt;/li&gt;
+  &lt;li&gt;ffmpeg -i input.mp4 -ss 00:00:06.0 -c copy -to 00:01:54.0 output.mp4 To trim videos, time format HH:MM:SS.0 -ss start time -to end time&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>ssrzz</name></author><category term="AI" /><category term="ML" /><summary type="html">TPU 果然比 GPU快太多了 Ml 的根本问题是优化与泛化之间的对立 。 优化：调节模型以在训练数据上得到最佳性能； 泛化：训练好的模型在前所未见的数据上的性能好坏。 理想的模型是刚好在欠拟合和过拟合的界线上，在容量不足和容量过大的界线上。为了找到这条界线，你必须穿过它。 ML最终目的是得到良好的泛化，但你无法控制泛化，只能基于训练数据调节模型。 ffmpeg -i input.mkv -vf fps=5 face%04d.jpg -hide_banner 从input.mkv中抽取视频，每秒抽取5张 AI: 将认知过程自动化的所有尝试，换句话即是，思想的自动化 ffmpeg -i input.mp4 -ss 00:00:06.0 -c copy -to 00:01:54.0 output.mp4 To trim videos, time format HH:MM:SS.0 -ss start time -to end time</summary></entry><entry><title type="html">Kaggle Competitions</title><link href="http://localhost:4000/2019/07/05/Kaggle-Competitions/" rel="alternate" type="text/html" title="Kaggle Competitions" /><published>2019-07-05T00:00:00+08:00</published><updated>2019-07-05T00:00:00+08:00</updated><id>http://localhost:4000/2019/07/05/Kaggle-Competitions</id><content type="html" xml:base="http://localhost:4000/2019/07/05/Kaggle-Competitions/">&lt;h2 id=&quot;mnist---digit-recognizer&quot;&gt;MNIST - Digit Recognizer&lt;/h2&gt;
 
 &lt;p&gt;MNIST (“Modified National Institute of Standards and Technology”) — ML领域的“HELLO WORLD”.&lt;/p&gt;
 
@@ -51,32 +166,7 @@ drive.mount&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1
 &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;ls&lt;/span&gt; /gdrive/&lt;span class=&quot;s1&quot;&gt;'My Drive'&lt;/span&gt;/
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;第一次挂载需要验证绑定账号，挂载成功后在 &lt;code class=&quot;highlighter-rouge&quot;&gt;My Drive&lt;/code&gt;中建文件夹、上传数据都可以通过 &lt;code class=&quot;highlighter-rouge&quot;&gt;/gdrive/'My Drive'&lt;/code&gt;打开。&lt;/p&gt;</content><author><name>ssrzz</name></author><category term="machine learning" /><category term="CNN" /><category term="TensorFlow" /><category term="Keras" /><summary type="html">MNIST - Digit Recognizer</summary></entry><entry><title type="html">Halting Problem</title><link href="http://localhost:4000/2019/07/05/Halting-Problem/" rel="alternate" type="text/html" title="Halting Problem" /><published>2019-07-05T00:00:00+08:00</published><updated>2019-07-05T00:00:00+08:00</updated><id>http://localhost:4000/2019/07/05/Halting-Problem</id><content type="html" xml:base="http://localhost:4000/2019/07/05/Halting-Problem/">&lt;h2 id=&quot;halting-problem&quot;&gt;Halting Problem&lt;/h2&gt;
-
-&lt;p&gt;停机问题: 判断任意一个程序是否能在有限的时间之内结束运行的问题。等价于如下判定问题：是否存在一个程序&lt;script type=&quot;math/tex&quot;&gt;P&lt;/script&gt;，对于任意输入的程序&lt;script type=&quot;math/tex&quot;&gt;\omega&lt;/script&gt;，能够判断&lt;script type=&quot;math/tex&quot;&gt;\omega&lt;/script&gt;会在有限时间内结束或者死循环。&lt;/p&gt;
-
-&lt;p&gt;HP是不可判定的，本质上是 &lt;strong&gt;一阶逻辑的不自洽性&lt;/strong&gt;。&lt;/p&gt;
-
-&lt;h2 id=&quot;一个简单的证明&quot;&gt;一个简单的证明&lt;/h2&gt;
-
-&lt;p&gt;Source &lt;a href=&quot;https://www.youtube.com/watch?v=92WHN-pAFCs&quot;&gt;计算机不是万能的&lt;/a&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;假设存在一个机器 &lt;script type=&quot;math/tex&quot;&gt;T&lt;/script&gt; ，它总能判定另外一机器 &lt;script type=&quot;math/tex&quot;&gt;H&lt;/script&gt; 对于任意输入 &lt;script type=&quot;math/tex&quot;&gt;\omega&lt;/script&gt; 都能停机&lt;/li&gt;
-  &lt;li&gt;引入机器 &lt;script type=&quot;math/tex&quot;&gt;D&lt;/script&gt;, 对于任意输入 &lt;script type=&quot;math/tex&quot;&gt;\omega&lt;/script&gt;， 复制并输出两份 &lt;script type=&quot;math/tex&quot;&gt;\omega&lt;/script&gt; ; 机器 &lt;script type=&quot;math/tex&quot;&gt;R&lt;/script&gt; 读入 &lt;script type=&quot;math/tex&quot;&gt;\omega \in \{ \text{stuck}, \text{not stuck} \}&lt;/script&gt;，输出 &lt;script type=&quot;math/tex&quot;&gt;\neg \omega&lt;/script&gt;&lt;/li&gt;
-  &lt;li&gt;拼接以上3个机器 &lt;script type=&quot;math/tex&quot;&gt;D -&gt; T -&gt; R&lt;/script&gt; 得到 &lt;script type=&quot;math/tex&quot;&gt;X&lt;/script&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Question: &lt;script type=&quot;math/tex&quot;&gt;X&lt;/script&gt; 输入 &lt;script type=&quot;math/tex&quot;&gt;X&lt;/script&gt; (written as &lt;script type=&quot;math/tex&quot;&gt;X(X)&lt;/script&gt;) 是否停机 ？&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;停机 ： =&amp;gt; &lt;script type=&quot;math/tex&quot;&gt;R&lt;/script&gt; 的读入为&lt;em&gt;不停机&lt;/em&gt;，=&amp;gt;  &lt;script type=&quot;math/tex&quot;&gt;T&lt;/script&gt; 读入 &lt;script type=&quot;math/tex&quot;&gt;(X, X)&lt;/script&gt; 输出为不停机 ，=&amp;gt; &lt;script type=&quot;math/tex&quot;&gt;X(X)&lt;/script&gt;不停机，矛盾 ;&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;不停机： =&amp;gt; &lt;script type=&quot;math/tex&quot;&gt;R&lt;/script&gt; 的读入为&lt;em&gt;停机&lt;/em&gt;，=&amp;gt;  &lt;script type=&quot;math/tex&quot;&gt;T&lt;/script&gt; 读入 &lt;script type=&quot;math/tex&quot;&gt;(X, X)&lt;/script&gt; 输出为停机 ，=&amp;gt; &lt;script type=&quot;math/tex&quot;&gt;X(X)&lt;/script&gt;停机，矛盾 。&lt;/p&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;</content><author><name>ssrzz</name></author><category term="halting problem" /><summary type="html">Halting Problem</summary></entry><entry><title type="html">Sorting Algorithms</title><link href="http://localhost:4000/2019/07/05/Sorting-Algorithms/" rel="alternate" type="text/html" title="Sorting Algorithms" /><published>2019-07-05T00:00:00+08:00</published><updated>2019-07-05T00:00:00+08:00</updated><id>http://localhost:4000/2019/07/05/Sorting-Algorithms</id><content type="html" xml:base="http://localhost:4000/2019/07/05/Sorting-Algorithms/">&lt;h2 id=&quot;quick-sort&quot;&gt;Quick Sort&lt;/h2&gt;
+&lt;p&gt;第一次挂载需要验证绑定账号，挂载成功后在 &lt;code class=&quot;highlighter-rouge&quot;&gt;My Drive&lt;/code&gt;中建文件夹、上传数据都可以通过 &lt;code class=&quot;highlighter-rouge&quot;&gt;/gdrive/'My Drive'&lt;/code&gt;打开。&lt;/p&gt;</content><author><name>ssrzz</name></author><category term="machine learning" /><category term="CNN" /><category term="TensorFlow" /><category term="Keras" /><summary type="html">MNIST - Digit Recognizer</summary></entry><entry><title type="html">Sorting Algorithms</title><link href="http://localhost:4000/2019/07/05/Sorting-Algorithms/" rel="alternate" type="text/html" title="Sorting Algorithms" /><published>2019-07-05T00:00:00+08:00</published><updated>2019-07-05T00:00:00+08:00</updated><id>http://localhost:4000/2019/07/05/Sorting-Algorithms</id><content type="html" xml:base="http://localhost:4000/2019/07/05/Sorting-Algorithms/">&lt;h2 id=&quot;quick-sort&quot;&gt;Quick Sort&lt;/h2&gt;
 
 &lt;div class=&quot;language-py highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;quicksort&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;arr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;start&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
     &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;start&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
@@ -109,7 +199,34 @@ drive.mount&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1
 &lt;ul&gt;
   &lt;li&gt;Not inplace&lt;/li&gt;
   &lt;li&gt;Time complexity &lt;script type=&quot;math/tex&quot;&gt;O(n \cdot logn)&lt;/script&gt;, space complexity &lt;script type=&quot;math/tex&quot;&gt;O(n)&lt;/script&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>ssrzz</name></author><category term="quick sort" /><category term="merge sort" /><summary type="html">Quick Sort</summary></entry><entry><title type="html">Leetcode Solutions</title><link href="http://localhost:4000/2019/07/03/Leetcode-Solutions/" rel="alternate" type="text/html" title="Leetcode Solutions" /><published>2019-07-03T00:00:00+08:00</published><updated>2019-07-03T00:00:00+08:00</updated><id>http://localhost:4000/2019/07/03/Leetcode-Solutions</id><content type="html" xml:base="http://localhost:4000/2019/07/03/Leetcode-Solutions/">&lt;h2 id=&quot;313-super-ugly-numbers&quot;&gt;313 super ugly numbers&lt;/h2&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;bucket-sort&quot;&gt;Bucket sort&lt;/h1&gt;</content><author><name>ssrzz</name></author><category term="quick sort" /><category term="merge sort" /><summary type="html">Quick Sort</summary></entry><entry><title type="html">Halting Problem</title><link href="http://localhost:4000/2019/07/05/Halting-Problem/" rel="alternate" type="text/html" title="Halting Problem" /><published>2019-07-05T00:00:00+08:00</published><updated>2019-07-05T00:00:00+08:00</updated><id>http://localhost:4000/2019/07/05/Halting-Problem</id><content type="html" xml:base="http://localhost:4000/2019/07/05/Halting-Problem/">&lt;h2 id=&quot;halting-problem&quot;&gt;Halting Problem&lt;/h2&gt;
+
+&lt;p&gt;停机问题: 判断任意一个程序是否能在有限的时间之内结束运行的问题。等价于如下判定问题：是否存在一个程序&lt;script type=&quot;math/tex&quot;&gt;P&lt;/script&gt;，对于任意输入的程序&lt;script type=&quot;math/tex&quot;&gt;\omega&lt;/script&gt;，能够判断&lt;script type=&quot;math/tex&quot;&gt;\omega&lt;/script&gt;会在有限时间内结束或者死循环。&lt;/p&gt;
+
+&lt;p&gt;HP是不可判定的，本质上是 &lt;strong&gt;一阶逻辑的不自洽性&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;h2 id=&quot;一个简单的证明&quot;&gt;一个简单的证明&lt;/h2&gt;
+
+&lt;p&gt;Source &lt;a href=&quot;https://www.youtube.com/watch?v=92WHN-pAFCs&quot;&gt;计算机不是万能的&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;假设存在一个机器 &lt;script type=&quot;math/tex&quot;&gt;T&lt;/script&gt; ，它总能判定另外一机器 &lt;script type=&quot;math/tex&quot;&gt;H&lt;/script&gt; 对于任意输入 &lt;script type=&quot;math/tex&quot;&gt;\omega&lt;/script&gt; 都能停机&lt;/li&gt;
+  &lt;li&gt;引入机器 &lt;script type=&quot;math/tex&quot;&gt;D&lt;/script&gt;, 对于任意输入 &lt;script type=&quot;math/tex&quot;&gt;\omega&lt;/script&gt;， 复制并输出两份 &lt;script type=&quot;math/tex&quot;&gt;\omega&lt;/script&gt; ; 机器 &lt;script type=&quot;math/tex&quot;&gt;R&lt;/script&gt; 读入 &lt;script type=&quot;math/tex&quot;&gt;\omega \in \{ \text{stuck}, \text{not stuck} \}&lt;/script&gt;，输出 &lt;script type=&quot;math/tex&quot;&gt;\neg \omega&lt;/script&gt;&lt;/li&gt;
+  &lt;li&gt;拼接以上3个机器 &lt;script type=&quot;math/tex&quot;&gt;D -&gt; T -&gt; R&lt;/script&gt; 得到 &lt;script type=&quot;math/tex&quot;&gt;X&lt;/script&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Question: &lt;script type=&quot;math/tex&quot;&gt;X&lt;/script&gt; 输入 &lt;script type=&quot;math/tex&quot;&gt;X&lt;/script&gt; (written as &lt;script type=&quot;math/tex&quot;&gt;X(X)&lt;/script&gt;) 是否停机 ？&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;停机 ： =&amp;gt; &lt;script type=&quot;math/tex&quot;&gt;R&lt;/script&gt; 的读入为&lt;em&gt;不停机&lt;/em&gt;，=&amp;gt;  &lt;script type=&quot;math/tex&quot;&gt;T&lt;/script&gt; 读入 &lt;script type=&quot;math/tex&quot;&gt;(X, X)&lt;/script&gt; 输出为不停机 ，=&amp;gt; &lt;script type=&quot;math/tex&quot;&gt;X(X)&lt;/script&gt;不停机，矛盾 ;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;不停机： =&amp;gt; &lt;script type=&quot;math/tex&quot;&gt;R&lt;/script&gt; 的读入为&lt;em&gt;停机&lt;/em&gt;，=&amp;gt;  &lt;script type=&quot;math/tex&quot;&gt;T&lt;/script&gt; 读入 &lt;script type=&quot;math/tex&quot;&gt;(X, X)&lt;/script&gt; 输出为停机 ，=&amp;gt; &lt;script type=&quot;math/tex&quot;&gt;X(X)&lt;/script&gt;停机，矛盾 。&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;</content><author><name>ssrzz</name></author><category term="halting problem" /><summary type="html">Halting Problem</summary></entry><entry><title type="html">Leetcode Solutions</title><link href="http://localhost:4000/2019/07/03/Leetcode-Solutions/" rel="alternate" type="text/html" title="Leetcode Solutions" /><published>2019-07-03T00:00:00+08:00</published><updated>2019-07-03T00:00:00+08:00</updated><id>http://localhost:4000/2019/07/03/Leetcode-Solutions</id><content type="html" xml:base="http://localhost:4000/2019/07/03/Leetcode-Solutions/">&lt;h2 id=&quot;313-super-ugly-numbers&quot;&gt;313 super ugly numbers&lt;/h2&gt;
 
 &lt;p&gt;&lt;a href=&quot;https://leetcode.com/problems/super-ugly-number/&quot;&gt;Que&lt;/a&gt;:  Super ugly numbers (SUN hereafter) are positive numbers whose all prime factors are in the  given prime list primes of size &lt;script type=&quot;math/tex&quot;&gt;k&lt;/script&gt;,  (e.g., primes = [2, 7, 13, 19])  Write a program to find the &lt;script type=&quot;math/tex&quot;&gt;n&lt;/script&gt;-th super ugly number.&lt;/p&gt;
 
@@ -327,31 +444,17 @@ drive.mount&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;quick-question-what-do-you-think-about-ai&quot;&gt;Quick question: what do you think about AI?&lt;/h3&gt;
+&lt;h1 id=&quot;体系&quot;&gt;体系&lt;/h1&gt;
 
-&lt;p&gt;AI的本质是, 人类所赋予机器(or 工具)的一种能够解决具备一定难度的问题的能力(the ability to solve certain difficult problems — difficult in the sense that they are not easily solved by humans)，这种能力越强，就能越好的解决问题(e.g., 准确率更高的分类器)。&lt;/p&gt;
-
-&lt;p&gt;但机器所被赋予的intelligence，在相当长一段时间内都是比较单一、针对一个或者一类具对问题的能力，它们很难做到像人类一样进行逻辑推理、反思总结并把结果推广到其他问题上。未来的技术有可能创造出&lt;a href=&quot;https://zh.wikipedia.org/zh-hans/终结者&quot;&gt;终结者&lt;/a&gt;这样的AI — 目的单一：杀死Sara，阻碍John Connor的诞生(其用到的人脸识别、运动中识别并跨越、躲避障碍物的技术都将在未来数年内得到大幅提升)。但行动自然、可以熟练运用计谋、同情心、美色诱惑并欺骗人类以逃离的&lt;a href=&quot;https://zh.wikipedia.org/zh-hans/机械姬&quot;&gt;机械姬 Ex Machina&lt;/a&gt;则不太可能。&lt;/p&gt;
-
-&lt;p&gt;AI很难做出人类的复本，但也可能完全没有这个必要 。飞机像鸟类一样飞翔，但不必振动机翼。&lt;/p&gt;
-
-&lt;h3 id=&quot;问题分类&quot;&gt;问题分类&lt;/h3&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;regression problem v.s. classification
+&lt;ul&gt;
+  &lt;li&gt;什么是AI ?
     &lt;ul&gt;
-      &lt;li&gt;主要区别：预测结果是连续的(continuous valued output)还是离散的(discrete)。问题可以相互转化，二者界线也并非那么绝对。房价是连续的，但可以划分为离散的区间 (A: 0-10Million, B:10~20M, C:…)&lt;/li&gt;
+      &lt;li&gt;AI的本质是, 人类所赋予机器(or 工具)的一种能够解决具备一定难度的问题的能力(the ability to solve certain difficult problems — difficult in the sense that they are not easily solved by humans)，这种能力越强，就能越好的解决问题(e.g., 准确率更高的分类器)。&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;supervised v.s. unsupervised
-    &lt;ul&gt;
-      &lt;li&gt;supervised: each example has a label (“right” answer), we teach program how to learn&lt;/li&gt;
-      &lt;li&gt;unsupervised&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;
+&lt;/ul&gt;
 
-&lt;h1 id=&quot;监督学习&quot;&gt;监督学习&lt;/h1&gt;
+&lt;h1 id=&quot;数据处理&quot;&gt;数据处理&lt;/h1&gt;
 
 &lt;ul&gt;
   &lt;li&gt;为什么要对数据进行归一化处理？
@@ -384,19 +487,20 @@ drive.mount&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1
       &lt;li&gt;熵定义为信息的期望值 &lt;script type=&quot;math/tex&quot;&gt;H = - \Sigma_i^n p(x_i) \text{log}_2p(x_i)&lt;/script&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
+  &lt;li&gt;线性回归 ?
+    &lt;ul&gt;
+      &lt;li&gt;也称普通最小二乘法(ordinary least squares, OLS)，回归问题最简单也最经典的线性方法。线性回归寻找参数 &lt;script type=&quot;math/tex&quot;&gt;w&lt;/script&gt;与&lt;script type=&quot;math/tex&quot;&gt;b&lt;/script&gt;，使得对训练集的预测值与真实的回归目标值 &lt;script type=&quot;math/tex&quot;&gt;y&lt;/script&gt;之间的&lt;strong&gt;均方误差&lt;/strong&gt;最小。&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;岭回归(ridge regression)
+    &lt;ul&gt;
+      &lt;li&gt;对于高维数据集(即有大量特征的数据集)，线性模型过拟合的可能性变大。 在岭回归中，对系数&lt;script type=&quot;math/tex&quot;&gt;w&lt;/script&gt;的选择不仅要在训练数据上得到好的预测结果，还要&lt;strong&gt;拟合附加约束&lt;/strong&gt;(E.g., 正则化)。&lt;/li&gt;
+      &lt;li&gt;Ridge模型在模型的简单性(系统都接近于0)与训练集性能之间做出权衡。&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;线性回归&quot;&gt;线性回归&lt;/h3&gt;
-
-&lt;p&gt;线性回归，也称普通最小二乘法(ordinary least squares, OLS)，回归问题最简单也最经典的线性方法。线性回归寻找参数 &lt;script type=&quot;math/tex&quot;&gt;w&lt;/script&gt;与&lt;script type=&quot;math/tex&quot;&gt;b&lt;/script&gt;，使得对训练集的预测值与真实的回归目标值 &lt;script type=&quot;math/tex&quot;&gt;y&lt;/script&gt;之间的&lt;strong&gt;均方误差&lt;/strong&gt;最小。&lt;/p&gt;
-
-&lt;h3 id=&quot;岭回归ridge-regression&quot;&gt;岭回归(ridge regression)&lt;/h3&gt;
-
-&lt;p&gt;对于高维数据集(即有大量特征的数据集)，线性模型过拟合的可能性变大。 在岭回归中，对系数&lt;script type=&quot;math/tex&quot;&gt;w&lt;/script&gt;的选择不仅要在训练数据上得到好的预测结果，还要&lt;strong&gt;拟合附加约束&lt;/strong&gt;(E.g., 正则化)。&lt;/p&gt;
-
-&lt;p&gt;Ridge模型在模型的简单性(系统都接近于0)与训练集性能之间做出权衡。&lt;/p&gt;
-
-&lt;h3 id=&quot;决策树&quot;&gt;决策树&lt;/h3&gt;
+&lt;p&gt;#决策树、随机森林&lt;/p&gt;
 
 &lt;p&gt;对数据反复进行递归划分，直到每个区域（叶结点）只包含单目标值（单一类别或单一回归值）。&lt;/p&gt;
 
@@ -477,25 +581,24 @@ drive.mount&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1
 &lt;h1 id=&quot;无监督学习&quot;&gt;无监督学习&lt;/h1&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;如何评估无监督学习?
+  &lt;li&gt;
+    &lt;p&gt;如何评估无监督学习?&lt;/p&gt;
+
     &lt;ul&gt;
       &lt;li&gt;通常来说，评估监督算法的唯一方法就是 **人工检查 **。&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h1 id=&quot;cnn-卷积神经网络&quot;&gt;CNN 卷积神经网络&lt;/h1&gt;
 
-&lt;p&gt;CNN(convolutional neural networks)&lt;/p&gt;
-
-&lt;p&gt;CNN的基石是卷积层(convolutional layer)。Input layer的接收野(receptive fields, 一个&lt;script type=&quot;math/tex&quot;&gt;m \times n&lt;/script&gt; 像素矩阵)连接第一卷积层的一个神经元，同样，第1卷积层的一个 &lt;script type=&quot;math/tex&quot;&gt;k \times l&lt;/script&gt; 神经元矩阵连接到第2层卷积层。因此，第&lt;script type=&quot;math/tex&quot;&gt;i&lt;/script&gt;层卷积层的第 &lt;script type=&quot;math/tex&quot;&gt;j, j+1&lt;/script&gt;个神经元所对应的第 &lt;script type=&quot;math/tex&quot;&gt;i-1&lt;/script&gt; 层神经元矩阵可能是重叠的(&lt;script type=&quot;math/tex&quot;&gt;k = l = 1&lt;/script&gt;就不重叠)。&lt;/p&gt;
-
-&lt;p&gt;有时候为了使第 &lt;script type=&quot;math/tex&quot;&gt;i, i+1&lt;/script&gt; 卷积层长宽一致，会在卷积层周围添加一些 0, 称为&lt;strong&gt;0填充&lt;/strong&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/img/zeropadding.png&quot; alt=&quot;image&quot; /&gt;&lt;/p&gt;
-
 &lt;ul&gt;
+  &lt;li&gt;CNN(convolutional neural networks)
+    &lt;ul&gt;
+      &lt;li&gt;CNN的基石是卷积层(convolutional layer)。Input layer的接收野(receptive fields, 一个&lt;script type=&quot;math/tex&quot;&gt;m \times n&lt;/script&gt; 像素矩阵)连接第一卷积层的一个神经元，同样，第1卷积层的一个 &lt;script type=&quot;math/tex&quot;&gt;k \times l&lt;/script&gt; 神经元矩阵连接到第2层卷积层。因此，第&lt;script type=&quot;math/tex&quot;&gt;i&lt;/script&gt;层卷积层的第 &lt;script type=&quot;math/tex&quot;&gt;j, j+1&lt;/script&gt;个神经元所对应的第 &lt;script type=&quot;math/tex&quot;&gt;i-1&lt;/script&gt; 层神经元矩阵可能是重叠的(&lt;script type=&quot;math/tex&quot;&gt;k = l = 1&lt;/script&gt;就不重叠)。有时候为了使第 &lt;script type=&quot;math/tex&quot;&gt;i, i+1&lt;/script&gt; 卷积层长宽一致，会在卷积层周围添加一些 0, 称为&lt;strong&gt;0填充&lt;/strong&gt;.&lt;/li&gt;
+      &lt;li&gt;&lt;img src=&quot;/img/zeropadding.png&quot; alt=&quot;image&quot; /&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
   &lt;li&gt;下采样？
     &lt;ul&gt;
       &lt;li&gt;减少需要处理的特征图的元素个数 ； 通过让连续卷积层的观察窗口越来越大，从而引入空间过滤器的层级结构。&lt;/li&gt;
@@ -504,9 +607,47 @@ drive.mount&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1
   &lt;/li&gt;
   &lt;li&gt;VGG-16 v.s. VGG-19
     &lt;ul&gt;
-      &lt;li&gt;&lt;img src=&quot;/img/vgg16.png&quot; alt=&quot;image&quot; /&gt;&lt;/li&gt;
+      &lt;li&gt;VGG-16 结构图 &lt;img src=&quot;/img/vgg16.png&quot; alt=&quot;image&quot; /&gt;&lt;/li&gt;
       &lt;li&gt;VGG-16 包含16层深度神经网络层，VGG-19 19 层&lt;/li&gt;
       &lt;li&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;深度学习&quot;&gt;深度学习&lt;/h1&gt;
+
+&lt;h2 id=&quot;文本与序列&quot;&gt;文本与序列&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;文本向量化(vectorize)实现方法
+    &lt;ul&gt;
+      &lt;li&gt;将文本转化成数值张量的过程，有以下几种实现方式：&lt;/li&gt;
+      &lt;li&gt;将文本分割成&lt;strong&gt;单词&lt;/strong&gt;，并将每个单词转换成一个向量&lt;/li&gt;
+      &lt;li&gt;将文本分割成&lt;strong&gt;字符&lt;/strong&gt;，并将每个字符转换成一个向量&lt;/li&gt;
+      &lt;li&gt;提取单词或字符的&lt;strong&gt;n-gram&lt;/strong&gt;（多个连续单词或者字符的集合）, 并将每个n-gram转换为一个向量。&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;标记(token) 与分词(tokenization) ?
+    &lt;ul&gt;
+      &lt;li&gt;Token，将文本分解而成的单元（单词、字符或n-gram)&lt;/li&gt;
+      &lt;li&gt;Tokenization，文本分解成标记的过程。 所有vectorize过程都是应用某种分词方案，然后将数据向量与生成的标记相关联。&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;关联向量与标记的方法 ？
+    &lt;ul&gt;
+      &lt;li&gt;&lt;strong&gt;One-hot编码&lt;/strong&gt;：每个单词(或字符)与一个唯一的整数索引相关联，然后将这个整数索引 $i$  转换成长度为 $N$（词表大小） 的二进制向量。&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;词嵌入(word embedding)&lt;/strong&gt;: xxx
+        &lt;ul&gt;
+          &lt;li&gt;完成主任务的同时学习词嵌入&lt;/li&gt;
+          &lt;li&gt;预训练词嵌入(pretrained word embedding)，在不同于待解决问题的机器学习任务上预计算好词嵌入，然后将其加载到模型中&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;区别：
+        &lt;ul&gt;
+          &lt;li&gt;one-hot 二进制、稀疏、高维度(维度大小=词表中单词个数)、硬编码；&lt;/li&gt;
+          &lt;li&gt;词嵌入 密集、低维、从数据中学习得到&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
 &lt;/ul&gt;</content><author><name>ssrzz</name></author><category term="ml" /><category term="tutorial" /><summary type="html">数据表示与特征工程</summary></entry><entry><title type="html">Golden section search</title><link href="http://localhost:4000/2019/06/23/Golden-section-search/" rel="alternate" type="text/html" title="Golden section search" /><published>2019-06-23T00:00:00+08:00</published><updated>2019-06-23T00:00:00+08:00</updated><id>http://localhost:4000/2019/06/23/Golden-section-search</id><content type="html" xml:base="http://localhost:4000/2019/06/23/Golden-section-search/">&lt;h2 id=&quot;gssgolden-section-search&quot;&gt;GSS(golden section search)&lt;/h2&gt;
@@ -582,29 +723,4 @@ abs(a-b) &lt; eps \to 0 %]]&gt;&lt;/script&gt;。那么问题是：&lt;/p&gt;
 	&lt;span class=&quot;c&quot;&gt;# 列表非连接函数，最终x1,x2未必能刚好达到 x1 == x2，以上方法目的将搜索区间快速缩小到一个常数范围，然后暴力求解&lt;/span&gt;
 
 	
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>ssrzz</name></author><category term="algorithm" /><category term="golden-section" /><summary type="html">GSS(golden section search)</summary></entry><entry><title type="html">Jekyll &amp;amp; Gitpages</title><link href="http://localhost:4000/2019/06/20/Jekyll-&-Gitpages/" rel="alternate" type="text/html" title="Jekyll &amp; Gitpages" /><published>2019-06-20T00:00:00+08:00</published><updated>2019-06-20T00:00:00+08:00</updated><id>http://localhost:4000/2019/06/20/Jekyll-&amp;-Gitpages</id><content type="html" xml:base="http://localhost:4000/2019/06/20/Jekyll-&amp;-Gitpages/">&lt;h2 id=&quot;jekyll资料&quot;&gt;Jekyll资料&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;官网 &lt;a href=&quot;https://www.jekyll.com.cn/&quot;&gt;jekyll&lt;/a&gt;: 有简单的中文教程，但细节、后续配置主要还是English&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=T1itpPvFWHI&amp;amp;list=PLLAZ4kZ9dFpOPV5C5Ay0pHaa0RJFhcmcB&amp;amp;index=1&quot;&gt;youtube: walk you through jekyll&lt;/a&gt; 有19个小节，每个小节不到10分钟(差不多一上午看完)。  大致讲解如何让Jekyll跑起来，并做一些进行简单的配置&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;前方有坑&quot;&gt;前方有坑&lt;/h2&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;
-    &lt;p&gt;使用&lt;a href=&quot;http://www.disqus.com&quot;&gt;disqus&lt;/a&gt;添加评论模块没有成功，最终使用了Gitalk，相关博客参考：&lt;/p&gt;
-
-    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;http://minghao23.com/2019/02/02/BlogBuild/&quot;&gt;使用Github Pages搭建你的个人网站&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;http://objcoding.com/2017/11/28/Gitalk/&quot;&gt;使用Gitalk搭建博客评论模块&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;设置代码默认字体 &lt;code class=&quot;highlighter-rouge&quot;&gt;css/syntax.css&lt;/code&gt;， 在&lt;code class=&quot;highlighter-rouge&quot;&gt;.highlight pre code *&lt;/code&gt;中添加 &lt;code class=&quot;highlighter-rouge&quot;&gt;font-family: &quot;Courier New&quot;&lt;/code&gt;. 代码效果如下:&lt;/p&gt;
-
-    &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;say&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;():&lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Hello Jekyll.&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;</content><author><name>ssrzz</name></author><category term="jekyll" /><category term="gitpages" /><summary type="html">Jekyll资料</summary></entry></feed>
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>ssrzz</name></author><category term="algorithm" /><category term="golden-section" /><summary type="html">GSS(golden section search)</summary></entry></feed>

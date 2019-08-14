@@ -16,7 +16,7 @@ tags:
 
 * 文献
   * VGG-16论文题目：Very Deep Convolutional Networks for Large-Scale Image Recognition K. Simonyan, A. Zisserman 
-  * VGG-16论文Arxiv链接 https://arxiv.org/abs/1409.1556
+  * VGG-16论文Arxiv链接 https://arxiv.org/pdf/1409.1556.pdf
 * 文件
   * VGG-16模型权重 https://www.cs.toronto.edu/~frossard/vgg16/vgg16_weights.npz
   * TensorFlow 模型  https://www.cs.toronto.edu/~frossard/vgg16/vgg16.py
@@ -28,7 +28,7 @@ VGG(**Visual Geometry Group**)是由K.Simonyan and A.Zisserman提出来的一个
 1. 应用 
    * 给定图片 —> 找到对应图片的分类
    * 可适用于1000类图片
-   * 图片输入尺寸 224 * 224 * 3
+   * 图片输入尺寸 224 * 224 * 3 （RGB image)
 2. 结构
    * 卷积层
    * 最大池化层

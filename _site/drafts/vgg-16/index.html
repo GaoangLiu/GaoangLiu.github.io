@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <title>Interesting Notes &mdash; pluto137's blog</title>
+    <title>深度学习-VGG16 &mdash; pluto137's blog</title>
     <link rel="stylesheet" href="http://localhost:4000/assets/vendor/primer-css/css/primer.css">
     <link rel="stylesheet" href="http://localhost:4000/assets/vendor/primer-markdown/dist/user-content.min.css">
     <link rel="stylesheet" href="http://localhost:4000/assets/vendor/octicons/octicons/octicons.css">
@@ -21,11 +21,11 @@
     
 
     
-    <link rel="canonical" href="http://localhost:4000/drafts/interesting-notes/">
+    <link rel="canonical" href="http://localhost:4000/drafts/vgg-16/">
     <link rel="alternate" type="application/atom+xml" title="pluto137's blog" href="http://localhost:4000/feed.xml">
     <link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
     
-    <meta property="og:title" content="Interesting Notes">
+    <meta property="og:title" content="深度学习-VGG16">
       
     <meta name="keywords" content="ML">
     <meta name="og:keywords" content="ML">
@@ -37,12 +37,12 @@
     
         
     
-    <meta property="og:url" content="http://localhost:4000/drafts/interesting-notes/">
+    <meta property="og:url" content="http://localhost:4000/drafts/vgg-16/">
     <meta property="og:site_name" content="pluto137's blog">
     <meta property="og:type" content="article">
     <meta property="og:locale" content="zh_CN" />
     
-    <meta property="article:published_time" content="2019-07-20">
+    <meta property="article:published_time" content="2019-08-04">
     
     <script src="http://localhost:4000/assets/vendor/jquery/dist/jquery.min.js"></script>
     <script src="http://localhost:4000/assets/js/jquery-ui.js"></script>
@@ -76,16 +76,16 @@
 </script>
 
 
-<section class="collection-head small geopattern" data-pattern-id="Interesting Not">
+<section class="collection-head small geopattern" data-pattern-id="深度学习-VGG16">
 <div class="container">
   <div class="columns">
     <div class="column three-fourths">
       <div class="collection-title">
-        <h1 class="collection-header">Interesting Notes</h1>
+        <h1 class="collection-header">深度学习-VGG16</h1>
         <div class="collection-info">
           
           <span class="meta-info">
-            <span class="octicon octicon-calendar"></span> 2019/07/20
+            <span class="octicon octicon-calendar"></span> 2019/08/04
           </span>
           
           
@@ -100,14 +100,71 @@
 <div class="columns">
   <div class="column three-fourths" >
     <article class="article-content markdown-body">
+    <h1 id="资源">资源</h1>
+
+<ul>
+  <li>文献
     <ul>
-  <li>TPU 果然比 GPU快太多了</li>
-  <li>Ml 的根本问题是<strong>优化与泛化之间的对立</strong> 。 优化：调节模型以在训练数据上得到最佳性能； 泛化：训练好的模型在前所未见的数据上的性能好坏。 理想的模型是刚好在欠拟合和过拟合的界线上，在容量不足和容量过大的界线上。为了找到这条界线，你必须穿过它。</li>
-  <li>ML最终目的是得到良好的泛化，但你无法控制泛化，只能基于训练数据调节模型。</li>
-  <li>ffmpeg -i input.mkv -vf fps=5 face%04d.jpg -hide_banner 从input.mkv中抽取视频，每秒抽取5张</li>
-  <li>AI: 将认知过程自动化的所有尝试，换句话即是，思想的自动化</li>
-  <li>ffmpeg -i input.mp4 -ss 00:00:06.0 -c copy -to 00:01:54.0 output.mp4 To trim videos, time format HH:MM:SS.0 -ss start time -to end time</li>
+      <li>VGG-16论文题目：Very Deep Convolutional Networks for Large-Scale Image Recognition K. Simonyan, A. Zisserman</li>
+      <li>VGG-16论文Arxiv链接 https://arxiv.org/pdf/1409.1556.pdf</li>
+    </ul>
+  </li>
+  <li>文件
+    <ul>
+      <li>VGG-16模型权重 https://www.cs.toronto.edu/~frossard/vgg16/vgg16_weights.npz</li>
+      <li>TensorFlow 模型  https://www.cs.toronto.edu/~frossard/vgg16/vgg16.py</li>
+    </ul>
+  </li>
 </ul>
+
+<h1 id="简介">简介</h1>
+
+<p>VGG(<strong>Visual Geometry Group</strong>)是由K.Simonyan and A.Zisserman提出来的一个卷积神经网络模型。这个模型在ImageNet中 Top-5 测试准确率可达 92.7% （ImageNet要求从 1400 万张图片中分出1000 类)。</p>
+
+<ol>
+  <li>应用
+    <ul>
+      <li>给定图片 —&gt; 找到对应图片的分类</li>
+      <li>可适用于1000类图片</li>
+      <li>图片输入尺寸 224 * 224 * 3 （RGB image)</li>
+    </ul>
+  </li>
+  <li>结构
+    <ul>
+      <li>卷积层</li>
+      <li>最大池化层</li>
+      <li>全连接层</li>
+      <li>总计16层
+        <ul>
+          <li>Convolution using 64 filters</li>
+          <li>Convolution using 64 filters + Max pooling</li>
+          <li>Convolution using 128 filters</li>
+          <li>Convolution using 128 filters + Max pooling</li>
+          <li>Convolution using 256 filters</li>
+          <li>Convolution using 256 filters</li>
+          <li>Convolution using 256 filters + Max pooling</li>
+          <li>Convolution using 512 filters</li>
+          <li>Convolution using 512 filters</li>
+          <li>Convolution using 512 filters + Max pooling</li>
+          <li>Convolution using 512 filters</li>
+          <li>Convolution using 512 filters</li>
+          <li>Convolution using 512 filters + Max pooling</li>
+          <li>Fully connected with 4096 nodes</li>
+          <li>Fully connected with 4096 nodes</li>
+          <li>Output layer with Softmax activation with 1000 nodes</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>属性
+    <ul>
+      <li>模型大小  528MB</li>
+      <li>Top-1 Accuracy: 70.5%</li>
+      <li>Top-5 Accuracy: 90.0%</li>
+    </ul>
+  </li>
+  <li>预训练模型 <a href="https://www.cs.toronto.edu/~frossard/vgg16/vgg16_weights.npz">pre trained model</a></li>
+</ol>
 
     </article>
     <div class="share">
@@ -124,7 +181,7 @@
         <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
         <script>
         var gitalk = new Gitalk({
-            id: '/drafts/interesting-notes/',
+            id: '/drafts/vgg-16/',
             clientID: 'ff0780c2422d2030dcb7',
             clientSecret: '485da2c930c535b6b612b776f3202ca7e1d392a3',
             repo: 'ssrzz.github.io',

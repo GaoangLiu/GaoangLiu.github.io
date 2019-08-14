@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <title>Interesting Notes &mdash; pluto137's blog</title>
+    <title>高斯混合模型 &mdash; pluto137's blog</title>
     <link rel="stylesheet" href="http://localhost:4000/assets/vendor/primer-css/css/primer.css">
     <link rel="stylesheet" href="http://localhost:4000/assets/vendor/primer-markdown/dist/user-content.min.css">
     <link rel="stylesheet" href="http://localhost:4000/assets/vendor/octicons/octicons/octicons.css">
@@ -21,11 +21,11 @@
     
 
     
-    <link rel="canonical" href="http://localhost:4000/drafts/interesting-notes/">
+    <link rel="canonical" href="http://localhost:4000/drafts/gmm/">
     <link rel="alternate" type="application/atom+xml" title="pluto137's blog" href="http://localhost:4000/feed.xml">
     <link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
     
-    <meta property="og:title" content="Interesting Notes">
+    <meta property="og:title" content="高斯混合模型">
       
     <meta name="keywords" content="ML">
     <meta name="og:keywords" content="ML">
@@ -37,12 +37,12 @@
     
         
     
-    <meta property="og:url" content="http://localhost:4000/drafts/interesting-notes/">
+    <meta property="og:url" content="http://localhost:4000/drafts/gmm/">
     <meta property="og:site_name" content="pluto137's blog">
     <meta property="og:type" content="article">
     <meta property="og:locale" content="zh_CN" />
     
-    <meta property="article:published_time" content="2019-07-20">
+    <meta property="article:published_time" content="2019-08-03">
     
     <script src="http://localhost:4000/assets/vendor/jquery/dist/jquery.min.js"></script>
     <script src="http://localhost:4000/assets/js/jquery-ui.js"></script>
@@ -76,16 +76,16 @@
 </script>
 
 
-<section class="collection-head small geopattern" data-pattern-id="Interesting Not">
+<section class="collection-head small geopattern" data-pattern-id="高斯混合模型">
 <div class="container">
   <div class="columns">
     <div class="column three-fourths">
       <div class="collection-title">
-        <h1 class="collection-header">Interesting Notes</h1>
+        <h1 class="collection-header">高斯混合模型</h1>
         <div class="collection-info">
           
           <span class="meta-info">
-            <span class="octicon octicon-calendar"></span> 2019/07/20
+            <span class="octicon octicon-calendar"></span> 2019/08/03
           </span>
           
           
@@ -100,14 +100,77 @@
 <div class="columns">
   <div class="column three-fourths" >
     <article class="article-content markdown-body">
-    <ul>
-  <li>TPU 果然比 GPU快太多了</li>
-  <li>Ml 的根本问题是<strong>优化与泛化之间的对立</strong> 。 优化：调节模型以在训练数据上得到最佳性能； 泛化：训练好的模型在前所未见的数据上的性能好坏。 理想的模型是刚好在欠拟合和过拟合的界线上，在容量不足和容量过大的界线上。为了找到这条界线，你必须穿过它。</li>
-  <li>ML最终目的是得到良好的泛化，但你无法控制泛化，只能基于训练数据调节模型。</li>
-  <li>ffmpeg -i input.mkv -vf fps=5 face%04d.jpg -hide_banner 从input.mkv中抽取视频，每秒抽取5张</li>
-  <li>AI: 将认知过程自动化的所有尝试，换句话即是，思想的自动化</li>
-  <li>ffmpeg -i input.mp4 -ss 00:00:06.0 -c copy -to 00:01:54.0 output.mp4 To trim videos, time format HH:MM:SS.0 -ss start time -to end time</li>
-</ul>
+    <h1 id="gaussian">Gaussian</h1>
+
+<p>Gaussian Mixture Model(GMM)是多个高斯分布函数的线性组合，理论上GMM可以拟合出任意类型的分布，通常用于解决同一集合下的数据包含多个不同的分布的情况（或者是同一类分布但参数不一样，或者是不同类型的分布，比如正态分布和伯努利分布）。</p>
+
+<h1 id="model-formula">Model Formula</h1>
+
+<p>假设随机变量为<script type="math/tex">X</script> ,那么GMM可以表示为：</p>
+
+<script type="math/tex; mode=display">p(x) = \sum\limits_{k=1}^K \pi_k \mathcal{N}(x|\mu_k, \sigma_k)</script>
+
+<p>其中<script type="math/tex">\mathcal{N}(x\mid\mu_k, \sigma_k)</script> 为混合模型中的第<script type="math/tex">k</script>个<strong>分量(component)</strong>； <script type="math/tex">\pi_k</script>为<strong>混合系数(mixture coefficient)</strong> s.t. <script type="math/tex">\sum\limits_{k=1}^K \pi_k = 1</script>，也可以认为是第<script type="math/tex">k</script>个分量的权重。</p>
+
+<h1 id="应用">应用</h1>
+
+<p>将GMM用于聚类时，假设数据服从混合高斯分布（Mixture Gaussian Distribution），那么只要根据数据推出 GMM 的概率分布来即可。</p>
+
+<p>GMM 的 $K$ 个分量实际上对应$K$个<strong>簇(cluster)</strong> 。根据数据来推算概率密度通常被称作 density estimation 。特别地，当我已知（或假定）概率密度函数的形式，而要估计其中的参数的过程被称作<strong>参数估计</strong>。</p>
+
+<h2 id="参数估计">参数估计</h2>
+
+<p>当存在$K$个聚类，公式<script type="math/tex">p(x) = \sum\limits_{k=1}^K \pi_k \mathcal{N}(x\mid\mu_k, \sigma_k)</script>中存在 <script type="math/tex">3K</script> 个未知参数 <script type="math/tex">\{\pi_k, \mu_k, \sigma_k\mid k \in [1..K]\}</script>。如何估算这些参数 ？Short answer:  <strong>最大似然估计</strong>。</p>
+
+<p>TODO</p>
+
+<h2 id="在kaggle练手比赛中的应用">在Kaggle(练手)比赛中的应用</h2>
+
+<p><a href="https://www.kaggle.com/c/data-science-london-scikit-learn/">Data-Science-londo-scikit-learn</a> 给出一个简单的训练集(1000 x 40)，存在40个特征，要求对9000个测试样本进行预测。使用简单的KNN/RandomForest算法，通过网格搜索最佳参数，最终预测结果：0.89828</p>
+
+<p>而采用GMM对数据进行处理后，再使用KNN/随机森林，预测结果可达：0.99143 （前20名的水平）</p>
+
+<h2 id="sklearn--gmm">Sklearn &amp; GMM</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="n">sns</span><span class="p">;</span> <span class="n">sns</span><span class="o">.</span><span class="nb">set</span><span class="p">()</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">from</span> <span class="nn">sklearn.datasets.samples_generator</span> <span class="kn">import</span> <span class="n">make_blobs</span>
+<span class="c"># Produce experiment data, 4 clusters</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">make_blobs</span><span class="p">(</span><span class="n">n_samples</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span> <span class="n">centers</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">cluster_std</span><span class="o">=</span><span class="mf">0.60</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.mixture</span> <span class="kn">import</span> <span class="n">GaussianMixture</span>
+<span class="n">gmm</span> <span class="o">=</span> <span class="n">GaussianMixture</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">gmm</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">labels</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s">'viridis'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>聚类图示</p>
+
+<p><img src="/img/gmm.png" alt="image" /></p>
+
+<p>sklearn.GaussianMixture有一个<code class="highlighter-rouge">predict_proba(X)</code>方法，可以求出混合系统<script type="math/tex">\pi_k</script>。 方法方法返回一个大小为<script type="math/tex">[n_\text{samples}, n_\text{clusters}]</script>的矩阵，矩阵会给出任意属于某个簇的概率。接上例</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">probs</span> <span class="o">=</span> <span class="n">gmm</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">probs</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="nb">round</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+</code></pre></div></div>
+
+<p>得出结果</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[[</span>0.531 0.    0.469 0.   <span class="o">]</span>
+ <span class="o">[</span>0.    0.    0.    1.   <span class="o">]</span>
+ <span class="o">[</span>0.    0.    0.    1.   <span class="o">]</span>
+ <span class="o">[</span>1.    0.    0.    0.   <span class="o">]</span>
+ <span class="o">[</span>0.    0.    0.    1.   <span class="o">]]</span>
+</code></pre></div></div>
+
+<h1 id="参考文献">参考文献</h1>
+
+<ol>
+  <li><a href="https://blog.csdn.net/jinping_shi/article/details/59613054">高斯混合模型（GMM）及其EM算法的理解</a>，阿拉丁吃米粉，CSDN blog</li>
+  <li></li>
+</ol>
+
 
     </article>
     <div class="share">
@@ -124,7 +187,7 @@
         <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
         <script>
         var gitalk = new Gitalk({
-            id: '/drafts/interesting-notes/',
+            id: '/drafts/gmm/',
             clientID: 'ff0780c2422d2030dcb7',
             clientSecret: '485da2c930c535b6b612b776f3202ca7e1d392a3',
             repo: 'ssrzz.github.io',
