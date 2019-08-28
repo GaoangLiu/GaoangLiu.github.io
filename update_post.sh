@@ -1,6 +1,6 @@
 #!/user/bin/bash 
 # read draft folder, copy and rename blog files to _post
-rm _posts/*
+# rm _posts/*
 files=$(ls drafts|grep md)
 for f in $files; do 
 	date=$(cat drafts/$f | grep date | head -n 1 | awk '{print $2}')

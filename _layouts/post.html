@@ -1,91 +1,42 @@
 ---
-layout: default
+layout: main
 ---
 <script type="text/javascript" async src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
 </script>
 
 
-<section class="collection-head small geopattern" data-pattern-id="{{ page.title | truncate: 15, ''}}">
-<div class="container">
-  <div class="columns">
-    <div class="column three-fourths">
-      <div class="collection-title">
-        <h1 class="collection-header">{{ page.title }}</h1>
-        <div class="collection-info">
-          {% if page.date %}
-          <span class="meta-info">
-            <span class="octicon octicon-calendar"></span> {{ page.date | date: "%Y/%m/%d" }}
-          </span>
-          {% endif %}
-          {% for cat in page.categories %}
-          <span class="meta-info">
-            <span class="octicon octicon-file-directory"></span>
-            <a href="{{ site.url }}/categories/#{{ cat }}" title="{{ cat }}">{{ cat }}</a>
-          </span>
+<article class="article-page">
+  <div class="page-content">
+    {% if page.img %}
+    <div class="page-cover-image">
+      <figure>
+        <img class="page-image" src={{ "/assets/img/" | prepend: site.baseurl | append : page.img}} alt="{{page.title}}">
+        {% if page.fig-caption %}
+          <figcaption>{{page.fig-caption}}</figcaption>
+        {% endif %}
+      </figure>
+    </div> <!-- End Page Cover Image -->
+    {% else %}
+    {% endif %}
+    <div class="wrap-content">
+      <header class="header-page">
+        <h1 class="page-title">{{page.title}}</h1>
+        <div class="page-date"><span>{{page.date | date: '%Y, %b %d'}}&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
+      </header>
+      {{content | markdownify}}
+      <div class="page-footer">
+        <div class="page-share">
+          <a href="https://twitter.com/intent/tweet?text={{ page.title }}&url={{ site.url }}{{ page.url }}" title="Share on Twitter" rel="nofollow" target="_blank">Twitter</a>
+          <a href="https://facebook.com/sharer.php?u={{ site.url }}{{ page.url }}" title="Share on Facebook" rel="nofollow" target="_blank">Facebook</a>
+          <a href="https://plus.google.com/share?url={{ site.url }}{{ page.url }}" title="Share on Google+" rel="nofollow" target="_blank">Google+</a>
+        </div>
+        <div class="page-tag">
+          {% for tag in page.tags %}
+            <a href="{{site.baseurl}}/tags#{{tag}}" class="tag">&#35; {{ tag }}</a>
           {% endfor %}
         </div>
       </div>
-    </div>
-  </div>
-</div>
-</section>
-<!-- / .banner -->
-<section class="container content">
-<div class="columns">
-  <div class="column three-fourths" >
-    <article class="article-content markdown-body">
-    {{ content }}
-    </article>
-    <div class="share">
-      {% include sns-share.html %}
-    </div>
-    <div class="comment">
-      {% include comments.html %}
-    </div>
-  </div>
-  <div class="column one-fourth">
-    {% include sidebar-search.html %}
-    {% include sidebar-qrcode.html %}
-    {% include sidebar-post-nav.html %}
-  </div>
-</div>
-</section>
-<!-- /section.content -->
-
-{% if site.anchorjs %}
-<!-- async load function -->
-<script>
-    function async(u, c) {
-      var d = document, t = 'script',
-          o = d.createElement(t),
-          s = d.getElementsByTagName(t)[0];
-      o.src = u;
-      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
-      s.parentNode.insertBefore(o, s);
-    }
-</script>
-<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
-<script>
-    async("//cdnjs.cloudflare.com/ajax/libs/anchor-js/1.1.1/anchor.min.js",function(){
-        // BY Fix:去除标题前的‘#’ issues:<https://github.com/qiubaiying/qiubaiying.github.io/issues/137>
-        // anchors.options = {
-        //   visible: 'always',
-        //   placement: 'right',
-        //   icon: '#'
-        // };
-        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
-    })
-</script>
-<style>
-    /* place left on bigger screen */
-    @media all and (min-width: 800px) {
-        .anchorjs-link{
-            position: absolute;
-            left: -0.75em;
-            font-size: 1.1em;
-            margin-top : -0.1em;
-        }
-    }
-</style>
-{% endif %}
-
+      {% include disqus.html %}
+    </div> <!-- End Wrap Content -->
+  </div> <!-- End Page Content -->
+</article> <!-- End Article Page -->

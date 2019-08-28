@@ -1,127 +1,37 @@
-# ---------------- #
-#   Main Configs   #
-# ---------------- #
-baseurl:
-date_format: "ordinal"
-title: pluto137's blog
-subtitle: 
-description: "blog"
-keywords: ML
-timezone: Asia/Shanghai
-encoding: "utf-8"
-side_bar_repo_limit: 0
+title: Hello, world! I'm Gxxang Liu
+description: > # this means to ignore newlines until "baseurl:"
+  Write an awesome description for your new site here. You can edit this
+  line in _config.yml. It will appear in your document head meta (for
+  Google search results) and in your feed.xml site description.
+permalink: ':title/'
+baseurl: "/flexible-jekyll" # the subpath of your site, e.g. /blog
+url: "" # the base hostname & protocol for your site, e.g. http://example.com
+site-twitter: #if your site has a twitter account, enter it here
 
-# ---------------- #
-#      Author      #
-# ---------------- #
-author: ssrzz
-organization: 
-organization_url: 
-github_username: ssrzz
-location: NULL, China
-email: ssrzz@pm.me.com
+# Author Settings
+author: Gaoang Liu # add your name
+author-img: avatar.png # add your photo
+about-author: I am machine-learning lover focusing on Deep Learning. Always hungry to keep learning. # add description
+# social-twitter: # add your Twitter handle
+# social-facebook: # add your Facebook handle
+social-github: ssrzz # add your Github handle
+# social-linkedin: # add your Linkedin handle
+social-email: ssrzz@pm.me
 
-# ---------------- #
-#    Navigation    #
-# ---------------- #
-navs:
-  -
-    href: /
-    label: 首页
-  # -
-    # href: /categories/
-    # label: 分类
+# Disqus
+discus-identifier: ssrzz # add your discus identifier
 
-  -
-    href: /archives/
-    label: 归档
+# Tracker
+analytics: # Google Analytics
 
-  -
-    href: /wiki/
-    label: wiki
-
-  # -
-  #   href: /links/
-  #   label: 链接
-
-  -
-    href: /about/
-    label: 关于
-
-# ---------------- #
-#       RSS        #
-# ---------------- #
-subscribe_rss: /feed.xml
-
-# ---------------- #
-#      Jekyll      #
-# ---------------- #
+# Build Settings
 markdown: kramdown
-kramdown:
-    input: GFM
-highlighter: rouge
-paginate: 10
-lsi: false
-quiet: false
-excerpt_separator: "\n\n"
-permalink: /:year/:month/:day/:title/
-gems:
-    - jekyll-github-metadata
-    - rouge
-#     - jekyll-html-pipeline
-    - jekyll-paginate
-    - jekyll-sitemap
-    - jekyll-feed
-    - jemoji
-#     - jekyll-mentions
-collections:
-    wiki:
-        output: true
-        permalink: /wiki/:path/
+plugins:
+  - jekyll-sitemap
+  - jekyll-paginate
+  - jemoji
 
-repository: mzlogin/mzlogin.github.io
+paginate: 8
+paginate_path: "/page/:num"
 
-# ---------------- #
-#      Comments    #
-# ---------------- #
-# support provider: disqus, gitment, gitalk
-comments_provider: gitalk
-# !!!重要!!! 请修改下面这些信息为你自己申请的
-# !!!Important!!! Please modify infos below to yours
-# https://disqus.com
-disqus:
-    username: 
-# https://github.com/gitalk/gitalk#install
-gitalk:
-  enable: true      #是否开启Gitalk评论
-  clientID: ff0780c2422d2030dcb7                            #生成的clientID
-  clientSecret: 485da2c930c535b6b612b776f3202ca7e1d392a3    #生成的clientSecret
-  repo: ssrzz.github.io    #仓库名称
-  owner: ssrzz    #github用户名
-  admin: ssrzz
-  distractionFreeMode: true #是否启用类似FB的阴影遮罩
-  labels: ['Gitalk'] 
-  id:
-
-# gitalk:
-#     owner: ssrzz
-#     repo: ssrzz.github.io
-#     clientID: ff0780c2422d2030dcb7
-#     clientSecret: 485da2c930c535b6b612b776f3202ca7e1d392a3    #生成的clientSecret
-# # 在使用其它评论组件时可点击显示 Disqus
-# lazy_load_disqus : false
-
-# ---------------- #
-#      Search      #
-# ---------------- #
-simple_jekyll_search:
-    # 是否支持全文搜索
-    fulltext: false
-    # 最多显示多少条搜索结果
-    limit: 10
-
-# ---------------- #
-#    Analytics     #
-# ---------------- #
-# google:
-#     analytics_id: UA-80669434-1
+exclude: ["node_modules", "gulpfile.js", "package.json", "yarn.lock"]
