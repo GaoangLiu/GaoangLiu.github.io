@@ -1,0 +1,45 @@
+<h2 id="mnist---digit-recognizer">MNIST - Digit Recognizer</h2>
+
+<p>MNIST (“Modified National Institute of Standards and Technology”) — ML领域的“HELLO WORLD”.</p>
+
+<p><a href="https://www.kaggle.com/c/digit-recognizer/leaderboard">Digit Recognizer</a></p>
+
+<ul>
+  <li>Train set 42000, label 为数字，图片以像素向量的形式给出(<script type="math/tex">[pixel_0, … , pixel_{783}]</script>)</li>
+  <li>Test set 28000。目的：尽可能提高图片中数字识别率</li>
+</ul>
+
+<h3 id="随机森林">随机森林</h3>
+
+<p>直接调用<code class="highlighter-rouge">sklearn</code>中RandomForest分类器进行学习验证。</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+<span class="k">def</span> <span class="nf">forest</span><span class="p">():</span>
+	<span class="n">forest_clf</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">random_state</span> <span class="o">=</span> <span class="mi">42</span><span class="p">,</span> <span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+	<span class="n">forest_clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+	<span class="n">test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">'test.csv'</span><span class="p">)</span>
+	<span class="n">final_pred</span> <span class="o">=</span> <span class="n">forest_clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>结果：0.96542, 大约排在2400+/3200+的位置，</p>
+
+<h3 id="cnn">CNN</h3>
+
+<p>卷积神经网络 2 层（1层32filters， 1层 64 filters)</p>
+
+<p>Echos = 6, train:test ratio 19:2(3800:400), result : 0.98528 (1630 / 3200+)</p>
+
+<p>Echos = 16, train:test ratio 20: 1, result : 0.98642 基本上没有多大提升</p>
+
+<h2 id="colab">Colab</h2>
+
+<h3 id="colab-挂载google-drive方法">Colab 挂载Google Drive方法</h3>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from google.colab import drive
+drive.mount<span class="o">(</span><span class="s1">'/gdrive'</span><span class="o">)</span>
+<span class="c"># list files</span>
+<span class="o">!</span><span class="nb">ls</span> /gdrive/<span class="s1">'My Drive'</span>/
+</code></pre></div></div>
+
+<p>第一次挂载需要验证绑定账号，挂载成功后在 <code class="highlighter-rouge">My Drive</code>中建文件夹、上传数据都可以通过 <code class="highlighter-rouge">/gdrive/'My Drive'</code>打开。</p>
+

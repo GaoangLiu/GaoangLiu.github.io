@@ -1,0 +1,27 @@
+<h2 id="halting-problem">Halting Problem</h2>
+
+<p>停机问题: 判断任意一个程序是否能在有限的时间之内结束运行的问题。等价于如下判定问题：是否存在一个程序<script type="math/tex">P</script>，对于任意输入的程序<script type="math/tex">\omega</script>，能够判断<script type="math/tex">\omega</script>会在有限时间内结束或者死循环。</p>
+
+<p>HP是不可判定的，本质上是 <strong>一阶逻辑的不自洽性</strong>。</p>
+
+<h2 id="一个简单的证明">一个简单的证明</h2>
+
+<p>Source <a href="https://www.youtube.com/watch?v=92WHN-pAFCs">计算机不是万能的</a></p>
+
+<ul>
+  <li>假设存在一个机器 <script type="math/tex">T</script> ，它总能判定另外一机器 <script type="math/tex">H</script> 对于任意输入 <script type="math/tex">\omega</script> 都能停机</li>
+  <li>引入机器 <script type="math/tex">D</script>, 对于任意输入 <script type="math/tex">\omega</script>， 复制并输出两份 <script type="math/tex">\omega</script> ; 机器 <script type="math/tex">R</script> 读入 <script type="math/tex">\omega \in \{ \text{stuck}, \text{not stuck} \}</script>，输出 <script type="math/tex">\neg \omega</script></li>
+  <li>拼接以上3个机器 <script type="math/tex">D -> T -> R</script> 得到 <script type="math/tex">X</script></li>
+</ul>
+
+<p>Question: <script type="math/tex">X</script> 输入 <script type="math/tex">X</script> (written as <script type="math/tex">X(X)</script>) 是否停机 ？</p>
+
+<ol>
+  <li>
+    <p>停机 ： =&gt; <script type="math/tex">R</script> 的读入为<em>不停机</em>，=&gt;  <script type="math/tex">T</script> 读入 <script type="math/tex">(X, X)</script> 输出为不停机 ，=&gt; <script type="math/tex">X(X)</script>不停机，矛盾 ;</p>
+  </li>
+  <li>
+    <p>不停机： =&gt; <script type="math/tex">R</script> 的读入为<em>停机</em>，=&gt;  <script type="math/tex">T</script> 读入 <script type="math/tex">(X, X)</script> 输出为停机 ，=&gt; <script type="math/tex">X(X)</script>停机，矛盾 。</p>
+  </li>
+</ol>
+

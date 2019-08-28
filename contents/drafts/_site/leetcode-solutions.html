@@ -1,0 +1,87 @@
+<h2 id="313-super-ugly-numbers">313 super ugly numbers</h2>
+
+<p><a href="https://leetcode.com/problems/super-ugly-number/">Que</a>:  Super ugly numbers (SUN hereafter) are positive numbers whose all prime factors are in the  given prime list primes of size <script type="math/tex">k</script>,  (e.g., primes = [2, 7, 13, 19])  Write a program to find the <script type="math/tex">n</script>-th super ugly number.</p>
+
+<h3 id="method-1-brute-force">Method 1: Brute Force</h3>
+
+<p>Idea: searching from 1 to some <script type="math/tex">m>>n</script> to find the <script type="math/tex">n</script>-th number which is super ugly.</p>
+
+<p>Comment: bad solution when <script type="math/tex">n</script> is large, as we have to decompose each number <script type="math/tex">% <![CDATA[
+1 < i < m %]]></script> to figure out whether it is super ugly.</p>
+
+<h3 id="method-2-generating-suns-incrementally">Method 2: Generating SUNs incrementally</h3>
+
+<p>Idea:  First SUN is surely <script type="math/tex">1</script>, the second SUN is <script type="math/tex">\text{min}(primes) = 2</script> (assuming <script type="math/tex">primes=[2,7,13,19]</script>) , the third ? We have to do some calculations, let <script type="math/tex">U = [1, 2]</script> be the first two generated SUNs, <script type="math/tex">C = [p * u  \text{ for } p \in primes \text{  for  } u \in U ] \backslash U</script>. Then <script type="math/tex">U_3 = \text{min}(C) = 4</script> , making <script type="math/tex">U=[1,2,4]</script>.</p>
+
+<p>By repeating the previous procedure, we can find the <script type="math/tex">n</script>-th SUN within time <script type="math/tex">O(n^2 * m)</script>, where <script type="math/tex">m</script> is the size of <script type="math/tex">primes</script>.</p>
+
+<p>Or, we can speed up the procedure by keeping track of numbers we’ve calculated before using an auxiliary array <script type="math/tex">idx</script> , <script type="math/tex">idx[i]</script> means previous  <script type="math/tex">(idx[i]-1)</script> SUNs with one prime factor being <script type="math/tex">primes[i]</script> have been calcuated, with the results stored either in <script type="math/tex">U</script>, or in the candidiate set <script type="math/tex">C</script>.</p>
+
+<p>More specifically, initialize <script type="math/tex">idx = [0,0,0,0] , U = [1], C = [p * u  \text{ for } p \in primes \text{  for  } u \in U ] \backslash U = primes</script> , the second SUN is <script type="math/tex">\text{min} (C) = 1 * 2</script>, we update <script type="math/tex">idx = [1(0+1),0,0,0]</script></p>
+
+<p>3-rd SUN is <script type="math/tex">min(C')</script>, where <script type="math/tex">C'  = [U_{idx[0]} * primes[0], U_{idx[1]} * primes[1], …] = [4,7,13,19]</script>. At this time, the lucky <script type="math/tex">primes[i]</script> remains <script type="math/tex">2</script> with <script type="math/tex">i == 0</script>, so we update <script type="math/tex">idx = [2(1+1),0,0,0]</script>.</p>
+
+<p>4-th: <script type="math/tex">C'' = [8,7,13,19], U = [1,2,4,7], idx = [2,1,0,0]</script></p>
+
+<p>5-th: <script type="math/tex">C'' = [8,14,13,19], U = [1,2,4,7,8], idx = [3,1,0,0]</script></p>
+
+<p>6-th: <script type="math/tex">C'' = [14,14,13,19], U = [1,2,4,7,8,13], idx = [3,1,1,0]</script></p>
+
+<p>…</p>
+
+<p>Loop until we find the <script type="math/tex">n</script>-th SUN. Time Complexity <script type="math/tex">O(n*m)</script></p>
+
+<h3 id="python-code">Python code</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="k">def</span> <span class="nf">nthSuperUglyNumber</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">primes</span><span class="p">):</span>
+        <span class="n">ugly</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">n</span>
+        <span class="n">factors</span> <span class="o">=</span> <span class="n">primes</span><span class="p">[:]</span>
+        <span class="n">idx</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">primes</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+            <span class="n">ugly</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">factors</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">primes</span><span class="p">)):</span>
+                <span class="k">if</span> <span class="n">factors</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">==</span> <span class="n">ugly</span><span class="p">[</span><span class="n">i</span><span class="p">]:</span>
+                    <span class="n">idx</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+                    <span class="n">factors</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">primes</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">*</span> <span class="n">ugly</span><span class="p">[</span><span class="n">idx</span><span class="p">[</span><span class="n">j</span><span class="p">]]</span>
+        <span class="k">return</span> <span class="n">ugly</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+</code></pre></div></div>
+
+<h1 id="algorithm">Algorithm</h1>
+
+<h2 id="reservoir-sampling">Reservoir sampling</h2>
+
+<p>从包含<script type="math/tex">n</script>个项目的集合中选取<script type="math/tex">k</script>个样本，其中<script type="math/tex">n</script>为一很大或未知的数量，尤其适用于不能把所有项目都存放到内存的情况。</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># S is the (large) list</span>
+<span class="n">res</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">k</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
+  <span class="n">res</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">S</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+<span class="n">cnt</span> <span class="o">=</span> <span class="n">k</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">S</span><span class="p">[</span><span class="n">k</span><span class="p">:]:</span>
+  <span class="n">j</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">cnt</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">k</span><span class="p">:</span>
+    <span class="n">res</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">n</span>
+  <span class="n">cnt</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="c"># when k = 1</span>
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">S</span><span class="p">[</span><span class="n">k</span><span class="p">:]:</span>
+  <span class="n">j</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">cnt</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">j</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span> <span class="n">res</span> <span class="o">=</span> <span class="n">n</span>
+  <span class="n">cnt</span> <span class="o">+=</span> <span class="mi">1</span>
+</code></pre></div></div>
+
+<p>证明每个样本被抽取的概率为 <script type="math/tex">1/n</script> . 考虑第<script type="math/tex">j \in [0 .. n -1]</script> 个元素被最终抽到的可能性：</p>
+
+<script type="math/tex; mode=display">P_j = \frac{1}{j+1} \prod_{i=j+1}^{n-1}1 - \frac{1}{i+1})  = \frac{1}{j+1} \cdot \frac{j+1}{j+2} \cdot \frac{j+2}{j+3} \cdots \frac{n-1}{n-1+1} = \frac{1}{n}</script>
+
+<p>特别的，当 <script type="math/tex">j==n-1, P_{n-1} = \frac{1}{n}</script> 直接从算法中得出。</p>
+
+<p>应用</p>
+
+<ul>
+  <li><a href="https://leetcode.com/problems/linked-list-random-node/description/">Linked List Random Node</a></li>
+  <li>Todo</li>
+</ul>
+
