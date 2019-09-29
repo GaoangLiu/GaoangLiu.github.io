@@ -1,4 +1,0 @@
-User-agent: *
-Disallow:
-
-Sitemap: https://runbing.me/sitemap.xml
