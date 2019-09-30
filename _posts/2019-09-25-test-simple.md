@@ -1,16 +1,50 @@
 ---
-layout:     post
-title:      Learn Deep Learning
+layout:     simple
+title:      expor so 
 date:       2019-09-25
-img:  deeplearning.png
 tags: [Deep Learning, AI]
+categories: 
+- AI
+- Deep learning
 ---
+
+{%highlight python%}
+def expr(str):
+    print(str)
+{%endhighlight%}    
+
+
+<img src="dl.vs.ai.png">
+
+Feedly is a news aggregator application for various web browsers and mobile devices running iOS and Android. It is also available as a cloud-based service. It compiles news feeds from a variety of online sources for the user to customize and share with others. Feedly was first released by DevHD in 2008. Wikipedia
+
+Developer(s): DevHD
+
+Operating system: Android 5.1 or later; iOS 10.0 or later (iPhone, iPad, and iPod touch)
+
+Initial release date: 2008
+
+License: Freemium
+
+Platforms: Web browser, Handheld Devices
+
+Written in: Java (back-end), JavaScript, HTML, Cascading Style Sheets (UI)
+
+```
+def expr(str):
+    print(str)
+```
+
+Some formula:
+$$ \alpha \times \beta = \Lambda $$
 
 20世纪40~60年代，控制论(cybernetics)。随着生物学习理论的发展与第一个模型的实现(如感知机1958)，能实现单个神经元的训练。
 
 <!--break-->
 
 # 历史
+$abc$
+
 
 ### 三次浪潮
 20世纪40~60年代，控制论(cybernetics)。随着生物学习理论的发展与第一个模型的实现(如感知机1958)，能实现单个神经元的训练。
@@ -30,7 +64,9 @@ tags: [Deep Learning, AI]
 
 总：DL是ML的一种，是一种能够使用计算机系统从数据和经验中得到提升的技术。
 
-<p align="center"> <img src="{{site.baseurl}}/assets/img/dl.vs.ai.png" width=500> </p>
+<p align="center"> <img src="{{site.baseurl}}/images/dl.vs.ai.png" style="width:600"> </p>
+<!-- ![some](/images/dl.vs.ai.png) -->
+
 
 
 <!-- Math -->
@@ -63,3 +99,6 @@ A: 矩阵必须包含**至少一组$$m$$个线性无关**的向量。
 
 
  
+
+
+

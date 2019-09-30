@@ -53,3 +53,12 @@ paginate: 10
 paginate_path: "/page/:num/"
 
 permalink: /archives/:title.html
+
+defaults:
+  - scope:
+      path: "images/"
+    values:
+      image: true 
+
+
+
