@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>SSH Defence | Lucas’s Blog</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="SSH Defence" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="lastb 查看失败的SSH登录尝试历史，如果一段时间内出现一连段的相同或相近的IP，那么恭喜，这台服务器被盯上了。" />
+<meta property="og:description" content="lastb 查看失败的SSH登录尝试历史，如果一段时间内出现一连段的相同或相近的IP，那么恭喜，这台服务器被盯上了。" />
+<link rel="canonical" href="http://localhost:4000/archives/SSH-Defence.html" />
+<meta property="og:url" content="http://localhost:4000/archives/SSH-Defence.html" />
+<meta property="og:site_name" content="Lucas’s Blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-07-03T00:00:00+08:00" />
+<script type="application/ld+json">
+{"headline":"SSH Defence","dateModified":"2019-07-03T00:00:00+08:00","url":"http://localhost:4000/archives/SSH-Defence.html","datePublished":"2019-07-03T00:00:00+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/archives/SSH-Defence.html"},"description":"lastb 查看失败的SSH登录尝试历史，如果一段时间内出现一连段的相同或相近的IP，那么恭喜，这台服务器被盯上了。","@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link href="https://fonts.googleapis.com/css?family=Domine|Asap|Noto+Sans+SC|Noto+Serif+SC&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Lucas's Blog" /></head><body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Lucas&#39;s Blog</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/links/">Links</a><a class="page-link" href="/tags/">Tags</a><a class="page-link" href="/categories/">Categories</a><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <script type="text/javascript" async src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">SSH Defence</h1>
+    <p class="post-meta"><time class="dt-published" datetime="2019-07-03T00:00:00+08:00" itemprop="datePublished">Published: Jul 3, 2019</time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p><code class="highlighter-rouge">lastb</code>  查看失败的SSH登录尝试历史，如果一段时间内出现一连段的相同或相近的IP，那么恭喜，这台服务器被盯上了。</p>
+
+<p>注： 防护工具也只是工具，不能保护服务器100%安全。 保护好服务器，首先要排除错误选项，包括但不限于： <strong>弱密码、默认端口、不重视异常登录</strong>.</p>
+
+<h2 id="endlessh">Endlessh</h2>
+
+<p><a href="https://github.com/skeeto/endlessh">Endlessh</a> is an SSH tarpit <a href="https://nullprogram.com/blog/2019/03/22/">that <em>very</em> slowly sends an endless, random SSH banner </a>.</p>
+
+<p>将计就计，欺骗攻击者，使其客户端(攻击工具或程序) 长时间卡住(数小时或者数日)。</p>
+
+<h3 id="usage">Usage</h3>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Usage</span><span class="p">:</span> <span class="n">endlessh</span> <span class="p">[</span><span class="o">-</span><span class="n">vh</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">d</span> <span class="n">MS</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">f</span> <span class="n">CONFIG</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">l</span> <span class="n">LEN</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">m</span> <span class="n">LIMIT</span><span class="p">]</span> <span class="p">[</span><span class="o">-</span><span class="n">p</span> <span class="n">PORT</span><span class="p">]</span>
+  <span class="o">-</span><span class="mi">4</span>        <span class="n">Bind</span> <span class="n">to</span> <span class="n">IPv4</span> <span class="n">only</span>
+  <span class="o">-</span><span class="mi">6</span>        <span class="n">Bind</span> <span class="n">to</span> <span class="n">IPv6</span> <span class="n">only</span>
+  <span class="o">-</span><span class="n">d</span> <span class="n">INT</span>    <span class="n">Message</span> <span class="n">millisecond</span> <span class="n">delay</span> <span class="p">[</span><span class="mi">10000</span><span class="p">]</span>
+  <span class="o">-</span><span class="n">f</span>        <span class="n">Set</span> <span class="ow">and</span> <span class="n">load</span> <span class="n">config</span> <span class="nb">file</span> <span class="p">[</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">endlessh</span><span class="o">/</span><span class="n">config</span><span class="p">]</span>
+  <span class="o">-</span><span class="n">h</span>        <span class="n">Print</span> <span class="n">this</span> <span class="n">help</span> <span class="n">message</span> <span class="ow">and</span> <span class="nb">exit</span>
+  <span class="o">-</span><span class="n">l</span> <span class="n">INT</span>    <span class="n">Maximum</span> <span class="n">banner</span> <span class="n">line</span> <span class="n">length</span> <span class="p">(</span><span class="mi">3</span><span class="o">-</span><span class="mi">255</span><span class="p">)</span> <span class="p">[</span><span class="mi">32</span><span class="p">]</span>
+  <span class="o">-</span><span class="n">m</span> <span class="n">INT</span>    <span class="n">Maximum</span> <span class="n">number</span> <span class="n">of</span> <span class="n">clients</span> <span class="p">[</span><span class="mi">4096</span><span class="p">]</span>
+  <span class="o">-</span><span class="n">p</span> <span class="n">INT</span>    <span class="n">Listening</span> <span class="n">port</span> <span class="p">[</span><span class="mi">2222</span><span class="p">]</span>
+  <span class="o">-</span><span class="n">v</span>        <span class="n">Print</span> <span class="n">diagnostics</span> <span class="n">to</span> <span class="n">standard</span> <span class="n">output</span> <span class="p">(</span><span class="n">repeatable</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="tips">Tips</h3>
+
+<ul>
+  <li>
+    <p>爆破手通常会选择直接尝试端口22(多数机器的默认端口，且很多用户未更改)，所以使用endless前先将端口改成一个好记但不常用的端口，比如：8964</p>
+  </li>
+  <li>
+    <p>Endlessh 默认监听2222，为了欺骗攻击者，手动指定监听22端口</p>
+
+    <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">endlessh</span> <span class="o">-</span><span class="n">p</span> <span class="mi">22</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>使用参数 <code class="highlighter-rouge">-v</code> 保持脚本运行日志 <code class="highlighter-rouge">endlessh -v -p 22 &gt; end.log</code></p>
+  </li>
+</ul>
+
+<h2 id="fail2ban">Fail2ban</h2>
+
+<p><a href="https://github.com/fail2ban/fail2ban">Fail2ban</a> 基于auth日志文件工作，默认情况下它会扫描所有 auth 日志文件，如 <code class="highlighter-rouge">/var/log/auth.log</code>、<code class="highlighter-rouge">/var/log/apache/access.log</code> 等，并禁止带有恶意标志的IP，比如密码失败太多。</p>
+
+<p>Fail2ban 可用于在指定的时间内拒绝 IP 地址，可以发送邮件通知。 Fail2ban能够降低错误认证尝试的速度，但是它不能消除弱认证带来的风险。</p>
+
+<h3 id="安装">安装</h3>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">git</span> <span class="nb">clone</span> <span class="n">https</span><span class="ss">:/</span><span class="o">/</span><span class="n">github</span><span class="p">.</span><span class="nf">com</span><span class="o">/</span><span class="n">fail2ban</span><span class="o">/</span><span class="n">fail2ban</span><span class="p">.</span><span class="nf">git</span>
+<span class="n">cd</span> <span class="n">fail2ban</span>
+<span class="n">sudo</span> <span class="n">python</span> <span class="n">setup</span><span class="p">.</span><span class="nf">py</span> <span class="n">install</span> <span class="p">,</span> <span class="c1">## or </span>
+
+<span class="c1"># For Debian/Ubuntu</span>
+<span class="n">apt</span> <span class="o">-</span><span class="n">y</span> <span class="n">install</span> <span class="n">fail2ban</span>
+<span class="c1"># For CentOS 6+</span>
+<span class="n">yum</span> <span class="o">-</span><span class="n">y</span> <span class="n">install</span> <span class="n">fail2ban</span>
+</code></pre></div></div>
+
+<h3 id="配置">配置</h3>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">cp</span> <span class="sr">/etc/</span><span class="n">fail2ban</span><span class="o">/</span><span class="n">jail</span><span class="p">.</span><span class="nf">conf</span> <span class="sr">/etc/</span><span class="n">fail2ban</span><span class="o">/</span><span class="n">local</span><span class="p">.</span><span class="nf">conf</span>
+
+<span class="c1"># emacs /etc/fail2ban/local.conf</span>
+<span class="p">[</span><span class="no">DEFAULT</span><span class="p">]</span>
+<span class="n">ignoreip</span> <span class="o">=</span> <span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="o">/</span><span class="mi">8</span> <span class="mf">192.168</span><span class="o">.</span><span class="mf">1.100</span><span class="o">/</span><span class="mi">24</span>
+<span class="n">bantime</span> <span class="o">=</span> <span class="mi">600</span>
+<span class="n">findtime</span> <span class="o">=</span> <span class="mi">600</span>
+<span class="n">maxretry</span> <span class="o">=</span> <span class="mi">3</span>
+
+<span class="c1"># SSH servers</span>
+<span class="p">[</span><span class="n">sshd</span><span class="p">]</span>
+<span class="n">enabled</span> <span class="o">=</span> <span class="kp">true</span>
+<span class="n">port</span> <span class="o">=</span> <span class="n">ssh</span>
+<span class="n">logpath</span> <span class="o">=</span> <span class="sx">%(sshd_log)</span><span class="n">s</span>
+<span class="n">backend</span> <span class="o">=</span> <span class="sx">%(sshd_backend)</span><span class="n">s</span>
+</code></pre></div></div>
+
+<ol>
+  <li>不要直接操作主配置文件 <code class="highlighter-rouge">jail.conf</code>，文件包含一组预定义的过滤器。只要有新的更新，所有配置都会被重置。</li>
+  <li>参数
+    <ul>
+      <li><code class="highlighter-rouge">ignoreip</code> 忽略特定IP</li>
+      <li><code class="highlighter-rouge">bantime</code> 被禁时间(单位 second)</li>
+      <li><code class="highlighter-rouge">maxtry</code> 是主机被禁止之前的失败次数</li>
+      <li><code class="highlighter-rouge">findtime</code> 如果在最近 <code class="highlighter-rouge">findtime</code> 秒期间已经发生了 <code class="highlighter-rouge">maxretry</code> 次重试，则主机会被禁止</li>
+    </ul>
+  </li>
+</ol>
+
+<p>更改配置后 <code class="highlighter-rouge">systemctl restart fail2ban.service</code>重启fail2ban.</p>
+
+<p><code class="highlighter-rouge">fail2ban-client status ssh</code>  获取禁止的 IP ， <code class="highlighter-rouge">fail2ban-client set ssh unbanip 1.2.3.4</code>来释放被ban掉的IP.</p>
+
+
+  </div>
+
+  <p>写的不错，分享一下：</p>
+  
+  <a href="https://twitter.com/intent/tweet?text=SSH Defence&url=http://localhost:4000/archives/SSH-Defence.html" title="Share on Twitter" rel="nofollow" target="_blank">Twitter</a>
+  <a href="https://facebook.com/sharer.php?u=http://localhost:4000/archives/SSH-Defence.html" title="Share on Facebook" rel="nofollow" target="_blank">Facebook</a>
+  <a href="https://plus.google.com/share?url=http://localhost:4000/archives/SSH-Defence.html" title="Share on Google+" rel="nofollow" target="_blank">Google+</a><a class="u-url" href="/archives/SSH-Defence.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Lucas&#39;s Blog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name"></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/ssrzz"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">ssrzz</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>I&#39;m a deep learning lover.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer><script src="/scripts/common.js?t=20191001191256"></script>
+
+  
+
+  </body>
+</html>

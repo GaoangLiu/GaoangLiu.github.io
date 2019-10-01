@@ -4,6 +4,7 @@ title:      Linux memo
 date:       2019-09-09
 img: linux4.jpg
 tags: [linux]
+catagories: [Linux]
 ---
 Just memo, not a blog. 
 
@@ -48,9 +49,22 @@ echo "Terrible test" | tr -d 't'
 echo "char char 8742" | tr -cd [:digit:]
 ```
 
+### shred
+
+Safely overwrite and remove files. 
+
+`shred [options] file`
+
+* `-n`  overwrite n times, default `n=3`
+* `-v` verbose 
+* `-z` add final overwrite with zeros to hiding shredding
+* `-u` remove file after overwritting 
+
+Note: `rm t.txt` 并没有真正删除文件，只是删除了文件的索引，文件内容还在磁盘上。 
 
 
 ## 树莓派
+
 ### SSH卡顿
 ssh登录后反应很慢，`ls`命令都响应半天。重启多次，还是一样结果。
 与战略伙伴[Google](www.google.com)进行沟通后发现，问题可能在于路由器。于是重启路由器，然后问题解决，简直玄学。

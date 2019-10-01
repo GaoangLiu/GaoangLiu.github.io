@@ -1,0 +1,92 @@
+<script type="text/javascript" async src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<h>Simple Post</h>
+<hr> 
+
+<body style="padding: 10px 10% ;">
+    
+<figure class="highlight"><pre><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">expr</span><span class="p">(</span><span class="nb">str</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span></code></pre></figure>
+
+<p><img src="dl.vs.ai.png" /></p>
+
+<p>Feedly is a news aggregator application for various web browsers and mobile devices running iOS and Android. It is also available as a cloud-based service. It compiles news feeds from a variety of online sources for the user to customize and share with others. Feedly was first released by DevHD in 2008. Wikipedia</p>
+
+<p>Developer(s): DevHD</p>
+
+<p>Operating system: Android 5.1 or later; iOS 10.0 or later (iPhone, iPad, and iPod touch)</p>
+
+<p>Initial release date: 2008</p>
+
+<p>License: Freemium</p>
+
+<p>Platforms: Web browser, Handheld Devices</p>
+
+<p>Written in: Java (back-end), JavaScript, HTML, Cascading Style Sheets (UI)</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def expr(str):
+    print(str)
+</code></pre></div></div>
+
+<p>Some formula:
+<script type="math/tex">\alpha \times \beta = \Lambda</script></p>
+
+<p>20世纪40~60年代，控制论(cybernetics)。随着生物学习理论的发展与第一个模型的实现(如感知机1958)，能实现单个神经元的训练。</p>
+
+<!--break-->
+
+<h1 id="历史">历史</h1>
+<p>$abc$</p>
+
+<h3 id="三次浪潮">三次浪潮</h3>
+<p>20世纪40~60年代，控制论(cybernetics)。随着生物学习理论的发展与第一个模型的实现(如感知机1958)，能实现单个神经元的训练。</p>
+
+<p>20世纪80~90年代(1980~1995)，联结主义(connectionism)。 可以使用反向传播(1986)训练具有一两个隐藏层的神经网络。</p>
+
+<p>2006~now，深度学习的复兴</p>
+
+<h3 id="deep-learning-vs-ai">Deep Learning v.s. AI</h3>
+
+<p>许多AI任务可以通过<strong>提取一个合适特征，然后将这些特征提供给简单的机器学习算法</strong>来解决问题。 但提取哪些特征是一个难题，解决这个问题的途径之一是<strong>使用机器学习来发掘表示本身</strong>，这种方法称为：表示学习(representation learning)。</p>
+
+<p>典型例子：自编码器(autoencoder)。学习到的表示往往比手动设计的表示表现的要好，且只需极少人工干预。</p>
+
+<p>表示学习的一个困难在于：多个变差因素同时影响着我们能够观察到的每一个数据，从原始数据是抽取高层次、抽象的特征非常困难。深度学习通过其他简单的表示来表达复杂表示，这解决了表示学习的核心问题。
+典型例子：前馈深度网络。</p>
+
+<p>总：DL是ML的一种，是一种能够使用计算机系统从数据和经验中得到提升的技术。</p>
+
+<p align="center"> <img src="/images/dl.vs.ai.png" style="width:600" /> </p>
+<!-- ![some](/images/dl.vs.ai.png) -->
+
+<!-- Math -->
+<h1 id="basic-math">Basic Math</h1>
+
+<h2 id="线性相关与生成子空间">线性相关与生成子空间</h2>
+<p align="center">  $$ Ax = b  $$ </p>
+<p>其中 <script type="math/tex">A \in \mathrm{R}^{m \times n}</script> matrix, <script type="math/tex">b \in \mathrm{R}^n</script> vector。对于上面的方程组来说，要么不存在解，要么存在唯一解或者无穷解，不可能存在大于1但小于无穷个解的情况 (不然，两个解的线性组合 <script type="math/tex">\alpha x + (1-\alpha)y</script>也是方程组的解)。</p>
+
+<h3 id="方程在每一点存在解的必要条件-n-geq-m">方程在每一点存在解的必要条件 <script type="math/tex">n \geq m</script></h3>
+
+<p><script type="math/tex">Ax = \Sigma_{i\in[1,n]} x_i A_{:, i} = \Sigma_i c_i v^{(i)}</script>, where <script type="math/tex">v^{(i)}</script> 是<script type="math/tex">A</script>的列向量。 判定以上方程组是否存在解，即判定<script type="math/tex">b</script>是否在<script type="math/tex">A</script>的生成子空间中。 这个特殊的生成子空间称为<script type="math/tex">A</script>的<strong>列空间</strong>或<strong>值域(range)</strong> .</p>
+
+<p>因为 <script type="math/tex">b \in \mathrm{R^m}</script>，如果 <script type="math/tex">\mathrm{R}^m</script> 中一个点不在 <script type="math/tex">A</script> 的列空间中，那该点对应的 <script type="math/tex">b</script> 没有解，因此 <script type="math/tex">A</script> 至少有 <script type="math/tex">m</script> 列，即 <script type="math/tex">n \geq m</script>。 举例，<script type="math/tex">m = 3, n = 2</script>，那么无论 <script type="math/tex">x</script> 如何变化，它只能将 <script type="math/tex">A</script> 映射到 <script type="math/tex">\mathrm{R}^3</script>的一个平面，只有当 <script type="math/tex">b</script> 处于这个平面时， 方程才有解。</p>
+
+<h3 id="存在解的充分条件">存在解的充分条件</h3>
+<p><script type="math/tex">n \geq m</script> 并不能保证方程一定存在解，因为列向量可能<strong>线性相关</strong>，即某一个向量可能表示为其他一组向量的线性组合。要使其列空间涵盖整个 <script type="math/tex">\mathrm{R}^m</script>， 需要满足什么条件 ？</p>
+
+<p>A: 矩阵必须包含<strong>至少一组<script type="math/tex">m</script>个线性无关</strong>的向量。</p>
+
+<p>但要使矩阵可逆，需要保证对每一个 <script type="math/tex">b</script> 至多只有一个解，因此要保证矩阵至多只有 <script type="math/tex">m</script> 个列向量，即必须是一个方阵(square)，且所有列向量线性无关。这样的矩阵称为 <strong>奇异矩阵</strong>。</p>
+
+<h3 id="特征分解">特征分解</h3>
+<p>矩阵 <script type="math/tex">A</script> 的<strong>特征向量(eigenvector)</strong>是指与 <script type="math/tex">A</script> 相乘后相当于对该向量进行缩放的非零向量 <script type="math/tex">v</script>:  <script type="math/tex">Av = \lambda v</script> ，
+其中标题 <script type="math/tex">\lambda</script> 称为这个特征向量对应的<strong>特征值(eigenvalue)</strong>.</p>
+<ul>
+  <li>如果 <script type="math/tex">v</script> 是 <script type="math/tex">A</script> 的特征向量，那么任意缩放后的向量 <script type="math/tex">sv(s \in \mathrm{R}, s \neq 0)</script> 也是 <script type="math/tex">A</script> 的特征向量</li>
+</ul>
+
+
+</body>
+

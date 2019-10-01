@@ -1,0 +1,913 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-10-01T19:12:56+08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Lucas’s Blog</title><subtitle>I'm a deep learning lover.</subtitle><author><name></name></author><entry><title type="html">index</title><link href="http://localhost:4000/archives/index.html" rel="alternate" type="text/html" title="index" /><published>2019-09-28T00:00:00+08:00</published><updated>2019-09-28T00:00:00+08:00</updated><id>http://localhost:4000/archives/index</id><content type="html" xml:base="http://localhost:4000/archives/index.html">&lt;p&gt;✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦⚉✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Title&lt;/th&gt;
+      &lt;th&gt;Date&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;/index&quot;&gt;index&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;2019-09-28&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;/Learn-Deep-Learning&quot;&gt;Learn Deep Learning&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;2019-09-25&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;/Learn-Deep-Learning&quot;&gt;Learn Deep Learning&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;2019-09-25&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;/Telegram-MTProxy&quot;&gt;Telegram-MTProxy&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;2019-08-29&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;/Linux-memo&quot;&gt;Linux memo&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;2019-09-09&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;/Sentiment-Analysis-on-Movie-Reviews&quot;&gt;Sentiment Analysis on Movie Reviews&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;2019-09-02&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;/Text-processing-in-deep-learning&quot;&gt;Text processing in deep learning&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;2019-09-09&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;/Docker-Basics&quot;&gt;Docker Basics&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;2019-09-04&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;/Zeller's-Congruence&quot;&gt;Zeller’s Congruence&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;2019-09-09&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;/VGG-16-in-Deep-Learning&quot;&gt;VGG-16 in Deep Learning&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;2019-08-04&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;/Pooling-in-CNN&quot;&gt;Pooling in CNN&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;2019-08-27&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;/高斯混合模型&quot;&gt;高斯混合模型&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;2019-08-03&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;/SSH-Defence&quot;&gt;SSH Defence&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;2019-07-03&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;/Sorting-Algorithms&quot;&gt;Sorting Algorithms&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;2019-07-05&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;/过拟合与欠拟合&quot;&gt;过拟合与欠拟合&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;2019-07-05&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;/机器学习笔记&quot;&gt;机器学习笔记&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;2019-06-25&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;/Leetcode-Solutions&quot;&gt;Leetcode Solutions&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;2019-07-03&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;/Kaggle-Competitions&quot;&gt;Kaggle Competitions&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;2019-07-05&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;/Jekyll-&amp;amp;-Gitpages&quot;&gt;Jekyll &amp;amp; Gitpages&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;2019-06-20&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;/Interesting-Notes&quot;&gt;Interesting Notes&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;2019-07-20&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;/Halting-Problem&quot;&gt;Halting Problem&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;2019-07-05&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;/Golden-section-search&quot;&gt;Golden section search&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;2019-06-23&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</content><author><name></name></author><category term="index" /><category term="blog" /><summary type="html">✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦⚉✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦✦</summary></entry><entry><title type="html">Learn Deep Learning</title><link href="http://localhost:4000/archives/Learn-Deep-Learning.html" rel="alternate" type="text/html" title="Learn Deep Learning" /><published>2019-09-25T00:00:00+08:00</published><updated>2019-09-25T00:00:00+08:00</updated><id>http://localhost:4000/archives/Learn-Deep-Learning</id><content type="html" xml:base="http://localhost:4000/archives/Learn-Deep-Learning.html">&lt;p&gt;20世纪40~60年代，控制论(cybernetics)。随着生物学习理论的发展与第一个模型的实现(如感知机1958)，能实现单个神经元的训练。&lt;/p&gt;
+
+&lt;!--break--&gt;
+
+&lt;h1 id=&quot;历史&quot;&gt;历史&lt;/h1&gt;
+
+&lt;h3 id=&quot;三次浪潮&quot;&gt;三次浪潮&lt;/h3&gt;
+&lt;p&gt;20世纪40~60年代，控制论(cybernetics)。随着生物学习理论的发展与第一个模型的实现(如感知机1958)，能实现单个神经元的训练。&lt;/p&gt;
+
+&lt;p&gt;20世纪80~90年代(1980~1995)，联结主义(connectionism)。 可以使用反向传播(1986)训练具有一两个隐藏层的神经网络。&lt;/p&gt;
+
+&lt;p&gt;2006~now，深度学习的复兴&lt;/p&gt;
+
+&lt;h3 id=&quot;deep-learning-vs-ai&quot;&gt;Deep Learning v.s. AI&lt;/h3&gt;
+
+&lt;p&gt;许多AI任务可以通过&lt;strong&gt;提取一个合适特征，然后将这些特征提供给简单的机器学习算法&lt;/strong&gt;来解决问题。 但提取哪些特征是一个难题，解决这个问题的途径之一是&lt;strong&gt;使用机器学习来发掘表示本身&lt;/strong&gt;，这种方法称为：表示学习(representation learning)。&lt;/p&gt;
+
+&lt;p&gt;典型例子：自编码器(autoencoder)。学习到的表示往往比手动设计的表示表现的要好，且只需极少人工干预。&lt;/p&gt;
+
+&lt;p&gt;表示学习的一个困难在于：多个变差因素同时影响着我们能够观察到的每一个数据，从原始数据是抽取高层次、抽象的特征非常困难。深度学习通过其他简单的表示来表达复杂表示，这解决了表示学习的核心问题。
+典型例子：前馈深度网络。&lt;/p&gt;
+
+&lt;p&gt;总：DL是ML的一种，是一种能够使用计算机系统从数据和经验中得到提升的技术。&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt; &amp;lt;img src=&quot;/assets/img/dl.vs.ai.png&quot; width=500&amp;gt; &lt;/p&gt;
+
+&lt;!-- Math --&gt;
+&lt;h1 id=&quot;basic-math&quot;&gt;Basic Math&lt;/h1&gt;
+
+&lt;h2 id=&quot;线性相关与生成子空间&quot;&gt;线性相关与生成子空间&lt;/h2&gt;
+&lt;p align=&quot;center&quot;&gt;  $$ Ax = b  $$ &lt;/p&gt;
+&lt;p&gt;其中 &lt;script type=&quot;math/tex&quot;&gt;A \in \mathrm{R}^{m \times n}&lt;/script&gt; matrix, &lt;script type=&quot;math/tex&quot;&gt;b \in \mathrm{R}^n&lt;/script&gt; vector。对于上面的方程组来说，要么不存在解，要么存在唯一解或者无穷解，不可能存在大于1但小于无穷个解的情况 (不然，两个解的线性组合 &lt;script type=&quot;math/tex&quot;&gt;\alpha x + (1-\alpha)y&lt;/script&gt;也是方程组的解)。&lt;/p&gt;
+
+&lt;h3 id=&quot;方程在每一点存在解的必要条件-n-geq-m&quot;&gt;方程在每一点存在解的必要条件 &lt;script type=&quot;math/tex&quot;&gt;n \geq m&lt;/script&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;Ax = \Sigma_{i\in[1,n]} x_i A_{:, i} = \Sigma_i c_i v^{(i)}&lt;/script&gt;, where &lt;script type=&quot;math/tex&quot;&gt;v^{(i)}&lt;/script&gt; 是&lt;script type=&quot;math/tex&quot;&gt;A&lt;/script&gt;的列向量。 判定以上方程组是否存在解，即判定&lt;script type=&quot;math/tex&quot;&gt;b&lt;/script&gt;是否在&lt;script type=&quot;math/tex&quot;&gt;A&lt;/script&gt;的生成子空间中。 这个特殊的生成子空间称为&lt;script type=&quot;math/tex&quot;&gt;A&lt;/script&gt;的&lt;strong&gt;列空间&lt;/strong&gt;或&lt;strong&gt;值域(range)&lt;/strong&gt; .&lt;/p&gt;
+
+&lt;p&gt;因为 &lt;script type=&quot;math/tex&quot;&gt;b \in \mathrm{R^m}&lt;/script&gt;，如果 &lt;script type=&quot;math/tex&quot;&gt;\mathrm{R}^m&lt;/script&gt; 中一个点不在 &lt;script type=&quot;math/tex&quot;&gt;A&lt;/script&gt; 的列空间中，那该点对应的 &lt;script type=&quot;math/tex&quot;&gt;b&lt;/script&gt; 没有解，因此 &lt;script type=&quot;math/tex&quot;&gt;A&lt;/script&gt; 至少有 &lt;script type=&quot;math/tex&quot;&gt;m&lt;/script&gt; 列，即 &lt;script type=&quot;math/tex&quot;&gt;n \geq m&lt;/script&gt;。 举例，&lt;script type=&quot;math/tex&quot;&gt;m = 3, n = 2&lt;/script&gt;，那么无论 &lt;script type=&quot;math/tex&quot;&gt;x&lt;/script&gt; 如何变化，它只能将 &lt;script type=&quot;math/tex&quot;&gt;A&lt;/script&gt; 映射到 &lt;script type=&quot;math/tex&quot;&gt;\mathrm{R}^3&lt;/script&gt;的一个平面，只有当 &lt;script type=&quot;math/tex&quot;&gt;b&lt;/script&gt; 处于这个平面时， 方程才有解。&lt;/p&gt;
+
+&lt;h3 id=&quot;存在解的充分条件&quot;&gt;存在解的充分条件&lt;/h3&gt;
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;n \geq m&lt;/script&gt; 并不能保证方程一定存在解，因为列向量可能&lt;strong&gt;线性相关&lt;/strong&gt;，即某一个向量可能表示为其他一组向量的线性组合。要使其列空间涵盖整个 &lt;script type=&quot;math/tex&quot;&gt;\mathrm{R}^m&lt;/script&gt;， 需要满足什么条件 ？&lt;/p&gt;
+
+&lt;p&gt;A: 矩阵必须包含&lt;strong&gt;至少一组&lt;script type=&quot;math/tex&quot;&gt;m&lt;/script&gt;个线性无关&lt;/strong&gt;的向量。&lt;/p&gt;
+
+&lt;p&gt;但要使矩阵可逆，需要保证对每一个 &lt;script type=&quot;math/tex&quot;&gt;b&lt;/script&gt; 至多只有一个解，因此要保证矩阵至多只有 &lt;script type=&quot;math/tex&quot;&gt;m&lt;/script&gt; 个列向量，即必须是一个方阵(square)，且所有列向量线性无关。这样的矩阵称为 &lt;strong&gt;奇异矩阵&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;h3 id=&quot;特征分解&quot;&gt;特征分解&lt;/h3&gt;
+&lt;p&gt;矩阵 &lt;script type=&quot;math/tex&quot;&gt;A&lt;/script&gt; 的&lt;strong&gt;特征向量(eigenvector)&lt;/strong&gt;是指与 &lt;script type=&quot;math/tex&quot;&gt;A&lt;/script&gt; 相乘后相当于对该向量进行缩放的非零向量 &lt;script type=&quot;math/tex&quot;&gt;v&lt;/script&gt;:  &lt;script type=&quot;math/tex&quot;&gt;Av = \lambda v&lt;/script&gt; ，
+其中标题 &lt;script type=&quot;math/tex&quot;&gt;\lambda&lt;/script&gt; 称为这个特征向量对应的&lt;strong&gt;特征值(eigenvalue)&lt;/strong&gt;.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;如果 &lt;script type=&quot;math/tex&quot;&gt;v&lt;/script&gt; 是 &lt;script type=&quot;math/tex&quot;&gt;A&lt;/script&gt; 的特征向量，那么任意缩放后的向量 &lt;script type=&quot;math/tex&quot;&gt;sv(s \in \mathrm{R}, s \neq 0)&lt;/script&gt; 也是 &lt;script type=&quot;math/tex&quot;&gt;A&lt;/script&gt; 的特征向量&lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><category term="Deep Learning" /><category term="AI" /><summary type="html">20世纪40~60年代，控制论(cybernetics)。随着生物学习理论的发展与第一个模型的实现(如感知机1958)，能实现单个神经元的训练。</summary></entry><entry><title type="html">expor so</title><link href="http://localhost:4000/archives/test-simple.html" rel="alternate" type="text/html" title="expor so" /><published>2019-09-25T00:00:00+08:00</published><updated>2019-09-25T00:00:00+08:00</updated><id>http://localhost:4000/archives/test-simple</id><content type="html" xml:base="http://localhost:4000/archives/test-simple.html">&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot; data-lang=&quot;python&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;expr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;&lt;img src=&quot;dl.vs.ai.png&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Feedly is a news aggregator application for various web browsers and mobile devices running iOS and Android. It is also available as a cloud-based service. It compiles news feeds from a variety of online sources for the user to customize and share with others. Feedly was first released by DevHD in 2008. Wikipedia&lt;/p&gt;
+
+&lt;p&gt;Developer(s): DevHD&lt;/p&gt;
+
+&lt;p&gt;Operating system: Android 5.1 or later; iOS 10.0 or later (iPhone, iPad, and iPod touch)&lt;/p&gt;
+
+&lt;p&gt;Initial release date: 2008&lt;/p&gt;
+
+&lt;p&gt;License: Freemium&lt;/p&gt;
+
+&lt;p&gt;Platforms: Web browser, Handheld Devices&lt;/p&gt;
+
+&lt;p&gt;Written in: Java (back-end), JavaScript, HTML, Cascading Style Sheets (UI)&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;def expr(str):
+    print(str)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Some formula:
+&lt;script type=&quot;math/tex&quot;&gt;\alpha \times \beta = \Lambda&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;20世纪40~60年代，控制论(cybernetics)。随着生物学习理论的发展与第一个模型的实现(如感知机1958)，能实现单个神经元的训练。&lt;/p&gt;
+
+&lt;!--break--&gt;
+
+&lt;h1 id=&quot;历史&quot;&gt;历史&lt;/h1&gt;
+&lt;p&gt;$abc$&lt;/p&gt;
+
+&lt;h3 id=&quot;三次浪潮&quot;&gt;三次浪潮&lt;/h3&gt;
+&lt;p&gt;20世纪40~60年代，控制论(cybernetics)。随着生物学习理论的发展与第一个模型的实现(如感知机1958)，能实现单个神经元的训练。&lt;/p&gt;
+
+&lt;p&gt;20世纪80~90年代(1980~1995)，联结主义(connectionism)。 可以使用反向传播(1986)训练具有一两个隐藏层的神经网络。&lt;/p&gt;
+
+&lt;p&gt;2006~now，深度学习的复兴&lt;/p&gt;
+
+&lt;h3 id=&quot;deep-learning-vs-ai&quot;&gt;Deep Learning v.s. AI&lt;/h3&gt;
+
+&lt;p&gt;许多AI任务可以通过&lt;strong&gt;提取一个合适特征，然后将这些特征提供给简单的机器学习算法&lt;/strong&gt;来解决问题。 但提取哪些特征是一个难题，解决这个问题的途径之一是&lt;strong&gt;使用机器学习来发掘表示本身&lt;/strong&gt;，这种方法称为：表示学习(representation learning)。&lt;/p&gt;
+
+&lt;p&gt;典型例子：自编码器(autoencoder)。学习到的表示往往比手动设计的表示表现的要好，且只需极少人工干预。&lt;/p&gt;
+
+&lt;p&gt;表示学习的一个困难在于：多个变差因素同时影响着我们能够观察到的每一个数据，从原始数据是抽取高层次、抽象的特征非常困难。深度学习通过其他简单的表示来表达复杂表示，这解决了表示学习的核心问题。
+典型例子：前馈深度网络。&lt;/p&gt;
+
+&lt;p&gt;总：DL是ML的一种，是一种能够使用计算机系统从数据和经验中得到提升的技术。&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt; &lt;img src=&quot;/images/dl.vs.ai.png&quot; style=&quot;width:600&quot; /&gt; &lt;/p&gt;
+&lt;!-- ![some](/images/dl.vs.ai.png) --&gt;
+
+&lt;!-- Math --&gt;
+&lt;h1 id=&quot;basic-math&quot;&gt;Basic Math&lt;/h1&gt;
+
+&lt;h2 id=&quot;线性相关与生成子空间&quot;&gt;线性相关与生成子空间&lt;/h2&gt;
+&lt;p align=&quot;center&quot;&gt;  $$ Ax = b  $$ &lt;/p&gt;
+&lt;p&gt;其中 &lt;script type=&quot;math/tex&quot;&gt;A \in \mathrm{R}^{m \times n}&lt;/script&gt; matrix, &lt;script type=&quot;math/tex&quot;&gt;b \in \mathrm{R}^n&lt;/script&gt; vector。对于上面的方程组来说，要么不存在解，要么存在唯一解或者无穷解，不可能存在大于1但小于无穷个解的情况 (不然，两个解的线性组合 &lt;script type=&quot;math/tex&quot;&gt;\alpha x + (1-\alpha)y&lt;/script&gt;也是方程组的解)。&lt;/p&gt;
+
+&lt;h3 id=&quot;方程在每一点存在解的必要条件-n-geq-m&quot;&gt;方程在每一点存在解的必要条件 &lt;script type=&quot;math/tex&quot;&gt;n \geq m&lt;/script&gt;&lt;/h3&gt;
+
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;Ax = \Sigma_{i\in[1,n]} x_i A_{:, i} = \Sigma_i c_i v^{(i)}&lt;/script&gt;, where &lt;script type=&quot;math/tex&quot;&gt;v^{(i)}&lt;/script&gt; 是&lt;script type=&quot;math/tex&quot;&gt;A&lt;/script&gt;的列向量。 判定以上方程组是否存在解，即判定&lt;script type=&quot;math/tex&quot;&gt;b&lt;/script&gt;是否在&lt;script type=&quot;math/tex&quot;&gt;A&lt;/script&gt;的生成子空间中。 这个特殊的生成子空间称为&lt;script type=&quot;math/tex&quot;&gt;A&lt;/script&gt;的&lt;strong&gt;列空间&lt;/strong&gt;或&lt;strong&gt;值域(range)&lt;/strong&gt; .&lt;/p&gt;
+
+&lt;p&gt;因为 &lt;script type=&quot;math/tex&quot;&gt;b \in \mathrm{R^m}&lt;/script&gt;，如果 &lt;script type=&quot;math/tex&quot;&gt;\mathrm{R}^m&lt;/script&gt; 中一个点不在 &lt;script type=&quot;math/tex&quot;&gt;A&lt;/script&gt; 的列空间中，那该点对应的 &lt;script type=&quot;math/tex&quot;&gt;b&lt;/script&gt; 没有解，因此 &lt;script type=&quot;math/tex&quot;&gt;A&lt;/script&gt; 至少有 &lt;script type=&quot;math/tex&quot;&gt;m&lt;/script&gt; 列，即 &lt;script type=&quot;math/tex&quot;&gt;n \geq m&lt;/script&gt;。 举例，&lt;script type=&quot;math/tex&quot;&gt;m = 3, n = 2&lt;/script&gt;，那么无论 &lt;script type=&quot;math/tex&quot;&gt;x&lt;/script&gt; 如何变化，它只能将 &lt;script type=&quot;math/tex&quot;&gt;A&lt;/script&gt; 映射到 &lt;script type=&quot;math/tex&quot;&gt;\mathrm{R}^3&lt;/script&gt;的一个平面，只有当 &lt;script type=&quot;math/tex&quot;&gt;b&lt;/script&gt; 处于这个平面时， 方程才有解。&lt;/p&gt;
+
+&lt;h3 id=&quot;存在解的充分条件&quot;&gt;存在解的充分条件&lt;/h3&gt;
+&lt;p&gt;&lt;script type=&quot;math/tex&quot;&gt;n \geq m&lt;/script&gt; 并不能保证方程一定存在解，因为列向量可能&lt;strong&gt;线性相关&lt;/strong&gt;，即某一个向量可能表示为其他一组向量的线性组合。要使其列空间涵盖整个 &lt;script type=&quot;math/tex&quot;&gt;\mathrm{R}^m&lt;/script&gt;， 需要满足什么条件 ？&lt;/p&gt;
+
+&lt;p&gt;A: 矩阵必须包含&lt;strong&gt;至少一组&lt;script type=&quot;math/tex&quot;&gt;m&lt;/script&gt;个线性无关&lt;/strong&gt;的向量。&lt;/p&gt;
+
+&lt;p&gt;但要使矩阵可逆，需要保证对每一个 &lt;script type=&quot;math/tex&quot;&gt;b&lt;/script&gt; 至多只有一个解，因此要保证矩阵至多只有 &lt;script type=&quot;math/tex&quot;&gt;m&lt;/script&gt; 个列向量，即必须是一个方阵(square)，且所有列向量线性无关。这样的矩阵称为 &lt;strong&gt;奇异矩阵&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;h3 id=&quot;特征分解&quot;&gt;特征分解&lt;/h3&gt;
+&lt;p&gt;矩阵 &lt;script type=&quot;math/tex&quot;&gt;A&lt;/script&gt; 的&lt;strong&gt;特征向量(eigenvector)&lt;/strong&gt;是指与 &lt;script type=&quot;math/tex&quot;&gt;A&lt;/script&gt; 相乘后相当于对该向量进行缩放的非零向量 &lt;script type=&quot;math/tex&quot;&gt;v&lt;/script&gt;:  &lt;script type=&quot;math/tex&quot;&gt;Av = \lambda v&lt;/script&gt; ，
+其中标题 &lt;script type=&quot;math/tex&quot;&gt;\lambda&lt;/script&gt; 称为这个特征向量对应的&lt;strong&gt;特征值(eigenvalue)&lt;/strong&gt;.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;如果 &lt;script type=&quot;math/tex&quot;&gt;v&lt;/script&gt; 是 &lt;script type=&quot;math/tex&quot;&gt;A&lt;/script&gt; 的特征向量，那么任意缩放后的向量 &lt;script type=&quot;math/tex&quot;&gt;sv(s \in \mathrm{R}, s \neq 0)&lt;/script&gt; 也是 &lt;script type=&quot;math/tex&quot;&gt;A&lt;/script&gt; 的特征向量&lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><category term="Deep Learning" /><category term="AI" /><summary type="html">def expr(str): print(str)</summary></entry><entry><title type="html">Linux memo</title><link href="http://localhost:4000/archives/linux.html" rel="alternate" type="text/html" title="Linux memo" /><published>2019-09-09T00:00:00+08:00</published><updated>2019-09-09T00:00:00+08:00</updated><id>http://localhost:4000/archives/linux</id><content type="html" xml:base="http://localhost:4000/archives/linux.html">&lt;p&gt;Just memo, not a blog.&lt;/p&gt;
+
+&lt;h2 id=&quot;文件传输&quot;&gt;文件传输&lt;/h2&gt;
+&lt;h3 id=&quot;wget&quot;&gt;wget&lt;/h3&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;wget&lt;/code&gt; :&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;-b&lt;/code&gt;, background 后台执行， &lt;code class=&quot;highlighter-rouge&quot;&gt;-c&lt;/code&gt; 断点续传&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;-q&lt;/code&gt;, quiet mode&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;-i filenames.txt&lt;/code&gt;，下载&lt;code class=&quot;highlighter-rouge&quot;&gt;filenames.txt&lt;/code&gt;中多个文件&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;wget -r -np -nd http://example.com/packages/&lt;/code&gt;， &lt;code class=&quot;highlighter-rouge&quot;&gt;-np --no-parent&lt;/code&gt; 不遍历父目录，&lt;code class=&quot;highlighter-rouge&quot;&gt;-nd&lt;/code&gt; 不在本机重新创建目录结构&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;--restrict-file-names=nocontrol&lt;/code&gt;避免中文乱码&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;youtube-dl&quot;&gt;youtube-dl&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;youtube-dl -f best url&lt;/code&gt;, 自动下载音视频质量最好的格式&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;youtube-dl -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/bestvideo+bestaudio' --merge-output-format mp4 url&lt;/code&gt;,如果以上命令出错，可以考虑使用这条&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;内容查看与编辑&quot;&gt;内容查看与编辑&lt;/h2&gt;
+&lt;h3 id=&quot;tree&quot;&gt;tree&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;-L 2&lt;/code&gt;, 深度设为2&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;tr--translate-characters&quot;&gt;tr – translate characters&lt;/h3&gt;
+&lt;p&gt;语法&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;usage: &lt;span class=&quot;nb&quot;&gt;tr&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;-Ccsu&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; string1 string2
+       &lt;span class=&quot;nb&quot;&gt;tr&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;-Ccu&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; string1
+       &lt;span class=&quot;nb&quot;&gt;tr&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;-Ccu&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-s&lt;/span&gt; string1
+       &lt;span class=&quot;nb&quot;&gt;tr&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;-Ccu&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-ds&lt;/span&gt; string1 string2
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;E.g., Translate to text to uppercase&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;cat &lt;/span&gt;somefile.txt | &lt;span class=&quot;nb&quot;&gt;tr&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;:lower:] &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;:upper:] &lt;span class=&quot;c&quot;&gt;# or, simply&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;cat &lt;/span&gt;somefile.txt | &lt;span class=&quot;nb&quot;&gt;tr &lt;/span&gt;a-z A-Z
+&lt;span class=&quot;c&quot;&gt;# Translate white-space to tabs&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;How are you?&quot;&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;tr&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;:space:] &lt;span class=&quot;s1&quot;&gt;'\t'&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#Translate braces into parenthesis&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;cat &lt;/span&gt;somefile.txt | &lt;span class=&quot;nb&quot;&gt;tr&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'{}'&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'()'&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#Squeeze repetition of characters using `-s` | 合并重复字符 &lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Oh soooooooo             much space&quot;&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;tr&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-s&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;:space:] &lt;span class=&quot;s1&quot;&gt;' '&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#Delete specified characters using -d option (区分大小写)&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Terrible test&quot;&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;tr&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-d&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'t'&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;#取反 `-c`，比如只保留数字&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;char char 8742&quot;&lt;/span&gt; | &lt;span class=&quot;nb&quot;&gt;tr&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-cd&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;:digit:]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;树莓派&quot;&gt;树莓派&lt;/h2&gt;
+&lt;h3 id=&quot;ssh卡顿&quot;&gt;SSH卡顿&lt;/h3&gt;
+&lt;p&gt;ssh登录后反应很慢，&lt;code class=&quot;highlighter-rouge&quot;&gt;ls&lt;/code&gt;命令都响应半天。重启多次，还是一样结果。
+与战略伙伴&lt;a href=&quot;www.google.com&quot;&gt;Google&lt;/a&gt;进行沟通后发现，问题可能在于路由器。于是重启路由器，然后问题解决，简直玄学。&lt;/p&gt;
+
+&lt;h2 id=&quot;apps&quot;&gt;Apps&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Macbook network speed monitor &lt;code class=&quot;highlighter-rouge&quot;&gt;MenuMetersApp&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;haproxy&quot;&gt;HAProxy&lt;/h1&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;HA&lt;/code&gt; stands for &lt;code class=&quot;highlighter-rouge&quot;&gt;High Avaliability&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;HAProxy提供高可用性、负载均衡以及基于TCP和HTTP应用的代理，支持虚拟主机，免费、快速并且可靠。据官方数据，其最高极限支持10G的并发。&lt;/p&gt;
+
+&lt;p&gt;HAProxy特别适用于那些负载特大的web站点，这些站点通常又需要会话保持或七层处理。HAProxy运行在当前的硬件上，可以支持数以万计的并发连接。并且它的运行模式使得它可以很简单安全的整合到当前的架构中，同时可以保护web服务器不被暴露到网络上。&lt;/p&gt;
+
+&lt;p&gt;其支持从4层至7层的网络交换，即覆盖所有的TCP协议。&lt;/p&gt;
+
+&lt;h2 id=&quot;基本配置及说明&quot;&gt;基本配置及说明&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;global               &lt;span class=&quot;c&quot;&gt;#全局设置&lt;/span&gt;
+    log 127.0.0.1   local0   &lt;span class=&quot;c&quot;&gt;#日志输出配置，所有日志都记录在本机，通过local0输出&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;#log loghost    local0 info&lt;/span&gt;
+    maxconn 4096             &lt;span class=&quot;c&quot;&gt;#最大连接数&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;chroot&lt;/span&gt; /usr/local/haproxy
+    uid 99                   &lt;span class=&quot;c&quot;&gt;#所属运行的用户uid&lt;/span&gt;
+    gid 99                   &lt;span class=&quot;c&quot;&gt;#所属运行的用户组&lt;/span&gt;
+    group haproxy            &lt;span class=&quot;c&quot;&gt;#用户组&lt;/span&gt;
+    daemon                   &lt;span class=&quot;c&quot;&gt;#后台运行haproxy&lt;/span&gt;
+    nbproc 1                 &lt;span class=&quot;c&quot;&gt;#启动1个haproxy实例&lt;/span&gt;
+    pidfile /usr/local/haproxy/haproxy.pid  &lt;span class=&quot;c&quot;&gt;#将所有进程PID写入pid文件&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;#debug&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;#quiet&lt;/span&gt;
+ 
+defaults             &lt;span class=&quot;c&quot;&gt;#默认设置&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;#log    global&lt;/span&gt;
+    log     127.0.0.1       local3      &lt;span class=&quot;c&quot;&gt;#日志文件的输出定向&lt;/span&gt;
+ 
+    &lt;span class=&quot;c&quot;&gt;#默认的模式:tcp|http|health&lt;/span&gt;
+    mode   http         &lt;span class=&quot;c&quot;&gt;#所处理的类别,默认采用http模式&lt;/span&gt;
+ 
+    option  httplog      &lt;span class=&quot;c&quot;&gt;#日志类别,采用http日志格式`&lt;/span&gt;
+    option  dontlognull
+    option  forwardfor   &lt;span class=&quot;c&quot;&gt;#将客户端真实ip加到HTTP Header中供后端服务器读取&lt;/span&gt;
+    option  retries 3    &lt;span class=&quot;c&quot;&gt;#三次连接失败则认证服务器不可用&lt;/span&gt;
+    option  httpclose    &lt;span class=&quot;c&quot;&gt;#每次请求完毕后主动关闭http通道,haproxy不支持keep-alive,只能模拟这种模式的实现&lt;/span&gt;
+    retries 3            &lt;span class=&quot;c&quot;&gt;#3次连接失败就认为服务器不可用，主要通过后面的check检查&lt;/span&gt;
+    option  redispatch   &lt;span class=&quot;c&quot;&gt;#当serverid对应的服务器挂掉后，强制定向到其他健康服务器&lt;/span&gt;
+    option  abortonclose &lt;span class=&quot;c&quot;&gt;#当服务器负载很高时，自动结束掉当前队列中处理比较久的链接&lt;/span&gt;
+    maxconn 2000         &lt;span class=&quot;c&quot;&gt;#默认最大连接数&lt;/span&gt;
+ 
+    &lt;span class=&quot;nb&quot;&gt;timeout &lt;/span&gt;connect 5000  &lt;span class=&quot;c&quot;&gt;#连接超时时间&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;timeout &lt;/span&gt;client  50000 &lt;span class=&quot;c&quot;&gt;#客户端连接超时时间&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;timeout &lt;/span&gt;server  50000 &lt;span class=&quot;c&quot;&gt;#服务器端连接超时时间&lt;/span&gt;
+ 
+    stats   &lt;span class=&quot;nb&quot;&gt;enable
+    &lt;/span&gt;stats   uri /haproxy-stats   &lt;span class=&quot;c&quot;&gt;#haproxy监控页面的访问地址&lt;/span&gt;
+    stats   auth &lt;span class=&quot;nb&quot;&gt;test&lt;/span&gt;:test123    &lt;span class=&quot;c&quot;&gt;#设置监控页面的用户和密码&lt;/span&gt;
+    stats   hide-version         &lt;span class=&quot;c&quot;&gt;#隐藏统计页面的HAproxy版本信息&lt;/span&gt;
+ 
+frontend http-in              &lt;span class=&quot;c&quot;&gt;#前台&lt;/span&gt;
+    &lt;span class=&quot;nb&quot;&gt;bind&lt;/span&gt;    &lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;:81
+    mode    http
+    option  httplog
+    log     global
+    default_backend htmpool   &lt;span class=&quot;c&quot;&gt;#静态服务器池&lt;/span&gt;
+ 
+backend htmpool               &lt;span class=&quot;c&quot;&gt;#后台&lt;/span&gt;
+		option allbackups  &lt;span class=&quot;c&quot;&gt;#设置了backup的时候,默认第一个backup会优先,设置option allbackups后所有备份服务器权重一样&lt;/span&gt;
+    balance leastconn         &lt;span class=&quot;c&quot;&gt;#负载均衡算法，其他可选 source, roundrobin&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;# source 根据客户端IP进行哈希的方式&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;# roundrobin 轮转&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;# leastcon 选择当前请求数最少的服务器&lt;/span&gt;
+    option  httpchk HEAD /index.html HTTP/1.0    &lt;span class=&quot;c&quot;&gt;#健康检查&lt;/span&gt;
+    server  web1 192.168.2.10:80 cookie 1 weight 5 check inter 2000 rise 2 fall 3
+    server  web2 192.168.2.11:80 cookie 2 weight 3 check inter 2000 rise 2 fall 3
+    &lt;span class=&quot;c&quot;&gt;# web1/web2:自定义服务器别名&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;# 192.168.2.10:80:服务器IP:Port&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;# cookie 1/2:表示serverid&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;# weight: 服务器权重，数字越大分配到的请求数越高&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;# check: 接受定时健康检查 &lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;# inter 2000: 检查频率&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;# rise 2: 两次检测正确认为服务器可用&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;# fall 3: 三次失败认为服务器不可用&lt;/span&gt;
+ 
+ 		&lt;span class=&quot;c&quot;&gt;#备份机器配置,正常情况下备机不会使用,当主机的全部服务器都down的时候备机会启用&lt;/span&gt;
+    server backup1 10.1.7.114:80 check backup inter 1500 rise 3 fall 3
+    server bakcup2 10.1.7.114:80 check backup inter 1500 rise 3 fall 3
+ 
+ 
+listen w.gdu.me 0.0.0.0:80
+    option  httpchk GET /index.html
+    server  s1 192.168.2.10:80 weight 3 check
+    server  s3 192.168.2.11:80 weight 3 check
+ 
+&lt;span class=&quot;c&quot;&gt;# https的配置方法&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# ------------------------------------------------------------------------------------&lt;/span&gt;
+listen login_https_server
+    &lt;span class=&quot;nb&quot;&gt;bind &lt;/span&gt;0.0.0.0:443   &lt;span class=&quot;c&quot;&gt;#绑定HTTPS的443端口&lt;/span&gt;
+    mode tcp           &lt;span class=&quot;c&quot;&gt;#https必须使用tcp模式&lt;/span&gt;
+    log global
+    balance roundrobin
+    option httpchk GET /member/login.jhtml HTTP/1.1&lt;span class=&quot;se&quot;&gt;\r\n&lt;/span&gt;Host:login.daily.taobao.net
+    &lt;span class=&quot;c&quot;&gt;#回送给server的端口也必须是443&lt;/span&gt;
+    server vm94f.sqa 192.168.212.94:443 check port 80 inter 6000 rise 3 fall 3
+    server v215120.sqa 192.168.215.120:443 check port 80 inter 6000 rise 3 fall 3
+ 
+ 
+&lt;span class=&quot;c&quot;&gt;# frontend配置&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# --------------------------------------------------------------------------&lt;/span&gt;
+frontend http_80_in
+    &lt;span class=&quot;nb&quot;&gt;bind &lt;/span&gt;0.0.0.0:80   &lt;span class=&quot;c&quot;&gt;#监听端口&lt;/span&gt;
+    mode http         &lt;span class=&quot;c&quot;&gt;#http的7层模式&lt;/span&gt;
+    log global        &lt;span class=&quot;c&quot;&gt;#使用全局的日志配置&lt;/span&gt;
+    option httplog    &lt;span class=&quot;c&quot;&gt;#启用http的log&lt;/span&gt;
+    option httpclose  &lt;span class=&quot;c&quot;&gt;#每次请求完毕后主动关闭http通道,HA-Proxy不支持keep-alive模式&lt;/span&gt;
+    option forwardfor &lt;span class=&quot;c&quot;&gt;##如果后端服务器需要获得客户端的真实IP需要配置次参数,将可以从Http Header中获得客户端IP&lt;/span&gt;
+ 
+    &lt;span class=&quot;c&quot;&gt;#HAProxy的日志记录内容配置&lt;/span&gt;
+    capture request header Host len 40              &lt;span class=&quot;c&quot;&gt;# 请求中的主机名&lt;/span&gt;
+    capture request header Content-Length len 10    &lt;span class=&quot;c&quot;&gt;# 请求中的内容长度&lt;/span&gt;
+    capture request header Referer len 200          &lt;span class=&quot;c&quot;&gt;# 请求中的引用地址&lt;/span&gt;
+    capture response header Server len 40           &lt;span class=&quot;c&quot;&gt;# 响应中的server name&lt;/span&gt;
+    capture response header Content-Length len 10   &lt;span class=&quot;c&quot;&gt;# 响应中的内容长度(可配合option logasap使用)&lt;/span&gt;
+    capture response header Cache-Control len 8     &lt;span class=&quot;c&quot;&gt;# 响应中的cache控制&lt;/span&gt;
+    capture response header Location len 20         &lt;span class=&quot;c&quot;&gt;# 响应中的重定向地址&lt;/span&gt;
+ 
+ 
+    &lt;span class=&quot;c&quot;&gt;#ACL策略规则定义&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;#-------------------------------------------------&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;#如果请求的域名满足正则表达式返回true(-i:忽略大小写)&lt;/span&gt;
+    acl denali_policy hdr_reg&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;host&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; ^&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;www.gemini.taobao.net|my.gemini.taobao.net|auction1.gemini.taobao.net&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;$&lt;/span&gt;
+ 
+    &lt;span class=&quot;c&quot;&gt;#如果请求域名满足trade.gemini.taobao.net返回true&lt;/span&gt;
+    acl tm_policy hdr_dom&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;host&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; trade.gemini.taobao.net
+ 
+    &lt;span class=&quot;c&quot;&gt;#在请求url中包含sip_apiname=,则此控制策略返回true,否则为false&lt;/span&gt;
+    acl invalid_req url_sub &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;sip_apiname&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
+ 
+    &lt;span class=&quot;c&quot;&gt;#在请求url中存在timetask作为部分地址路径,则此控制策略返回true,否则返回false&lt;/span&gt;
+    acl timetask_req url_dir &lt;span class=&quot;nt&quot;&gt;-i&lt;/span&gt; timetask
+ 
+    &lt;span class=&quot;c&quot;&gt;#当请求的header中Content-length等于0时返回true&lt;/span&gt;
+    acl missing_cl hdr_cnt&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Content-length&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; eq 0
+ 
+ 
+    &lt;span class=&quot;c&quot;&gt;#ACL策略匹配相应&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;#-------------------------------------------------&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;#当请求中header中Content-length等于0阻止请求返回403&lt;/span&gt;
+    &lt;span class=&quot;c&quot;&gt;#block表示阻止请求,返回403错误&lt;/span&gt;
+    block &lt;span class=&quot;k&quot;&gt;if &lt;/span&gt;missing_cl
+ 
+    &lt;span class=&quot;c&quot;&gt;#如果不满足策略invalid_req,或者满足策略timetask_req,则阻止请求&lt;/span&gt;
+    block &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;invalid_req &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; timetask_req
+ 
+    &lt;span class=&quot;c&quot;&gt;#当满足denali_policy的策略时使用denali_server的backend&lt;/span&gt;
+    use_backend denali_server &lt;span class=&quot;k&quot;&gt;if &lt;/span&gt;denali_policy
+ 
+    &lt;span class=&quot;c&quot;&gt;#当满足tm_policy的策略时使用tm_server的backend&lt;/span&gt;
+    use_backend tm_server &lt;span class=&quot;k&quot;&gt;if &lt;/span&gt;tm_policy
+ 
+    &lt;span class=&quot;c&quot;&gt;#reqisetbe关键字定义,根据定义的关键字选择backend&lt;/span&gt;
+    reqisetbe ^Host:&lt;span class=&quot;se&quot;&gt;\ &lt;/span&gt;img           dynamic
+    reqisetbe ^[^&lt;span class=&quot;se&quot;&gt;\ &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\ &lt;/span&gt;/&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;img|css&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;/  dynamic
+    reqisetbe ^[^&lt;span class=&quot;se&quot;&gt;\ &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\ &lt;/span&gt;/admin/stats stats
+ 
+    &lt;span class=&quot;c&quot;&gt;#以上都不满足的时候使用默认mms_server的backend&lt;/span&gt;
+    default_backend mms_server
+ 
+    &lt;span class=&quot;c&quot;&gt;#HAProxy错误页面设置&lt;/span&gt;
+    errorfile 400 /home/admin/haproxy/errorfiles/400.http
+    errorfile 403 /home/admin/haproxy/errorfiles/403.http
+    errorfile 504 /home/admin/haproxy/errorfiles/504.http
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><category term="linux" /><summary type="html">Just memo, not a blog.</summary></entry><entry><title type="html">Text processing in deep learning</title><link href="http://localhost:4000/archives/Text-processing-in-deep-learning.html" rel="alternate" type="text/html" title="Text processing in deep learning" /><published>2019-09-09T00:00:00+08:00</published><updated>2019-09-09T00:00:00+08:00</updated><id>http://localhost:4000/archives/Text-processing-in-deep-learning</id><content type="html" xml:base="http://localhost:4000/archives/Text-processing-in-deep-learning.html">&lt;h2 id=&quot;处理文本数据&quot;&gt;处理文本数据&lt;/h2&gt;
+
+&lt;p&gt;向量与标记相关联的方式有很多种，比较常用的有&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;one-hot编码(one-hot encoding)&lt;/li&gt;
+  &lt;li&gt;标记嵌入(token embedding)，通常只用于单词，也称词嵌入(word embedding)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;one-hot-encoding&quot;&gt;one-hot encoding&lt;/h3&gt;
+&lt;p&gt;以下假设每个单元都为一个单词。&lt;/p&gt;
+
+&lt;p&gt;one-hot encoding 将每个标记与一个唯一的整数索引相关联，然后将这个整数索引&lt;script type=&quot;math/tex&quot;&gt;i&lt;/script&gt;转换成长度为&lt;script type=&quot;math/tex&quot;&gt;N&lt;/script&gt;的binary向量，这个向量只有第&lt;script type=&quot;math/tex&quot;&gt;i&lt;/script&gt;个元素是1，其余为0.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Keras&lt;/code&gt;的内置函数可以完成对原始文本数据进行单词级或字符级的one-hot编码。这些函数还提供了许多特性，比如去除特殊字符、只考虑数据集中前&lt;script type=&quot;math/tex&quot;&gt;N&lt;/script&gt;个最常见单词。&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;samples&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'The cat sat on the mat.'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;'The dog ate my homework'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+
+&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;keras.preprocessing.text&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Tokenizer&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;tokenizer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Tokenizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;num_words&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;tokenizer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit_on_texts&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;samples&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# [[1, 2, 3, 4, 1, 5], [1, 6, 7, 8, 9]] 
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sequences&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;tokenizer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;texts_to_sequences&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;samples&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;one_hot_results&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tokenizer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;texts_to_matrix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;samples&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;mode&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'binary'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# {'the': 1, 'cat': 2, 'sat': 3, 'on': 4, 'mat': 5, 'dog': 6, 'ate': 7, 'my': 8, 'homework': 9}
+&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;word_index&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;tokenizer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;word_index&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;词嵌入&quot;&gt;词嵌入&lt;/h3&gt;
+
+&lt;p&gt;使用密集向量(低维的浮点数向量)来表示。&lt;/p&gt;
+
+&lt;p&gt;获取词嵌入的两种方法：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;在完成主任务的同时学习词嵌入&lt;/li&gt;
+  &lt;li&gt;预训练词嵌入：在其他任务上预计算好词嵌入，然后将其加载到模型中&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;对第1种方法，&lt;code class=&quot;highlighter-rouge&quot;&gt;keras&lt;/code&gt; 提供了&lt;code class=&quot;highlighter-rouge&quot;&gt;Embedding&lt;/code&gt;层来学习词嵌入。&lt;code class=&quot;highlighter-rouge&quot;&gt;Embedding&lt;/code&gt;层的作用可以理解为一种字典查找，输入是一个二维张量&lt;code class=&quot;highlighter-rouge&quot;&gt;(samples, seq_length)&lt;/code&gt;，输出三维浮点数张量 &lt;code class=&quot;highlighter-rouge&quot;&gt;(samples, seq_length, embedding_dimensionality)&lt;/code&gt;.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;单词索引  -&amp;gt; &lt;code class=&quot;highlighter-rouge&quot;&gt;Embedding&lt;/code&gt;层 -&amp;gt; 对应的词向量&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;词袋&quot;&gt;词袋&lt;/h3&gt;
+
+&lt;p&gt;文本的一种表示方式，本质上是一个集合，其舍弃了文本中的语法结构。&lt;/p&gt;
+
+&lt;h3 id=&quot;imdb-数据集&quot;&gt;IMDB 数据集&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;http://ai.stanford.edu/~amaas/data/sentiment/&quot;&gt;Large Movie Review Database&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://mng.bz/0tIo&quot;&gt;Movie Review Database-2&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Tips: 解压数据集后得到结果：&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;data/aclImdb/
+├── &lt;span class=&quot;nb&quot;&gt;test&lt;/span&gt;
+│   ├── neg
+│   ├── pos
+└── train
+    ├── neg
+    ├── pos
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;一次性读入数据可以采用&lt;code class=&quot;highlighter-rouge&quot;&gt;sklearn&lt;/code&gt;内置函数处理，而不用手动写函数&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sklearn.datasets&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;load_files&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;train&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;test&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;load_files&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;data/aclImdb/train/&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;load_files&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;data/aclImdb/test/&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;小结&quot;&gt;小结&lt;/h2&gt;</content><author><name></name></author><category term="deep learning" /><summary type="html">处理文本数据</summary></entry><entry><title type="html">Zeller’s Congruence</title><link href="http://localhost:4000/archives/Zeller's-Congruence.html" rel="alternate" type="text/html" title="Zeller's Congruence" /><published>2019-09-09T00:00:00+08:00</published><updated>2019-09-09T00:00:00+08:00</updated><id>http://localhost:4000/archives/Zeller's-Congruence</id><content type="html" xml:base="http://localhost:4000/archives/Zeller's-Congruence.html">&lt;p&gt;&lt;strong&gt;Zeller’s congruence&lt;/strong&gt; is an algorithm devised by &lt;a href=&quot;https://en.wikipedia.org/wiki/Christian_Zeller&quot;&gt;Christian Zeller&lt;/a&gt; to calculate the day of the week for any date.&lt;/p&gt;
+
+&lt;p&gt;The formula is simple (not that simple to remember):
+&lt;script type=&quot;math/tex&quot;&gt;d = (D + \lfloor \frac{13(M+1)}{5} \rfloor + Y + \lfloor \frac{Y}{4} \rfloor + \lfloor \frac{C}{4} \rfloor -2C ) \% 7&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;where,&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;script type=&quot;math/tex&quot;&gt;D&lt;/script&gt; is the day of the month&lt;/li&gt;
+  &lt;li&gt;&lt;script type=&quot;math/tex&quot;&gt;M&lt;/script&gt; is the month
+    &lt;ul&gt;
+      &lt;li&gt;3 = March,  4 = April, 12 = December&lt;/li&gt;
+      &lt;li&gt;13 = January, 14 = February of previous year, hence year = year - 1&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;script type=&quot;math/tex&quot;&gt;Y&lt;/script&gt; is the year of the century (e.g., 2022 % 100 = 22)&lt;/li&gt;
+  &lt;li&gt;&lt;script type=&quot;math/tex&quot;&gt;C&lt;/script&gt; is the zero-based century ( e.g., &lt;script type=&quot;math/tex&quot;&gt;\lfloor 2022 / 100 \rfloor  = 20&lt;/script&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;E.g., &lt;script type=&quot;math/tex&quot;&gt;d(2019/09/09) = (9 + 13 * 10 / 5 + 19 + 4 + 5 - 40) \% 7 = 2&lt;/script&gt;, means it is Monday&lt;/p&gt;
+
+&lt;p&gt;Python Code to get the day.&lt;/p&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MyDate&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;dayOfTheWeek&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;d&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;m&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;m&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;m&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;12&lt;/span&gt; 
+            &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;divmod&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;res&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;d&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;13&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;m&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;c&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt; 
+        &lt;span class=&quot;n&quot;&gt;days&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Sunday&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Monday&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Tuesday&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Wednesday&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Thursday&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Friday&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;Saturday&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;days&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;res&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The result &lt;script type=&quot;math/tex&quot;&gt;d&lt;/script&gt; is the zero-based day of the week. It starts from Saturday(0 = Saturday), and ends on Friday (6 = Friday). For an ISO week date Day-of-Week d (1 = Monday to 7 = Sunday), a variant of formula is:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;d = ((d + 5) \% 7) + 1&lt;/script&gt;</content><author><name></name></author><category term="algorithm" /><category term="date" /><summary type="html">Zeller’s congruence is an algorithm devised by Christian Zeller to calculate the day of the week for any date.</summary></entry><entry><title type="html">Docker Basics</title><link href="http://localhost:4000/archives/Docker-Basics.html" rel="alternate" type="text/html" title="Docker Basics" /><published>2019-09-04T00:00:00+08:00</published><updated>2019-09-04T00:00:00+08:00</updated><id>http://localhost:4000/archives/Docker-Basics</id><content type="html" xml:base="http://localhost:4000/archives/Docker-Basics.html">&lt;h2 id=&quot;基本用法&quot;&gt;基本用法&lt;/h2&gt;
+
+&lt;h3 id=&quot;commit&quot;&gt;Commit&lt;/h3&gt;
+
+&lt;p&gt;docker commit :从容器创建一个新的镜像。&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;docker commit [OPTIONS] CONTAINER [REPOSITORY[:TAG]]&lt;/code&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;-a :提交的镜像作者；&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;-c :使用Dockerfile指令来创建镜像；&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;-m :提交时的说明文字；&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;-p :在commit时，将容器暂停。&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;docker ps&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;CONTAINER ID  IMAGE  COMMAND  CREATED  STATUS  PORTS  NAMES
+d91211a28312  85c4fd36a543  &lt;span class=&quot;s2&quot;&gt;&quot;bash&quot;&lt;/span&gt; 42 minutes ago Up 6 minutes  debian_slipper
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;根据这个&lt;code class=&quot;highlighter-rouge&quot;&gt;debian_slipper&lt;/code&gt;容器提交镜像&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker commit &lt;span class=&quot;nt&quot;&gt;-a&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;slipper0714&quot;&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-m&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Debian basic&quot;&lt;/span&gt; d91211a28312 debian_slipper:v1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;push&quot;&gt;Push&lt;/h3&gt;
+
+&lt;p&gt;push镜像的规范是：&lt;/p&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker push &lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;OPTIONS] NAME[:TAG]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;推送之前，行对镜像改名，在名称前加上自己的docker hub的Docker ID，e.g., slipper0714&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker tag 61b3f03bbc49 slipper0714/debian_slipper:v1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;然后进行推送（如果下面的v1的tag标签不写，则默认为latest）&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker push slipper0714/debian_slipper:v1  
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;rmi&quot;&gt;RMI&lt;/h2&gt;
+
+&lt;p&gt;删除images&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker images
+REPOSITORY            TAG                 IMAGE ID            CREATED             SIZE
+debian_slipper       	v1                  61b3f03bbc49        9 minutes ago       717MB
+slipper0714/debian_slipper   v1           61b3f03bbc49        9 minutes ago       717MB
+ubuntu                       v1	          71e5eaf7131c        34 hours ago        862MB
+slipper0714/ubuntu.v1        latest       71e5eaf7131c        34 hours ago        862MB
+slipper0714docker/ubuntu     latest       a2a15febcdf3        2 weeks ago         64.2MB
+debian                       latest       85c4fd36a543        3 weeks ago         114MB
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;rmi&lt;/code&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;docker rmi 85c4fd36a543
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;删除container&quot;&gt;删除container&lt;/h2&gt;
+
+&lt;p&gt;Spec&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;docker container rm [OPTIONS] CONTAINER [CONTAINER...]&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Options:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;--force , -f&lt;/code&gt;&lt;/th&gt;
+      &lt;th&gt; &lt;/th&gt;
+      &lt;th&gt;Force the removal of a running container (uses SIGKILL)&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;--link , -l&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;Remove the specified link&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;--volumes , -v&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt;Remove the volumes associated with the container&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</content><author><name></name></author><category term="docker" /><category term="linux" /><summary type="html">基本用法</summary></entry><entry><title type="html">Sentiment Analysis on Movie Reviews</title><link href="http://localhost:4000/archives/Sentiment-Analysis-on-Movie-Reviews.html" rel="alternate" type="text/html" title="Sentiment Analysis on Movie Reviews" /><published>2019-09-02T00:00:00+08:00</published><updated>2019-09-02T00:00:00+08:00</updated><id>http://localhost:4000/archives/Sentiment-Analysis-on-Movie-Reviews</id><content type="html" xml:base="http://localhost:4000/archives/Sentiment-Analysis-on-Movie-Reviews.html">&lt;h1 id=&quot;sentiment-analysis-on-movie-reviews&quot;&gt;Sentiment Analysis on Movie Reviews&lt;/h1&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.kaggle.com/&quot;&gt;Kaggle&lt;/a&gt; 赛事之  &lt;a href=&quot;http://www.kaggle.com/c/sentiment-analysis-on-movie-reviews&quot;&gt;影评情感分析(Sentiment Analysis on Movie Reviews, SAMR)&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;基于：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Python 3.7&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;scikit-learn, nltk&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;问题描述&quot;&gt;问题描述&lt;/h2&gt;
+
+&lt;p&gt;摘自 Kaggle’s &lt;a href=&quot;http://www.kaggle.com/c/sentiment-analysis-on-movie-reviews&quot;&gt;描述&lt;/a&gt;:&lt;/p&gt;
+
+&lt;p&gt;本赛事考察参赛者对&lt;a href=&quot;http://www.rottentomatoes.com/&quot;&gt;烂番茄&lt;/a&gt;数据集进行情绪分析能力，之后参赛者需对每段评价做出预测，预测值为:[4,3,2,1,0]，分别对应 [positive, somewhat positive, neutral, somewhat negative, negative]中的一个。&lt;/p&gt;
+
+&lt;p&gt;示例：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;4 (positive): “They works spectacularly well… A shiver-inducing, nerve-rattling ride” (好赞顶)&lt;/li&gt;
+  &lt;li&gt;3 (somewhat positive): “rooted in a sincere performance by the title character undergoing midlife crisis”(剧本扎实、表演到位)&lt;/li&gt;
+  &lt;li&gt;2 (neutral)：”Its everything you would expect – but nothing more.” (该有的都有，但仅此而已)&lt;/li&gt;
+  &lt;li&gt;1 (somewhat negative) ：”But it does not leave you with much.” （看完即忘)&lt;/li&gt;
+  &lt;li&gt;0 (negative)：”The movies progression into rambling incoherence gives new meaning to the phrase fatal script error.”（烂的一踏糊涂）&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;思路-1&quot;&gt;思路-1&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;特征提取
+    &lt;ul&gt;
+      &lt;li&gt;词频-逆向文档频率(term frequency-inverse document frquency)&lt;/li&gt;
+      &lt;li&gt;删除停用词&lt;/li&gt;
+      &lt;li&gt;设置最小文档频率 (&lt;code class=&quot;highlighter-rouge&quot;&gt;min_df=5&lt;/code&gt;)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;逻辑回归&lt;/li&gt;
+  &lt;li&gt;网格搜索&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;我们采用词袋来表示文本，词袋表示由&lt;code class=&quot;highlighter-rouge&quot;&gt;CounterVectorizer&lt;/code&gt;实现。&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;sklearn.feature_extraction.text&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CounterVectorizer&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;vect&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CountVectorizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text_train&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;vect&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;CountVectorizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text_train&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;x_train&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vect&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;transform&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text_train&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;features&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;vect&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;get_feature_names&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;features&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# 15240
+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;First 20 features :&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;{}&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;features&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;20&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]))&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# ['000', '10', '100', '101', '102', '103', '104', '105', '10th', '11', '110', '112', '12', '120', '127', '129', '12th', '13', '13th', '14']
+&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;scores&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cross_val_score&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;LogisticRegression&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;solver&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'lbfgs'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;x_train&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y_train&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cv&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Mean score &quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;mean&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;scores&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# 0.64	
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;训练集大小 156060 x 15240，表示成词表可以发现前20个元素都是数字，这些数字基本上不包含有用信息。我们采用设置最小文档频率 &lt;code class=&quot;highlighter-rouge&quot;&gt;min_df=5&lt;/code&gt;(i.e., 仅使用至少在5个文档中出现过的词例)来约束这个词例。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;min_df=5&lt;/code&gt; 特征数缩小到 14609，而交叉验证精度几乎没有变化&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;用tf-idf缩放数据&quot;&gt;用tf-idf缩放数据&lt;/h3&gt;
+
+&lt;p&gt;我们考虑使用词频-逆向文档频率来舍弃不重要的特征，同时对&lt;em&gt;在某一特定文档中经常出现的术语&lt;/em&gt;给予很高的权重。之后使用网格搜索寻求最优参数。&lt;/p&gt;
+
+&lt;p&gt;最终提交结果得分：0.6073  排名 [414/861]&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;pipe&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;make_pipeline&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;TfidfVectorizer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;min_df&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;stop_words&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'english'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;LogisticRegression&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;solver&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'lbfgs'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;multi_class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'auto'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;param_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'logisticregression__C'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:[&lt;/span&gt;&lt;span class=&quot;mf&quot;&gt;0.001&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.01&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]}&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;grid&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;GridSearchCV&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;pipe&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;param_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cv&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;grid&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;fit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;text_train&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;y_train&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Best score {:.2f}&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;format&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;grid&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;best_score_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# 0.63
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;n-元分词&quot;&gt;&lt;script type=&quot;math/tex&quot;&gt;n&lt;/script&gt;-元分词&lt;/h3&gt;
+
+&lt;p&gt;之前仅考虑了单一词例的计数，缺点在于这种方法完全舍弃了单词顺序与短语结构。比如，它无法区分 “not bad, this is a good movie” 与 “not good, this is a bad movie”.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Best cv score: 0.65
+Best parameters :
+&lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'logisticregression__C'&lt;/span&gt;: 10, &lt;span class=&quot;s1&quot;&gt;'tfidfvectorizer__ngram_range'&lt;/span&gt;: &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;1, 2&lt;span class=&quot;o&quot;&gt;)}&lt;/span&gt; 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Heatmap:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/heatmap-ngram.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;</content><author><name></name></author><category term="movie reviews" /><category term="sklearn" /><category term="nltk" /><summary type="html">Sentiment Analysis on Movie Reviews Kaggle 赛事之 影评情感分析(Sentiment Analysis on Movie Reviews, SAMR).</summary></entry><entry><title type="html">Telegram-MTProxy</title><link href="http://localhost:4000/archives/Telegram-MTProxy.html" rel="alternate" type="text/html" title="Telegram-MTProxy" /><published>2019-08-29T00:00:00+08:00</published><updated>2019-08-29T00:00:00+08:00</updated><id>http://localhost:4000/archives/Telegram-MTProxy</id><content type="html" xml:base="http://localhost:4000/archives/Telegram-MTProxy.html">&lt;p&gt;Build &lt;a href=&quot;https://github.com/TelegramMessenger/MTProxy&quot;&gt;MTProxy&lt;/a&gt; for Telegram on your server (e.g., VPS), so you don’t have to tolerate high-latency VPN connection. Actually, you can use Telegram without installing any VPN software on your devices.&lt;/p&gt;
+
+&lt;p&gt;Configuring MTProxy is not that hard.&lt;/p&gt;
+
+&lt;p&gt;First, install dependencies, you would need common set of tools for building from source, and development packages for &lt;code class=&quot;highlighter-rouge&quot;&gt;openssl&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;zlib&lt;/code&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# For Debian/Ubuntu users&lt;/span&gt;
+apt &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;git curl build-essential libssl-dev zlib1g-dev 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;download--build&quot;&gt;Download &amp;amp; Build&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git clone https://github.com/TelegramMessenger/MTProxy
+&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;MTProxy &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; make 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The binary file will be in &lt;code class=&quot;highlighter-rouge&quot;&gt;objs/bin/mtproto-proxy&lt;/code&gt;. Run  &lt;code class=&quot;highlighter-rouge&quot;&gt;make clean&lt;/code&gt; if building is failed and search Google for reasons.&lt;/p&gt;
+
+&lt;h2 id=&quot;configuration-files&quot;&gt;Configuration files&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Secret file: to connect to telegram servers.&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;curl &lt;span class=&quot;nt&quot;&gt;-s&lt;/span&gt; https://core.telegram.org/getProxySecret &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; proxy-secret
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Proxy config file&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;curl &lt;span class=&quot;nt&quot;&gt;-s&lt;/span&gt; https://core.telegram.org/getProxyConfig &lt;span class=&quot;nt&quot;&gt;-o&lt;/span&gt; proxy-multi.conf
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;You also need a generate a secret (i.e., password) to be used by users to connect to your proxy. You can always craft your onw passphrase, e.g., &lt;code class=&quot;highlighter-rouge&quot;&gt;d87dasfsadfa9sd8fasdf7as&lt;/code&gt;, but if you want to generate a random passphrase, you can use commands like:&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;cat&lt;/span&gt; /proc/sys/kernel/random/uuid &lt;span class=&quot;c&quot;&gt;# or &lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;head&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-c&lt;/span&gt; 16 /dev/urandom | xxd &lt;span class=&quot;nt&quot;&gt;-ps&lt;/span&gt;  &lt;span class=&quot;c&quot;&gt;# generating 16-bytes passphrase	&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;run-mtproxy&quot;&gt;Run MTProxy&lt;/h2&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;./mtproto-proxy &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt; username &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; 8888 &lt;span class=&quot;nt&quot;&gt;-H&lt;/span&gt; 9999 &lt;span class=&quot;nt&quot;&gt;-S&lt;/span&gt; &amp;lt;secret&amp;gt; &lt;span class=&quot;nt&quot;&gt;--aes-pwd&lt;/span&gt; proxy-secret proxy-multi.conf &lt;span class=&quot;nt&quot;&gt;-M&lt;/span&gt; 1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Where:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;username&lt;/code&gt; is the username.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;9999&lt;/code&gt; is the port used by client devices to connect to the proxy.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;8888&lt;/code&gt; is the local port.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;secret&amp;gt;&lt;/code&gt; is the password you just generated. Also you can set multiple secrets: &lt;code class=&quot;highlighter-rouge&quot;&gt;-S &amp;lt;secret1&amp;gt; -S &amp;lt;secret2&amp;gt;&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;proxy-secret&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;proxy-multi.conf&lt;/code&gt; configure files curled in previous steps.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;1&lt;/code&gt; is the number of workers. You can increase the number of workers, if you have a powerful server.&lt;/li&gt;
+  &lt;li&gt;Use &lt;code class=&quot;highlighter-rouge&quot;&gt;mtproto-proxy --help&lt;/code&gt; to read more options&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;system-configuration&quot;&gt;System Configuration&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Create systemd service file by running&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;emacs /etc/systemd/system/MTProxy.service &lt;span class=&quot;c&quot;&gt;# or vim /etc/systemd/system/MTProxy.service&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Move configure files, secret, and binary proxy file to a working directory.&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;mkdir&lt;/span&gt; /opt/MTProxy/
+&lt;span class=&quot;nb&quot;&gt;mv &lt;/span&gt;MTProxy/objs/bin/&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; /opt/MTProxy/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+
+    &lt;p&gt;Edit the system services&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;Unit]
+&lt;span class=&quot;nv&quot;&gt;Description&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;MTProxy
+&lt;span class=&quot;nv&quot;&gt;After&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;network.target
+   
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;Service]
+&lt;span class=&quot;nv&quot;&gt;Type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;simple
+&lt;span class=&quot;nv&quot;&gt;WorkingDirectory&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/opt/MTProxy
+&lt;span class=&quot;nv&quot;&gt;ExecStart&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/opt/MTProxy/mtproto-proxy &lt;span class=&quot;nt&quot;&gt;-u&lt;/span&gt; nobody &lt;span class=&quot;nt&quot;&gt;-p&lt;/span&gt; 8888 &lt;span class=&quot;nt&quot;&gt;-H&lt;/span&gt; 9999 &lt;span class=&quot;nt&quot;&gt;-S&lt;/span&gt; &amp;lt;passphrase&amp;gt; &lt;span class=&quot;nt&quot;&gt;--aes-pwd&lt;/span&gt; proxy-secret proxy-multi.conf &lt;span class=&quot;nt&quot;&gt;-M&lt;/span&gt; 0
+&lt;span class=&quot;nv&quot;&gt;Restart&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;on-failure
+   
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;Install]
+&lt;span class=&quot;nv&quot;&gt;WantedBy&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;multi-user.target
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Reload daemons and restart MTProxy&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;systemctl daemon-reload
+systemctl restart MTProxy.service
+systemctl status MTProxy.service  &lt;span class=&quot;c&quot;&gt;# check if it's running properly&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Autostart service after reboot&lt;/p&gt;
+
+    &lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;systemctl &lt;span class=&quot;nb&quot;&gt;enable &lt;/span&gt;MTProxy.service
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;When you see &lt;code class=&quot;highlighter-rouge&quot;&gt;main loop&lt;/code&gt; in the output, you know the program is running correctly.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/mtproxy.png&quot; alt=&quot;MTProxy&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Good luck and Enjoy !&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;UPDATE&lt;/strong&gt; on Sep 3: The data feature of MTProxy is now recognizable by GFW, self-constructed MTProxy is discouraged and will not survive for long.&lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><category term="telegram" /><category term="mtproxy" /><summary type="html">Build MTProxy for Telegram on your server (e.g., VPS), so you don’t have to tolerate high-latency VPN connection. Actually, you can use Telegram without installing any VPN software on your devices.</summary></entry><entry><title type="html">Pooling in CNN</title><link href="http://localhost:4000/archives/Pooling-in-CNN.html" rel="alternate" type="text/html" title="Pooling in CNN" /><published>2019-08-27T00:00:00+08:00</published><updated>2019-08-27T00:00:00+08:00</updated><id>http://localhost:4000/archives/Pooling-in-CNN</id><content type="html" xml:base="http://localhost:4000/archives/Pooling-in-CNN.html">&lt;p&gt;考虑到图像具有”静态型”的属性, 即一个图像区域的特征极有可能在另一个区域同样适用.&lt;/p&gt;
+
+&lt;p&gt;因此，当描述一个大的图像的时候，我们可以考虑对不同位置的特征进行聚合统计.&lt;/p&gt;
+
+&lt;p&gt;例如：计算图像一个区域上的某个特定特征的平均值 或者最大值）。这种统计方式不仅可以降低纬度，还不容易过拟合。这种聚合统计的操作就称之为池化.&lt;/p&gt;
+
+&lt;h2 id=&quot;作用&quot;&gt;作用&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;下采样(downsampling)&lt;/li&gt;
+  &lt;li&gt;降维、去除冗余信息、对特征进行压缩、简化网络复杂度、减小计算量、减小内存消耗等等。&lt;/li&gt;
+  &lt;li&gt;不变性(invariance)，包括平移(translation)，旋转(rotation)，尺度(scale)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;目的在于减少参数量，加快计算速度并防止过拟合。
+&amp;lt;!– 
+##池化函数&lt;/p&gt;
+
+&lt;p&gt;想法，使用某一位置的相信输出的总体统计特征来代替网络在该位置的输出。 例子：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;最大池化(max pooling)函数: 选相邻矩形区域内的最大值作为该区域池化后的值&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;平均池化(average pooling)函数：选相邻矩形区域内平均值作为该区域池化后的值&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;q--a&quot;&gt;Q &amp;amp; A&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;池化层与卷积层的不同之外？&lt;/p&gt;
+
+    &lt;ol&gt;
+      &lt;li&gt;没有要学习的参数，仅仅从目标区域中取最大值(或平均值)&lt;/li&gt;
+      &lt;li&gt;通道数不发生变化&lt;/li&gt;
+      &lt;li&gt;对微小的位置变化具有健壮性。池化会吸收输入数据的偏差，输入数据发生微小偏差时，池化仍会返回相同的结果。&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&quot;references&quot;&gt;References&lt;/h1&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;https://zhuanlan.zhihu.com/p/35769417&quot;&gt;如何理解CNN中的池化&lt;/a&gt;, 知乎专栏&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;–&amp;gt;&lt;/p&gt;</content><author><name></name></author><category term="cnn" /><category term="pooling" /><summary type="html">考虑到图像具有”静态型”的属性, 即一个图像区域的特征极有可能在另一个区域同样适用.</summary></entry></feed>
