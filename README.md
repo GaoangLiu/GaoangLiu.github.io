@@ -1,1 +1,4 @@
-# Blog of LucasLau
+# [Check out the Blog 🍺](https://NilLau.github.io)
+
+
+
