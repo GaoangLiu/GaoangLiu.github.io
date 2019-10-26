@@ -9,7 +9,7 @@ Resources for learning &amp; review.
 
 ### ○ Technology Docs
 
-#### ● Web Front End
+<!-- #### ● Web Front End
 
 * [MDN Web](https://developer.mozilla.org/en-US/)
 * [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
@@ -38,8 +38,9 @@ __● Web Back End__
 * [Redis](https://redis.io/documentation)
 * [SQLite](https://sqlite.org/doclist.html)
 * [MongoDB](https://docs.mongodb.com/manual/)
+ -->
 
-__● Tools &amp; Framwork__
+<!-- __● Tools &amp; Framwork__
 
 * [Laravel](https://laravel.com/docs/master)
 * [Wordpress](https://codex.wordpress.org/)
@@ -60,7 +61,7 @@ __● Tools &amp; Framwork__
 * [Jekyll](https://jekyllrb.com/docs/)
 * [Git](https://git-scm.com/docs)
 * [GitHub](https://guides.github.com/)
-* [Liquid](https://shopify.github.io/liquid/tags/iteration/)
+* [Liquid](https://shopify.github.io/liquid/tags/iteration/) -->
 
 __● Programing__
 
@@ -102,7 +103,7 @@ __● Others__
 
 * [Andrew Tischler Artist](http://www.andrewtischler.com/)
 
-### ○ Usefully Resources
+### ○ Resources
 
 * [Knoema](http://knoema.com/)
 * [List of XML and HTML character entity references](https://en.wikipedia.org/wiki/List_of_XML_and_HTML_character_entity_references)
@@ -112,6 +113,3 @@ __● Others__
 * [Google Fonts](https://fonts.google.com/)
 * [Adobe Fonts](https://fonts.adobe.com)
 
-### ○ Favorite Blogs
-
-* [当然我在扯淡](http://www.yinwang.org/)
