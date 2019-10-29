@@ -16,11 +16,11 @@
 title: Yet Another Blog
 # email: example@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
-  I'm a deep learning lover.
+  A deep learning enthusiast. Machine learning will make life easier and better. 
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://NilLau.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 # twitter_username: example
-github_username: NilLau
+github_username: Gal
 
 # Build settings
 markdown: kramdown

@@ -21,12 +21,12 @@
       {{ content }}
     </div>
   
-    <p>写的不错，分享一下：</p>
-    
-    <a href="https://twitter.com/intent/tweet?text={{ page.title }}&url={{ site.url }}{{ page.url }}" title="Share on Twitter" rel="nofollow" target="_blank">Twitter</a>
-    <a href="https://facebook.com/sharer.php?u={{ site.url }}{{ page.url }}" title="Share on Facebook" rel="nofollow" target="_blank">Facebook</a>
-    <a href="https://plus.google.com/share?url={{ site.url }}{{ page.url }}" title="Share on Google+" rel="nofollow" target="_blank">Google+</a>
-          
+    <hr>
+    <p style="font-family: 'Times New Roman', Times, serif;">Great article, share it:</p>
+    <a href="https://twitter.com/intent/tweet?text={{ page.title }}&url={{ site.url }}{{ page.url }}" title="Share on Twitter" rel="nofollow" target="_blank"> <img src="{{ site.baseurl }}/images/logos/twitterlogo.png" width="50px"> </a>
+    <a href="https://facebook.com/sharer.php?u={{ site.url }}{{ page.url }}" title="Share on Facebook" rel="nofollow" target="_blank"> <img src="{{ site.baseurl }}/images/logos/facebook-logo2.png" width="50px"> </a>
+    <a href="http://service.weibo.com/share/share.php?url={{site.url}}{{page.url}}&appkey=&title={{ page.title }}&pic=&ralateUid=&language=zh_cn" title="Share on weibo" rel="nofollow" target="_blank"> <img src="{{site.baseurl}}/images/logos/weibo-logo2.jpg" width="50px"> </a>
+      
     {%- if site.disqus.shortname -%}
       {%- include disqus_comments.html -%}
     {%- endif -%}

@@ -8,11 +8,12 @@ catalog: 	true
 tags:
   - machine learning
   - overfitting
+  - underfitting
 ---
 
 # Overfitting
 
-##理解过拟合
+## 原因
 
 从直观表现上来说，模型过度关注于训练集本身，在训练集上表现好，但在测试集上表现不好，泛化性能差。
 
@@ -21,6 +22,9 @@ tags:
 * 训练样本太少或者缺乏代表性。此时需要增加样本数，或者增加样本的多样性。
 * 训练样本噪声的干扰，导致模型拟合了这些噪声，这时需要剔除噪声数据或者改用对噪声不敏感的模型。
 
+# Underfitting
+
+模型过于简单，无法抓住数据的特征。 
 
 
 
@@ -30,4 +34,3 @@ tags:
 #Reference
 
 1. [理解过拟合, ](https://zhuanlan.zhihu.com/p/38224147)知乎专栏, 2019-03
-2. 

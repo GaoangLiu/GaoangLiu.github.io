@@ -114,12 +114,30 @@ Where:
 
 When you see `main loop` in the output, you know the program is running correctly. 
 
-![MTProxy]({{site.baseurl}}/assets/img/mtproxy.png)
+<img src="{{site.baseurl}}/images/2019/mtproxy.png" >
 
 Good luck and Enjoy !
 
 
 ----- 
-* **UPDATE** on Sep 3: The data feature of MTProxy is now recognizable by GFW, self-constructed MTProxy is discouraged and will not survive for long.
+**Update** on Sep 3: The data feature of MTProxy can be easily recognized by GFW, thus pure MTProxy is discouraged and will not survive for long.
+
+---- 
+**Update** on Oct 28: There is another repo [mtprotoproxy](https://github.com/alexbers/mtprotoproxy/tree/stable) provides a simple MTProto proxy. 
+
+## How to use?
+1. `git clone -b stable https://github.com/alexbers/mtprotoproxy.git; cd mtprotoproxy`
+2. edit `config.py`, config **PORT, USERS, AD_TAG**
+3. `docker-compose up -d` to run the script
+4. type `docker-compose logs` to check running status and review the credentials. 
+
+A major merit of this tool: **the proxy performance should be enough to comfortably serve about 4 000 simultaneous users on the VDS instance with 1 CPU core and 1024MB RAM.**
+
+One thing that bugs us is we can not remove from Telegram the sponsor channel of this tool.
+
+<img src="{{site.baseurl}}/images/2019/mtproxy-sponsor.png" width="300px" class="center">
+
+## Stability 
+We have installed this tool on our VPS (Debian GNU/Linux 9.11 (stretch) x 64) and tested it on Telegram v5.8 (macOS), by today(28-10-2019), it has been working fine for more than two weeks.
 
 
