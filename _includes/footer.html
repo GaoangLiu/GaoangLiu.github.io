@@ -3,7 +3,14 @@
 
   <div class="wrapper">
 
-    <h2 class="footer-heading">{{ site.title | escape }}</h2>
+    <!-- <h2 class="footer-heading">{{ site.title | escape }}</h2> -->
+    <!-- <h3 class="footer-heading"> 
+      $$\text{A deep learning enthusiast, who believes in the power of AI} $$
+      $$\text{ and the ethics of humankind.} $$
+    </h3> -->
+    <h3 style="font-family: 'Times New Roman', Times, serif; color: gray;" >
+      A deep learning enthusiast, who believes in the power of AI and the ethics of humankind.
+    </h3>
 
     <div class="footer-col-wrapper">
       <div class="footer-col footer-col-1">
@@ -15,6 +22,7 @@
               {{ site.title | escape }}
             {%- endif -%}
             </li>
+            
             {%- if site.email -%}
             <li><a class="u-email" href="mailto:{{ site.email }}">{{ site.email }}</a></li>
             {%- endif -%}

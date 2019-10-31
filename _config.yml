@@ -13,11 +13,13 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: 📝 `\mathbb{\text{Not a Blog of R2FsCg}}`
-# email: i@140714.xyz
-description: >   # this means to ignore newlines until "baseurl:"
-  `\text{A deep learning enthusiast, who believes in the power of AI}`
-  `\text{ and the ethics of humankind.}`
+title: Not a Blog
+# email: R2FsCg@140714.xyz
+
+# description: >   # this means to ignore newlines until "baseurl:"
+#   `\text{A deep learning enthusiast, who believes in the power of AI}`
+#   `\text{ and the ethics of humankind.}`
+
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "http://NilLau.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 # twitter_username: abc
