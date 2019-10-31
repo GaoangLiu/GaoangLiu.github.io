@@ -42,5 +42,5 @@ tags: [index, blog]
 	done
 }
 
-update_index
+# update_index
 post_drafts

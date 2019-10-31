@@ -90,6 +90,6 @@ SMTP smtp.yandex.com 465
 IMAP imap.yandex.com 993
 ```
 
-## A DNS configuration example
+## A 
 
-<img class='center' src="{{site.baseurl}}/images/2019/summary.yandex.png" width="100%">
+<img class='center' src="{{site.baseurl}}/images/2019/summary.yandex.png" width="90%">
