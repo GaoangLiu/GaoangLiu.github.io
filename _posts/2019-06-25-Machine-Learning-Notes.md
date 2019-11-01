@@ -7,18 +7,23 @@ categories:
   - note
 ---
 
-# Basic Math
+<h1 style="font-size:bold;">🌵Basic Math
+ </h1> 
 
 最小二乘法（英语：least squares method），又称最小平方法，是一种数学优化方法。它通过最小化误差的平方和寻找数据的最佳函数匹配。
-## 张量
+<h2 style="font-size:bold; font-family: STHeiti, SimHei, STKaiti, KaiTi">🌲🌲 张量
+ </h2> 
 标量：0阶张量
 
 向量：1阶张量
 
 
-# Machine Learning Basics
-##  Concepts
-### 什么是机器学习
+<h1 style="font-size:bold;">🌵Machine Learning Basics
+ </h1> 
+<h2 style="font-size:bold; font-family: STHeiti, SimHei, STKaiti, KaiTi">🌲🌲  Concepts
+ </h2> 
+<h3 style="font-size:bold; font-family: STKaiti, KaiTi">☘️☘️☘️ 什么是机器学习
+ </h3> 
 
 - Arthur Samule(1959): fields of study that gives computers ability to learn without being explicitly programmed. 
 
@@ -30,10 +35,12 @@ categories:
 
 通俗的讲，对于一个任务及其表现的度量方法，设计一种算法，让算法能够提取中数据所蕴含的规律，这就叫机器学习。如果数据带有标签，则称作监督学习；对应的，如果是无标签的，则称无监督学习。
   
-### 符号主义人工智能
+<h3 style="font-size:bold; font-family: STKaiti, KaiTi">☘️☘️☘️ 符号主义人工智能
+ </h3> 
   * Symbolic AI: 通过编写足够多的明确规则来处理知识，就可以实现与人类水平相当的AI. 
 
-### AI V.S. Machine Learning 
+<h3 style="font-size:bold; font-family: STKaiti, KaiTi">☘️☘️☘️ AI V.S. Machine Learning 
+ </h3> 
 一图胜千言(source: Deep Learning by Iran Goodfellow et al)
 
 <img class="center" src="{{site.baseurl}}/images/dl.vs.ai.png" width="60%">
@@ -45,10 +52,12 @@ categories:
 <h3 style="font-size:bold; font-family: STKaiti, KaiTi">☘️☘️☘️ 机器学习的分类 </h3> -->
 
 
-## 机器学习的分类 
+<h2 style="font-size:bold; font-family: STHeiti, SimHei, STKaiti, KaiTi">🌲🌲 机器学习的分类 
+ </h2> 
 依照数据类型的不同，学习算法可以大致分为以下几类
 
-### 监督学习
+<h3 style="font-size:bold; font-family: STKaiti, KaiTi">☘️☘️☘️ 监督学习
+ </h3> 
 特点：学习示例中的数据都存在正确的标签
 
 场景：分类与回归问题
@@ -56,33 +65,39 @@ categories:
 常用算法：K-Nearest Neighborhood(KNN), 决策树(Decision Tree), 随机森林(Random Forest), 朴素贝叶斯(Naive Bayes), 支持向量机(Support Vector Machine, SVM), 逻辑回归(Logistic Regression), AdaBoost以及线性判别分析(Linear Discriminant Analysis, LDA)。
 深度学习(Deep Learning)也是大多数以监督学习的方式呈现
 
-### 无监督学习
+<h3 style="font-size:bold; font-family: STKaiti, KaiTi">☘️☘️☘️ 无监督学习
+ </h3> 
 特点：数据没有标签，学习模型的目的为了推断数据的一些内在结构
 
 场景：关联规则的学习以及聚类等
 
 常见算法：Apriori算法以及k-Means算法
 
-### 半监督学习
+<h3 style="font-size:bold; font-family: STKaiti, KaiTi">☘️☘️☘️ 半监督学习
+ </h3> 
 特点：输入数据部分被标记，部分没有被标记，这种学习模型可以用来进行预测。
 
 场景：包括分类和回归，算法包括一些对常用监督式学习算法的延伸，通过对已标记数据建模，在此基础上，对未标记数据进行预测。
 
 ​常用算法：图论推理算法（Graph Inference）或者拉普拉斯支持向量机（Laplacian SVM）
 
-### 强化学习
+<h3 style="font-size:bold; font-family: STKaiti, KaiTi">☘️☘️☘️ 强化学习
+ </h3> 
 特点：智能体(agent)接收有关其环境(environment)的信息，并学会选择使某种奖励最大化的行动。 
 
 
-## 损失函数 
+<h2 style="font-size:bold; font-family: STHeiti, SimHei, STKaiti, KaiTi">🌲🌲 损失函数 
+ </h2> 
 损失函数（Loss Function，又称误差函数(error function)或者代价函数(cost function)，通过估算模型的预测值与真实值的不一致程度来衡量算法的运行效果。
 损失函数是一个非负实值函数，通常使用$$\mathcal{L}(Y, f(x))$$来表示。
 函数值越小，表明模型的鲁棒性就越好。损失函数是经验风险函数的核心部分，也是结构风险函数重要组成部分。
 
 
-## 梯度下降
+<h2 style="font-size:bold; font-family: STHeiti, SimHei, STKaiti, KaiTi">🌲🌲 梯度下降
+ </h2> 
 
-### 为什么需要梯度下降
+<h3 style="font-size:bold; font-family: STKaiti, KaiTi">☘️☘️☘️ 为什么需要梯度下降
+ </h3> 
 
 多数学习算法都涉及到某种形式的优化，即寻找最优参数$$x$$的值以最小化某个函数$$f(x)$$的任务(最大化问题可以通过反转$$f(x)$$的符号转换)。梯度是张量运算的导数，是导数这一概念向多元函数导数的推广。对于给定函数$$f(x)$$，梯度表示的是各点处的函数值减小最多的方向。
 尽管这个方向未必指向最小值，但沿着这个方向可以最大限度减小函数的值。
@@ -90,12 +105,15 @@ categories:
 而梯度下降法(Gradient Descent, GD)是常见优化算法之一。
 
 
-### 特点
+<h3 style="font-size:bold; font-family: STKaiti, KaiTi">☘️☘️☘️ 特点
+ </h3> 
 简单、有效，对于凸函数(convex)来说，GD 总能很快找到最小值。但相应的，对于非凸函数(non-convex)，GD 可能会陷入到一个局部最小值，而无法收敛到全局最小值。
 
-### 
+<h3 style="font-size:bold; font-family: STKaiti, KaiTi">☘️☘️☘️ 
+ </h3> 
 
-# 数据表示与特征工程
+<h1 style="font-size:bold;">🌵数据表示与特征工程
+ </h1> 
 
 * 什么是one-hot encoding? 为什么需要它?
   * 也称N取一编码(one -out-of N encoding)，或者虚拟变量(dummy variable)。背后的思想是将**一个分类变量替换一个或者多个特征** ，新特征取值0或者1. 
@@ -109,14 +127,16 @@ categories:
 
 
 
-# 体系
+<h1 style="font-size:bold;">🌵体系
+ </h1> 
 
 * 什么是AI ?
   * AI的本质是, 人类所赋予机器(or 工具)的一种能够解决具备一定难度的问题的能力(the ability to solve certain difficult problems — difficult in the sense that they are not easily solved by humans)，这种能力越强，就能越好的解决问题(e.g., 准确率更高的分类器)。 
 
 
 
-# 数据处理
+<h1 style="font-size:bold;">🌵数据处理
+ </h1> 
 
 * 为什么要对数据进行归一化处理？
   * 做为一个特征，我们希望看到数据的相对值差别对结果的影响，而不是其绝对值。特别地，未做归一化的数据中，取值范围最大的数据将主导诸如kNN算法的结果
@@ -142,7 +162,8 @@ categories:
 
 
 
-# 决策树、随机森林
+<h1 style="font-size:bold;">🌵决策树、随机森林
+ </h1> 
 
 对数据反复进行递归划分，直到每个区域（叶结点）只包含单目标值（单一类别或单一回归值）。 
 
@@ -159,7 +180,8 @@ categories:
 
 为了克服决策树过拟合的缺点，一个思路是合并多个决策树，即是构建：
 
-### 随机森林
+<h3 style="font-size:bold; font-family: STKaiti, KaiTi">☘️☘️☘️ 随机森林
+ </h3> 
 
 随机森林本质是：**多个决策树的组合**。 背后思想：每棵（决策）树的预测可能都相对较好，但可能对部分数据过拟合，如果构造很多树，并且每棵树的预测都很好，但以不同的方式过拟合，那么对这些树的预测结果取平均值来降低过拟合（对于分类问题，可以采用“软投票(soft voting)”策略，即每个算法做出“软”预测，给出每个可能输出label的概率，所有概率求平均值，输出概率最大标签）。
 
@@ -176,7 +198,8 @@ categories:
 * 支持多核并行， n_jobs = 9 or -1 
 * 对于维度非常高的稀疏数据（比如文本数据），RF表现往往不是很好，线性模型可能更适合。
 
-### 梯度提升机（梯度提升回归树）
+<h3 style="font-size:bold; font-family: STKaiti, KaiTi">☘️☘️☘️ 梯度提升机（梯度提升回归树）
+ </h3> 
 
 采用连续的方式构造树，每棵树都试图**纠正前一棵树的错误**。优势，通常使用深度很小(1~5)的树，占用内存少，预测速度更快。
 
@@ -194,11 +217,13 @@ categories:
 
 它对参数设置比rf更为敏感，如果设置得体，精度很高。故经常是ML竞赛优胜者。
 
-### 核支持向量机
+<h3 style="font-size:bold; font-family: STKaiti, KaiTi">☘️☘️☘️ 核支持向量机
+ </h3> 
 
 Kernelized support vector machine 通常简称 svm
 
-### 神经网络
+<h3 style="font-size:bold; font-family: STKaiti, KaiTi">☘️☘️☘️ 神经网络
+ </h3> 
 
 Q:  缺点？
 
@@ -208,7 +233,8 @@ Q:  缺点？
 
 
 
-# 无监督学习
+<h1 style="font-size:bold;">🌵无监督学习
+ </h1> 
 
 * 如何评估无监督学习?
   
@@ -218,7 +244,8 @@ Q:  缺点？
 
 
 
-# CNN 卷积神经网络
+<h1 style="font-size:bold;">🌵CNN 卷积神经网络
+ </h1> 
 
 * “学习” 指以最小化损失函数为基准，从训练数据中自动获取最优权重参数的过程。自动获取的方法：梯度下降法。
 * 优点：对所有的问题都可以用同样的流程来解决，可以直接将数据作为原始数据，进行“端到端”的学习。
@@ -240,9 +267,11 @@ Q:  缺点？
 
 
 
-# 深度学习
+<h1 style="font-size:bold;">🌵深度学习
+ </h1> 
 
-## 文本与序列
+<h2 style="font-size:bold; font-family: STHeiti, SimHei, STKaiti, KaiTi">🌲🌲 文本与序列
+ </h2> 
 
 * 文本向量化(vectorize)实现方法 
   * 将文本转化成数值张量的过程，有以下几种实现方式： 

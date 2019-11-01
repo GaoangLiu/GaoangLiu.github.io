@@ -1,15 +1,18 @@
 ---
 layout:     post
-title:      Papers on Machine Learning 
+title:      Materials on Machine Learning 
 date:       2019-10-20
-tags: [Macgine Learning, Papers]
+tags: [machine learning, papers]
 categories: 
-- Machine Learning
+- machine learning
 - papers
 ---
 
 ## Image Classification 
 - [Delving Deep into Rectifiers: Surpassing Human-Level Performance on ImageNet Classification](https://arxiv.org/pdf/1502.01852v1.pdf)
 
+
+# Documents
+- [tf.keras document](https://www.tensorflow.org/guide/keras/overview)
 
 

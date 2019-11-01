@@ -64,11 +64,7 @@ __● Web Back End__
 * [Liquid](https://shopify.github.io/liquid/tags/iteration/) -->
 
 __● Programing__
-
-* [PHP](http://php.net/manual/en/)
-* [PHP The Right Way](https://phptherightway.com)
 * [Python 3](https://docs.python.org/3/)
-* [Python 2](https://docs.python.org/2/)
 * [Scrapy](https://docs.scrapy.org)
 * [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)
 * [Ruby](http://ruby-doc.org/)
@@ -85,10 +81,6 @@ __● Opration System__
 __● Others__
 
 * [Elastic](https://www.elastic.co/guide/)
-
-### ○ Design Resources
-
-* [Material Design](https://material.io/)
 
 ### ○ Common Tools
 
