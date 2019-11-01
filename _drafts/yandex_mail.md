@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      How to set up a domain-based Email with Yandex
+title:      Set up a domain-based Email with Yandex
 date:       2019-10-31
 tags: [Mail, Yandex]
 categories: 
