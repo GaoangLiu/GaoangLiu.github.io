@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>机器学习笔记 | Lucas’s Blog</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="机器学习笔记" />
+<meta name="author" content="ssrzz" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="数据表示与特征工程" />
+<meta property="og:description" content="数据表示与特征工程" />
+<link rel="canonical" href="http://localhost:4000/archives/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html" />
+<meta property="og:url" content="http://localhost:4000/archives/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html" />
+<meta property="og:site_name" content="Lucas’s Blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-06-25T00:00:00+08:00" />
+<script type="application/ld+json">
+{"headline":"机器学习笔记","dateModified":"2019-06-25T00:00:00+08:00","url":"http://localhost:4000/archives/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html","datePublished":"2019-06-25T00:00:00+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/archives/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html"},"author":{"@type":"Person","name":"ssrzz"},"description":"数据表示与特征工程","@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link href="https://fonts.googleapis.com/css?family=Domine|Asap|Noto+Sans+SC|Noto+Serif+SC&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Lucas's Blog" /></head><body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Lucas&#39;s Blog</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/links/">Links</a><a class="page-link" href="/tags/">Tags</a><a class="page-link" href="/categories/">Categories</a><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <script type="text/javascript" async src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">机器学习笔记</h1>
+    <p class="post-meta"><time class="dt-published" datetime="2019-06-25T00:00:00+08:00" itemprop="datePublished">Published: Jun 25, 2019</time><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name"> ｜ Author: ssrzz</span></span></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <h1 id="数据表示与特征工程">数据表示与特征工程</h1>
+
+<ul>
+  <li>什么是one-hot encoding? 为什么需要它?
+    <ul>
+      <li>也称N取一编码(one -out-of N encoding)，或者虚拟变量(dummy variable)。背后的思想是将<strong>一个分类变量替换一个或者多个特征</strong> ，新特征取值0或者1.</li>
+      <li>算法(e.g., LR)不能处理非数值型分类变量时，需要对这些变量进行编码。比较直观的做法是采用<strong>integer encoding</strong> (or label encoding, 整数编码)，将变量映射到一个连续数值集，e.g., [1,2,3,4,…]。 这种方法的弊端在于：算法可能认为数值相近的变量有相关联系，比如{‘black’: 1, ‘red’:2, ‘blue’:3, gray’: 4}，’black’编码后的值与’red’编码后相近，但实际上’black’与’gray’更为相关。</li>
+    </ul>
+  </li>
+  <li>如何理解过拟合？
+    <ul>
+      <li>从直观表现上来说，模型过度关注于训练集本身，在训练集上表现好，但在测试集上表现不好，泛化性能差。</li>
+      <li>产生的原因：
+        <ul>
+          <li>模型本身过于复杂，以至于拟合了训练样本集中的噪声。此时需要选用更简单的模型，或者对模型进行裁剪。</li>
+          <li>训练样本太少或者缺乏代表性。此时需要增加样本数，或者增加样本的多样性。</li>
+          <li>训练样本噪声的干扰，导致模型拟合了这些噪声，这时需要剔除噪声数据或者改用对噪声不敏感的模型。</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="define-ml">Define ML</h2>
+
+<ul>
+  <li>
+    <p>Arthur Samule(1959): fields of study that gives computers ability to learn without being explicitly programmed.</p>
+
+    <blockquote>
+      <p>Samule 曾写了个跳棋(checker)程序，不断训练让程序学习什么是好的move，什么是坏的。尽管Samule本人并不擅长checker，但一个不擅长checker的人在1950s能编写并训练出一个比自己更擅长checker的程序，这是一件很了不起的事情。</p>
+    </blockquote>
+  </li>
+  <li>
+    <p>Tom Mitchell(1998): A computer program is said to learn some experience <script type="math/tex">E</script> w.r.t. some task <script type="math/tex">T</script> and some performance <script type="math/tex">P</script>, if its performance <script type="math/tex">P</script>, as measured by <script type="math/tex">T</script>, improves with experience <script type="math/tex">E</script>.</p>
+
+    <p>i.e., 关于任务<script type="math/tex">T</script>的程序<script type="math/tex">Pr</script> 的成绩<script type="math/tex">P</script>， 正比于从<script type="math/tex">T</script>中学习到的经验<script type="math/tex">E</script>.</p>
+
+    <script type="math/tex; mode=display">P(Pr_T) \propto E(Pr_T)</script>
+
+    <blockquote>
+      <p>上述定义其实是“针对” good ML program，如果一个算法越学越差，本质上也是一个ML算法，但只能算是一个糟糕的算法 (分类问题+准确率极低的算法+结果取反 = 一个准确率还不错的算法？)。</p>
+    </blockquote>
+  </li>
+  <li>
+    <p>符号主义人工智能 ？</p>
+
+    <ul>
+      <li>Symbolic AI: 通过编写足够多的明确规则来处理知识，就可以实现与人类水平相当的AI.</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="体系">体系</h1>
+
+<ul>
+  <li>什么是AI ?
+    <ul>
+      <li>AI的本质是, 人类所赋予机器(or 工具)的一种能够解决具备一定难度的问题的能力(the ability to solve certain difficult problems — difficult in the sense that they are not easily solved by humans)，这种能力越强，就能越好的解决问题(e.g., 准确率更高的分类器)。</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="数据处理">数据处理</h1>
+
+<ul>
+  <li>为什么要对数据进行归一化处理？
+    <ul>
+      <li>做为一个特征，我们希望看到数据的相对值差别对结果的影响，而不是其绝对值。特别地，未做归一化的数据中，取值范围最大的数据将主导诸如kNN算法的结果</li>
+    </ul>
+  </li>
+  <li>通俗解释过拟合、欠拟合？
+    <ul>
+      <li>前者指一个模型过分关注训练数据，但对新数据的泛化性能不好，后者指模型无法获取数据中的所有变化。</li>
+    </ul>
+  </li>
+  <li>kNN算法优缺点？
+    <ul>
+      <li>优势 精度高、对异常值不敏感、无数据输入假定</li>
+      <li>缺点 计算、空间复杂度高，无数给出数据的内在含义</li>
+    </ul>
+  </li>
+  <li>决策树优缺点？
+    <ul>
+      <li>计算复杂度不高，输出结果易于理解，对中间值的缺失不敏感，可以处理不相关特征数据</li>
+      <li>得到的模型很容易可视化，非专家也很容易理解</li>
+      <li>算法完全不受数据缩放的影响。每个特征被单独处理，数据的划分也不依赖于缩放，因此决策树算法不需要特征预处理，比如归一化或者标准化</li>
+      <li>缺点 容易过拟合</li>
+    </ul>
+  </li>
+  <li>Entropy ?
+    <ul>
+      <li>信息增益(information gain)，指对数据集进行处理之前之后发生的变化。对一个符号<script type="math/tex">x</script> 的信息定义为 <script type="math/tex">-\text{log}_2p(x)</script> 。这是一个 xxx</li>
+      <li>熵定义为信息的期望值 <script type="math/tex">H = - \Sigma_i^n p(x_i) \text{log}_2p(x_i)</script></li>
+    </ul>
+  </li>
+  <li>线性回归 ?
+    <ul>
+      <li>也称普通最小二乘法(ordinary least squares, OLS)，回归问题最简单也最经典的线性方法。线性回归寻找参数 <script type="math/tex">w</script>与<script type="math/tex">b</script>，使得对训练集的预测值与真实的回归目标值 <script type="math/tex">y</script>之间的<strong>均方误差</strong>最小。</li>
+    </ul>
+  </li>
+  <li>岭回归(ridge regression)
+    <ul>
+      <li>对于高维数据集(即有大量特征的数据集)，线性模型过拟合的可能性变大。 在岭回归中，对系数<script type="math/tex">w</script>的选择不仅要在训练数据上得到好的预测结果，还要<strong>拟合附加约束</strong>(E.g., 正则化)。</li>
+      <li>Ridge模型在模型的简单性(系统都接近于0)与训练集性能之间做出权衡。</li>
+    </ul>
+  </li>
+</ul>
+
+<p>#决策树、随机森林</p>
+
+<p>对数据反复进行递归划分，直到每个区域（叶结点）只包含单目标值（单一类别或单一回归值）。</p>
+
+<p>通常来说，构造决策树直到所有叶结点都是纯的，这会导致模型非常复杂，并且对训练数据高度拟合。典型的特征是：决策边界过于关注远离同类别样本的单个异常点。 这也是决策树的一个主要缺点之一。</p>
+
+<p>防止过拟合：</p>
+
+<ol>
+  <li>预剪枝(pre-pruning)：限制树的最大深度、叶结点的最大数目、规定一个结点中数据点的最少数据数目</li>
+  <li>后剪枝(post-pruning) 先构造树，随后删除或折叠信息量很少的结点</li>
+</ol>
+
+<p>决策树的优点：</p>
+
+<ol>
+  <li></li>
+</ol>
+
+<p>为了克服决策树过拟合的缺点，一个思路是合并多个决策树，即是构建：</p>
+
+<h3 id="随机森林">随机森林</h3>
+
+<p>随机森林本质是：<strong>多个决策树的组合</strong>。 背后思想：每棵（决策）树的预测可能都相对较好，但可能对部分数据过拟合，如果构造很多树，并且每棵树的预测都很好，但以不同的方式过拟合，那么对这些树的预测结果取平均值来降低过拟合（对于分类问题，可以采用“软投票(soft voting)”策略，即每个算法做出“软”预测，给出每个可能输出label的概率，所有概率求平均值，输出概率最大标签）。</p>
+
+<p>随机化方法</p>
+
+<ul>
+  <li>通过选择用于构造树的数据点，比如使用<strong>自助采样(bootstrap sample)</strong>, 从n_samples个数据点中有放回地随机抽取样本</li>
+  <li>通过选择每次划分测试的特征，每个树随机选择特征的一个子集。潜在问题 a. max_features 过大，比如等于n_features，那么所有树都考虑了全部特征，那么将十分相似 ; b. Max_features过小，比如1，为了更好拟合数据，每棵树都很深</li>
+</ul>
+
+<p>随机森林也可以给出特征重要性(由所有树的特征重要性求和再平均)，一般来说，比单棵树给出的可为可靠。</p>
+
+<h4 id="优缺点">优、缺点</h4>
+
+<ul>
+  <li>方法强大：通常不需要反复调节参数就可以得到很好的结果，也不需要对数据进行缩放。有决策树所有优点，也弥补了其过拟合的缺陷。但如果需要以可视化方式向非专家总结预测过程，选单个决策树可能更好。</li>
+  <li>支持多核并行， n_jobs = 9 or -1</li>
+  <li>对于维度非常高的稀疏数据（比如文本数据），RF表现往往不是很好，线性模型可能更适合。</li>
+</ul>
+
+<h3 id="梯度提升机梯度提升回归树">梯度提升机（梯度提升回归树）</h3>
+
+<p>采用连续的方式构造树，每棵树都试图<strong>纠正前一棵树的错误</strong>。优势，通常使用深度很小(1~5)的树，占用内存少，预测速度更快。</p>
+
+<p>背后思想：<strong>合并多个简单的模型(弱学习器)，比如深度较小的树。每棵树只能对部分数据做出好的预测，通过添加更多的树，不断迭代提高性能</strong>。</p>
+
+<p>优点：</p>
+
+<ul>
+  <li>深度很小、占用内在少、预测速度很快 ; 表现很好</li>
+  <li>不需要数据缩放</li>
+</ul>
+
+<p>缺点：</p>
+
+<ul>
+  <li>需要仔细调参，训练时间可能会比较长</li>
+  <li>不适用于高维稀疏数据</li>
+</ul>
+
+<p>它对参数设置比rf更为敏感，如果设置得体，精度很高。故经常是ML竞赛优胜者。</p>
+
+<h3 id="核支持向量机">核支持向量机</h3>
+
+<p>Kernelized support vector machine 通常简称 svm</p>
+
+<h3 id="神经网络">神经网络</h3>
+
+<p>Q:  缺点？</p>
+
+<ul>
+  <li>功能越强大的神经网络，通常需要更长的训练时间; 还需要仔细的预处理数据</li>
+  <li>调参是一门艺术</li>
+  <li>在“均匀”的数据上表现良好，即特征都具有相似的含义。 如果数据包含不同种类的特征，那么基于树的模型可能表现的更好。</li>
+</ul>
+
+<h1 id="无监督学习">无监督学习</h1>
+
+<ul>
+  <li>
+    <p>如何评估无监督学习?</p>
+
+    <ul>
+      <li>通常来说，评估监督算法的唯一方法就是 **人工检查 **。</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="cnn-卷积神经网络">CNN 卷积神经网络</h1>
+
+<ul>
+  <li>“学习” 指以最小化损失函数为基准，从训练数据中自动获取最优权重参数的过程。自动获取的方法：梯度下降法。</li>
+  <li>优点：对所有的问题都可以用同样的流程来解决，可以直接将数据作为原始数据，进行“端到端”的学习。</li>
+  <li>损失函数
+    <ul>
+      <li>可以使用任意函数，但一般用均方误差和交叉熵误差等
+        <ul>
+          <li>交叉熵误差 <script type="math/tex">E = - \sum\limits_k t_k log y_k</script> , <script type="math/tex">t_k, y_k</script> 监督数据、神经网络的输出</li>
+        </ul>
+      </li>
+      <li>刻画的神经网络<strong>性能</strong>的“恶劣程度“</li>
+      <li>梯度，（损失）函数在各个变量上的偏导数构成的向量。</li>
+    </ul>
+  </li>
+  <li>CNN(convolutional neural networks)
+    <ul>
+      <li>CNN的基石是卷积层(convolutional layer)。Input layer的接收野(receptive fields, 一个<script type="math/tex">m \times n</script> 像素矩阵)连接第一卷积层的一个神经元，同样，第1卷积层的一个 <script type="math/tex">k \times l</script> 神经元矩阵连接到第2层卷积层。因此，第<script type="math/tex">i</script>层卷积层的第 <script type="math/tex">j, j+1</script>个神经元所对应的第 <script type="math/tex">i-1</script> 层神经元矩阵可能是重叠的(<script type="math/tex">k = l = 1</script>就不重叠)。有时候为了使第 <script type="math/tex">i, i+1</script> 卷积层长宽一致，会在卷积层周围添加一些 0, 称为<strong>0填充</strong>.</li>
+      <li><img src="/img/zeropadding.png" alt="image" /></li>
+    </ul>
+  </li>
+  <li>下采样？
+    <ul>
+      <li>减少需要处理的特征图的元素个数 ； 通过让连续卷积层的观察窗口越来越大，从而引入空间过滤器的层级结构。</li>
+      <li>最大池化、平均池化、步幅都可以实现下采样； 最大池化效果通常较好。</li>
+    </ul>
+  </li>
+  <li>VGG-16 v.s. VGG-19
+    <ul>
+      <li>VGG-16 结构图 <img src="/img/vgg16.png" alt="image" /></li>
+      <li>VGG-16 包含16层深度神经网络层，VGG-19 19 层</li>
+    </ul>
+  </li>
+  <li>全连接层存在的问题
+    <ul>
+      <li>数据的形状被”忽视“。图像有3维特征，长、宽、通道，但向全连接层输入时，需要将3维数据拉开为1维，这将忽略重要的空间信息，比如：空间上邻近像素有相似的值、RBG各通道之间分别有密切的关联性、相距较远像素之间几乎没有关联 etc</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="深度学习">深度学习</h1>
+
+<h2 id="文本与序列">文本与序列</h2>
+
+<ul>
+  <li>文本向量化(vectorize)实现方法
+    <ul>
+      <li>将文本转化成数值张量的过程，有以下几种实现方式：</li>
+      <li>将文本分割成<strong>单词</strong>，并将每个单词转换成一个向量</li>
+      <li>将文本分割成<strong>字符</strong>，并将每个字符转换成一个向量</li>
+      <li>提取单词或字符的<strong>n-gram</strong>（多个连续单词或者字符的集合）, 并将每个n-gram转换为一个向量。</li>
+    </ul>
+  </li>
+  <li>标记(token) 与分词(tokenization) ?
+    <ul>
+      <li>Token，将文本分解而成的单元（单词、字符或n-gram)</li>
+      <li>Tokenization，文本分解成标记的过程。 所有vectorize过程都是应用某种分词方案，然后将数据向量与生成的标记相关联。</li>
+    </ul>
+  </li>
+  <li>关联向量与标记的方法 ？
+    <ul>
+      <li><strong>One-hot编码</strong>：每个单词(或字符)与一个唯一的整数索引相关联，然后将这个整数索引 $i$  转换成长度为 $N$（词表大小） 的二进制向量。</li>
+      <li><strong>词嵌入(word embedding)</strong>: xxx
+        <ul>
+          <li>完成主任务的同时学习词嵌入</li>
+          <li>预训练词嵌入(pretrained word embedding)，在不同于待解决问题的机器学习任务上预计算好词嵌入，然后将其加载到模型中</li>
+        </ul>
+      </li>
+      <li>区别：
+        <ul>
+          <li>one-hot 二进制、稀疏、高维度(维度大小=词表中单词个数)、硬编码；</li>
+          <li>词嵌入 密集、低维、从数据中学习得到</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li></li>
+</ul>
+
+
+  </div>
+
+  <p>写的不错，分享一下：</p>
+  
+  <a href="https://twitter.com/intent/tweet?text=机器学习笔记&url=http://localhost:4000/archives/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html" title="Share on Twitter" rel="nofollow" target="_blank">Twitter</a>
+  <a href="https://facebook.com/sharer.php?u=http://localhost:4000/archives/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html" title="Share on Facebook" rel="nofollow" target="_blank">Facebook</a>
+  <a href="https://plus.google.com/share?url=http://localhost:4000/archives/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html" title="Share on Google+" rel="nofollow" target="_blank">Google+</a><a class="u-url" href="/archives/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Lucas&#39;s Blog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name"></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/ssrzz"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">ssrzz</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>I&#39;m a deep learning lover.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer><script src="/scripts/common.js?t=20191001191256"></script>
+
+  
+
+  </body>
+</html>

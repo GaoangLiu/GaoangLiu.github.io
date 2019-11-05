@@ -44,6 +44,17 @@ categories:
 <h2 style="font-size:bold; font-family: STHeiti, SimHei, STKaiti, KaiTi">🌲🌲 机器学习的分类 </h2>
 <h3 style="font-size:bold; font-family: STKaiti, KaiTi">☘️☘️☘️ 机器学习的分类 </h3> -->
 
+### 模型模型的标准
+偏差与方差
+
+分类任务的准确率、精准率以及召回率。 
+
+准确率 $$a = \frac{TP + TN}{TP + TN + FP + FN}$$，刻画样本被准确分类的比例。 
+
+精准率 $$p = \frac{TP}{TP + FP}$$，刻画样本中我们关注的一类被准确分类的比例，e.g., 识别出来的垃圾邮件的确是垃圾邮件的比例。 
+
+召回率 $$r = \frac{TP}{TP + FN}$$, 刻画样本中我们关注的一类被识别出来的比例，e.g., 识别出来的垃圾邮件占所有垃圾邮件的比例。 
+
 
 ## 机器学习的分类 
 依照数据类型的不同，学习算法可以大致分为以下几类
@@ -108,15 +119,32 @@ categories:
     * 训练样本噪声的干扰，导致模型拟合了这些噪声，这时需要剔除噪声数据或者改用对噪声不敏感的模型。
 
 
+# 深度学习
+## 基本概念
 
-# 体系
+### 为什么使用深度表示 ？
+1. 深度神经网络是一种特征递进式的学习算法，浅层的神经元直接从输入数据中学习一些低层次的简单特征，例如边缘、纹理等。而深层的特征则基于已学习到的浅层特征继续学习更高级的特征，从计算机的角度学习深层的语义信息。
 
-* 什么是AI ?
-  * AI的本质是, 人类所赋予机器(or 工具)的一种能够解决具备一定难度的问题的能力(the ability to solve certain difficult problems — difficult in the sense that they are not easily solved by humans)，这种能力越强，就能越好的解决问题(e.g., 准确率更高的分类器)。 
+2. 深层的网络隐藏单元数量相对较少，隐藏层数目较多，如果浅层的网络想要达到同样的计算结果则需要指数级增长的单元数量才能达到。
+
+## 网络
+### 为什么使用神经网络 
+使用多层神经网络的的一个主要原因是**它能够学习到数据的非线性结构**(前提是我们使用了非线性激活函数)???
+The main reason that we use a Multi-layered network of neurons is that they are able to handle non-linearly separable data.
+## Best Practice 
+
+### CNN 深度选择
+没有一个普适的方法。
+
+一般来说，对于简单的任务，比如猫狗图片分类，添加 1~3 层hidden layers即能达到很好的效果。
+
+不断添加hidden layers 直到结果不再有明显提升，然后再通过正则化+调整模型。 
 
 
 
-# 数据处理
+
+
+## 数据处理
 
 * 为什么要对数据进行归一化处理？
   * 做为一个特征，我们希望看到数据的相对值差别对结果的影响，而不是其绝对值。特别地，未做归一化的数据中，取值范围最大的数据将主导诸如kNN算法的结果

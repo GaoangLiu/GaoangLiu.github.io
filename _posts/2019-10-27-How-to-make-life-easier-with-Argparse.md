@@ -8,7 +8,7 @@ categories:
 ---
 
 
-When we execute a Python script under command-line, to pass arguments to the script, we usually adopt a strategy like: 
+When we execute a Python script with command-line, to pass arguments to the script, we usually adopt a strategy like: 
 
 ```python
 args = sys.argv[1:]
@@ -17,10 +17,9 @@ if args[1].endswith("@gmail"):
 ```
 This is fine when the number of arguments is few, say, less than three. 
 But when there are dozens of options to choose, codes following the aforementioned style become cumbersome, ugly and hard to debug or to refine whenever it is necessary. 
-Lucky for us, with our [`argparse`](https://docs.python.org/3/library/argparse.html) module rescure, codes can also be pretty and tidy even with many arguments.
+Lucky for us, with this [`argparse`](https://docs.python.org/3/library/argparse.html) module, passing and parsing arguments can be easy and elegant.
 
-This is `argparse` module, as been put in the document:
-> makes it easy to write user-friendly command-line interfaces. 
+This `argparse` module is the “recommended command-line parsing module in the Python standard library” and makes it easy to write user-friendly command-line interfaces. 
 
 `argparse` can figure out how to parse arguments out of `sys.argv` so we do not have to define it manually. It can also automatically generates help and usage messages and issues errors when users give the program invalid arguments.
 
@@ -81,8 +80,14 @@ parser = argparse.ArgumentParser(
              998. information line 998
          '''))
 ```         
-Presents:
-<img class="center" src="{{site.baseurl}}/images/2019/python-argparse-1.png" width="50px">
+Produces:
+<img class="center" src="{{site.baseurl}}/images/2019/python-argparse-1.png" width="60%">
 
-
-
+### add_help
+By default, ArgumentParser objects add an option which simply displays the parser’s help message. For example, consider following code:
+```python
+import argparse
+parser = argparse.ArgumentParser()
+parser.add_argument('--foo', help='foo help')
+args = parser.parse_args()
+```

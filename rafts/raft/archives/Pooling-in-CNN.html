@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Pooling in CNN | Lucas’s Blog</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Pooling in CNN" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="考虑到图像具有”静态型”的属性, 即一个图像区域的特征极有可能在另一个区域同样适用." />
+<meta property="og:description" content="考虑到图像具有”静态型”的属性, 即一个图像区域的特征极有可能在另一个区域同样适用." />
+<link rel="canonical" href="http://localhost:4000/archives/Pooling-in-CNN.html" />
+<meta property="og:url" content="http://localhost:4000/archives/Pooling-in-CNN.html" />
+<meta property="og:site_name" content="Lucas’s Blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-08-27T00:00:00+08:00" />
+<script type="application/ld+json">
+{"headline":"Pooling in CNN","dateModified":"2019-08-27T00:00:00+08:00","url":"http://localhost:4000/archives/Pooling-in-CNN.html","datePublished":"2019-08-27T00:00:00+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/archives/Pooling-in-CNN.html"},"description":"考虑到图像具有”静态型”的属性, 即一个图像区域的特征极有可能在另一个区域同样适用.","@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link href="https://fonts.googleapis.com/css?family=Domine|Asap|Noto+Sans+SC|Noto+Serif+SC&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Lucas's Blog" /></head><body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Lucas&#39;s Blog</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/links/">Links</a><a class="page-link" href="/tags/">Tags</a><a class="page-link" href="/categories/">Categories</a><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <script type="text/javascript" async src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Pooling in CNN</h1>
+    <p class="post-meta"><time class="dt-published" datetime="2019-08-27T00:00:00+08:00" itemprop="datePublished">Published: Aug 27, 2019</time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>考虑到图像具有”静态型”的属性, 即一个图像区域的特征极有可能在另一个区域同样适用.</p>
+
+<p>因此，当描述一个大的图像的时候，我们可以考虑对不同位置的特征进行聚合统计.</p>
+
+<p>例如：计算图像一个区域上的某个特定特征的平均值 或者最大值）。这种统计方式不仅可以降低纬度，还不容易过拟合。这种聚合统计的操作就称之为池化.</p>
+
+<h2 id="作用">作用</h2>
+
+<ul>
+  <li>下采样(downsampling)</li>
+  <li>降维、去除冗余信息、对特征进行压缩、简化网络复杂度、减小计算量、减小内存消耗等等。</li>
+  <li>不变性(invariance)，包括平移(translation)，旋转(rotation)，尺度(scale)</li>
+</ul>
+
+<p>目的在于减少参数量，加快计算速度并防止过拟合。
+&lt;!– 
+##池化函数</p>
+
+<p>想法，使用某一位置的相信输出的总体统计特征来代替网络在该位置的输出。 例子：</p>
+
+<ul>
+  <li>
+    <p>最大池化(max pooling)函数: 选相邻矩形区域内的最大值作为该区域池化后的值</p>
+  </li>
+  <li>
+    <p>平均池化(average pooling)函数：选相邻矩形区域内平均值作为该区域池化后的值</p>
+  </li>
+</ul>
+
+<h2 id="q--a">Q &amp; A</h2>
+
+<ol>
+  <li>
+    <p>池化层与卷积层的不同之外？</p>
+
+    <ol>
+      <li>没有要学习的参数，仅仅从目标区域中取最大值(或平均值)</li>
+      <li>通道数不发生变化</li>
+      <li>对微小的位置变化具有健壮性。池化会吸收输入数据的偏差，输入数据发生微小偏差时，池化仍会返回相同的结果。</li>
+    </ol>
+  </li>
+</ol>
+
+<h1 id="references">References</h1>
+
+<ol>
+  <li><a href="https://zhuanlan.zhihu.com/p/35769417">如何理解CNN中的池化</a>, 知乎专栏</li>
+</ol>
+
+<p>–&gt;</p>
+
+  </div>
+
+  <p>写的不错，分享一下：</p>
+  
+  <a href="https://twitter.com/intent/tweet?text=Pooling in CNN&url=http://localhost:4000/archives/Pooling-in-CNN.html" title="Share on Twitter" rel="nofollow" target="_blank">Twitter</a>
+  <a href="https://facebook.com/sharer.php?u=http://localhost:4000/archives/Pooling-in-CNN.html" title="Share on Facebook" rel="nofollow" target="_blank">Facebook</a>
+  <a href="https://plus.google.com/share?url=http://localhost:4000/archives/Pooling-in-CNN.html" title="Share on Google+" rel="nofollow" target="_blank">Google+</a><a class="u-url" href="/archives/Pooling-in-CNN.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Lucas&#39;s Blog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name"></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/ssrzz"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">ssrzz</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>I&#39;m a deep learning lover.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer><script src="/scripts/common.js?t=20191001191256"></script>
+
+  
+
+  </body>
+</html>

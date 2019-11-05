@@ -21,7 +21,7 @@ To understand the relationship between `Keras` and `tf.keras`, first, we have to
 4. Google released TensorFlow on November 9, 2015, Keras started supporting TensorFlow as a backend
 5. Eventually, TensorFlow became the most popular backend, Keras v1.1.0 switched to TensorFlow as its default backend
 6. The `tf.keras` submodule was introduced in TensorFlow v1.10.0, the first step in integrating `Keras` directly within the TensorFlow package itself.
-7. Keras v2.3.0 was released on September 17, 2019. This is the final release of Keras that will support backends other than TensorFlow. 
+7. Keras v2.3.0 was released on September 17, 2019. This is the final release of Keras that will support backend other than TensorFlow. Bugs present in multi-backend Keras will only be fixed until April 2020. 
 
 To summary, `tf.keras` and `Keras` are two separated different modules. `Keras` is a high-level API of TensorFlow, and `tf.keras` is a submodule of TensorFlow.
 It is recommended to use `tf.keras` for future projects as the Keras package will only support bug fixes.
