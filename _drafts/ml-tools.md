@@ -26,6 +26,40 @@ To understand the relationship between `Keras` and `tf.keras`, first, we have to
 To summary, `tf.keras` and `Keras` are two separated different modules. `Keras` is a high-level API of TensorFlow, and `tf.keras` is a submodule of TensorFlow.
 It is recommended to use `tf.keras` for future projects as the Keras package will only support bug fixes.
 
+## How to update to `TensorFlow 2.0`
+First of all, a virtual environment is strongly recommended to avoid potential package conflicts. 
+```bash
+virtualenv --system-site-packages -p python3 myenv
+```
+By running the above command, a virtual environment `myenv` is created. 
+* `--system-site-packages` allows the projects within the virtual environment `myenv` access the global site-packages. The default setting does not allow this access.
+* `-p python3` is used to set the Python interpreter.
+* `myenv` is the name of the virtual environment we created
+
+```bash
+source /myenv/bin/activate
+pip install --upgrade tensorflow==2.0.0-rc1
+```
+
+The above command installs a 2.0.0-rc1 CPU-only version.
+
+To choose the appropriate TensorFlow version, visit [https://www.tensorflow.org/install/pip](https://www.tensorflow.org/install/pip)
+
+Alternative TensorFlow packages: 
+
+* `tensorflow==2.0.0-rc1` Preview TF 2.0 RC build for CPU-only (recommended).
+* `tensorflow-gpu==2.0.0-rc1` Preview TF 2.0 RC build with GPU support
+* `tensorflow` Latest stable release for CPU-only.
+* `tensorflow-gpu` Latest stable release with GPU support.
+* `tf-nightly` Preview nightly build for CPU-only.
+* `tf-nightly-gpu` Preview nightly build with GPU support.
+
+### Test the installation 
+```Python
+import tensorflow as tf
+print(tf.__version__)
+```
+
 
 # Keras 
 
