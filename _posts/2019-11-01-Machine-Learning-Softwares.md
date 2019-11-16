@@ -26,6 +26,70 @@ To understand the relationship between `Keras` and `tf.keras`, first, we have to
 To summary, `tf.keras` and `Keras` are two separated different modules. `Keras` is a high-level API of TensorFlow, and `tf.keras` is a submodule of TensorFlow.
 It is recommended to use `tf.keras` for future projects as the Keras package will only support bug fixes.
 
+## How to update to `TensorFlow 2.0`
+First of all, a virtual environment is strongly recommended to avoid potential package conflicts. 
+```bash
+virtualenv --system-site-packages -p python3 myenv
+```
+By running the above command, a virtual environment `myenv` is created. 
+* `--system-site-packages` allows the projects within the virtual environment `myenv` access the global site-packages. The default setting does not allow this access.
+* `-p python3` is used to set the Python interpreter.
+* `myenv` is the name of the virtual environment we created
+
+```bash
+source /myenv/bin/activate
+pip install --upgrade tensorflow==2.0.0-rc1
+```
+
+The above command installs a 2.0.0-rc1 CPU-only version.
+
+To choose the appropriate TensorFlow version, visit [https://www.tensorflow.org/install/pip](https://www.tensorflow.org/install/pip)
+
+Alternative TensorFlow packages: 
+
+* `tensorflow==2.0.0-rc1` Preview TF 2.0 RC build for CPU-only (recommended).
+* `tensorflow-gpu==2.0.0-rc1` Preview TF 2.0 RC build with GPU support
+* `tensorflow` Latest stable release for CPU-only.
+* `tensorflow-gpu` Latest stable release with GPU support.
+* `tf-nightly` Preview nightly build for CPU-only.
+* `tf-nightly-gpu` Preview nightly build with GPU support.
+
+### Test the installation 
+```Python
+import tensorflow as tf
+print(tf.__version__)
+```
+
+### TensorFlow 2.0 Colab
+[Google Colab](https://colab.research.google.com) is promoting TF 2.0 (current version is still TF 1.5, Nov 14, 2019), if you want to use TF2.0 on Colab, you can manually install it :
+```python
+!pip install tensorflow-gpu # or tensorflow-gpu==2.0.0-rc1
+```
+Note: you will have to install one of those packages with GPU support, otherwise there is no GPU acceleration even if you set the runtime type to GPU mode.
+
 
 # Keras 
+## Callbacks ?
+A callback provides a set of functions to be applied at given stages of the training procedure.
+
+### EarlyStopping 
+Stop training when a monitored quantity has stopped improving.
+```python
+keras.callbacks.callbacks.EarlyStopping(monitor='val_loss', min_delta=0, patience=0, verbose=0, mode='auto', baseline=None, restore_best_weights=False)
+``` 
+Arguments:
+- `monitor`: quantity to be monitored 
+- `min_delta`: minimum change in the monitored quantity to qualify as an improvement, i.e. an absolute change of less than min_delta, will count as no improvement.
+- `patience`: number of epochs that produced the monitored quantity with no improvement after which training will be stopped. Validation quantities may not be produced for every epoch, if the validation frequency (model.fit(validation_freq=5)) is greater than one.
+- `baseline`: Baseline value for the monitored quantity to reach. Training will stop if the model doesn't show improvement over the baseline.
+- `restore_best_weights`: whether to restore model weights from the epoch with the best value of the monitored quantity. If False, the model weights obtained at the last step of training are used.
+- `mode`: one of {auto, min, max}. In `min` mode, training will stop when the quantity monitored has stopped decreasing; in `max` mode it will stop when the quantity monitored has stopped increasing; in `auto` mode, the direction is automatically inferred from the name of the monitored quantity.
+
+### ReduceLROnPlateau 
+**Reduce learning rate** when a metric has stopped improving. For example, if `val_loss` stayed unreduced in 10 epochs, the learning rate is reduced by 90%, i.e., new_lr = lr * factor. 
+
+```python
+reduce_lr = keras.callbacks.callbacks.ReduceLROnPlateau(monitor='val_loss', factor=0.1, patience=10, verbose=0, mode='auto', min_delta=0.0001, cooldown=0, min_lr=0)
+model.fit(X_train, Y_train, callbacks=[reduce_lr])
+```
 

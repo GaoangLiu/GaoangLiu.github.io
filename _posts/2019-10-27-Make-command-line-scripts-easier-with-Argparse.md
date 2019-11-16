@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      How to make life easier with Argparse 
+title:      Make command-line scripts easier with Argparse 
 date:       2019-10-27
 tags: [Python, Script]
 categories: 

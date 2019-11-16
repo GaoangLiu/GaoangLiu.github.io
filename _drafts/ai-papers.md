@@ -14,4 +14,5 @@ categories:
 # Documents
 - [tf.keras document](https://www.tensorflow.org/guide/keras/overview)
 
-
+# Materials
+- [How to convert speech to text](https://www.thepythoncode.com/article/using-speech-recognition-to-convert-speech-to-text-python?fbclid=IwAR0UPx7WQupkEKeFUWejJwspQop8ZRAaRmDUvM6b0H6n13boExIETwBrb7U)
