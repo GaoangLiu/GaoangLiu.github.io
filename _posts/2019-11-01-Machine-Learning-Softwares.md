@@ -93,3 +93,32 @@ reduce_lr = keras.callbacks.callbacks.ReduceLROnPlateau(monitor='val_loss', fact
 model.fit(X_train, Y_train, callbacks=[reduce_lr])
 ```
 
+## Sklearn
+### LabelEncoder
+Encode labels with value between 0 and n_classes - 1.
+```python
+from sklearn import preprocessing
+le = preprocessing.LabelEncoder()
+r = le.fit_transform(["apple", "pen", "apple", "applepen"])
+print(r) # [0, 2, 0, 1]
+print(le.classes_) # ['apple', 'pen', 'applepen']
+```
+### LabelBinarizer
+Very similar to `LabelEncoder`, but creating a label indicator matrix, instead an array, from a list of multi-class labels. 
+
+```python
+lb = sklearn.preprocessing.LabelBinarizer()
+print(lb.fit_transform(['female', 'male', 'others', 'female'])) 
+# [[1, 0, 0], [0, 1, 0], [0, 0, 1], [1, 0, 0]]
+```
+
+### OneHotEncoder
+Encode categorical integer features as a one-hot numeric array. The input to this transformer must be an array-like of integers or strings, denoting the values taken on by categorical (discrete) features. 
+```python
+enc = OneHotEncoder(handle_unknown='ignore')
+X = np.array(['female', 'male', 'others']).reshape(-1, 1)
+print(enc.fit_transform(X).toarray())
+# [[1. 0. 0.], [0. 1. 0.], [0. 0. 1.]]
+```
+
+
