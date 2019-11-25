@@ -2,6 +2,7 @@
 layout:     post
 title:      Telegram-MTProxy
 date:       2019-08-29
+img: telegram.jpg
 tags: [telegram, mtproxy]
 ---
 
