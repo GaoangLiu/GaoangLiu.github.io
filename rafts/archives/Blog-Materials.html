@@ -31,6 +31,10 @@ Bagging中的分类器权重是相等的，而boosting并不相等，每个权�
 <h2 id="cart">CART</h2>
 <p>CART, Classification And Regression Trees, 分类决策树。优点，可以对复杂和非线性的数据建模；缺点是，结果不易理解。</p>
 
+<p>CART 采用二元切分来处理连续型变量，即每次把数据集切成两份，如果数据的某特征值大于切分所要求的值，那么这些数据就进入树的左子树，反之进入树的右子树。</p>
+
+<p>如何度量连续型数值的不一致度？首先计算所有数据的均值，然后计算每条数据的值到均值的差值(绝对值或者平方值)。</p>
+
 <h2 id="decision-trees">Decision Trees</h2>
 <ul>
   <li>计算复杂度不高，输出结果易于理解，对中间值的缺失不敏感，可能处理不相关特征数据</li>
@@ -38,6 +42,8 @@ Bagging中的分类器权重是相等的，而boosting并不相等，每个权�
 </ul>
 
 <h3 id="id3">ID3</h3>
+<p>Iternative Dichotomizer, the first of three Decision Tree implementations developed by Ross Quinlan (Quinlan, J. R. 1986.  Induction of Decision Trees. Mach. Learn. 1, 1 (Mar. 1986), 81-106.)</p>
+
 <p>ID3的一般思路是：</p>
 <ol>
   <li>测量集合数据的熵</li>
@@ -60,20 +66,44 @@ Bagging中的分类器权重是相等的，而boosting并不相等，每个权�
 
 <p><a href="/codes/decision_tree.py.txt">Deicision-Tree-ID3-Python3</a></p>
 
+<p>ID3 的缺陷：</p>
+<ol>
+  <li>数据集不够大时，很容易过拟合</li>
+  <li>每次只能考察一个特征来作决策</li>
+  <li>无数处理(连续)的数值特征及缺失值</li>
+</ol>
+
 <h3 id="id3-vs-c45">ID3 VS. C4.5</h3>
 <ol>
   <li>ID3 uses information gain whereas C4.5 uses gain ratio for splitting.</li>
   <li>ID3 每次划分分组时都会消耗特征，即划分数据分组之后特征数目会减少，而C4.5 &amp; CART并不总是消耗特征</li>
-  <li></li>
+  <li>TODO</li>
+</ol>
+
+<p>C4.5 over ID3</p>
+<ol>
+  <li>accepts both continuous and discrete features</li>
+  <li>handles incomplete data points;</li>
+  <li>solves over-fitting problem by (very clever) bottom-up technique usually known as “pruning”;</li>
+  <li>different weights can be applied the features that comprise the training data.</li>
 </ol>
 
 
     </div>
   
     <hr>
+<<<<<<< HEAD
+    <p style="font-family: 'Times New Roman', Times, serif;">Great article, share it:</p>
+    <a href="https://twitter.com/intent/tweet?text=Blog Materials&url=http://localhost:4000/archives/Blog-Materials.html" title="Share on Twitter" rel="nofollow" target="_blank"> <img src="/images/logos/twitterlogo.png" width="50px"> </a>
+    <a href="https://facebook.com/sharer.php?u=http://localhost:4000/archives/Blog-Materials.html" title="Share on Facebook" rel="nofollow" target="_blank"> <img src="/images/logos/facebook-logo2.png" width="50px"> </a>
+    <a href="http://service.weibo.com/share/share.php?url=http://localhost:4000/archives/Blog-Materials.html&appkey=&title=Blog Materials&pic=&ralateUid=&language=zh_cn" title="Share on weibo" rel="nofollow" target="_blank"> <img src="/images/logos/weibo-logo2.jpg" width="50px"> </a>
+      
+=======
     <p style="font-family: 'Times New Roman', Times, serif;" align='right'>Sharing is caring  
     <a href="https://twitter.com/intent/tweet?text=Blog Materials&url=http://localhost:4000/archives/Blog-Materials.html" title="Share on Twitter" rel="nofollow" target="_blank"> <img src="/images/logos/twitterlogo.png" width="50px"> </a>
     <a href="https://facebook.com/sharer/sharer.php?u=http://localhost:4000/archives/Blog-Materials.html" title="Share on Facebook" target="_blank"> <img src="/images/logos/facebook-logo2.png" width="50px"> </a>
     <a href="http://service.weibo.com/share/share.php?url=http://localhost:4000/archives/Blog-Materials.html&appkey=&title=Blog Materials&pic=&ralateUid=&language=zh_cn" title="Share on weibo" rel="nofollow" target="_blank"> <img src="/images/logos/weibo-logo2.jpg" width="50px"> </a>
-    </p><a class="u-url" href="/archives/Blog-Materials.html" hidden></a>
+    </p>
+  
+>>>>>>> dev<a class="u-url" href="/archives/Blog-Materials.html" hidden></a>
   </article>

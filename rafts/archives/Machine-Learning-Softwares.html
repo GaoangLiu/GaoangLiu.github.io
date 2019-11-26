@@ -67,13 +67,102 @@
   <li>Google released TensorFlow on November 9, 2015, Keras started supporting TensorFlow as a backend</li>
   <li>Eventually, TensorFlow became the most popular backend, Keras v1.1.0 switched to TensorFlow as its default backend</li>
   <li>The <code class="highlighter-rouge">tf.keras</code> submodule was introduced in TensorFlow v1.10.0, the first step in integrating <code class="highlighter-rouge">Keras</code> directly within the TensorFlow package itself.</li>
-  <li>Keras v2.3.0 was released on September 17, 2019. This is the final release of Keras that will support backends other than TensorFlow.</li>
+  <li>Keras v2.3.0 was released on September 17, 2019. This is the final release of Keras that will support backend other than TensorFlow. Bugs present in multi-backend Keras will only be fixed until April 2020.</li>
 </ol>
 
 <p>To summary, <code class="highlighter-rouge">tf.keras</code> and <code class="highlighter-rouge">Keras</code> are two separated different modules. <code class="highlighter-rouge">Keras</code> is a high-level API of TensorFlow, and <code class="highlighter-rouge">tf.keras</code> is a submodule of TensorFlow.
 It is recommended to use <code class="highlighter-rouge">tf.keras</code> for future projects as the Keras package will only support bug fixes.</p>
 
+<h2 id="how-to-update-to-tensorflow-20">How to update to <code class="highlighter-rouge">TensorFlow 2.0</code></h2>
+<p>First of all, a virtual environment is strongly recommended to avoid potential package conflicts.</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>virtualenv <span class="nt">--system-site-packages</span> <span class="nt">-p</span> python3 myenv
+</code></pre></div></div>
+<p>By running the above command, a virtual environment <code class="highlighter-rouge">myenv</code> is created.</p>
+<ul>
+  <li><code class="highlighter-rouge">--system-site-packages</code> allows the projects within the virtual environment <code class="highlighter-rouge">myenv</code> access the global site-packages. The default setting does not allow this access.</li>
+  <li><code class="highlighter-rouge">-p python3</code> is used to set the Python interpreter.</li>
+  <li><code class="highlighter-rouge">myenv</code> is the name of the virtual environment we created</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">source</span> /myenv/bin/activate
+pip <span class="nb">install</span> <span class="nt">--upgrade</span> <span class="nv">tensorflow</span><span class="o">==</span>2.0.0-rc1
+</code></pre></div></div>
+
+<p>The above command installs a 2.0.0-rc1 CPU-only version.</p>
+
+<p>To choose the appropriate TensorFlow version, visit <a href="https://www.tensorflow.org/install/pip">https://www.tensorflow.org/install/pip</a></p>
+
+<p>Alternative TensorFlow packages:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">tensorflow==2.0.0-rc1</code> Preview TF 2.0 RC build for CPU-only (recommended).</li>
+  <li><code class="highlighter-rouge">tensorflow-gpu==2.0.0-rc1</code> Preview TF 2.0 RC build with GPU support</li>
+  <li><code class="highlighter-rouge">tensorflow</code> Latest stable release for CPU-only.</li>
+  <li><code class="highlighter-rouge">tensorflow-gpu</code> Latest stable release with GPU support.</li>
+  <li><code class="highlighter-rouge">tf-nightly</code> Preview nightly build for CPU-only.</li>
+  <li><code class="highlighter-rouge">tf-nightly-gpu</code> Preview nightly build with GPU support.</li>
+</ul>
+
+<h3 id="test-the-installation">Test the installation</h3>
+<pre><code class="language-Python">import tensorflow as tf
+print(tf.__version__)
+</code></pre>
+
+<h3 id="tensorflow-20-colab">TensorFlow 2.0 Colab</h3>
+<p><a href="https://colab.research.google.com">Google Colab</a> is promoting TF 2.0 (current version is still TF 1.5, Nov 14, 2019), if you want to use TF2.0 on Colab, you can manually install it :</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="n">tensorflow</span><span class="o">-</span><span class="n">gpu</span> <span class="c1"># or tensorflow-gpu==2.0.0-rc1
+</span></code></pre></div></div>
+<p>Note: you will have to install one of those packages with GPU support, otherwise there is no GPU acceleration even if you set the runtime type to GPU mode.</p>
+
 <h1 id="keras">Keras</h1>
+<h2 id="callbacks-">Callbacks ?</h2>
+<p>A callback provides a set of functions to be applied at given stages of the training procedure.</p>
+
+<h3 id="earlystopping">EarlyStopping</h3>
+<p>Stop training when a monitored quantity has stopped improving.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">keras</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">EarlyStopping</span><span class="p">(</span><span class="n">monitor</span><span class="o">=</span><span class="s">'val_loss'</span><span class="p">,</span> <span class="n">min_delta</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">patience</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s">'auto'</span><span class="p">,</span> <span class="n">baseline</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span> <span class="n">restore_best_weights</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</code></pre></div></div>
+<p>Arguments:</p>
+<ul>
+  <li><code class="highlighter-rouge">monitor</code>: quantity to be monitored</li>
+  <li><code class="highlighter-rouge">min_delta</code>: minimum change in the monitored quantity to qualify as an improvement, i.e. an absolute change of less than min_delta, will count as no improvement.</li>
+  <li><code class="highlighter-rouge">patience</code>: number of epochs that produced the monitored quantity with no improvement after which training will be stopped. Validation quantities may not be produced for every epoch, if the validation frequency (model.fit(validation_freq=5)) is greater than one.</li>
+  <li><code class="highlighter-rouge">baseline</code>: Baseline value for the monitored quantity to reach. Training will stop if the model doesn’t show improvement over the baseline.</li>
+  <li><code class="highlighter-rouge">restore_best_weights</code>: whether to restore model weights from the epoch with the best value of the monitored quantity. If False, the model weights obtained at the last step of training are used.</li>
+  <li><code class="highlighter-rouge">mode</code>: one of {auto, min, max}. In <code class="highlighter-rouge">min</code> mode, training will stop when the quantity monitored has stopped decreasing; in <code class="highlighter-rouge">max</code> mode it will stop when the quantity monitored has stopped increasing; in <code class="highlighter-rouge">auto</code> mode, the direction is automatically inferred from the name of the monitored quantity.</li>
+</ul>
+
+<h3 id="reducelronplateau">ReduceLROnPlateau</h3>
+<p><strong>Reduce learning rate</strong> when a metric has stopped improving. For example, if <code class="highlighter-rouge">val_loss</code> stayed unreduced in 10 epochs, the learning rate is reduced by 90%, i.e., new_lr = lr * factor.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">reduce_lr</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">ReduceLROnPlateau</span><span class="p">(</span><span class="n">monitor</span><span class="o">=</span><span class="s">'val_loss'</span><span class="p">,</span> <span class="n">factor</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">patience</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s">'auto'</span><span class="p">,</span> <span class="n">min_delta</span><span class="o">=</span><span class="mf">0.0001</span><span class="p">,</span> <span class="n">cooldown</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">min_lr</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">Y_train</span><span class="p">,</span> <span class="n">callbacks</span><span class="o">=</span><span class="p">[</span><span class="n">reduce_lr</span><span class="p">])</span>
+</code></pre></div></div>
+
+<h2 id="sklearn">Sklearn</h2>
+<h3 id="labelencoder">LabelEncoder</h3>
+<p>Encode labels with value between 0 and n_classes - 1.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">preprocessing</span>
+<span class="n">le</span> <span class="o">=</span> <span class="n">preprocessing</span><span class="o">.</span><span class="n">LabelEncoder</span><span class="p">()</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">le</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">([</span><span class="s">"apple"</span><span class="p">,</span> <span class="s">"pen"</span><span class="p">,</span> <span class="s">"apple"</span><span class="p">,</span> <span class="s">"applepen"</span><span class="p">])</span>
+<span class="k">print</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="c1"># [0, 2, 0, 1]
+</span><span class="k">print</span><span class="p">(</span><span class="n">le</span><span class="o">.</span><span class="n">classes_</span><span class="p">)</span> <span class="c1"># ['apple', 'pen', 'applepen']
+</span></code></pre></div></div>
+<h3 id="labelbinarizer">LabelBinarizer</h3>
+<p>Very similar to <code class="highlighter-rouge">LabelEncoder</code>, but creating a label indicator matrix, instead an array, from a list of multi-class labels.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">lb</span> <span class="o">=</span> <span class="n">sklearn</span><span class="o">.</span><span class="n">preprocessing</span><span class="o">.</span><span class="n">LabelBinarizer</span><span class="p">()</span>
+<span class="k">print</span><span class="p">(</span><span class="n">lb</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">([</span><span class="s">'female'</span><span class="p">,</span> <span class="s">'male'</span><span class="p">,</span> <span class="s">'others'</span><span class="p">,</span> <span class="s">'female'</span><span class="p">]))</span> 
+<span class="c1"># [[1, 0, 0], [0, 1, 0], [0, 0, 1], [1, 0, 0]]
+</span></code></pre></div></div>
+
+<h3 id="onehotencoder">OneHotEncoder</h3>
+<p>Encode categorical integer features as a one-hot numeric array. The input to this transformer must be an array-like of integers or strings, denoting the values taken on by categorical (discrete) features.</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">enc</span> <span class="o">=</span> <span class="n">OneHotEncoder</span><span class="p">(</span><span class="n">handle_unknown</span><span class="o">=</span><span class="s">'ignore'</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s">'female'</span><span class="p">,</span> <span class="s">'male'</span><span class="p">,</span> <span class="s">'others'</span><span class="p">])</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">enc</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">toarray</span><span class="p">())</span>
+<span class="c1"># [[1. 0. 0.], [0. 1. 0.], [0. 0. 1.]]
+</span></code></pre></div></div>
 
 
   </div>
@@ -120,7 +209,7 @@ It is recommended to use <code class="highlighter-rouge">tf.keras</code> for fut
 
   </div>
 
-</footer><script src="/scripts/common.js?t=20191104112954"></script>
+</footer><script src="/scripts/common.js?t=20191126135652"></script>
 
   
 

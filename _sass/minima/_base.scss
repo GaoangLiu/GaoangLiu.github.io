@@ -135,7 +135,9 @@ blockquote {
   @include relative-font-size(1.125);
   letter-spacing: -1px;
   font-style: italic;
-
+  font-family: 'Times New Roman', Times, serif;
+  font-size: larger;
+  
   > :last-child {
     margin-bottom: 0;
   }

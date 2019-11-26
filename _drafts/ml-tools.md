@@ -2,29 +2,48 @@
 layout:     post
 title:      Machine Learning Softwares
 date:       2019-11-01
-tags: [machine learning, keras, tensorflow]
+tags: [machine learning, keras, tensorflow, seaborn]
 categories: 
 - machine learning
-- papers
+- tools
 ---
+# Seaborn 
+
+Question 1: why [Seaborn](https://seaborn.pydata.org/index.html) when we already have [Matplotlib](https://matplotlib.org) ?
+
+Seaborn provides a high-level interface to Matplotlib, a powerful but sometimes unwieldy Python visualization library. As put by the official website:
+> If matplotlib “tries to make easy things easy and hard things possible”, seaborn tries to make a well-defined set of hard things easy too.
+
+## Functions 
+Making a scatter plot is just one line of code using the `lmplot()` function.
+```python
+import seaborn as sns 
+sns.lmplot(x='Attack', y='Defense', data=df)
+sns.set_style('whitegrid') # Set theme
+sns.violinplot(x='Type 1', y='Attack', data=df) # Violin plot
+```
+
 
 # TensorFlow 2.0 
 
 ## `tf.keras` V.S. `Keras`
 Keras is a high-level neural networks API, written in Python and capable of running on top of TensorFlow, CNTK, or Theano.
 
-To understand the relationship between `Keras` and `tf.keras`, first, we have to clarify the complicated, intertwined relationship between `Keras` and `TensorFlow`. 
+To understand the relationship between `Keras` and `tf.keras`, we have to clarify the complicated, intertwined relationship between `Keras` and `TensorFlow`. 
 
-1. 2015.03.27, [Francois Chollet](https://fchollet.com/)(who is also the author of Deep Learning with Python) committed and released the first version of Keras to his GitHub to facilitate his own research and experiments. 
+1. 2015.03.27, [Francois Chollet](https://fchollet.com/) (i.e., the author of Deep Learning with Python) committed and released the first version of Keras to his [GitHub](https://github.com/fchollet) to facilitate his own research and experiments. 
 2. Due to its easy-to-use API and the explosion of deep learning popularity, many developers, programmers, and machine learning practitioners flocked to Keras
-3. Keras’ default backend was Theano (until v1.1.10)
-4. Google released TensorFlow on November 9, 2015, Keras started supporting TensorFlow as a backend
+3. At the beginning, the default backend of `Keras` was Theano (until v1.1.10)
+4. Google released TensorFlow on November 9, 2015. Keras started supporting TensorFlow as a backend
 5. Eventually, TensorFlow became the most popular backend, Keras v1.1.0 switched to TensorFlow as its default backend
 6. The `tf.keras` submodule was introduced in TensorFlow v1.10.0, the first step in integrating `Keras` directly within the TensorFlow package itself.
 7. Keras v2.3.0 was released on September 17, 2019. This is the final release of Keras that will support backend other than TensorFlow. Bugs present in multi-backend Keras will only be fixed until April 2020. 
 
-To summary, `tf.keras` and `Keras` are two separated different modules. `Keras` is a high-level API of TensorFlow, and `tf.keras` is a submodule of TensorFlow.
-It is recommended to use `tf.keras` for future projects as the Keras package will only support bug fixes.
+To summary, `tf.keras` and `Keras` are two different modules. 
+
+`Keras` is a high-level API, which at first has nothing to do with TensorFlow, but as the popularity of TF grows, `Keras` supported and switched to TF as the default backend. And now, it seems that TF will dominate the future of machine learning, `Keras` is integrated into TF. 
+
+Tips: It is recommended to use `tf.keras` for future projects as the Keras package will only support bug fixes.
 
 ## How to update to `TensorFlow 2.0`
 First of all, a virtual environment is strongly recommended to avoid potential package conflicts. 
@@ -120,5 +139,8 @@ X = np.array(['female', 'male', 'others']).reshape(-1, 1)
 print(enc.fit_transform(X).toarray())
 # [[1. 0. 0.], [0. 1. 0.], [0. 0. 1.]]
 ```
+
+
+
 
 

@@ -41,6 +41,8 @@ ID3 的缺陷：
 3. 无数处理(连续)的数值特征及缺失值
 
 ### ID3 VS. C4.5
+C4.5 是 ID3 算法的扩展。
+ 
 1. ID3 uses information gain whereas C4.5 uses gain ratio for splitting. 
 2. ID3 每次划分分组时都会消耗特征，即划分数据分组之后特征数目会减少，而C4.5 & CART并不总是消耗特征
 3. TODO
