@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Learn Deep Learning | Lucas’s Blog</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Learn Deep Learning" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="20世纪40~60年代，控制论(cybernetics)。随着生物学习理论的发展与第一个模型的实现(如感知机1958)，能实现单个神经元的训练。" />
+<meta property="og:description" content="20世纪40~60年代，控制论(cybernetics)。随着生物学习理论的发展与第一个模型的实现(如感知机1958)，能实现单个神经元的训练。" />
+<link rel="canonical" href="http://localhost:4000/archives/Learn-Deep-Learning.html" />
+<meta property="og:url" content="http://localhost:4000/archives/Learn-Deep-Learning.html" />
+<meta property="og:site_name" content="Lucas’s Blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-09-25T00:00:00+08:00" />
+<script type="application/ld+json">
+{"headline":"Learn Deep Learning","dateModified":"2019-09-25T00:00:00+08:00","url":"http://localhost:4000/archives/Learn-Deep-Learning.html","datePublished":"2019-09-25T00:00:00+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/archives/Learn-Deep-Learning.html"},"description":"20世纪40~60年代，控制论(cybernetics)。随着生物学习理论的发展与第一个模型的实现(如感知机1958)，能实现单个神经元的训练。","@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link href="https://fonts.googleapis.com/css?family=Domine|Asap|Noto+Sans+SC|Noto+Serif+SC&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Lucas's Blog" /></head><body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Lucas&#39;s Blog</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/links/">Links</a><a class="page-link" href="/tags/">Tags</a><a class="page-link" href="/categories/">Categories</a><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <script type="text/javascript" async src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Learn Deep Learning</h1>
+    <p class="post-meta"><time class="dt-published" datetime="2019-09-25T00:00:00+08:00" itemprop="datePublished">Published: Sep 25, 2019</time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>20世纪40~60年代，控制论(cybernetics)。随着生物学习理论的发展与第一个模型的实现(如感知机1958)，能实现单个神经元的训练。</p>
+
+<!--break-->
+
+<h1 id="历史">历史</h1>
+
+<h3 id="三次浪潮">三次浪潮</h3>
+<p>20世纪40~60年代，控制论(cybernetics)。随着生物学习理论的发展与第一个模型的实现(如感知机1958)，能实现单个神经元的训练。</p>
+
+<p>20世纪80~90年代(1980~1995)，联结主义(connectionism)。 可以使用反向传播(1986)训练具有一两个隐藏层的神经网络。</p>
+
+<p>2006~now，深度学习的复兴</p>
+
+<h3 id="deep-learning-vs-ai">Deep Learning v.s. AI</h3>
+
+<p>许多AI任务可以通过<strong>提取一个合适特征，然后将这些特征提供给简单的机器学习算法</strong>来解决问题。 但提取哪些特征是一个难题，解决这个问题的途径之一是<strong>使用机器学习来发掘表示本身</strong>，这种方法称为：表示学习(representation learning)。</p>
+
+<p>典型例子：自编码器(autoencoder)。学习到的表示往往比手动设计的表示表现的要好，且只需极少人工干预。</p>
+
+<p>表示学习的一个困难在于：多个变差因素同时影响着我们能够观察到的每一个数据，从原始数据是抽取高层次、抽象的特征非常困难。深度学习通过其他简单的表示来表达复杂表示，这解决了表示学习的核心问题。
+典型例子：前馈深度网络。</p>
+
+<p>总：DL是ML的一种，是一种能够使用计算机系统从数据和经验中得到提升的技术。</p>
+
+<p align="center"> &lt;img src="/assets/img/dl.vs.ai.png" width=500&gt; </p>
+
+<!-- Math -->
+<h1 id="basic-math">Basic Math</h1>
+
+<h2 id="线性相关与生成子空间">线性相关与生成子空间</h2>
+<p align="center">  $$ Ax = b  $$ </p>
+<p>其中 <script type="math/tex">A \in \mathrm{R}^{m \times n}</script> matrix, <script type="math/tex">b \in \mathrm{R}^n</script> vector。对于上面的方程组来说，要么不存在解，要么存在唯一解或者无穷解，不可能存在大于1但小于无穷个解的情况 (不然，两个解的线性组合 <script type="math/tex">\alpha x + (1-\alpha)y</script>也是方程组的解)。</p>
+
+<h3 id="方程在每一点存在解的必要条件-n-geq-m">方程在每一点存在解的必要条件 <script type="math/tex">n \geq m</script></h3>
+
+<p><script type="math/tex">Ax = \Sigma_{i\in[1,n]} x_i A_{:, i} = \Sigma_i c_i v^{(i)}</script>, where <script type="math/tex">v^{(i)}</script> 是<script type="math/tex">A</script>的列向量。 判定以上方程组是否存在解，即判定<script type="math/tex">b</script>是否在<script type="math/tex">A</script>的生成子空间中。 这个特殊的生成子空间称为<script type="math/tex">A</script>的<strong>列空间</strong>或<strong>值域(range)</strong> .</p>
+
+<p>因为 <script type="math/tex">b \in \mathrm{R^m}</script>，如果 <script type="math/tex">\mathrm{R}^m</script> 中一个点不在 <script type="math/tex">A</script> 的列空间中，那该点对应的 <script type="math/tex">b</script> 没有解，因此 <script type="math/tex">A</script> 至少有 <script type="math/tex">m</script> 列，即 <script type="math/tex">n \geq m</script>。 举例，<script type="math/tex">m = 3, n = 2</script>，那么无论 <script type="math/tex">x</script> 如何变化，它只能将 <script type="math/tex">A</script> 映射到 <script type="math/tex">\mathrm{R}^3</script>的一个平面，只有当 <script type="math/tex">b</script> 处于这个平面时， 方程才有解。</p>
+
+<h3 id="存在解的充分条件">存在解的充分条件</h3>
+<p><script type="math/tex">n \geq m</script> 并不能保证方程一定存在解，因为列向量可能<strong>线性相关</strong>，即某一个向量可能表示为其他一组向量的线性组合。要使其列空间涵盖整个 <script type="math/tex">\mathrm{R}^m</script>， 需要满足什么条件 ？</p>
+
+<p>A: 矩阵必须包含<strong>至少一组<script type="math/tex">m</script>个线性无关</strong>的向量。</p>
+
+<p>但要使矩阵可逆，需要保证对每一个 <script type="math/tex">b</script> 至多只有一个解，因此要保证矩阵至多只有 <script type="math/tex">m</script> 个列向量，即必须是一个方阵(square)，且所有列向量线性无关。这样的矩阵称为 <strong>奇异矩阵</strong>。</p>
+
+<h3 id="特征分解">特征分解</h3>
+<p>矩阵 <script type="math/tex">A</script> 的<strong>特征向量(eigenvector)</strong>是指与 <script type="math/tex">A</script> 相乘后相当于对该向量进行缩放的非零向量 <script type="math/tex">v</script>:  <script type="math/tex">Av = \lambda v</script> ，
+其中标题 <script type="math/tex">\lambda</script> 称为这个特征向量对应的<strong>特征值(eigenvalue)</strong>.</p>
+<ul>
+  <li>如果 <script type="math/tex">v</script> 是 <script type="math/tex">A</script> 的特征向量，那么任意缩放后的向量 <script type="math/tex">sv(s \in \mathrm{R}, s \neq 0)</script> 也是 <script type="math/tex">A</script> 的特征向量</li>
+</ul>
+
+
+  </div>
+
+  <p>写的不错，分享一下：</p>
+  
+  <a href="https://twitter.com/intent/tweet?text=Learn Deep Learning&url=http://localhost:4000/archives/Learn-Deep-Learning.html" title="Share on Twitter" rel="nofollow" target="_blank">Twitter</a>
+  <a href="https://facebook.com/sharer.php?u=http://localhost:4000/archives/Learn-Deep-Learning.html" title="Share on Facebook" rel="nofollow" target="_blank">Facebook</a>
+  <a href="https://plus.google.com/share?url=http://localhost:4000/archives/Learn-Deep-Learning.html" title="Share on Google+" rel="nofollow" target="_blank">Google+</a><a class="u-url" href="/archives/Learn-Deep-Learning.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Lucas&#39;s Blog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name"></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/ssrzz"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">ssrzz</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>I&#39;m a deep learning lover.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer><script src="/scripts/common.js?t=20191001191256"></script>
+
+  
+
+  </body>
+</html>

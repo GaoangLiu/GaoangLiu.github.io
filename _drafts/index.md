@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      index
-date:       2019-11-25
+date:       2019-11-26
 img: 
 tags: [index, blog]
 ---
@@ -10,7 +10,9 @@ tags: [index, blog]
 
 |Title|Date|
 |---|---|
-|[index]({{site.baseurl}}/index) | 2019-11-25 |
+|[index]({{site.baseurl}}/index) | 2019-11-26 |
+|[Papers on Machine Learning]({{site.baseurl}}/Papers-on-Machine-Learning) | 2019-10-20 |
+|[Decision Trees]({{site.baseurl}}/Decision-Trees) | 2019-11-25 |
 |[Blog Materials]({{site.baseurl}}/Blog-Materials) | 2019-11-20 |
 |[Learn Deep Learning]({{site.baseurl}}/Learn-Deep-Learning) | 2019-09-25 |
 |[Telegram-MTProxy]({{site.baseurl}}/Telegram-MTProxy) | 2019-08-29 |
@@ -18,7 +20,6 @@ tags: [index, blog]
 |[机器学习笔记]({{site.baseurl}}/机器学习笔记) | 2019-06-25 |
 |[Kaggle Competitions]({{site.baseurl}}/Kaggle-Competitions) | 2019-07-05 |
 |[Golden section search]({{site.baseurl}}/Golden-section-search) | 2019-06-23 |
-|[Papers on Machine Learning]({{site.baseurl}}/Papers-on-Machine-Learning) | 2019-10-20 |
 |[Gradient Descent]({{site.baseurl}}/Gradient-Descent) | 2019-10-20 |
 |[Zeller's Congruence]({{site.baseurl}}/Zeller's-Congruence) | 2019-09-09 |
 |[VGG-16 in Deep Learning]({{site.baseurl}}/VGG-16-in-Deep-Learning) | 2019-08-04 |

@@ -2,7 +2,7 @@
 layout:     post
 title:      Papers on Machine Learning 
 date:       2019-10-20
-tags: [Macgine Learning, Papers]
+tags: [machine learning, papers]
 categories: 
 - Machine Learning
 - papers

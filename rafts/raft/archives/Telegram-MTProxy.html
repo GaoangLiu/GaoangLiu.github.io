@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Telegram-MTProxy | Lucas’s Blog</title>
+<meta name="generator" content="Jekyll v3.8.5" />
+<meta property="og:title" content="Telegram-MTProxy" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Build MTProxy for Telegram on your server (e.g., VPS), so you don’t have to tolerate high-latency VPN connection. Actually, you can use Telegram without installing any VPN software on your devices." />
+<meta property="og:description" content="Build MTProxy for Telegram on your server (e.g., VPS), so you don’t have to tolerate high-latency VPN connection. Actually, you can use Telegram without installing any VPN software on your devices." />
+<link rel="canonical" href="http://localhost:4000/archives/Telegram-MTProxy.html" />
+<meta property="og:url" content="http://localhost:4000/archives/Telegram-MTProxy.html" />
+<meta property="og:site_name" content="Lucas’s Blog" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2019-08-29T00:00:00+08:00" />
+<script type="application/ld+json">
+{"headline":"Telegram-MTProxy","dateModified":"2019-08-29T00:00:00+08:00","url":"http://localhost:4000/archives/Telegram-MTProxy.html","datePublished":"2019-08-29T00:00:00+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/archives/Telegram-MTProxy.html"},"description":"Build MTProxy for Telegram on your server (e.g., VPS), so you don’t have to tolerate high-latency VPN connection. Actually, you can use Telegram without installing any VPN software on your devices.","@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link href="https://fonts.googleapis.com/css?family=Domine|Asap|Noto+Sans+SC|Noto+Serif+SC&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Lucas's Blog" /></head><body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Lucas&#39;s Blog</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/links/">Links</a><a class="page-link" href="/tags/">Tags</a><a class="page-link" href="/categories/">Categories</a><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <script type="text/javascript" async src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Telegram-MTProxy</h1>
+    <p class="post-meta"><time class="dt-published" datetime="2019-08-29T00:00:00+08:00" itemprop="datePublished">Published: Aug 29, 2019</time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>Build <a href="https://github.com/TelegramMessenger/MTProxy">MTProxy</a> for Telegram on your server (e.g., VPS), so you don’t have to tolerate high-latency VPN connection. Actually, you can use Telegram without installing any VPN software on your devices.</p>
+
+<p>Configuring MTProxy is not that hard.</p>
+
+<p>First, install dependencies, you would need common set of tools for building from source, and development packages for <code class="highlighter-rouge">openssl</code> and <code class="highlighter-rouge">zlib</code>.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># For Debian/Ubuntu users</span>
+apt <span class="nb">install </span>git curl build-essential libssl-dev zlib1g-dev 
+</code></pre></div></div>
+
+<h2 id="download--build">Download &amp; Build</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/TelegramMessenger/MTProxy
+<span class="nb">cd </span>MTProxy <span class="o">&amp;&amp;</span> make 
+</code></pre></div></div>
+
+<p>The binary file will be in <code class="highlighter-rouge">objs/bin/mtproto-proxy</code>. Run  <code class="highlighter-rouge">make clean</code> if building is failed and search Google for reasons.</p>
+
+<h2 id="configuration-files">Configuration files</h2>
+
+<ul>
+  <li>
+    <p>Secret file: to connect to telegram servers.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-s</span> https://core.telegram.org/getProxySecret <span class="nt">-o</span> proxy-secret
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Proxy config file</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl <span class="nt">-s</span> https://core.telegram.org/getProxyConfig <span class="nt">-o</span> proxy-multi.conf
+</code></pre></div>    </div>
+  </li>
+</ul>
+
+<p>You also need a generate a secret (i.e., password) to be used by users to connect to your proxy. You can always craft your onw passphrase, e.g., <code class="highlighter-rouge">d87dasfsadfa9sd8fasdf7as</code>, but if you want to generate a random passphrase, you can use commands like:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cat</span> /proc/sys/kernel/random/uuid <span class="c"># or </span>
+<span class="nb">head</span> <span class="nt">-c</span> 16 /dev/urandom | xxd <span class="nt">-ps</span>  <span class="c"># generating 16-bytes passphrase	</span>
+</code></pre></div></div>
+
+<h2 id="run-mtproxy">Run MTProxy</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./mtproto-proxy <span class="nt">-u</span> username <span class="nt">-p</span> 8888 <span class="nt">-H</span> 9999 <span class="nt">-S</span> &lt;secret&gt; <span class="nt">--aes-pwd</span> proxy-secret proxy-multi.conf <span class="nt">-M</span> 1
+</code></pre></div></div>
+
+<p>Where:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">username</code> is the username.</li>
+  <li><code class="highlighter-rouge">9999</code> is the port used by client devices to connect to the proxy.</li>
+  <li><code class="highlighter-rouge">8888</code> is the local port.</li>
+  <li><code class="highlighter-rouge">&lt;secret&gt;</code> is the password you just generated. Also you can set multiple secrets: <code class="highlighter-rouge">-S &lt;secret1&gt; -S &lt;secret2&gt;</code>.</li>
+  <li><code class="highlighter-rouge">proxy-secret</code> and <code class="highlighter-rouge">proxy-multi.conf</code> configure files curled in previous steps.</li>
+  <li><code class="highlighter-rouge">1</code> is the number of workers. You can increase the number of workers, if you have a powerful server.</li>
+  <li>Use <code class="highlighter-rouge">mtproto-proxy --help</code> to read more options</li>
+</ul>
+
+<h2 id="system-configuration">System Configuration</h2>
+
+<ol>
+  <li>
+    <p>Create systemd service file by running</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>emacs /etc/systemd/system/MTProxy.service <span class="c"># or vim /etc/systemd/system/MTProxy.service</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Move configure files, secret, and binary proxy file to a working directory.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">mkdir</span> /opt/MTProxy/
+<span class="nb">mv </span>MTProxy/objs/bin/<span class="k">*</span> /opt/MTProxy/
+</code></pre></div>    </div>
+
+    <p>Edit the system services</p>
+  </li>
+  <li>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">[</span>Unit]
+<span class="nv">Description</span><span class="o">=</span>MTProxy
+<span class="nv">After</span><span class="o">=</span>network.target
+   
+<span class="o">[</span>Service]
+<span class="nv">Type</span><span class="o">=</span>simple
+<span class="nv">WorkingDirectory</span><span class="o">=</span>/opt/MTProxy
+<span class="nv">ExecStart</span><span class="o">=</span>/opt/MTProxy/mtproto-proxy <span class="nt">-u</span> nobody <span class="nt">-p</span> 8888 <span class="nt">-H</span> 9999 <span class="nt">-S</span> &lt;passphrase&gt; <span class="nt">--aes-pwd</span> proxy-secret proxy-multi.conf <span class="nt">-M</span> 0
+<span class="nv">Restart</span><span class="o">=</span>on-failure
+   
+<span class="o">[</span>Install]
+<span class="nv">WantedBy</span><span class="o">=</span>multi-user.target
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Reload daemons and restart MTProxy</p>
+  </li>
+  <li>
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>systemctl daemon-reload
+systemctl restart MTProxy.service
+systemctl status MTProxy.service  <span class="c"># check if it's running properly</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Autostart service after reboot</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>systemctl <span class="nb">enable </span>MTProxy.service
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<p>When you see <code class="highlighter-rouge">main loop</code> in the output, you know the program is running correctly.</p>
+
+<p><img src="/assets/img/mtproxy.png" alt="MTProxy" /></p>
+
+<p>Good luck and Enjoy !</p>
+
+<hr />
+<ul>
+  <li><strong>UPDATE</strong> on Sep 3: The data feature of MTProxy is now recognizable by GFW, self-constructed MTProxy is discouraged and will not survive for long.</li>
+</ul>
+
+
+  </div>
+
+  <p>写的不错，分享一下：</p>
+  
+  <a href="https://twitter.com/intent/tweet?text=Telegram-MTProxy&url=http://localhost:4000/archives/Telegram-MTProxy.html" title="Share on Twitter" rel="nofollow" target="_blank">Twitter</a>
+  <a href="https://facebook.com/sharer.php?u=http://localhost:4000/archives/Telegram-MTProxy.html" title="Share on Facebook" rel="nofollow" target="_blank">Facebook</a>
+  <a href="https://plus.google.com/share?url=http://localhost:4000/archives/Telegram-MTProxy.html" title="Share on Google+" rel="nofollow" target="_blank">Google+</a><a class="u-url" href="/archives/Telegram-MTProxy.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Lucas&#39;s Blog</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name"></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/ssrzz"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">ssrzz</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>I&#39;m a deep learning lover.</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer><script src="/scripts/common.js?t=20191001191256"></script>
+
+  
+
+  </body>
+</html>
