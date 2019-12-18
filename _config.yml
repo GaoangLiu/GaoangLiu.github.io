@@ -21,9 +21,9 @@ title: Not a Blog
 #   `\text{ and the ethics of humankind.}`
 
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://NilLau.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+url: "http://117ami.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 # twitter_username: abc
-github_username: Nillau
+github_username: 117ami
 
 # Build settings
 markdown: kramdown
