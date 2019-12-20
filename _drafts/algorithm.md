@@ -21,20 +21,17 @@ $$(x + k \frac{b}{d}, y - k \frac{a}{d})$$
 ## Extended Euclidean Algorithm
 Python 代码实现
 ```python
-def ext_euclid(a, b):
-    old_s, s = 1, 0
-    old_t, t = 0, 1
-    old_r, r = a, b
-    if b == 0:
-        return 1, 0, a
-    else:
-        while r > 0:
-            q = old_r // r
-            old_r, r = r, old_r % r
-            old_s, s = s, old_s - q * s
-            old_t, t = t, old_t - q * t
-    return old_s, old_t, old_r
+def getxy(a, b):
+    if a == 1 and b == 0:
+        return 1, 0
+    x, y = getxy(b, a % b)
+    return y, x - (a // b) * y
 ```
+解析： 不失一般性，假设 $$d = 1$$, 再假设 $$x, y$$ 是输入为 $$a, b$$ 时间的结果，即 $$ a*x + b * y = 1 $$，而 $$x_1, y_1$$ 是输入为 $$b, a % b$$ 时的结果。 代入公式 $$ a % b = a - (a/b) * b $$ 可得 $$ ay_1 + b(x_1 - (a/b) y_1)) = 1 $$，那么就有 $$ x = y_1, y = x_1 - (a/b) * y_1 $$ 。 
+
+因为用到辗转相除，基本情况是 $$ a=1, b=0 $$ 。
+
+
 
 
 # Golden Section Search(GSS)
