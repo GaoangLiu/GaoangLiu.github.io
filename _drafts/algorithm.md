@@ -21,10 +21,10 @@ $$(x + k \frac{b}{d}, y - k \frac{a}{d})$$
 ## Extended Euclidean Algorithm
 Python 代码实现
 ```python
-def getxy(a, b):
+def compute_coe(a, b):
     if a == 1 and b == 0:
         return 1, 0
-    x, y = getxy(b, a % b)
+    x, y = compute_coe(b, a % b)
     return y, x - (a // b) * y
 ```
 解析： 不失一般性，假设 $$d = 1$$, 再假设 $$x, y$$ 是输入为 $$a, b$$ 时间的结果，即 $$ a*x + b * y = 1 $$，而 $$x_1, y_1$$ 是输入为 $$b, a % b$$ 时的结果。 代入公式 $$ a % b = a - (a/b) * b $$ 可得 $$ ay_1 + b(x_1 - (a/b) y_1)) = 1 $$，那么就有 $$ x = y_1, y = x_1 - (a/b) * y_1 $$ 。 
