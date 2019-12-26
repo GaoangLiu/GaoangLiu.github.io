@@ -40,6 +40,16 @@ size_t在32位架构上是4字节，在64位架构上是8字节。
 
 一般来说，在表示数据结构大小的时候，尽量使用 `size_t` 。原因，1. 代码表述清晰，一眼就可以看出这是在表示一个对象的长度 ； 2. 表示范围比 `int` 要大，特别是表示 vector 或者其他 container 的长度时 `size_t` 可以确保不出出现溢出等问题。
 
+
+## 随机 
+生成随机浮点数
+```cpp
+random_device rd; 
+mt19937 gen(rd());
+uniform_real_distribution<double>dis(lower_bound, upper_bound);
+double random_double = dis(gen);
+```
+
 # 数据结构
 ## bitset
 区别于 vector, array，bitset 索引**从右向左**。
