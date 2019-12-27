@@ -50,6 +50,22 @@ uniform_real_distribution<double>dis(lower_bound, upper_bound);
 double random_double = dis(gen);
 ```
 
+
+
+## 字符串
+### 字符转化为字符串的 9 种方式
+1. `char c = 'a'; string s (1,c);`，类构造器 `string(size_t n, char c)`
+2. `char c = 'a'; string s; stringstream ss; ss << c; ss >> s; `
+3. `string s; s.push_back(c); ` ，使用 `push_back` 方法 
+4. `s += c;` 
+5. `string s; s = c; `
+6. `s.append(1, c);`, `append(size_t n, char c)` 添加 `n` 个字符 
+7. `s.assign(1, c);`
+8. `s.insert(0, 1, c);` ，`insert(site_t pos, site_t n, char c)` 在位置 `pos` 插入 `n` 个字符 
+9. `s.replace(0, 1, 1, c);`，`replace(size_t pos, site_t len, site_t n, char c)` 从位置 `pos` 开始，用 `n` 个字符 `c` 替换长度为 `len` 的部分
+
+
+
 # 数据结构
 ## bitset
 区别于 vector, array，bitset 索引**从右向左**。
