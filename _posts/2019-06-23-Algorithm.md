@@ -141,3 +141,61 @@ def generate_decimal_gray_code(n):
 
 
 
+# SORT 
+## TimSort 
+- 提出者: [Tim Peters](https://en.wikipedia.org/wiki/Tim_Peters_(software_engineer))
+- 出现时间： 2002 
+- 应用: 从 `Python 2.3` 开始作为 `Python` 的标准默认算法，e.g., `a_list.sort()`
+- 复杂度
+    - worst-case $$O(n \text{log}n)$$
+    - best-case $$O(n)$$
+    - average $$O(n \text{log}n)$$
+    - worst-case space $$O(n)$$
+
+[More info](https://bugs.python.org/file4451/timsort.txt)
+
+[MI2](https://hackernoon.com/timsort-the-fastest-sorting-algorithm-youve-never-heard-of-36b28417f399)
+
+### Implementation
+算法结合了**合并排序**及**插入排序**。
+
+```python
+RUN = 32
+
+# This function sorts array from left index to  
+# to right index which is of size at most RUN  
+def insertion_sort(arr, left, right):
+    for i in range(left + 1, right + 1):
+        j = i 
+        while j > left and arr[j - 1] > arr[j]:
+            arr[j-1], arr[j] = arr[j], arr[j-1]
+            j -= 1
+
+def merge_sort(arr, left, mid, right):
+    pass
+
+def tim_sort(arr):
+    n = len(arr)
+    for i in range(0, n, RUN):
+        insertion_sort(arr, i, i + min(i + RUN - 1, n - 1))
+    
+    # start merging from size RUN (or 32). It will merge to form size 64, then 128, 256 and so on ....  
+    size = RUN 
+    while size < n:  
+        # pick starting point of left sub array. We  
+        # are going to merge arr[left..left+size-1]  
+        # and arr[left+size, left+2*size-1]  
+        # After every merge, we increase left by 2*size  
+        for left in range(0, n, 2*size):  
+            # find ending point of left sub array  
+            # mid+1 is starting point of right sub array  
+            mid = left + size - 1 
+            right = min((left + 2*size - 1), (n-1))  
+    
+            # merge sub array arr[left.....mid] &  
+            # arr[mid+1....right]  
+            merge(arr, left, mid, right)  
+          
+        size = 2*size 
+
+```
