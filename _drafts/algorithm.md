@@ -154,7 +154,7 @@ def generate_decimal_gray_code(n):
 
 [More info](https://bugs.python.org/file4451/timsort.txt)
 
-[MI2](https://hackernoon.com/timsort-the-fastest-sorting-algorithm-youve-never-heard-of-36b28417f399)
+<!-- [MI2](https://hackernoon.com/timsort-the-fastest-sorting-algorithm-youve-never-heard-of-36b28417f399) -->
 
 ### Implementation
 算法结合了**合并排序**及**插入排序**。
