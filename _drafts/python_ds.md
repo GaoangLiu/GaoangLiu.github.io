@@ -50,3 +50,13 @@ A naive implementation of PQ can be found [here]({{site.baseurl}}/codes/pq.py.tx
 Note that, the complexity of `push` method of this PQ is $$O(n)$$ while `heapq.heappush` is $$O(\text{log}(n))$$. 
 But the `pop` method is faster that `heapq.heappop`, since the former is $$O(1)$$ while the latter is $$O(\text{log}(n))$$. 
 
+
+# Built-in methods
+## `bisect`
+### `bisect.insort`
+`bisect.insort()` is an alias for `bisect.insort_right()`,  which is equivalent to `list.insert(bisect.bisect_right(list, item, lo, hi), item)`. This assumes that list is already sorted.
+
+Time complexity $$O(n)$$, since the slow `insert` operation is dominating the time.
+
+`bisect.insort_left()` does similar thing, but inserting item in list before any existing entries of item.
+
