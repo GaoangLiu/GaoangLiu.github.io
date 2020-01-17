@@ -140,6 +140,26 @@ Tiny example, S = [2, 3, 4], bits 初始为 1 ， 迭代如下:
 **注：** 算法中 `bitset<10001>` 大小为 10001 是因为原问题中集合大小限制在 200，元数大小限制在 100，因此我们的 target 不太于 10000 。
 
 
+## Multiset 
+是 `Set` 数据结构的变体，具备以下特性：
+1. 按大小顺序存储数值 (如元素顺序不重要，可能考虑使用 `unordered_multiset`)
+2. 元素可以不唯一
+3. 只能插入、删除元素，无法修改
+4. 通过迭代器可删除多个元素
+5. 通过迭代器对元素进行迭代
+6. 以 BST 的形式实现
+
+举例：
+```cpp
+multiset <int, greater<int>> ms; 
+ms.insert(40);  // 40
+ms.insert(50);  // 50, 40
+ms.insert(60);  // 60, 50, 40
+ms.insert(50);  // 60, 50, 50, 40
+```
+
+支持的方法与 `set` 相同，包括 `size(), empty(), erase(), clear(), count() ` ...
+
 
 <!-- TODO -->
 # Standard Template Library (STL)
