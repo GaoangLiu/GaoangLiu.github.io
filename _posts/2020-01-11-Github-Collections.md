@@ -14,6 +14,9 @@ categories:
 
 - MIT-Deep-Learning,  a collection of tutorials for MIT Deep Learning courses.
     * Github repo, [https://github.com/lexfridman/mit-deep-learning](https://github.com/lexfridman/mit-deep-learning)
+
+- Hvass-Labs, tutorials for beginners in Deep Learning and TensorFlow.
+    * Git [https://github.com/Hvass-Labs/TensorFlow-Tutorials](https://github.com/Hvass-Labs/TensorFlow-Tutorials)
     
 
 
