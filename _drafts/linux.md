@@ -13,6 +13,34 @@ Just memo, not a blog.
 `ffmpeg -i input.mp4 -i input.srt -c copy -c:s mov_text output.mp4`
 
 
+# 文件管理 
+## Linux 挂载 WebDAV
+WebDAV 的用处 [wiki](https://zh.wikipedia.org/wiki/WebDAV): 基于Web的分布式编写和版本控制（WebDAV）是超文本传输协议（HTTP）的扩展，有利于用户间协同编辑和管理存储在万维网服务器文档 。。。 
+
+## 安装使用
+Centos & Fedora & RedHat 
+```bash 
+yum -y install davfs2
+```
+
+Ubuntu & Debian 
+```bash
+apt -y install davfs2
+```
+
+安装后进行文件配置 
+```bash
+sed -ie 's/# use_locks       1/use_locks       0/g' /etc/davfs2/davfs2.conf
+echo "Your_WebDAV_url username password" >> /etc/davfs2/secrets # eg echo "https://kita.teracloud.jp/dav/ sunnyme lovesunshine123" >> ... 
+mount.davfs Your_WebDAV_url /mnt/mywebdav/
+```
+保存到 `secrets` 里的意义是以后再次挂载时不用重复输入名称与密码。 
+
+### 重启自动挂载
+```bash
+echo "mount.davfs your_WebDAV_url /mnt/mywebdav/" >> /etc/rc.local
+```
+
 
 ## 文件传输
 ### wget 
