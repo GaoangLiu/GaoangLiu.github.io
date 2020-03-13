@@ -199,3 +199,24 @@ def tim_sort(arr):
         size = 2*size 
 
 ```
+
+
+# Bit operation 
+## Count set bits in an integer 
+### Simple method: Loop
+```python
+count = 0
+while n :
+    count += n & 1
+    n >> = 1
+```
+
+### Brian Kernighan’s Algorithm
+```python
+ct = 0
+while n:
+    n = n & (n-1)
+    ct += 1
+```
+The key step `n & (n-1)` set the rightmost `1` to `0`, e.g., when`n = 3 = 101, n & (n-1) = 1`. 
+
