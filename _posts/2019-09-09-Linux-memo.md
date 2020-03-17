@@ -8,6 +8,8 @@ catagories: [Linux]
 ---
 Just memo, not a blog. 
 
+
+
 ## ffmpeg 用法 
 ### 添加字幕 
 `ffmpeg -i input.mp4 -i input.srt -c copy -c:s mov_text output.mp4`
