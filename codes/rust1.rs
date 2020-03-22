@@ -21,10 +21,19 @@ fn main() {
     println!("{:?}", v);
     println!("{:?}", v);
     myprint(v);
-    myprint(v);
     // we no longer own nor anyhow control v
     // it would be a compile-time error to try to access v here
     println!("We're done");
     // no deallocation happening here,
     // because print_sum is responsible for everything
+
+
+    use std::collections::HashMap;
+    let mut hm = HashMap::new(); 
+    hm.insert("a".to_string(), 3);
+    hm.insert("a".to_string(), 3);
+    let v = hm.entry("b".to_string()).or_insert(4);
+    println!("{}", v);
+
+    println!("{:?}", hm);
 }
