@@ -29,6 +29,8 @@ fn main() {
 
 
     use std::collections::HashMap;
+    use std::collections::HashSet;
+
     let mut hm = HashMap::new(); 
     hm.insert("a".to_string(), 3);
     hm.insert("a".to_string(), 3);
@@ -36,4 +38,19 @@ fn main() {
     println!("{}", v);
 
     println!("{:?}", hm);
+
+    let arr = vec![1,2,3,35,8];
+
+    use std::iter::FromIterator;
+    let cphs:HashSet<i32> = HashSet::from_iter(arr);
+    // .cloned());
+    // arr.into_iter().collect();
+    println!("{:?}", cphs);
+    // println!("{:?}", arr);
+    // println!("{:?}", arr);
+
+    // for num in arr.iter() {
+    //     println!("{}", *num);
+    // }
+
 }

@@ -58,6 +58,8 @@ for word in text.split_whitespace() {
 
 
 
+
+
 # HashSet
 
 A hash set is a `HashMap` where the value is (), i.e., it is a wrapper around `HashMap<T, ()>)`.
@@ -70,4 +72,11 @@ let mut users = HashSet::new();
 users.insert("John Smith".to_string());
 users.insert("Jason Marz".to_string());
 users.insert("Carmen Sandiago".to_string());
+```
+
+## Build HashMap from a vector
+```rust
+use std::iter::FromIterator;
+let hs: HashSet<i32> = HashSet::from_iter(arr); // this will move ownership to hs, or 
+let hs: HashSet<i32> = HashSet::from_iter(arr.iter().cloned()); // this will preserve the ownership of arr 
 ```
