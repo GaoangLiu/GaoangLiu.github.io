@@ -75,6 +75,8 @@ users.insert("Carmen Sandiago".to_string());
 ```
 
 ## Build HashMap from a vector
+There are differences between the following two ways of constructing `HashMap` from a `Vector`:
+
 ```rust
 use std::iter::FromIterator;
 let hs: HashSet<i32> = HashSet::from_iter(arr); // this will move ownership to hs, or 

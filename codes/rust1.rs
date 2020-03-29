@@ -3,8 +3,11 @@ fn print_sum(v: Vec<i32>) {
     // v is dropped and deallocated here
 }
 
-fn myprint(v:Vec<i32>){
+
+fn myprint(v: Vec<i32>)     
+{
     println!("{:?}", v);
+
 }
 
 fn main() {

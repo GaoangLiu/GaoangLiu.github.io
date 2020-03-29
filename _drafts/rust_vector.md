@@ -8,22 +8,22 @@ catagories: [programming]
 ---
 
 ## Iterators 
-There may different ways to loop thought a given vector `arr`, for example:
+There are several ways to loop through a given vector `arr`, for example:
 ```rust
 for i in 0..arr.len() {
     println!("{}", arr[i]);
 }
 ```
 
-This `C`-style loop is disencouraged by Rust, since the following iterate way is preferred: 
+This `C`-style loop is disencouraged by Rust, while the following iterate way is preferred: 
 ```rust
 for n in &arr {
-    println~("{}", n);
+    println!("{}", n);
 }
 ```
-Benefits:
+Benefits of the second way:
 
-1. codes are much more clear and efficient, since we do not have to iterate through indexes, and then index the vector.
+1. codes are much more clear and efficient, since we do not have to iterate through indexes, and then index the vector;
 2. the first way will have extra bounds checking because it used indexing, `nums[i]`, while the second yields **reference** to each element and bound checking is not required. 
 
 Two details we should notice: 
