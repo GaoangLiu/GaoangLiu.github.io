@@ -34,7 +34,16 @@ from sklearn.naive_bayes import MultinomialNB, GaussianNB, \
 ```
 
 ## Implementation
-A raw implementation of Naive Bayes classifier can be found in [bayes.py]({{site.baseurl}}/codes/2020/bayes.py).
+简单 NB classifier 实现 [bayes.py]({{site.baseurl}}/codes/2020/bayes.py).
+
+具体测试结果与 `sklearn.naive_bayes.MultinomialNB` 效果一致，对[垃圾邮件](https://www.dropbox.com/s/yjiplngoa430rid)筛选处理，都达到了以下结果
+
+```bash
+==  using 2000 features, confusion matrix
+[[129   9]
+ [  1 121]]
+Accracy score:   0.9615384615384616
+```
 
 # Reference 
 * [Why naive Bayes works well](https://www.cs.unb.ca/~hzhang/publications/FLAIRS04ZhangH.pdf)
