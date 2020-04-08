@@ -33,5 +33,23 @@ Two details we should notice:
 
 
 
-# Reference 
+## Sort
+
+To sort a vector, use `vec.sort();`. This default `sort` method on slices is stable and $$O(nlogn)$$  worst-case. 
+By stable, we mean the original order of equal elements is preserved after sorting is guaranteed.
+
+
+If stability is not required, there is an alternative `sort_unstable`, which is faster and allocates no auxiliary memory.
+
+
+
+## Common Methods
+
+* `vec.clear()`, remove all values, but has no effect on the allocated capacity of the vector; 
+* `vec.dedup()`, removes consecutive repeated elements in the vector. If the vector is sorted, this will remove all duplicate elements. 
+* `vec.binary_search(&n)`, return `Result::Ok(idx)` if the value is found, or `Result::Err(idx)` elsewise. To get the `usize` index of a number, use `vec.binary_search(&42).unwrap_or_else(|x| x)`
+* 
+
+# Reference
+
 1. [Rust Doc](https://doc.rust-lang.org/1.8.0/book/iterators.html)

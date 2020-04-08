@@ -3,57 +3,31 @@ fn print_sum(v: Vec<i32>) {
     // v is dropped and deallocated here
 }
 
-
-fn myprint(v: Vec<i32>)     
-{
+fn myprint(v: Vec<i32>) {
     println!("{:?}", v);
+}
 
+fn printi32(i: i32) {
+    println!("{}", i);
+}
+
+
+use std::collections::HashSet; 
+use std::any::type_name;
+
+fn print_type_of<T>(_: &T) {
+    println!("{}", std::any::type_name::<T>())
 }
 
 fn main() {
-    let mut v = Vec::new(); // creating the resource
-    for i in 1..10 {
-        v.push(i);
-    }
-    // at this point, v is using
-    // no less than 4000 bytes of memory
-    // -------------------
-    // transfer ownership to print_sum:
-    // print_sum(v);
-    // print_sum(v);
-    println!("{:?}", v);
-    println!("{:?}", v);
-    myprint(v);
-    // we no longer own nor anyhow control v
-    // it would be a compile-time error to try to access v here
-    println!("We're done");
-    // no deallocation happening here,
-    // because print_sum is responsible for everything
-
-
-    use std::collections::HashMap;
-    use std::collections::HashSet;
-
-    let mut hm = HashMap::new(); 
-    hm.insert("a".to_string(), 3);
-    hm.insert("a".to_string(), 3);
-    let v = hm.entry("b".to_string()).or_insert(4);
-    println!("{}", v);
-
-    println!("{:?}", hm);
-
-    let arr = vec![1,2,3,35,8];
-
-    use std::iter::FromIterator;
-    let cphs:HashSet<i32> = HashSet::from_iter(arr);
-    // .cloned());
-    // arr.into_iter().collect();
-    println!("{:?}", cphs);
-    // println!("{:?}", arr);
-    // println!("{:?}", arr);
-
-    // for num in arr.iter() {
-    //     println!("{}", *num);
-    // }
-
+    let mut s = vec![0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55];
+    let i = s.binary_search(&1).unwrap_or_else(|x| x);
+    
+    print_type_of(&i);
+    println!("{:?}", i);
+    
+    let t: &[i32] = &[];
+    let nlast = t.last().unwrap_or_else(|x|);
+    print_type_of(&nlast);
+    // println!("{}", nlast);
 }
