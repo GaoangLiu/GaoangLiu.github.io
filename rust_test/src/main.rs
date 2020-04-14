@@ -1,13 +1,26 @@
+use std::collections::BinaryHeap; 
+
 fn main() {
     println!("Hello, world!");
-    let a1 = [1_i32, 3, 5, 7, 9, 11]; 
-    let a2 = [2_i32, 4, 6];
-    let mut zipped = a1.iter().zip(a2.iter());
-    println!("{:?}", zipped);
-    // println!("{:?}", zipped.next());
-    for z in zipped {
-        println!("{:?}", z);
-    }
+
+    let mut bh = BinaryHeap::new(); 
+    bh.push((3, 2));
+    bh.push((1, 4));
+    bh.push((7, 4));
+    let p = bh.peek(); 
+    println!("{:?}", p);
+    println!("{:?}", bh.len());
+
+    print!("{:?}", bh.into_vec());
+
+    // let a1 = [1_i32, 3, 5, 7, 9, 11]; 
+    // let a2 = [2_i32, 4, 6];
+    // let mut zipped = a1.iter().zip(a2.iter());
+    // println!("{:?}", zipped);
+    // // println!("{:?}", zipped.next());
+    // for z in zipped {
+    //     println!("{:?}", z);
+    // }
 
     // let v = [1_i32, 3, 3, 1987, 3, 3, 5, 7, 3];
 
