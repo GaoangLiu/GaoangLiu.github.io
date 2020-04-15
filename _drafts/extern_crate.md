@@ -9,10 +9,11 @@ categories:
 
 # Random 
 Generate random numbers value using the thread-local random number generator.
-First, we need to add `rand` to the dependencies in our project's Cargo.toml.
+First, we need to add `rand` to the dependencies in our project's Cargo.toml (should checkout [doc](https://rust-lang-nursery.github.io/rust-cookbook/algorithms/randomness.html) for the latest rand version).
+
 ```bash
 [dependencies]
-rand = "0.3"
+rand = "0.6"
 ```
 
 ## Usages 
@@ -42,3 +43,4 @@ let r_i32 = rng.gen_range(1, 100);
 
 # References 
 * [rand - Rust.doc](https://docs.rs/rand/0.7.2/rand/fn.random.html)
+* [Generator random numbers - Rust.cookbook](https://rust-lang-nursery.github.io/rust-cookbook/algorithms/randomness.html)
