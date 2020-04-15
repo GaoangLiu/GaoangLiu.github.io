@@ -2,9 +2,9 @@
 layout:     post
 title:      Gradient Descent
 date:       2019-10-20
-tags: [Macgine Learning, gd]
+tags: [machine learning]
 categories: 
-- Machine Learning
+- machine learning
 ---
 
 ## 梯度(Gradient)

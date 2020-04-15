@@ -2,9 +2,9 @@
 layout:     post
 title:      Basic Math in Machine Learning
 date:       2019-10-14
-tags: [Macgine Learning, Math]
+tags: [machine learning, math]
 categories: 
-- Machine Learning
+- machine learning
 ---
 
 # 随机变量及分布

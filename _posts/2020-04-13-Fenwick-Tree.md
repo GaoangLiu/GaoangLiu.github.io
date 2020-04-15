@@ -2,9 +2,9 @@
 layout:     post
 title:      Fenwick Tree
 date:       2020-04-13
-tags: [Algorithm, fenwick tree, bit]
+tags: [algorithm, fenwick tree, bit]
 categories: 
-- Algorithm
+- algorithm
 ---
 
 Fenwick tree, also called Binary Index Tree (BIT), is a data structure that can efficiently ($$O(log n)$$ time) update elements and calculate prefix sums in a table of numbers.
