@@ -25,6 +25,17 @@ let s = "12 34 56 87 65 90";
 let mut cs = s.split(" ").map(|c| c.parse::<i32>().unwrap()).collect::<Vec<i32>>();
 ```
 
-# References 
+Lowercase & Uppercase
+
+```rust
+s.to_lowercase() 
+s.to_uppercase() 
+c.is_numeric() # To determine whether a char is number or not
+```
+
+
+
+# References
+
 * [String - Rust.doc](https://doc.rust-lang.org/std/string/struct.String.html)struct.File.html)
 * [Strings - Rust by example](https://doc.rust-lang.org/rust-by-example/std/str.html)
