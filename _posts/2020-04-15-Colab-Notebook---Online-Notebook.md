@@ -15,6 +15,14 @@ Features:
 3. Linux commands
 4. and more
 
+## File transmission 
+```python
+from google.colab import files
+files.download('example.txt') # This will download file from colab.research  
+
+files.upload() # This will prompt user to select a file and upload it
+```
+
 
 ## Mount to Google Drive
 ```python
@@ -23,11 +31,19 @@ drive.mount('/content/gdrive/')
 ```
 
 
-## Manipulate images 
+## Display images 
 To display images in colab:
 ```python
 from IPython.display import Image
 Image('train/Train_0.jpg')
+```
+
+Another way to display image with `matplotlib`:
+```python
+from matplotlib import pyplot as plt
+img = plt.imread('images/train_001.jpg')
+print(img.shape)
+plt.imshow(img)
 ```
 
 
