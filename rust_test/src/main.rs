@@ -11,17 +11,7 @@ impl Helper {
 }
 
 fn main() {
-    let rand_string: String = thread_rng().sample_iter(&Alphanumeric).take(30).collect();
-
-    println!("{}", rand_string);
-
-    let s: String = "Sex more.".into();
-    println!("{:?}", s);
-
-    // let vs = vec!["a".to_owned(), "b".into()];
-    let vs = Helper::stringify(vec!["a", "b", "c"]);
-    println!("{:?}", vs);
-
-    let v = vec![1_i32, 9, 8];
-    v[99];
+    let data = vec![vec![2, 3, 4], vec![9, 8, 1]];
+    let d_flatten:Vec<i32> = data.into_iter().flatten().collect();
+    println!("{}", d_flatten.into_iter().sum::<i32>());
 }
