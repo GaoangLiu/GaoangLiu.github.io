@@ -1,10 +1,42 @@
 ---
 layout:     post
-title:      Text processing in deep learning
+title:      Text processing with Python
 date:       2019-09-09
-img: deeplearning.png
-tags: [deep learning]
+tags: [tokenizer, preprocessing]
+catogeries: 
+- machine learning
 ---
+
+# Process text with NLTK
+## Tokenization
+This is a process that divides big quantity of text into smaller parts called **tokens** (usually words).
+
+Example 1: use method `word_tokenize()` to split a sentence into words:
+```python
+import nltk
+s = "At eight o'clock on Thursday morning ... Arthur didn't feel very good."
+tokens = nltk.word_tokenize(s)
+# ['At', 'eight', "o'clock", 'on', 'Thursday', 'morning', 'Arthur', 'did', "n't", 'feel', 'very', 'good', '.']
+```
+
+
+A `RegexpTokenizer` splits a string into substrings using a regular expression. For example, the following tokenizer forms tokens out of alphabetic sequences, money expressions, and any other non-whitespace sequences:
+
+```python
+from nltk.tokenize import RegexpTokenizer
+strstr = "Good muffins cost $3.88\nin New York.  Please buy me\ntwo of them.\n\nThanks."
+tkn = RegexpTokenizer('\w+|\$[\d\.]+|\S+')
+tkn.tokenize(strstr)
+# ['Good', 'muffins', 'cost', '$3.88', 'in', 'New', 'York', '.', 'Please', 'buy', 'me', 'two', 'of', 'them', '.', 'Thanks', '.']
+```
+
+Another example of a tokenizer selecting just the capitalized words:
+```python
+tkn = RegexpTokenizer('[A-Z]\w+')
+tkn.tokenize(strstr)
+# ['Good', 'New', 'York', 'Please', 'Thanks']
+```
+
 
 ## 处理文本数据
 
@@ -87,3 +119,4 @@ train, test = load_files("data/aclImdb/train/"), load_files("data/aclImdb/test/"
 
 
 ## 小结
+
