@@ -7,17 +7,49 @@ categories:
 - machine learning
 ---
 
-# Word embedding and Word2Vec 
-Loosely speaking, **word embedding** are vector representations of a particular word. And Word2Vec, developed by [Tomas Mikolov in 2013 at Google](https://arxiv.org/pdf/1310.4546.pdf), is one of the (most popular) technique to learn word embeddings using shallow neural network. Word2Vec can be obtained using two methods (both involving Neural Networks): **Skip Gram** and **Common Bag Of Words (CBOW)**.
+# Word Embedding and Word2Vec 
 
-The purpose and usefulness of Word2vec is to group the vectors of similar words together in vector space.
-The idea behind is pretty simple. We are making an assumption that **you can tell the meaning of a word by the company it keeps**. This is analogous to the saying show me your friends, and I'll tell who you are [1].
+Word2Vec, developed by [Tomas Mikolov in 2013 at Google](https://arxiv.org/pdf/1310.4546.pdf), is one of the most popular techniques to learn word embeddings using shallow neural network. Word2Vec can be obtained using two methods (both involving Neural Networks): using context to predict a target word (a method known as **continuous bag of words, or CBOW**), or using a word to predict a target context, which is called **skip-gram**.
+
+
+
+## Word2Vec 
+Word2Vec is a two-layer neural network whose input is a **text corpus** and output is a set of vectors: **feature vectors that represent words in that corpus**. The output vectors can be fed to deep neural networks for further training.
+
+The purpose and usefulness of Word2vec is to **group the vectors of similar words together in vector space**.
+The idea behind is fairly straightforward: **the meaning of a word can be defined by the company it keeps**. This is analogous to the saying show me your friends, and I'll tell who you are [1].
 Thus words having similar neighbors, i.e., the usage context is about the same, are highly possible having same meaning or at least highly related. For example, 'possible' and 'probably' are typically used in the same context. 
 
-# A few pre-trained useful 
-https://pathmind.com/wiki/word2vec
+Word2vec works like an auto-encoder, encoding each word in a vector, but rather than training against the input words through reconstruction, as a [restricted Boltzmann machine](https://pathmind.com/wiki/restricted-boltzmann-machine) does, word2vec trains words against other words that neighbor them in the input corpus.
 
-# TODO train your own word2vec ??
+## Natural Wold Embeddings
+<!-- Loosely speaking, **word embedding** are vector representations of a particular word.  -->
+The vectors we use to represent words are called **neural word embeddings**. Thus, with the "vectorization" procedure, words in text corpus are now (vectors of) numbers in word embeddings.
+
+
+# Pre-trained models
+Gensim (found below section for a Quickstart tutorial) launched its own dataset storage on [Github](https://github.com/RaRe-Technologies/gensim-data), committed to long-term support, a sane standardized usage API and focused on datasets for unstructured text processing. 
+
+This repo contains the following pre-trained models:
+* fasttext-wiki-news-subwords-300 
+* glove-twitter-100 
+* glove-twitter-200 
+* glove-twitter-25 
+* glove-twitter-50 
+* glove-wiki-gigaword-100 
+* glove-wiki-gigaword-200 
+* glove-wiki-gigaword-300 
+* glove-wiki-gigaword-50 
+* word2vec-google-news-300 
+* word2vec-ruscorpora-300 
+
+Load a model is simple with `Gensim` downloader API:
+```python
+import gensim.downloader as api
+model = api.load('word2vec-google-news-300)
+model.most_similar('cat')
+```
+ 
 
 
 
@@ -77,3 +109,4 @@ model.train(documents,  total_examples=len(documents),  epochs=10)
 2. [Gensim, a free python library for data science, NLP and deep learning](https://radimrehurek.com/gensim/index.html)
 3. [Distributed Representations of Words and Phrases and their Compositionality, Tomas Mikolov et al.](https://arxiv.org/pdf/1310.4546.pdf)
 4. [word2vec Parameter Learning Explained](https://arxiv.org/pdf/1411.2738.pdf)
+5. [A Beginner's Guide to Word2Vec and Neural Word Embeddings](https://pathmind.com/wiki/word2vec)
