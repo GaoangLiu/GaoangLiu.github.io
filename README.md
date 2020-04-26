@@ -1,4 +1,3 @@
-# [Check out the Blog 🍺](https://GaoangLiu.github.io)
 
 
-
+A simple [blog (GaoangLiu.github.io)](https://GaoangLiu.github.io) built upon GitHub Pages. 

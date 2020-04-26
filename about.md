@@ -5,7 +5,10 @@ permalink: /about/
 order: 3
 ---
 
+
+
 Notes, blogs on 
+
 * `programming`
 * `Python3`
 * `rust`
@@ -13,6 +16,7 @@ Notes, blogs on
 * `Linux` 
 * and so on.
 
-Drop me an email at [Gaoang](mailto:GaoangLau@gmail.com) if you have any thoughts.
+Drop me an email at [GaoangLau[@]gmail.com](mailto:GaoangLau@gmail.com) if you have any thoughts.
+
 
 
