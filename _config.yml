@@ -21,9 +21,9 @@ title: ReadingNotes
 #   `\text{ and the ethics of humankind.}`
 
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://117ami.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+url: "http://GaoangLiu.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 # twitter_username: abc
-github_username: 117ami
+github_username: GaoangLiu
 
 # Build settings
 markdown: kramdown

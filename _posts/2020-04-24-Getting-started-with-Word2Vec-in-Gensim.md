@@ -17,7 +17,7 @@ Word2Vec, developed by [Tomas Mikolov in 2013 at Google](https://arxiv.org/pdf/1
 Word2Vec is a two-layer neural network whose input is a **text corpus** and output is a set of vectors: **feature vectors that represent words in that corpus**. The output vectors can be fed to deep neural networks for further training.
 
 The purpose and usefulness of Word2vec is to **group the vectors of similar words together in vector space**.
-The idea behind is fairly straightforward: **the meaning of a word can be defined by the company it keeps**. This is analogous to the saying show me your friends, and I'll tell who you are [1].
+The idea behind is fairly straightforward: **you shall know a word by the company it keeps**([Firth, J. R. 1957:11](https://en.wikipedia.org/wiki/John_Rupert_Firth)). This is analogous to the saying show me your friends, and I'll tell who you are [1].
 Thus words having similar neighbors, i.e., the usage context is about the same, are highly possible having same meaning or at least highly related. For example, 'possible' and 'probably' are typically used in the same context. 
 
 Word2vec works like an auto-encoder, encoding each word in a vector, but rather than training against the input words through reconstruction, as a [restricted Boltzmann machine](https://pathmind.com/wiki/restricted-boltzmann-machine) does, word2vec trains words against other words that neighbor them in the input corpus.

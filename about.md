@@ -5,10 +5,14 @@ permalink: /about/
 order: 3
 ---
 
-Hey, here is my Blog on AI and deep learning. 
+Notes, blogs on 
+* `programming`
+* `Python3`
+* `rust`
+* `deep learning`
+* `Linux` 
+* and so on.
 
-Hope you enjoy it. 
-
-Drop me an email at [Nil-Lau](mailto:ssruoz@gmail.com) if you have any questions.
+Drop me an email at [Gaoang](mailto:GaoangLau@gmail.com) if you have any thoughts.
 
 

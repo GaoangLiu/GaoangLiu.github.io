@@ -7,7 +7,13 @@ order: 0
 
 Resources for learning &amp; review.
 
-### ○ Technology Docs
+<!-- ### ○ Technology Docs -->
+__● Models__
+* [Gensim word2vec data and models, e.g., Google-news-300](https://github.com/RaRe-Technologies/gensim-data)
+
+__● Blogs__
+* [Radim Řehůřek’s, creator of Gensim](https://rare-technologies.com/author/radim/)
+
 
 __● Programing__
 * [Python 3](https://docs.python.org/3/)
@@ -33,13 +39,4 @@ __● Common Tools__
 * [assiinema](https://asciinema.org/)
 * [Firefox Send](https://send.firefox.com/)
 * [icoutils](https://www.nongnu.org/icoutils/)
-
-__● Models__
-
-* [Gensim word2vec data and models, e.g., Google-news-300](https://github.com/RaRe-Technologies/gensim-data)
-
-__● Blogs__
-
-* [Radim Řehůřek’s, creator of Gensim](https://rare-technologies.com/author/radim/)
-
 
