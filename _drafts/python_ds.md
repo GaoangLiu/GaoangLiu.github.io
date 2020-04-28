@@ -2,12 +2,57 @@
 layout:     post
 title:      Data Structures in Python
 date:       2019-11-26
-tags: [Python3, data structure]
+tags: [Python3, data structure, heapq, ordereddict]
 categories: 
 - Python3
-- heap
 - algorithm
 ---
+
+# Ordereddict 
+`from collections import ordereddict`
+
+Methods:
+1. `od.pop(k)`, remove a key 
+2. `od.popitem()`, removes one pair from the dictionary as a tuple
+
+Extended reading on StackOverflow Question [Are there any reasons not to use an OrderedDict?](https://stackoverflow.com/questions/18951143/are-there-any-reasons-not-to-use-an-ordereddict/18951209#18951209). 
+The top answer given by Tim Peter (the guy who wrote `TIMSORT`) is, however, on why `OrderdedDict` is quite efficient.
+
+## A simple implementation of Ordereddict with Dict + Double LinkedList
+```python
+class Node:
+    def __init__(self, k, v):
+        self.key = k
+        self.val = v
+        self.prev = None
+        self.next = None
+
+class MyOrderdedDict():
+    def __init__(self):
+        self.dic = dict()
+        self.head = Node(0, 0)
+        self.tail = Node(0, 0)
+        self.head.next = self.tail
+        self.tail.prev = self.head
+
+    def _add(self, k, v):
+        if k in self.dic:
+            self.dic[k].val = v
+        else:
+            node = Node(k, v)
+            self.dic[k] = node
+            self.tail.prev.next, node.next = node, self.tail
+            node.prev, self.tail.prev = self.tail.prev, node
+
+    def _pop(self, k):
+        if k not in self.dic:
+            return
+        node = self.dic[k]
+        del self.dic[k]
+        node.next.prev = node.prev
+        node.prev.next = node.next
+
+```
 
 # Heapq
 

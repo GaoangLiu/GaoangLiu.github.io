@@ -13,6 +13,7 @@ __● Models__
 
 __● Blogs__
 * [Radim Řehůřek’s, creator of Gensim](https://rare-technologies.com/author/radim/)
+* [Towards data science](https://towardsdatascience.com/machine-learning/home)
 
 
 __● Programing__
