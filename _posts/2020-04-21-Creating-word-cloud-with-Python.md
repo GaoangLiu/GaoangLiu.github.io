@@ -23,7 +23,7 @@ We are going to visualize the film [Gentlemen](https://movie.douban.com/subject/
 <img class='center' src="https://i.loli.net/2020/04/21/Q3YvVqlH8zKR4xD.jpg"  alt="Gentlemen poster" width="320">
 
 ## Removing stop words
-Step 1: we need to remove `stopwords`: words that are commonly used but not quite meaningful, such as `a`, `an`, `the`. The `wordcloud` module provides a list of stop words (counts: 192) in [`wordcloud.STOPWORDS`](https://raw.githubusercontent.com/amueller/word_cloud/master/wordcloud/stopwords). 
+Step 1: we need to remove `stopwords`: which are presumed to be uninformative in representing the content of a text, such as `a`, `an`, `the`. The `wordcloud` module provides a list of stop words (counts: 192) in [`wordcloud.STOPWORDS`](https://raw.githubusercontent.com/amueller/word_cloud/master/wordcloud/stopwords). 
 Another stop word option is `nltk.corpus.stopwords.words('english')`, which contains 179 words. 
 
 These two lists work fine in most cases, but not so good for texts built solely from conversations, such as subtitles from a film where dialogs contain lots of words that are not closely related to the film theme or topics. For example, we find that `know` and `now` occur frequently in the dialogs, but none of them carry much information about what is happening in that film. 

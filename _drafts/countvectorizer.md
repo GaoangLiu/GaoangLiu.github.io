@@ -18,7 +18,7 @@ cv.fit_transform(doc)
 ```
 What happens when `CountVectorizer(doc)` is executed ? 
 
-The text documents `doc` is converted into a matrix of token counts. More specifically, 
+The text documents `doc` is converted into a matrix of token counts. More specifically, the method will
 1. lowercases text 
 2. uses `utf-8` encoding
 3. performs tokenization (converts raw text to smaller units of text)
@@ -31,7 +31,8 @@ Note that, there are some default parameters here:
 1. `encoding='utf-8'`, 
 2. `lowercase=True`, convert all characters to lowercase before tokenizing. If your tasks are case-sensitive, e.g., some spam prefer uppercase titles or capitalizing words in text, you should consider setting the param to `False`. 
 3. `stop_words=None`, to eliminate stop words from the text. Using stop words in `CountVectorizer` is generally a good idea. Popular stop word modules are `wordcloud.STOPWORDS` and `nltk.corpus.stopwords`. You can also customized your own stop words list like [this one](https://raw.githubusercontent.com/117ami/117ami.github.io/master/materials/stopwords.txt).
-4. `binary=False`, use the counts of terms/tokens. In tasks where the frequency of occurrence is insignificant, we can set `binary=True`, and thus the presence or absence of a term instead of the raw counts matters. 
+4. `strip_accents{'ascii', 'unicode', None}`. Remove accents and perform other character normalization during the preprocessing step. 'ascii' is a fast method that only works on characters that have an direct ASCII mapping. 'unicode' is a slightly slower method that works on any characters. None (default) does nothing.
+5. `binary=False`, use the counts of terms/tokens. In tasks where the frequency of occurrence is insignificant, we can set `binary=True`, and thus the presence or absence of a term instead of the raw counts matters. 
 
 
 # TfidfVectorizer vs. CountVectorizer
@@ -66,6 +67,7 @@ print(pipe['count'].transform(corpus).toarray())
 `TfidfVectorizer()`, which is equivalent to `CountVectorizer` followed by `TfidfTransformer`, actually does the same thing as `pipe` does in the above code.
 
 # References 
+* [6.2. Feature extraction](https://scikit-learn.org/stable/modules/feature_extraction.html#tfidf-term-weighting)
 * [10+ Examples for Using CountVectorizer](https://kavita-ganesan.com/how-to-use-countvectorizer/)
 * [CountVectorizer - sklearn document](http://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.CountVectorizer.html)
 * [TfidfTransformer - sklearn document](https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfTransformer.html#sklearn.feature_extraction.text.TfidfTransformer)
