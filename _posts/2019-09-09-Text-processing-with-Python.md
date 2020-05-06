@@ -38,6 +38,29 @@ tkn.tokenize(strstr)
 ```
 
 
+# Keras Tokenizer 
+```python
+from keras.preprocessing.text import Tokenizer 
+from keras.preprocessing.sequence import pad_sequences
+
+tokenizer = Tokenizer()
+Tokenizer(num_words=max_features) # max_features: number of words 
+
+tokenizer.fit_on_texts(doc) # vector of text 
+sequence_train = tokenizer.texts_to_sequences(doc)
+X_train = pad_sequences(sequence_train, maxlen=maxlen)  # maxlen: length of word vectors
+```
+
+## Q: what does `Tokenizer` exactly do ?
+From the [source code](https://github.com/keras-team/keras-preprocessing/blob/master/keras_preprocessing/text.py#L199):
+<img class='center' src="https://bit.ly/2zbovWe"  alt="keras..tokenizer.fit_on_texts" width="500">
+
+1. `fit_on_texts`: Updates internal vocabulary based on a list of texts.This method creates the vocabulary index based on word frequency. 
+2. `texts_to_sequences`: Transforms each text in texts to a sequence of integers.
+
+
+
+
 ## 处理文本数据
 
 向量与标记相关联的方式有很多种，比较常用的有

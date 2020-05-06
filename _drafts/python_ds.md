@@ -74,9 +74,9 @@ Examples:
 ```python
 import heapq
 alist = [7, 3]
-heap.heapify(alist) # converts list into heap 3, 7
-heap.heappush(alist, 2) # pushes number 2.
-head.nlargest(2, alist) # produces [7, 3]
+heapq.heapify(alist) # converts list into heap 3, 7
+heapq.heappush(alist, 2) # pushes number 2.
+headq.nlargest(2, alist) # produces [7, 3]
 
 heap = []
 for item in [1, 3, 5, 7, 9, 2, 4, 6, 8, 0]:
