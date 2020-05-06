@@ -10,6 +10,7 @@ Resources for learning &amp; review.
 <!-- ### ○ Technology Docs -->
 __● Models__
 * [Gensim word2vec data and models, e.g., Google-news-300](https://github.com/RaRe-Technologies/gensim-data)
+* [Facebook fasttext](https://fasttext.cc/docs/en/cheatsheet.html)
 
 __● Datasets__
 * [GloVe 6B http://downloads.cs.stanford.edu/nlp/data/glove.6B.zip](http://downloads.cs.stanford.edu/nlp/data/glove.6B.zip)
@@ -19,7 +20,8 @@ __● Blogs__
 * [Kavita Ganesan, NLP & Data Application](https://kavita-ganesan.com/)
 * [Towards data science](https://towardsdatascience.com/machine-learning/home)
 * [The Keras blog](https://blog.keras.io/author/francois-chollet.html)
-
+* [GPU for deep learning](https://timdettmers.com/2019/04/03/which-gpu-for-deep-learning/)
+* [Machine learning Mastery](https://machinelearningmastery.com/)
 
 __● ML Packages__
 * [Machine Learning commonly imported packages](https://raw.githubusercontent.com/GaoangLiu/GaoangLiu.github.io/master/codes/mlpackages.py)

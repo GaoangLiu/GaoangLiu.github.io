@@ -46,6 +46,10 @@ print(img.shape)
 plt.imshow(img)
 ```
 
+# Colab specs
+[Google Colab Hardware Specs](https://github.com/GaoangLiu/ipynb/blob/master/colab_system_specs.ipynb)
+E.g., `GPU 0: Tesla T4 (UUID: GPU-d7c19abf-9992-15ea-19ff-7d7cccf652ac)`
+
 
 # Reference 
 * [Overview of Colaboratory Features](https://colab.research.google.com/notebooks/basic_features_overview.ipynb)

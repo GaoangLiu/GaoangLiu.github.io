@@ -61,6 +61,7 @@ From the [source code](https://github.com/keras-team/keras-preprocessing/blob/ma
 
 
 
+
 ## 处理文本数据
 
 向量与标记相关联的方式有很多种，比较常用的有
