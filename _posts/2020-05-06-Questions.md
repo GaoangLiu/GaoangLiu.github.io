@@ -9,4 +9,7 @@ categories:
 
 ## Logistic Regression 
 
+[LR 简析](https://github.com/GaoangLiu/GaoangLiu.github.io/blob/master/ipynb/Logistic_Regression.ipynb)
+
+
 
