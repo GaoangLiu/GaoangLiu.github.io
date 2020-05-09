@@ -12,6 +12,9 @@ __● Models__
 * [Gensim word2vec data and models, e.g., Google-news-300](https://github.com/RaRe-Technologies/gensim-data)
 * [Facebook fasttext](https://fasttext.cc/docs/en/cheatsheet.html)
 
+__● Model Templates__
+* [Github ipynb templates](https://github.com/GaoangLiu/ipynb)
+
 __● Datasets__
 * [GloVe 6B http://downloads.cs.stanford.edu/nlp/data/glove.6B.zip](http://downloads.cs.stanford.edu/nlp/data/glove.6B.zip)
 
