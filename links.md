@@ -10,6 +10,7 @@ Resources for learning &amp; review.
 <!-- ### ○ Technology Docs -->
 __● Models__
 * [Gensim word2vec data and models, e.g., Google-news-300](https://github.com/RaRe-Technologies/gensim-data)
+* [Transformers Library on Github, 40 state-of-the-art pre-trained NLP models (BERT, GPT-2, RoBERTa, CTRL…).](https://github.com/huggingface/transformers)
 * [Facebook fasttext](https://fasttext.cc/docs/en/cheatsheet.html)
 
 __● Model Templates__
@@ -19,6 +20,7 @@ __● Datasets__
 * [GloVe 6B http://downloads.cs.stanford.edu/nlp/data/glove.6B.zip](http://downloads.cs.stanford.edu/nlp/data/glove.6B.zip)
 
 __● Blogs__
+* [Using pre-trained word embeddings in a Keras model](https://blog.keras.io/using-pre-trained-word-embeddings-in-a-keras-model.html)
 * [Radim Řehůřek’s, creator of Gensim](https://rare-technologies.com/author/radim/)
 * [Kavita Ganesan, NLP & Data Application](https://kavita-ganesan.com/)
 * [Towards data science](https://towardsdatascience.com/machine-learning/home)
@@ -29,28 +31,16 @@ __● Blogs__
 __● ML Packages__
 * [Machine Learning commonly imported packages](https://raw.githubusercontent.com/GaoangLiu/GaoangLiu.github.io/master/codes/mlpackages.py)
 
-__● Programing__
-* [Python 3](https://docs.python.org/3/)
-* [Scrapy](https://docs.scrapy.org)
-* [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)
-* [Ruby](http://ruby-doc.org/)
-
-__● Opration System__
-
-* [Redhat Administrators Guide](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/)
-* [Ubuntu Server Guide](https://help.ubuntu.com/lts/serverguide/index.html.en)
-* [Linux Kernel](https://www.kernel.org/doc/html/latest/)
-* [Bash Guide for Beginners](http://tldp.org/LDP/Bash-Beginners-Guide/html/index.html)
-* [Advanced Bash-Scripting Guide](http://tldp.org/LDP/abs/html/index.html)
-* [The Linux System Administrators' Guide](http://tldp.org/LDP/sag/html/index.html)
+__● Rust__
+* [CIS 198: Rust Programming / University of Pennsylvania](http://cis198-2016s.github.io/schedule/)
+* [Rust Anthology / Github](https://github.com/brson/rust-anthology/blob/master/master-list.md)
+* [Rust Learning / Github](https://github.com/ctjhoa/rust-learning)
+* [Rust by example / Rust-lang](https://doc.rust-lang.org/rust-by-example/index.html)
 
 
 __● Common Tools__
-
 * [crontab.guru](https://crontab.guru)
 * [BASE64 IMAGE](https://www.base64-image.de/)
 * [Image to data-URI converter](https://websemantics.uk/tools/image-to-data-uri-converter/)
-* [assiinema](https://asciinema.org/)
 * [Firefox Send](https://send.firefox.com/)
-* [icoutils](https://www.nongnu.org/icoutils/)
 
