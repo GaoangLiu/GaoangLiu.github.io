@@ -18,6 +18,7 @@ categories:
 * `macro` average, calculate `f1_score` of each class, and take the mean,
 * `micro`, calculate metrics globally by counting the total true positives, false negatives and false positives
 * `weighted`, calculate metrics for each label, and find their average weighted by support (the number of true instances for each label).
+* `None`, return an array of `f1_score` for each class
 
 ## Implementation 
 ```python
@@ -92,3 +93,16 @@ print("weighted average", sklearn.metrics.f1_score(y_true, y_pred, average='weig
 y_true = [0, 0, 1, 1, 1, 2, 2, 2]
 y_pred = [0, 0, 2, 1, 0, 1, 1, 0]
 ```
+By running the above functions, we got:
+```python
+tp = {0:2, 1: 1, 2:0}, fp = {0:2, 1: 2, 2:1}, fn = {0:0, 1: 2, 2:3} 
+```
+
+Thus, for class `0`, its precision score is: `prec = tp / (tp + fp) = 0.5`, its recall score is: `rec = tp / (tp + fn) = 1`, and `f1_score = 2*(prec*rec) / (prec + rec) = 0.67`. 
+
+For class `1`, `prec = 0.33, rec = 0.33, f1_score = 0.33`. 
+
+For class `2`, `prec = 0.00, rec = 0.00, f1_score = 0.00`. 
+
+The `weighted f1_score`  of `y_pred` is therefore `f1_score[0] * 2 / 8 + f1_score[1] * 3 / 8 + f1_score[2] * 3 / 8 = 0.29167`.
+
