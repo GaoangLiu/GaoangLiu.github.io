@@ -1,5 +1,11 @@
 from absl import logging
 
-logging.set_verbosity(logging.INFO)
+class OverwriteLog():
+    # overwrite logging for kaggle kernel
+    def info(self, msg):
+        print(msg)
+    
+logging = OverwriteLog()    
+# logging.set_verbosity(logging.INFO)
 logging.info('Hello')
 

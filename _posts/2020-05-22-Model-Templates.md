@@ -7,6 +7,7 @@ categories:
 - Machine Learning
 ---
 
+* [bert model](https://raw.githubusercontent.com/GaoangLiu/GaoangLiu.github.io/master/codes/templates/bert.py)
 
 
 

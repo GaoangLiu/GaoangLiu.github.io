@@ -14,8 +14,19 @@ if not os.path.exists('tokenization.py'):
     os.system('wget --quiet https://raw.githubusercontent.com/tensorflow/models/master/official/nlp/bert/tokenization.py')
 import tokenization
 
+class OverwriteLog():
+    # overwrite logging for kaggle kernel
+    def info(self, msg):
+        print(msg)
+
+logging = OverwriteLog()
+
 def load_data():
-    return pd.read_csv('train.csv'), pd.read_csv('test.csv')
+    csv = '../input/sms-spam-collection-dataset/spam.csv'
+    train = pd.read_csv(csv, encoding = 'Windows-1252')
+    train['text'] = train.v2
+    train['target'] = (train.v1 == 'spam').astype(int)
+    return train
   
 
 def get_bert_layer():
@@ -74,7 +85,7 @@ def build_model(bert_layer, max_len=512):
 def _main():
     """split this method body into several parts in Jyputer to avoid unnecessary reruns.
     """
-    train, test = load_data()
+    train = load_data()
     X_train, X_val, y_train, y_val = sklearn.model_selection.train_test_split(train.text.values, train.target, test_size=0.2, random_state=0)
     logging.info("Data loaded and split")
 
@@ -85,7 +96,6 @@ def _main():
 
     X_train = bert_encode(X_train, tokenizer, max_len=max_len)
     X_val = bert_encode(X_val, tokenizer, max_len=max_len)
-    test_input = bert_encode(test.text.values, tokenizer, max_len=max_len)
     logging.info("Text tokenized")
 
     # Build model 
@@ -98,9 +108,9 @@ def _main():
     earlystopping = tf.keras.callbacks.EarlyStopping(monitor='val_accuracy', patience=5, verbose=1)
 
     train_history = model.fit(
-        train_input, train_labels, 
+        X_train, y_train,
         validation_split=0.1,
-        epochs=30,
+        epochs=1,
         callbacks=[checkpoint, earlystopping],
         batch_size=16,
         verbose=1
