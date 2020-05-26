@@ -36,7 +36,7 @@ Note that, there are some default parameters here:
 
 
 # TfidfVectorizer vs. CountVectorizer
-First, we should meet `TfidfTransformer`.
+First, we should understand [`TfidfTransformer`](https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfTransformer.html#sklearn.feature_extraction.text.TfidfTransformer).
 
 This method transforms a count matrix to a normalized tf or tf-idf representation. Where Tf means **term-frequency** while tf-idf means **term-frequency times inverse document-frequency**. This is a common term weighting scheme in information retrieval, that has also found good use in document classification.
 

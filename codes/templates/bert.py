@@ -1,6 +1,7 @@
 import os 
 import numpy as np
 import pandas as pd
+import seaborn as sb
 import tensorflow as tf
 import tensorflow_hub as hub
 import sklearn.metrics 
@@ -8,6 +9,7 @@ import sklearn.model_selection
 from absl import logging
 logging.set_verbosity(logging.INFO)
 
+# !pip install sentencepiece
 
 # in case there is no such file in local path
 if not os.path.exists('tokenization.py'):
@@ -82,43 +84,43 @@ def build_model(bert_layer, max_len=512):
 
     return model 
 
-def _main():
-    """split this method body into several parts in Jyputer to avoid unnecessary reruns.
-    """
-    train = load_data()
-    X_train, X_val, y_train, y_val = sklearn.model_selection.train_test_split(train.text.values, train.target, test_size=0.2, random_state=0)
-    logging.info("Data loaded and split")
+"""split the following codes into several chunks in Jyputer 
+for clearer reading and saved variables
+"""
+train = load_data()
+X_train, X_val, y_train, y_val = sklearn.model_selection.train_test_split(train.text.values, train.target, test_size=0.2, random_state=0)
+logging.info("Data loaded and split")
 
-    max_len = 120
-    bert_layer = get_bert_layer()
-    tokenizer = get_tokenizer(bert_layer)
-    logging.info("bert_layer and tokenizer built")
+max_len = 120
+bert_layer = get_bert_layer()
+tokenizer = get_tokenizer(bert_layer)
+logging.info("bert_layer and tokenizer built")
 
-    X_train = bert_encode(X_train, tokenizer, max_len=max_len)
-    X_val = bert_encode(X_val, tokenizer, max_len=max_len)
-    logging.info("Text tokenized")
+X_train = bert_encode(X_train, tokenizer, max_len=max_len)
+X_val = bert_encode(X_val, tokenizer, max_len=max_len)
+logging.info("Text tokenized")
 
-    # Build model 
-    model = build_model(bert_layer, max_len=max_len)
-    model.summary()
-    logging.info("Model built")
+# Build model 
+model = build_model(bert_layer, max_len=max_len)
+model.summary()
+logging.info("Model built")
 
-    # Run model
-    checkpoint = tf.keras.callbacks.ModelCheckpoint('bert.h5', monitor='val_accuracy', save_best_only=True, verbose=1)
-    earlystopping = tf.keras.callbacks.EarlyStopping(monitor='val_accuracy', patience=5, verbose=1)
+# Run model
+checkpoint = tf.keras.callbacks.ModelCheckpoint('bert.h5', monitor='val_accuracy', save_best_only=True, verbose=1)
+earlystopping = tf.keras.callbacks.EarlyStopping(monitor='val_accuracy', patience=5, verbose=1)
 
-    train_history = model.fit(
-        X_train, y_train,
-        validation_split=0.1,
-        epochs=1,
-        callbacks=[checkpoint, earlystopping],
-        batch_size=16,
-        verbose=1
-    )
-    logging.info("Model trainning complete")
+train_history = model.fit(
+    X_train, y_train,
+    validation_split=0.1,
+    epochs=1,
+    callbacks=[checkpoint, earlystopping],
+    batch_size=16,
+    verbose=1
+)
+logging.info("Model trainning complete")
 
-    # validation & predict
-    model.load_weights('bert.h5')
-    y_preds = model.predict(X_val)
-    logging.info("Validation accuracy  score", sklearn.metrics.accuracy_score(y_preds, y_val))
+# validation & predict
+model.load_weights('bert.h5')
+y_preds = model.predict(X_val).round().astype(int)
+print("Validation accuracy  score", sklearn.metrics.accuracy_score(y_preds, y_val))
 

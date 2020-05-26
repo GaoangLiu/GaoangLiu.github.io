@@ -36,7 +36,7 @@ class NaiveBayes():
 
 if __name__ == "__main__":
     matrix = [[0, 1, 1, 0], [1, 0, 0, 0], [1, 1, 1, 0]]
-    # print(train_naive_bayes(matrix, [0, 0, 1]))
+    print(NaiveBayes().train_naive_bayes(matrix, [0, 0, 1]))
     # x = np.asarray([1,2,3,4])
     # print(np.log(x))
     # print(math.log(2))

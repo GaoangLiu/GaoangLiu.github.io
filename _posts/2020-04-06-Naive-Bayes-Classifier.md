@@ -8,13 +8,15 @@ categories:
 ---
 
 # Bayes
+## Multinomial Naive Bayes 
+`sklearn.naive_bayes.MultinomialNB(*, alpha=1.0, fit_prior=True, class_prior=None)`
+
+
 ## What ?
 * 核心思想：选择具有最高概率的决策
 * 基于两个假设
     1. 特征相互独立
     2. 特征同等重要 
-
-
 
 ## When? 
 在实际使用情况下，NB classifier 通常表现不错，特别适用于文档分类及垃圾信息过滤。也可以作为一个很好的基准模型。 
