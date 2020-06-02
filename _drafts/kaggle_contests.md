@@ -24,3 +24,18 @@ The data is highly imbalanced, sincere / insincere question ratio is 16:1. A nai
 
 * [Contest main page](https://www.kaggle.com/c/quora-insincere-questions-classification/overview)
 * [Solution ipynb file](https://github.com/GaoangLiu/ipynb/blob/master/Quora_Insincere_Questions_Classification.ipynb)
+
+
+## Bag of Words Meets Bags of Popcorn
+wegpage: https://www.kaggle.com/c/word2vec-nlp-tutorial/submissions
+
+CNN model: https://github.com/GaoangLiu/AA_ipynb/blob/master/Bag_of_Words_Meets_Bags_of_Popcorn_CNN.ipynb
+Bert model: https://github.com/GaoangLiu/AA_ipynb/blob/master/Bag_of_Words_Meets_Bags_of_Popcorn_BERT.ipynb
+
+Best ensemble result: `0.98027` (area under ROC curve), rank as 3rd if producible in 5 years ago. 
+
+BERT results are generally better than `GloVe` + `CNN`(or `LSTM`). Best bert result is: `0.96441_bert_en_wwm_uncased_L-24_H-1024_A-16.csv`.
+
+Some predictions:
+<img src="https://i.loli.net/2020/05/26/1HVmjeNQPkZbI2K.png"; width=450; alt='bag of words predictions'>
+

@@ -37,6 +37,8 @@ __● Rust__
 * [Rust Learning / Github](https://github.com/ctjhoa/rust-learning)
 * [Rust by example / Rust-lang](https://doc.rust-lang.org/rust-by-example/index.html)
 
+__● Python__
+* [Flask simple API](https://blog.miguelgrinberg.com/post/designing-a-restful-api-with-python-and-flask)
 
 __● Common Tools__
 * [crontab.guru](https://crontab.guru)
