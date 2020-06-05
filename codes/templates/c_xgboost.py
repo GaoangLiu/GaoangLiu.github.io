@@ -22,7 +22,7 @@ def regressor():
                        max_depth=5, min_child_weight=0,
                        gamma=0, subsample=0.7,
                        colsample_bytree=0.7,
-                       objective='reg:squarederror', nthread=-1,
+                       objective='reg:squarederror', 
                        scale_pos_weight=1, seed=27,
                        reg_alpha=0.00006, verbose=True)
     folds = 10
