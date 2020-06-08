@@ -97,7 +97,7 @@ The library also provides other strategies, such as *descending, right-to-left (
 
 ```python
 from sklearn.experimental import enable_iterative_imputer
-from sklearn.imputer import IterativeImputer
+from sklearn.impute import IterativeImputer
 
 imputer = IterativeImputer(estimator=BayesianRidge(), n_nearest_features=None, imputation_order='ascending')
 ```
