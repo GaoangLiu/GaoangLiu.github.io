@@ -6,7 +6,6 @@ order: 3
 ---
 
 
-
 Notes, blogs on 
 
 * `programming`

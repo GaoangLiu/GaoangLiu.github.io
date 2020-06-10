@@ -9,7 +9,7 @@ categories:
 
 [Tarjan's algorith](https://en.wikipedia.org/wiki/Tarjan%27s_strongly_connected_components_algorithm) ([source paper](http://langevin.univ-tln.fr/cours/PAA/extra/Tarjan-1972.pdf)) is an algorithm in graph theory for finding the **strongly connected components**(SCC) of a directed graph. It runs in linear time, `O(|E| + |V|)`.
 
-<img src='https://i.loli.net/2020/06/09/o4TrMdmtfuxyVgh.png' width=300>
+<img src='https://i.loli.net/2020/06/09/o4TrMdmtfuxyVgh.png' width="300px">
 
 The key idea used is that **nodes of strongly connected component form a subtree in the DFS spanning tree of the graph**.
 
@@ -36,33 +36,32 @@ The above graph contains 3 SCCs, `[1, 2, 3], [4], [5, 6, 7, 8]`.
 
 A Tarjan's algorithm first visit node `1`, `low[1], disc[1]` are set to 1 and node 1 is pushed to stack
 
-<!-- image 2 -->
-<img src="https://i.loli.net/2020/06/10/GnFMtlUpbz41dsv.png" width=350 alt="visit node 1">
+<img src="https://i.loli.net/2020/06/10/GnFMtlUpbz41dsv.png" width="350px" alt="visit node 1">
 
 Then node 3 is visited, `low[3], disc[3]` are set to 2 and node 3 is pushed to stack
 
-<!-- image 3 -->
-<img src="https://i.loli.net/2020/06/10/Eeam9czRJHMBFKT.png" width=350 alt="visit node 3">
+
+<img src="https://i.loli.net/2020/06/10/Eeam9czRJHMBFKT.png" width="350px" alt="visit node 3">
 
 Then node 4 is visited, `low[4], disc[4]` are set to 3 and node 4 is pushed to stack
 
-<!-- image 4 -->
-<img src="https://i.loli.net/2020/06/10/CJl7yqYaFct4BHf.png" width=350 alt="visit node 4">
+
+<img src="https://i.loli.net/2020/06/10/CJl7yqYaFct4BHf.png" width="350px" alt="visit node 4">
 
 Then node 5 is visited, `low[5], disc[5]` are set to 4 and node 5 is pushed to stack
 
-<!-- image 5 -->
-<img src="https://i.loli.net/2020/06/10/Zix2EMhPt5R1gvk.png" width=350 alt="visit node 5">
+
+<img src="https://i.loli.net/2020/06/10/Zix2EMhPt5R1gvk.png" width="350px" alt="visit node 5">
 
 Then node 6 is visited, `low[6], disc[6]` are set to 5 and node 6 is pushed to stack
 
-<!-- image 6 -->
-<img src="https://i.loli.net/2020/06/10/Oj2hnKJRbl8ZXw1.png" width=350 alt="visit node 6">
+
+<img src="https://i.loli.net/2020/06/10/Oj2hnKJRbl8ZXw1.png" width="350px" alt="visit node 6">
 
 Then node 7 is visited, `low[7], disc[7]` are set to 6 and node 7 is pushed to stack
 
-<!-- image 7 -->
-<img src="https://i.loli.net/2020/06/10/guWrIbmJhv8p2S4.png" width=350 alt="visit node 7">
+
+<img src="https://i.loli.net/2020/06/10/guWrIbmJhv8p2S4.png" width="350px" alt="visit node 7">
 
 Then node 8 is visited, `low[8], disc[8]` are set to 7 and node 8 is pushed to stack. 
 
@@ -71,14 +70,14 @@ And by `DFS`, node 8's child node has a lower disc value, i.e., `disc[5] == 4`, 
 For node 5, `low[5] == disc[5]`, which means we have found the entry-node (first node) of a SCC, and all nodes from node 4 to the top of current stack together form a SCC. 
 
 <!-- image 8 -->
-<img src="https://i.loli.net/2020/06/10/cvH4k12gdwQuen9.png" width=350 alt="visit node 8">
+<img src="https://i.loli.net/2020/06/10/cvH4k12gdwQuen9.png" width="350px" alt="visit node 8">
 
 And then we go back to node 4, finding that `low[4] == disc[4]`, node 4 is therefore popped up and forms a SCC by itself.
 
 `low[2] = disc[2]` are updated to 8. Owing to node 1, `low[2]` is updated to 1, so does `low[3]`, and `low[1]` which already equals to `1`. All the remaining nodes in the stack forms the third SCC.
 
 <!-- image 9 -->
-<img src="https://i.loli.net/2020/06/10/xXrCbB4TRdWO8IL.png" width=350 alt="visit node 4, 3, 2, 1">
+<img src="https://i.loli.net/2020/06/10/xXrCbB4TRdWO8IL.png" width="350px" alt="visit node 4, 3, 2, 1">
 
 
 
