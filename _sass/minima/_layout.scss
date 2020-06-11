@@ -2,6 +2,9 @@
  * Site header
  */
 .site-header {
+  // change the font type of `Links, Tags, About`
+  font-family: "Times New Roman";
+
   border-top: 5px solid $grey-color-dark;
   border-bottom: 1px solid $grey-color-light;
   min-height: $spacing-unit * 1.865;
@@ -185,6 +188,7 @@
 }
 
 .post-list-heading {
+  font-family: "Times New Roman";
   @include relative-font-size(1.75);
 }
 
@@ -204,6 +208,7 @@
 
 .post-link {
   display: block;
+  font-family: $sans-serif;
   @include relative-font-size(1.5);
 }
 

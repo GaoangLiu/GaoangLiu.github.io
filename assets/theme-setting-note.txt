@@ -1,5 +1,9 @@
 
 1. To modify > quote mode: _sass/minima/_base.scss -> quote 
+
 2. Modify the quote on the footer, 'A deep learning....' , go to _includes/footer.html 
+
+3. Change font family of headers, goto _sass/minima/_layout.sass line 4 .site_header 
+
 
 
