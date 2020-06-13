@@ -10,7 +10,7 @@ post_drafts(){
 		title=$(cat _drafts/$f | grep title | head -n 1 | awk '{for(i=2;i<NF;++i)printf $i FS; printf $NF}')
 		title="$date-${title// /-}.md"
 		
-		printf '%-30s %-30s\n' $f $title;
+		# printf '%-30s %-30s\n' $f $title;
 		rsync -vPrzq _drafts/$f _posts/$title
 	done
 
