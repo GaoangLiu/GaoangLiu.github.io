@@ -24,6 +24,7 @@ categories:
 ## 特点
 1. 精度高、对异常值不敏感
 2. 时间、空间复杂度高(须保留全部数据集、须对数据集的每个数据计算距离值)
+3. 需要对数据进行缩放[Data scaling](https://gaoangliu.github.io/archives/Processing-data-with-Python.html)
 
 
 ## Tools & Libraries 
@@ -35,5 +36,8 @@ sklearn.neighbors.KNeighborsClassifier(n_neighbors=5, weights='uniform', algorit
 ```
 
 Simple examples [https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html)
+
+# References 
+[Benchmarking Nearest Neighbor Searches in Python](https://jakevdp.github.io/blog/2013/04/29/benchmarking-nearest-neighbor-searches-in-python/#Scaling-with-Leaf-Size)
 
 

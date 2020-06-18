@@ -2,10 +2,28 @@
 layout:     post
 title:      Processing data with Python
 date:       2020-04-07
-tags: [Python, numpy, pandas]
+tags: [python, numpy, pandas, preprocessing]
 categories: 
 - python
 ---
+
+# Scaler 
+## sklearn api
+```python
+from sklearn.preprocessing import StandardScaler, MinMaxScaler, RobustScaler, MaxAbsScaler
+```
+* `StandardScaler`, data will transformed into a distribution with a mean value 0 and standard deviation of 1.
+  * Calculation:
+  * Mean $$\mu = \frac{1}{N} \sum_{i=1}^N(x_i)$$
+  * Standard deviation $$\sigma = \sqrt{\frac{1}{N} \sum_{i=1}^N(x_i - \mu)^2}$$
+  * Standardization $$z = \frac{x - \mu}{\sigma}$$
+
+* `MinMaxScaler`, $$X_{norm} = \frac{X - X_{min}}{X_{max} - X_{min}}$$
+
+* `RobustScaler`, uses a similar method to the `MinMaxScaler` but uses the interquartile range instead, rather than the min-max, so that it is robust to outliers, `X = (X - Q_1(X)) / (Q_3(X) - Q_1(X))`, where `Q_1(X) = np.quantile(X, 0.25, axis=0), Q_3(X) = np.quantile(X, 0.75, axis=0)`, 
+  * By default, `sklearn.preprocessing.RobustScaler` will set `with_centering=True`, which means `np.median(X)` will replace `Q_1(X)` in the scaling formula, i.e., `X = (X - np.median(X)) / (Q_3(X) - Q_1(X))`
+
+--- 
 
 ## Numpy 
 
@@ -18,7 +36,6 @@ NumPy’s array class is called `ndarray`, this is not the same thing as the Pyt
 ```python 
 np.arange(10, 30, 5) #array([10, 15, 20, 25])
 ```
-
 
 
 
@@ -75,12 +92,6 @@ If the parsing parameters are used for all sheets, we can compress the above thr
 ```python
 df = pd.read_excel('d.xlsx', ['Sheet1', 'Sheet2'], index_col=None, na_values=['NA'])
 ```
-
-
-
-## TODO
-
-https://numpy.org/devdocs/user/quickstart.html
 
 
 
