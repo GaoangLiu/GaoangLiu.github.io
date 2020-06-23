@@ -11,8 +11,8 @@ categories:
 ## Multinomial Naive Bayes 
 `sklearn.naive_bayes.MultinomialNB(*, alpha=1.0, fit_prior=True, class_prior=None)`
 
-
 ## What ?
+
 * 核心思想：选择具有最高概率的决策
 * 基于两个假设
     1. 特征相互独立
@@ -36,7 +36,7 @@ from sklearn.naive_bayes import MultinomialNB, GaussianNB, \
 ```
 
 ## Implementation
-简单 NB classifier 实现 [bayes.py]({{site.baseurl}}/codes/2020/bayes.py).
+简单 NB classifier 实现 [Naive_Bayes.ipynb](https://github.com/GaoangLiu/GaoangLiu.github.io/blob/master/ipynb/NaiveBayes.ipynb)
 
 具体测试结果与 `sklearn.naive_bayes.MultinomialNB` 效果一致，对[垃圾邮件](https://www.dropbox.com/s/yjiplngoa430rid)筛选处理，都达到了以下结果
 
@@ -51,4 +51,5 @@ Accracy score:   0.9615384615384616
 * [Why naive Bayes works well](https://www.cs.unb.ca/~hzhang/publications/FLAIRS04ZhangH.pdf)
 
 ## U2B Videos
+
 * [Bayes theorem, and making probability intuitive](https://www.youtube.com/watch?v=HZGCoVF3YvM)
