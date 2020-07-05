@@ -35,7 +35,7 @@ Gradient vector of the cost function:
 $$
 \begin{aligned}
     \nabla_\theta\text{MSE}(\theta) = \frac{2}{m} X^T \cdot (X \cdot \theta - y) 
-\end{aligned}    
+\end{aligned}
 $$
 
 At each step of iteration, parameter vector $$\theta$$ is updated $$\theta' = \theta - \eta \nabla_\theta \text{MSE}(\theta)$$. 
@@ -47,18 +47,61 @@ The main problem with GD is the fact that the whole training set is used to comp
 
 ## Stochastic Gradient Descent 
 * pros: 
-    * algorithm runs faster 
-    * avoid local minima 
+    * algorithm runs faster
+    * escape local minima 
 * cons: 
     * algorithm is much less regular 
     * may never converge to the optimal parameter value. We can use *simulated annealing* method to reduce learning rate during training. 
 
-
+---
 
 # Regularized Linear Models
-Regularization is unnecessary unless your model is over-fitting the data, but generally a little regularization won't hurt much on the performance. The idea is: the less freedom the model has, the harder it will be for it to overfit the data. 
+Regularization is unnecessary unless your model is over-fitting, but generally a little regularization won't hurt much on the performance. Regularization is based on the idea that: the less freedom the model has, the harder it will be for it to overfit the data. 
 
 For linear models, regularization is typically achieved by **constraining the weights of the model**. 
 
 ## Ridge Regression 
+Adds a regularization term $$ \alpha \sum_{i=1}^n \theta_i^2 $$ to the cost function. This forces the learning algorithm to not only fit the data but also keep the model weights as small as possible. 
+
+Ridge regression cost function:
+$$
+\begin{aligned}
+    J(\theta) = \text{MSE}(\theta) + \frac{\alpha}{2} \sum_{i=1}^n \theta_i^2 
+\end{aligned}
+$$
+
+## Lasso Regression 
+Full name: Least Absolute Shrinkage and Selection Operator Regression with a cost function
+$$
+\begin{aligned}
+    J(\theta) = \text{MSE}(\theta) + \alpha \sum_{i=1}^n |\theta_i| 
+\end{aligned} 
+$$
+
+The regularization item uses the $$l_1$$ norm of the weight vector instead of half the square of the $$l_2$$ norm.
+
+An important characteristic of Lasso Regression is that it tends to completely eliminate the weights of the least important features (i.e., set them to zero). In other words, Lasso Regression automatically performs **feature selection** and outputs a **sparse model** (i.e., with few nonzero feature weights). 
+
+<img src='https://i.loli.net/2020/07/05/bqkGNJBm1phjI32.png' width='35px'> Question: why $$l_1$$ norm tends to produce a sparse model? 
+
+<img src='https://i.loli.net/2020/07/05/ku4QMPcK6gdDpLN.png' width='35px'> Answer: the subgradient vector of Lasso regression is $$ g(\theta, J) = \nabla_\theta\text{MSE}(\theta) + \alpha sign(\theta)$$, where $$sign(\theta) = (\frac{\theta_1}{|\theta_1|}, ..., \frac{\theta_n}{|\theta_n|})^T $$, which is always 1 or -1 except when $$\theta_i = 0$$. 
+Therefore, the learning step $- \eta \cdot g(\theta, J)$ is kind of consistent at each iteration, and weights with smaller value will reach 0 early. 
+check out [this answer on SO](https://stats.stackexchange.com/questions/45643/why-l1-norm-for-sparse-models) for more detail. 
+
+
+## Elastic Net
+Elastic Net is simply a middle ground between Ridge Regression and Lasso Regression. The cost function is:
+$$
+\begin{aligned}
+    J(\theta) = \text{MSE}(\theta) + r \alpha \sum_{i=1}^n |\theta_i| + \frac{1-r}{2} \alpha \sum_{i=1}^n \theta_i^2
+\end{aligned} 
+$$
+
+<img src='https://i.loli.net/2020/07/05/bqkGNJBm1phjI32.png' width='35px'> Question: when should you use Linear Regression, Ridge, Lasso, or Elastic Net? 
+
+<img src='https://i.loli.net/2020/07/05/ku4QMPcK6gdDpLN.png' width='35px'> Answer: 
+* Ridge is a good default. It is almost always preferable to have at least a little bit of regularization, so generally you should avoid plain Linear Regression. 
+* If you suspect that only a few features are actually useful, you should prefer Lasso or Elastic Net since they tend to reduce the useless features’ weights down to zero. 
+* In general, Elastic Net is preferred over Lasso since Lasso may behave erratically when the number of features is greater than the number of training instances or when several features are strongly correlated.
+
 
