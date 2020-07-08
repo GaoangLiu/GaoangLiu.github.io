@@ -30,7 +30,7 @@ Basic steps:
 `class sklearn.ensemble.AdaBoostClassifier(base_estimator=None, *, n_estimators=50, learning_rate=1.0, algorithm='SAMME.R', random_state=None)[source]`, default parameters:
 * `n_estimators=50`, number of estimators 
 * `learning_rate=1.0`, learning rate shrinks the contribution of each classifier 
-* `algorithm=SAMME.R`, can be either `SAMME` or `SAMME.R`. If `SAMME.R` then use the `SAMME.R` real boosting algorithm. `base_estimator` must support calculation of class probabilities. If `SAMME` then use the SAMME discrete boosting algorithm. The `SAMME.R` algorithm typically **converges faster** than `SAMME`, achieving a lower test error with fewer boosting iterations.
+* `algorithm=SAMME.R`, can be either `SAMME` (Stagewise Additive Modelling using a Multiclass Exponential loss function) or `SAMME.R` (R stands for real). If `SAMME.R` then use the `SAMME.R` real boosting algorithm. `base_estimator` must support calculation of class probabilities. If `SAMME` then use the SAMME discrete boosting algorithm. The `SAMME.R` algorithm typically **converges faster** than `SAMME`, achieving a lower test error with fewer boosting iterations.
 
 # Boosting v.s. Bagging 
 * Bagging, 

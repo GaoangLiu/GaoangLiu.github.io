@@ -22,7 +22,7 @@ categories:
 A common performance measure of a regression model is Mean Square Error (MSE), to train a model is therefore to tune the parameters to minimize the following function:
 * MSE cost function for a Linear Regression Model: $$ \text{MSE} (\theta) = \frac{1}{m} \sum_{i=1}^m(\theta^T \cdot x^{(i)} - y^{(i)})^2$$
 
-For this function, there is a *closed-form* solution, called * Normal equation, $$\hat{\theta} = (X^T \cdot X)^{-1} \cdot X^T \cdot y$$. 
+For this function, there is a *closed-form* solution, called **Normal equation**, $$\hat{\theta} = (X^T \cdot X)^{-1} \cdot X^T \cdot y$$. 
 
 The downside of normal equation is its high computational complexity. Typically, the complexity of inverting a matrix of size $$n \times n$$ is $$O(n^{2.4})$$ to $$O(n^3)$$
 
@@ -105,3 +105,29 @@ $$
 * In general, Elastic Net is preferred over Lasso since Lasso may behave erratically when the number of features is greater than the number of training instances or when several features are strongly correlated.
 
 
+# Logistic Regression 
+Logistic Regression (also called *Logit Regression*) is commonly used to estimate the probability that an instance belongs to a particular class (e.g., what is the probability that this email is spam?). It can also be used for classification tasks. For example, to create a binary classifier, we can train a model that classifies an instance as positive if the estimated probability is greater than 50%, or negative otherwise. 
+
+
+Logistic function 
+$$
+\begin{aligned}
+\sigma(t) = \frac{1}{1 + \exp^{-t}}
+\end{aligned}
+$$
+This function is *sigmoid* function, it takes the model result as input, and outputs a number between 0 and 1, aka the *logistic*.
+
+## Estimated probability and cost function 
+LR model estimated probability $$\hat{p} = h_\theta(x) = \sigma (\theta^T \cdot x)$$, and the model prediction $$ \hat{y} = int(\hat{p} \geq 0.5)$$. 
+
+Cost function for a single instance: 
+$$ c(\theta) = \begin{cases}
+        -log(\hat{p}), & \text{ if } y = 1\\
+        -log(1 - \hat{p}), & \text{ if } y = 0
+        \end{cases}$$
+
+The cost function over the whole training set is :
+
+$$ J(\theta) = - \frac{1}{m} \sum_{i=1}^m [y^{(i)} log(1 - \hat{p}^{(i)}) + (1 - y^{(i)}) log(1 - \hat{p}^{(i)})]$$.
+
+There is no closed-form equation for this function, but this function is convex, thus Gradient Descent (or any other optimization algorithm) is guaranteed to find the global minimum. 
