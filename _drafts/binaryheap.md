@@ -9,7 +9,7 @@ categories:
 
 A **priority queue** implemented with a binary heap (max-heap).
 
-## Create 
+## Create a new queue 
 ```rust
 use std::collections::BinaryHeap; 
 let mut bh = BinaryHeap::new(); 
@@ -18,7 +18,7 @@ let mut heap = BinaryHeap::from(vec![1, 2, 4, 5, 7]);
 ```
 
 ## Methods
-* `.push()`, time complexity $$O(1)$$. The expected cost of push, averaged over every possible ordering of the elements being pushed, and over a sufficiently large number of pushes, is $$O(1)$$. The worst case cost of a single call to push is $$O(n)$$, which occurs when capacity is exhausted and needs a resize.
+* `.push()`, time complexity $$O(1)$$. The expected cost of `push`, averaged over every possible ordering of the elements being pushed, and over a sufficiently large number of pushes, is $$O(1)$$. The worst case cost of a single call to push is $$O(n)$$, which occurs when capacity is exhausted and needs a resize.
 * `.pop()`,  time complexity $$O(log n)$$
 * `.peek()/.peek_mut()`, time complexity $$O(1)$$
 * `.len()`,  time complexity $$O(1)$$. Why not $$O(n)$$ ? Based on the [implemented code](https://github.com/rust-lang/rust/blob/master/src/liballoc/collections/binary_heap.rs#L885):
@@ -36,12 +36,13 @@ pub fn len(&self) -> usize {
 ```
 * `.is_empty()`,    time complexity $$O(1)$$
 
-
-### `pub fn pop(&mut self) -> Option<T>`
+### pop
+`pub fn pop(&mut self) -> Option<T>`
 Removes the greatest item from the binary heap and **returns it** (this is different from C++ `pop_heap()`, which doesn't return anything), or `None` if it is empty.
 
 
-### `pub fn into_sorted_vec(self) -> Vec<T>`
+### Convert queue into vector 
+`pub fn into_sorted_vec(self) -> Vec<T>`
 Consumes the BinaryHeap and returns a vector in sorted (ascending) order.
 ```rust
 let mut heap = BinaryHeap::from(vec![1, 2, 4, 5, 7]);
@@ -52,6 +53,9 @@ let vec = heap.into_sorted_vec();
 assert_eq!(vec, [1, 2, 3, 4, 5, 6, 7]);
 ```
 There is also a method `.into_vec()`: this consumes the BinaryHeap and returns the underlying vector in arbitrary order.
+
+### Examples
+An example of using `BinaryHeap` to solve the Leetcode problem [*1508. Range Sum of Sorted Subarray Sums*](https://leetcode.com/problems/range-sum-of-sorted-subarray-sums/description/) can be found [here](https://leetcode.com/problems/range-sum-of-sorted-subarray-sums/discuss/731873/rust-solution-with-binaryheap).
 
 
 # References 

@@ -2,7 +2,7 @@
 layout:     post
 title:      Linear Models
 date:       2020-07-05
-tags: [linear, logistic, svm]
+tags: [linear, logistic, gradient descent]
 categories: 
 - machine learning
 ---
