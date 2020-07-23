@@ -11,7 +11,7 @@ A [topological sort](https://bit.ly/2zVkzK4) or topological ordering of a direct
 The usual algorithms for topological sorting have running time linear in the number of nodes plus the number of edges, asymptotically, `O(|V| + |E|)`
 
 ## Kahn's Algorithm
-This algorithms works by choosing vertices in the same order as the eventual topological sort. First, find a list of "source nodes" which have no zero indegree (i.e., no incoming edge) and insert them into a stack `stack`; at least one such node must exist in a non-empty acyclic graph.
+This algorithms works by choosing vertices in the same order as the eventual topological sort. First, find a list of "source nodes" which have zero indegree (i.e., no incoming edge) and insert them into a stack `stack`; at least one such node must exist in a non-empty acyclic graph.
 
 Then the 
 ```python

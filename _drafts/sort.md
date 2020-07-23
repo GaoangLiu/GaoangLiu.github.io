@@ -46,5 +46,38 @@ def partition(arr, start, end):
 
 
 
-# Bucket sort 
+## Bucket sort 
+将序列依照其种分组方式先分组到有限个 ($$k$$) 个桶里，然后对每个桶里的元素进行排序(使用插入排序或者快排)，最后再将所有元素汇集起来。
 
+### Implementation 
+```python
+import random
+import math
+import itertools
+
+def bucket_sort(arr):
+    n = len(arr)
+    k = int(math.sqrt(n))
+    buckets = [[] for _ in range(k)]
+    v_min, v_max = min(arr), max(arr)
+    divider = (v_max - v_min) // (k - 1)
+    for n in arr:
+        index = (n - v_min) // divider
+        buckets[index].append(n)
+
+    for i in range(k):
+        buckets[i].sort()
+    return list(itertools.chain(*buckets))
+```
+
+### 复杂度
+* 最坏 $$O(n^2)$$
+* 平均 $$O(n + k)$$
+* 空间复杂度 $$O(n * k)$$
+
+当元素分布比较均匀，桶排序最好复杂度为 $$O(n)$$。 因为这种排序方法不是比较排序，不受 $$O(n\log(n))$$ 下限的影响。 排序效果受以下方面的影响：
+* 元素分布是否均匀
+* 桶个数 $$k$$ 的选择
+* 桶内元素排序算法的选择
+
+<img src='https://bit.ly/2BlgRdg' width='500px'>
