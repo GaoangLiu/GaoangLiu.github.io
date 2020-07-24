@@ -18,13 +18,10 @@ categories:
 1. 基于**特征相似度**, 按测量不同特征之间距离的方法来分类，将新数据的每个特征跟样本数据中的数据对应的特征比较
 2. 如何选择 $$k$$，一个经验性的选择是 $$k = sqrt(N)$$，其中 $$N$$ 是样本个数
 
-## WHEN
-1. Dataset: **small, noise free, labelled**
-
 ## 特点
-1. 精度高、对异常值不敏感
+1. 对异常值不敏感
 2. 时间、空间复杂度高(须保留全部数据集、须对数据集的每个数据计算距离值)
-3. 需要对数据进行缩放[Data scaling](https://gaoangliu.github.io/archives/Processing-data-with-Python.html)
+3. 需要对数据进行缩放[Data scaling]/标准化(https://gaoangliu.github.io/archives/Processing-data-with-Python.html)，不然方差大的特征将主导样本点之间距离
 
 
 ## Tools & Libraries 
@@ -32,12 +29,14 @@ categories:
 `sklearn.neighbors` [source code](https://github.com/scikit-learn/scikit-learn/blob/95d4f0841/sklearn/neighbors/_classification.py#L25)
 ```python
 sklearn.neighbors.KNeighborsClassifier(n_neighbors=5, weights='uniform', algorithm='auto', leaf_size=30, p=2, metric='minkowski', metric_params=None, n_jobs=None, **kwargs)
-
 ```
 
 Simple examples [https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html)
 
-# References 
+-- [Simple example.1 of kNN](https://bit.ly/32S9GVA) --
+
+# References
+
 [Benchmarking Nearest Neighbor Searches in Python](https://jakevdp.github.io/blog/2013/04/29/benchmarking-nearest-neighbor-searches-in-python/#Scaling-with-Leaf-Size)
 
 

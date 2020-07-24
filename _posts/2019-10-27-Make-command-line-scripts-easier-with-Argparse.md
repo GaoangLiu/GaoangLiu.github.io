@@ -91,3 +91,9 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--foo', help='foo help')
 args = parser.parse_args()
 ```
+
+To extract values from `parser`, write codes following:
+```python
+if args.foo:
+    # Do something with args.foo. E.g., python3 test.py --foo 42, then args.foo == 42.
+```

@@ -7,6 +7,19 @@ categories:
 - machine learning
 ---
 
+# 奇异值分解
+[定义] 将一个非零的 $$m \times n$$ 实矩阵 $$A$$ 表示为以下矩阵乘积形式的运算，即进行矩阵的因子分解: 
+$$
+\begin{aligned}
+    A = U \Sigma V^T
+\end{aligned}
+$$
+其中 $$U$$ 为 $$m$$ 阶正交矩阵， $$V$$ 为 $$n$$ 阶正交矩阵， $$\Sigma$$ 为对角矩阵，且对角元素 $$\lambda_1 \geq \lambda_2 \geq ... \lambda_p \geq 0$$。
+则 $$U \Sigma V^T$$ 称为 $$A$$ 的奇异值分解(singular value decomposition, SVD), $$\sigma_i$$ 为奇异值。
+
+[定理] 设 $$A \in \mathrm{R}^{m \times n}$$ 为一实矩阵，则 $$A$$ 的奇异值分解必须存在。
+
+
 # 随机变量及分布
 
 ## 正态分布
