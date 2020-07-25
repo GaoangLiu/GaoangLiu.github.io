@@ -2,7 +2,7 @@
 layout:     post
 title:      Make command-line scripts easier with Argparse 
 date:       2019-10-27
-tags: [Python, Script]
+tags: [python, script]
 categories: 
 - python
 ---
@@ -87,8 +87,11 @@ parser.add_argument('--foo', help='foo help')
 args = parser.parse_args()
 ```
 
-To extract values from `parser`, write codes following:
+The type of `args` is `argparse.Namespace`. Thus, the corresponding value for argument `--foo` can be accessed with `args.foo`. 
 ```python
+def _print(arg):
+    print(arg)
+
 if args.foo:
-    # Do something with args.foo. E.g., python3 test.py --foo 42, then args.foo == 42.
+    _print(args.foo)
 ```

@@ -11,7 +11,8 @@ layout: default
   <div class="post-content">
     <p class="taxonomy-list">
     {% for tag in site.tags -%}
-        <code class="taxonomy-item">{{ tag.first }}</code>{% unless forloop.last %}<small>｜</small>{% endunless %}
+        <code class="taxonomy-item">{{ tag.first }}</code>{% unless forloop.last %}<small> / </small>{% endunless %}
+        <!-- <code class="taxonomy-item">{{ tag.first }}</code>{% unless forloop.last %}<small>｜</small>{% endunless %} -->
     {%- endfor %}
     </p>
 
