@@ -83,11 +83,6 @@ Ans: 矩阵必须包含**至少一组$$m$$个线性无关**的向量。
 将矩阵分解为奇异向量(singular vector)和奇异值(singular value)的方法称为奇异值分解(singular value decomposition SVD).
 每个实数矩阵都有一个SVD，但不一定有特征分解，e.g., 非方阵的矩阵没有特征分解。
 
-<!-- ## 行列式
-### 主成分分析(principle component analysis PCA)
-* Goal ?
- -->
-
 # 概率与信息论
 概率率是**表示不确定性声明的数学框架**。它提供了量化不确定性的方法，也提供也用于推导新的不确定性声明的公理 。
 

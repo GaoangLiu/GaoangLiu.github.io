@@ -49,7 +49,8 @@ with futures.ThreadPoolExecutor(max_workers=10) as e:
 2. `submit` 返回一个`Future`对象，可通过 `done` 方法判断任务是否结束，通过 `future.result()` 来获取结果; `map`直接返回由结果组成的生成器
 
 ## 进程与线程
-二者都可以实现多任务，
+二者都可以实现多任务
+
 | 进程 | 线程 | 
 |:--- |:---- |
 | 资源分配的基本单位 | CPU 调度的基本单位 |
