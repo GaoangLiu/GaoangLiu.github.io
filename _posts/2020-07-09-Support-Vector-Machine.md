@@ -6,7 +6,6 @@ tags: [svm]
 categories: 
 - machine learning
 ---
-TODO: Translate to CN. 
 
 <img src='https://i.loli.net/2020/07/05/bqkGNJBm1phjI32.png' width='25px'> What is SVM exactly ?
 
@@ -25,47 +24,32 @@ TODO: Translate to CN.
 
 TODO: support vector determines decision boundary or the other way around ? 即先有决策边界还是先有支持向量?
 
----
-<img src='https://i.loli.net/2020/07/05/bqkGNJBm1phjI32.png' width='25px'> Ques: 可以多分类任务吗? 
+Ques: 可以多分类任务吗? 
 
-<img src='https://i.loli.net/2020/07/05/ku4QMPcK6gdDpLN.png' width='25px'> ...
-
+可以
 
 
-<img src='https://i.loli.net/2020/07/05/bqkGNJBm1phjI32.png' width='25px'> Pros and Cons ?
-
-<img src='https://i.loli.net/2020/07/05/ku4QMPcK6gdDpLN.png' width='25px'> Pros:
-* xx
-
-Cons:
+缺点:
 * 对特征缩放敏感。因为 SVM 试图最大化类别之前的间隔，如果训练集没有进行特征缩放，那么 SVM 会倾向于忽略数据值较小的特征.
 
 
----
-
-<img src='https://i.loli.net/2020/07/05/bqkGNJBm1phjI32.png' width='25px'> Capable of multi-class classification ?
-
-<img src='https://i.loli.net/2020/07/05/ku4QMPcK6gdDpLN.png' width='25px'> Yes
-
----
-
-<img src='https://i.loli.net/2020/07/05/bqkGNJBm1phjI32.png' width='25px'> What is kernel trick ? How it works?
-
-<img src='https://i.loli.net/2020/07/05/ku4QMPcK6gdDpLN.png' width='25px'> 
-
----
-
-<img src='https://i.loli.net/2020/07/05/bqkGNJBm1phjI32.png' width='25px'> What is similarity function ? Difference with kernel trick ?
-
-<img src='https://i.loli.net/2020/07/05/ku4QMPcK6gdDpLN.png' width='25px'> 
-
----
 
 
 # 线性可分 SVM (硬间隔模型)
 对于分类任务，所有实例都被正确的分到决策边界的两边，这称为硬间隔分类。硬间隔分类存在两个问题: 
 1. 只对线性可分问题越作用;
 2. 对异常值敏感
+
+## 几何间隔
+[定义] 给定超平面 $$(\omega, b)$$ 与样本点 $$(x_i, y_i)$$，定义该点到超平面上的**函数间隔**为 $$r_i = y_i(\omega \cdot x_i + b)$$。
+数据集 $$T=\{(x_1, y_1), ..., (x_n, y_n)\}$$ 与超平面的**函数间隔**为 $$ D_{fm} = \underset{1, ..., n}{\text{min }} r_i $$。
+
+函数间隔刻画分类的**正确性与确信度**。
+
+函数间隔 $$D_{fm}$$的值依赖于 $$\omega, b$$，并随$$\omega$$的缩放而变化。几何间隔是对向量 $$\omega$$ 归一化并将偏置 $$b$$ 等比例(比上 $$\|\omega\|$$)缩放后的函数间隔。
+
+对一个样本点而言，几何间隔即是点到超平面的**带符号的距离**。对数据集而言，是所有样本点的几何间隔的下确界。
+
 
 ## 最大间隔超平面
 假设线性可分数据集合为 $$ T = \{ (x_i, y_i), i = 1,...,n\} $$，其中 $$x_i \in R^n, y_i \in \{-1, 1\}$$。考虑超平面 $$f(x): wx+b = 0$$，它将特征空间(正确的)分成两类，法向量 $$w$$ 指向的一侧为正类，另一侧为负类。再考虑函数 $$f(x)$$ 两侧的最近的两点 $$x^-, x^+$$ s.t. $$f(x^-) = -1, f(x^+) = 1$$ 且 $$ x^+ = x^- + r \cdot w $$。那么就有 
@@ -137,7 +121,7 @@ $$
 
 
 # 线性 SVM (软间隔模型)
-现在中训练数据集往往是线性不可分的，意味着存在样本点 $$(x_i, y_i)$$ 不能满足函数间隔大于等于 1 的约束条件。为了解决这个问题，可能考虑引入松弛变量 $$\xi_i \ge 0$$，即约束为 $$y_i (w x_i + b) \geq 1 - \xi_i, i = 1, ..., n$$。
+现实中训练数据集往往是线性不可分的，意味着存在样本点 $$(x_i, y_i)$$ 不能满足函数间隔大于等于 1 的约束条件 (即是对$$\forall \omega, b, \exists (x_{wb}, y_{wb}) \text{ s.t., } y_{wb}(\omega \cdot x_{wb} + b) < 0 $$)。为了解决这个问题，考虑引入松弛变量 $$\xi_i \ge 0$$，即约束为 $$y_i (w x_i + b) \geq 1 - \xi_i, i = 1, ..., n$$。
 
 参照线性可分 SVM 的求解过程，线性 SVM 的求解问题转化求解以下凸二次规化问题:
 
@@ -148,7 +132,7 @@ $$
     \xi_i \geq 0, i = 1, ..., n
 \end{aligned}
 $$
-其中目标函数中的 $$C\ge0$$ 为惩罚系数，值越大对误分类的惩罚也越大。最小化目标函数有两层含义: **1. 几何问题尽可能大; 2. 误分类样本点个数尽可能少**。前者要求 $$C$$ 尽可能小，而后者要求 $$C$$ 尽可能大。 也即是 $$C$$ 是调节二者的系数(一般手动选择)。 
+其中目标函数中的 $$C\ge0$$ 为惩罚系数，值越大对误分类的惩罚也越大。最小化目标函数有两层含义: **1. 几何间隔尽可能大; 2. 误分类样本点个数尽可能少**。前者要求 $$C$$ 尽可能小，而后者要求 $$C$$ 尽可能大。 也即是 $$C$$ 是调节二者的系数(一般手动选择)。 
 
 以上优化问题可转化为:
 $$
