@@ -25,7 +25,8 @@ categories:
 支持 `int64_t` 类型的编译器必然支持 `long long`，但 pre-C++ 2011 的编译器不支持 `int64_t`。
 
 ## `size_t` v.s. `int` 
-`size_t` 的真实类型与操作系统有关，其取值范围是目标平台下最大可能的数组尺寸。
+`size_t` 的真实类型与操作系统有关，其取值范围是目标平台下最大可能的数组尺寸。一些平台下`size_t`的范围小于`int`的正数范围,又或者大于 `unsigned int`。 使用`int`既有可能浪费，又有可能范围不够大。
+
 
 在32位架构中被普遍定义为：
 ```cpp
@@ -34,11 +35,37 @@ typedef unsigned int size_t;
 而在64位架构中被定义为：
 ```cpp
 typedef unsigned long size_t;
-``` 
+```
 
-size_t在32位架构上是4字节，在64位架构上是8字节。
+`size_t` 在32位架构上是4字节，在64位架构上是8字节。而 `int` 在 32/64 位系统下都是 4 字节。
 
-一般来说，在表示数据结构大小的时候，尽量使用 `size_t` 。原因，1. 代码表述清晰，一眼就可以看出这是在表示一个对象的长度 ； 2. 表示范围比 `int` 要大，特别是表示 vector 或者其他 container 的长度时 `size_t` 可以确保不出出现溢出等问题。
+一般来说，在表示数据结构大小的时候，尽量使用 `size_t` 。原因:
+1. 代码表述清晰，一眼就可以看出这是在表示一个对象的长度 ； 
+2. 表示范围比 `int` 要大，特别是表示 vector 或者其他 container 的长度时 `size_t` 可以确保不出出现溢出等问题。
+
+### 陷阱
+
+示例 1: `size_t` 为无符号类型，做减法时确保不要出现负值。
+```cpp
+string s = "abc";
+int n = 2;
+size_t m = 2; 
+cout << n - s.size() << endl;
+```
+这里使用`int`而不是`size_t`来声明 `n`，在我们 64 位 Mac OS 系统中的输出是：18446744073709551615 (2**64-1)，这是因为 `s.size()` 返回值是 `size_type` 一个无符号整数，而编译器在`int`与`size_type`做减法时，都视为了无符号整数。
+ 
+<img src="http://git.io/JJ9R9" width="500px" alt="size_t example">
+
+
+<!--- 示例 2: 在使用 `str.find(some_substr)` 时 `str::npos` 是 `size_t` 类型
+```cpp
+string s = "A very long string ..."; 
+int idx = s.find("MISS");
+if (idx == str::npos) {
+    // subroutine
+}
+```
+ --->
 
 
 ## 随机 
