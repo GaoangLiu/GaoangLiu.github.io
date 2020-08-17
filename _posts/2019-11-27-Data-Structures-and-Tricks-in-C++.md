@@ -91,6 +91,30 @@ double random_double = dis(gen);
 8. `s.insert(0, 1, c);` ，`insert(site_t pos, site_t n, char c)` 在位置 `pos` 插入 `n` 个字符 
 9. `s.replace(0, 1, 1, c);`，`replace(size_t pos, site_t len, site_t n, char c)` 从位置 `pos` 开始，用 `n` 个字符 `c` 替换长度为 `len` 的部分
 
+### `std::string_view`
+从 C++17 开始新加入的类，它提供一个字符串的视图，即可以通过这个类以各种方法"观测"字符串，但无法修改字符串。它的特点：
+
+1. 通过调用 `string_view` 构造器可将字符串转换为 `string_view` 对象。
+2. `string` 可隐式转换为 `string_view`。
+3. `string_view` 对所指向的字符串没有所有权。可用来取代 `const char*` 和 `const string&`，以避免不必要的内存分配。
+4. `string_view` 的成员函数即对外接口与 `string` 相类似，但只包含读取字符串内容的部分。
+5. `string_view::substr()` 的返回值类型是 `string_view`，不产生新的字符串，不会进行内存分配。其空间复杂度为常数
+
+用法示例：
+```cpp
+td::string str = "aaaaaaaaaaaaaaaaaaaaa realllllllllllllllly long string";
+
+//Bad way - 'string::substr' returns a new string (expensive if the string is long)
+std::cout << str.substr(15, 10) << '\n';
+
+//Good way - No copies are created!
+std::string_view view = str;
+
+// string_view::substr returns a new string_view
+std::cout << view.substr(15, 10) << '\n';
+```
+
+`string_view` 的 `substr` 方法返回的是字符串的“视图”，为常数复杂度
 
 
 # 数据结构
