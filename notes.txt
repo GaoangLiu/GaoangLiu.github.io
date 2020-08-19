@@ -1,7 +1,1 @@
 
-
-rust features refer: https://doc.rust-lang.org/1.18.0/unstable-book/library-features/sort-unstable.html
-
-The default `sort` method on slices is stable. 
-In other words, it guarantees that the original order of equal elements is preserved after sorting. 
-If you don't need stability, there is an alternative `sort_unstable`, which is faster and makes no allocations. 

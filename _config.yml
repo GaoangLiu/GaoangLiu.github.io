@@ -1,67 +1,79 @@
 # Welcome to Jekyll!
 #
 # This config file is meant for settings that affect your whole blog, values
-# which you are expected to set up once and rarely edit after that. If you find
-# yourself editing this file very often, consider using Jekyll's data files
-# feature for the data you need to update frequently.
-#
+# which you are expected to set up once and rarely need to edit after that.
 # For technical reasons, this file is *NOT* reloaded automatically when you use
-# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
-
+# 'jekyll serve'. If you change this file, please restart the server process.
+encoding: utf-8
 # Site settings
-# These are used to personalize your new site. If you look in the HTML files,
-# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
-# You can create any custom variable you would like, and they will be accessible
-# in the templates via {{ site.myvariable }}.
-title: ReadingNotes
-# email: GaoangLau@gmail.com
+title: A.Blog
+brief-intro: Do what you love & Love what you do. 
+baseurl: '' # the subpath of your site, e.g. /blog
+url: 'https://GaoangLiu.github.io' # the base hostname & protocol for your site
 
-# description: >   # this means to ignore newlines until "baseurl:"
-#   `\text{A deep learning enthusiast, who believes in the power of AI}`
-#   `\text{ and the ethics of humankind.}`
+permalink: /:year/:month/:day/:title/
 
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "http://GaoangLiu.github.io" # the base hostname & protocol for your site, e.g. http://example.com
-# twitter_username: abc
+# other links
+twitter_username: 
+facebook_username:
 github_username: GaoangLiu
+email: GaoangLau@gmail.com
+weibo_username: 
+zhihu_username:
+linkedIn_username:
+dribbble_username:
+
+description_footer: 💡
+
+# comments
+# 三种评论插件，选一个就好了
+# disqus_shortname: #slipper
+# gitalk:
+#   enable: false
+#   clientID: 0f2905fdcd849f08a1c5
+#   clientSecret: c6bfab960df0d7c3af036756e7e2bcd00a44a9e6
+#   repo: Gaoangliu.github.io
+#   owner: Gaoangliu
+#   admin: GaoangLiu
+utteranc_es:
+  enable: true
+  repo: 'gaoangliu/gaoangliu.github.io'
+  issue-term: pathname
+  theme: github-light
+
+# 赞赏
+# reward:
+#   enable: false
+#   wechat: /assets/images/reward/wechat.png
+#   alipay: /assets/images/reward/alipay.png
+
+# statistic analysis 统计代码
+# 百度统计 id，将统计代码替换为自己的百度统计id，即
+# hm.src = "//hm.baidu.com/hm.js?xxxxxxxxxxxx";
+# xxxxx字符串
+baidu_tongji_id:
+google_analytics_id:
 
 # Build settings
 markdown: kramdown
-# theme: minima
-plugins:
-  - jekyll-sitemap
-  - jekyll-feed
-  - jekyll-seo-tag
-  - jekyll-paginate
 
-# Exclude from processing.
-# The following items will not be processed, by default. Create a custom list
-# to override the default setting.
-exclude:
-  - Gemfile
-  - Gemfile.lock
-  - node_modules
-  - vendor/bundle/
-  - vendor/cache/
-  - vendor/gems/
-  - vendor/ruby/
-  - index.md_bak
-  - jekyll-create-article.sh
-  - git.sh
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
 
-author: ''
-timezone: Asia/Shanghai
+# port
+# port: 1234
 
+# url
+category_dir: category/
+tag_dir: tag/
+
+# excerpt
+excerpt_separator: "\n\n\n\n"
+
+# paginate
+plugins: [jekyll-paginate]
 paginate: 10
-paginate_path: "/page/:num/"
 
-permalink: /archives/:title.html
-
-defaults:
-  - scope:
-      path: "images/"
-    values:
-      image: true 
-
-
+exclude: ["README.md", "LICENSE", ".post-template", ".gitignore", "start.bat"]
 

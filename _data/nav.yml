@@ -1,0 +1,181 @@
+toc:
+  - title: 热门
+    items:
+      - name: Docker
+        url: https://www.docker.com/
+        desc: 容器
+      - name: MySql
+        url: https://www.mysql.com/cn/
+        desc: mysql关系型数据库
+      - name: Python
+        url: https://www.python.org/
+        desc: 程序语言
+      - name: Nginx
+        url: https://nginx.org/
+        desc: 反向代理和web服务器
+  - title: 推荐博客
+    items:
+      - name: 鳥哥的Linux私房菜
+        url: http://linux.vbird.org/
+        desc: 鳥哥的Linux私房菜
+      - name: InfoQ
+        url: https://www.infoq.cn/topic/operation
+        desc: 促进软件开发领域知识与创新的传播
+  - title: 实用工具
+    items:
+      - name: asciinema
+        url: https://asciinema.org/
+        desc: 终端录屏工具
+      - name: git.io
+        url: https://git.io/
+        desc: 短域名链接生成
+      - name: processon
+        url: https://www.processon.com/
+        desc: 在线制图
+      - name: 域名备案查询
+        url: http://beian.miit.gov.cn/publish/query/indexFirst.action
+        desc: 国内域名备案查询
+      - name: speedtest
+        url: https://www.speedtest.net/
+        desc: 在线测速
+      - name: tinypng
+        url: https://tinypng.com/
+        desc: 图片压缩
+      - name: xip.io
+        url: http://xip.io/
+        desc: 通配符DNS
+      - name: Let’s Encrypt
+        url: https://letsencrypt.org/
+        desc: 免费ssl证书
+      - name: myssl
+        url: https://myssl.com/
+        desc: SSL检测工具平台
+  - title: 软件镜像
+    items:
+      - name: 华北-清华
+        url: https://mirror.tuna.tsinghua.edu.cn/
+        desc: 清华大学开源镜像站
+      - name: 华北-北京理工
+        url: http://mirror.bit.edu.cn/web/
+        desc: 北京理工大学开源镜像站
+      - name: 华东-中国科学技术
+        url: http://mirrors.ustc.edu.cn/
+        desc: 中国科学技术大学开源软件镜像
+      - name: 网易
+        url: http://mirrors.cn99.com/
+        desc: 网易开源镜像站
+      - name: 阿里云
+        url: http://mirrors.aliyun.com
+        desc: 阿里云开源软件镜像
+      - name: 搜狐
+        url: http://mirrors.sohu.com/
+        desc: 搜狐开源软件镜像
+      - name: pypi-豆瓣
+        url: http://pypi.doubanio.com/
+        desc: pypi-豆瓣软件镜像
+      - name: 微软azure
+        url: http://mirror.azure.cn/
+        desc: 微软azure开源镜像站
+      - name: 腾讯
+        url: https://mirrors.cloud.tencent.com/index.html
+        desc: 腾讯开源软件镜像
+  - title: ip查询
+    items:
+      - name: cip.cc
+        url: http://www.cip.cc/
+        desc: cip.cc
+      - name: ping.pe
+        url: https://ping.pe/
+        desc: ping.pe
+      - name: ipip.net
+        url: https://www.ipip.net/
+        desc: ipip.net
+      - name: 纯真ip
+        url: http://www.cz88.net/ip/
+        desc: 纯真ip
+      - name: 淘宝ip
+        url: http://ip.taobao.com/ipSearch.html
+        desc: 淘宝ip
+      - name: geoip
+        url: https://geoip.com/
+        desc: geoip
+      - name: ip138
+        url: http://www.ip138.com/
+        desc: ip138
+      - name: ip地址查询库
+        url: https://github.com/lionsoul2014/ip2region
+        desc: ip地址查询库
+  - title: 存储
+    items:
+      - name: Nfs
+        url: http://nfs.sourceforge.net/nfs-howto/
+        desc: 网络文件系统
+      - name: Ceph
+        url: https://ceph.com/
+        desc: 分布式存储
+      - name: Moosefs
+        url: https://moosefs.com/
+        desc: 分布式存储
+      - name: FastDFS
+        url: https://github.com/happyfish100/fastdfs
+        desc: 分布式存储
+      - name: Glusterfs
+        url: https://www.gluster.org/
+        desc: 分布式存储
+      - name: HDFS
+        url: http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html
+        desc: 分布式存储
+  - title: 域名解析
+    items:
+      - name: BIND
+        url: https://www.isc.org/bind/
+        desc: DNS服务器
+      - name: PowerDNS
+        url: https://www.powerdns.com/
+        desc: DNS服务器
+      - name: Dnsmasq
+        url: http://www.thekelleys.org.uk/dnsmasq/doc.html
+        desc: 是开源的轻量级DNS转发和DHCP、TFTP服务器
+      - name: CoreDNS
+        url: https://coredns.io/
+        desc: DNS和服务发现
+  - title: 操作系统
+    items:
+      - name: Centos
+        url: https://www.centos.org/
+        desc: 操作系统
+      - name: Ubuntu
+        url: https://ubuntu.com/
+        desc: Ubuntu是以桌面应用为主的Linux发行版
+      - name: RedHat
+        url: https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux
+        desc: 红帽旗下的收费操作系统
+      - name: SUSE
+        url: https://www.suse.com/
+        desc: SUSE是Linux操作系统的发行版之一，源自德国。
+      - name: Freebsd
+        url: https://www.freebsd.org/
+        desc: FreeBSD是一个类Unix的操作系统，是第一个开放源代码的系统。
+      - name: Debian
+        url: https://www.debian.org/index.zh-cn.html
+        desc: Debian是完全由自由软件组成的类UNIX操作系统，其包含的多数软件使用GNU通用公共许可协议授权
+  - title: 语言/框架
+    items:
+      - name: Python
+        url: https://www.python.org/
+        desc: Python是一种广泛使用的解释型、高级编程、通用型编程语言，由吉多·范罗苏姆创造，第一版发布于1991年。
+      - name: Django
+        url: https://www.djangoproject.com/
+        desc: Django是一个开放源代码的Web应用框架，由Python写成。采用了MVT的软件设计模式，即模型Model，视图View和模板Template。
+      - name: Flask
+        url: http://flask.pocoo.org/
+        desc: Flask是一个使用Python编写的轻量级Web应用框架。基于Werkzeug WSGI工具箱和Jinja2 模板引擎。Flask使用BSD授权。
+      - name: Tornado
+        url: http://www.tornadoweb.org/en/stable/
+        desc: Tornado全称Tornado Web Server，是一个用Python语言写成的Web服务器兼Web应用框架
+      - name: Vue.js
+        url: https://cn.vuejs.org/index.html
+        desc: Vue.js是一个用于创建用户界面的开源JavaScript框架，也是一个创建单页应用的Web应用框架。
+      - name: CODELF
+        url: https://unbug.github.io/codelf/
+        desc: 一个命名变量的神奇网站。
