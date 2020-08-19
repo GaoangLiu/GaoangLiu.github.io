@@ -8,9 +8,9 @@ class Blog:
         lo['layout'] = 'post'
         nm = lo['date'] + '-' + lo['title'].replace(' ', '-') + '.md'
         year = lo['date'].split('-')[0]
-        postpath = f'tmp/{year}/{nm}'
-        if not os.path.exists(f'tmp/{year}'):
-            os.makedirs(f'tmp/{year}')
+        postpath = f'_posts/{year}/{nm}'
+        if not os.path.exists(f'_posts/{year}'):
+            os.makedirs(f'_posts/{year}')
 
         head = "---\n"
         for k, v in lo.items():
