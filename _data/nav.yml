@@ -15,7 +15,7 @@ toc:
         desc: 反向代理和web服务器
   - title: 推荐博客
     items:
-      - name: 鳥哥的Linux私房菜
+      - name: 鳥哥的 Linux 私房菜
         url: http://linux.vbird.org/
         desc: 鳥哥的Linux私房菜
       - name: InfoQ
@@ -35,9 +35,6 @@ toc:
       - name: 域名备案查询
         url: http://beian.miit.gov.cn/publish/query/indexFirst.action
         desc: 国内域名备案查询
-      - name: speedtest
-        url: https://www.speedtest.net/
-        desc: 在线测速
       - name: tinypng
         url: https://tinypng.com/
         desc: 图片压缩
@@ -90,12 +87,6 @@ toc:
       - name: ipip.net
         url: https://www.ipip.net/
         desc: ipip.net
-      - name: 纯真ip
-        url: http://www.cz88.net/ip/
-        desc: 纯真ip
-      - name: 淘宝ip
-        url: http://ip.taobao.com/ipSearch.html
-        desc: 淘宝ip
       - name: geoip
         url: https://geoip.com/
         desc: geoip
@@ -105,26 +96,6 @@ toc:
       - name: ip地址查询库
         url: https://github.com/lionsoul2014/ip2region
         desc: ip地址查询库
-  - title: 存储
-    items:
-      - name: Nfs
-        url: http://nfs.sourceforge.net/nfs-howto/
-        desc: 网络文件系统
-      - name: Ceph
-        url: https://ceph.com/
-        desc: 分布式存储
-      - name: Moosefs
-        url: https://moosefs.com/
-        desc: 分布式存储
-      - name: FastDFS
-        url: https://github.com/happyfish100/fastdfs
-        desc: 分布式存储
-      - name: Glusterfs
-        url: https://www.gluster.org/
-        desc: 分布式存储
-      - name: HDFS
-        url: http://hadoop.apache.org/docs/stable/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html
-        desc: 分布式存储
   - title: 域名解析
     items:
       - name: BIND
@@ -173,9 +144,15 @@ toc:
       - name: Tornado
         url: http://www.tornadoweb.org/en/stable/
         desc: Tornado全称Tornado Web Server，是一个用Python语言写成的Web服务器兼Web应用框架
-      - name: Vue.js
-        url: https://cn.vuejs.org/index.html
-        desc: Vue.js是一个用于创建用户界面的开源JavaScript框架，也是一个创建单页应用的Web应用框架。
       - name: CODELF
         url: https://unbug.github.io/codelf/
         desc: 一个命名变量的神奇网站。
+  
+  - title: 好玩的工具与站点
+    items:
+      - name: Github logo
+        url: https://github.com/logos
+        desc: Github 的官方 logo，也是章鱼猫的第一幅作品
+      - name: Github octodex (章鱼猫)
+        url: https://octodex.github.com/
+        desc: Gihub Octodex
