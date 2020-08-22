@@ -1,11 +1,15 @@
 ---
 layout:     post
-title:      K-Mean Clustering 
+title:      Pseudo random number
 date:       2020-07-28
-tags: [machine learning, k-mean]
+tags: [random number]
 categories: 
-- machine learning
+- math
 ---
+
+生成伪随机数的方法：
+
+
 
 # 线性同余法
 1. 确定初始种子 $$n_0$$

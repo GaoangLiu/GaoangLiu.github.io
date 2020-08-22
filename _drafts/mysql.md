@@ -11,4 +11,8 @@ A simple [cheatsheet](http://git.io/JUvIJ) on MySQL.
 
 
 
-## 常用命令
+## 基本语法
+* `delete from table [where clause]`, 按条件删除数据
+
+
+TODO 
