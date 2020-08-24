@@ -156,3 +156,7 @@ toc:
       - name: Github octodex (章鱼猫)
         url: https://octodex.github.com/
         desc: Gihub Octodex
+      - name: SQL 在线编辑
+        url: http://sqlfiddle.com/#!9/a6c585/1
+        desc: 可在线编辑测试 SQL 的站点
+        
