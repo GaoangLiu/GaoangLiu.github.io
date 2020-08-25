@@ -159,4 +159,7 @@ toc:
       - name: SQL 在线编辑
         url: http://sqlfiddle.com/#!9/a6c585/1
         desc: 可在线编辑测试 SQL 的站点
+      - name: KMS MS 官方密钥
+        url: https://docs.microsoft.com/zh-cn/windows-server/get-started/kmsclientkeys#windows-10-ltscltsb-versions
+        desc: 可用于搭建自己的 KMS 激活服务器 
         

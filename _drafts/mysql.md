@@ -14,12 +14,14 @@ A simple [cheatsheet](http://git.io/JUvIJ) on MySQL.
 ## 基本语法
 * `delete from table [where clause]`, 按条件删除数据
 * `left(str, len)`, 截取左边 `len` 长度字符。E.g., `left("abcd", 2)` = `ab`
-* `substring(str, cnt)`, 从 `cnt` 处截取字符, e.g., `substring("abcde", 2)` = `bcde`。注意是从第 `cnt` 个字符开始截取，而不是下标 `cnt`。如果 `cnt` 为负值，则从右边开始截取
-* `substring(str, cnt, len)`, 截取长度为 `len` 的字符串
-* `substring_index(str, delim, cnt)`, 以 `delim` 为分割符，取第 `cnt` 个分割符前面的内容(包含分割符)；如果 `cnt` 为负值，则取倒数 `abs(cnt)` 个分割符之后的内容。 E.g., `substring_index(123.344.222.222, '.', -3)` = "344.222.222".
+* `substring(str, pos)`, 从 `pos` 处截取字符, e.g., `substring("abcde", 2)` = `bcde`。注意 `pos` 下标从 0 开始。如果 `pos` 为负值，则从右边开始截取
+* `substring(str, pos, len)`, 截取长度为 `len` 的字符串
+* `substring_index(str, delim, pos)`, 以 `delim` 为分割符，取第 `pos` 个分割符前面的内容(包含分割符)；如果 `pos` 为负值，则取倒数 `abs(pos)` 个分割符之后的内容。 E.g., `substring_index(123.344.222.222, '.', -3)` = "344.222.222".
+* `mid`，是 `substring` 的别名
 * `cast(value as dtype)`, 数据类型转换, e.g., `cast('2020-02-02' as date); cast(150 as char);`
 * `extract(day|month|minute from date)`，从日期/时间中提取分项 
 * `length(), char_length()`，分别按字节、字符形式返回字符串长度。 E.g, `select length(_utf8 '和'), char_length(_utf8 '和')` 返回 `3, 1`。对于仅由 「英文字母+数字+标点」 组成的字符串二者没有区别。
+* `ucase(), lcase()` 大小写转换。E.g., 首字母大写 `concat(ucase(mid(name, 1, 1)), mid(name, 2)) as name`
 
 
 ### 加密
