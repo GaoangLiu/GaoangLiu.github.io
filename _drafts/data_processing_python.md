@@ -9,6 +9,7 @@ categories:
 
 # Scaler 
 ## sklearn api
+
 ```python
 from sklearn.preprocessing import StandardScaler, MinMaxScaler, RobustScaler, MaxAbsScaler
 ```
