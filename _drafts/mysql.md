@@ -18,7 +18,7 @@ A simple [cheatsheet](http://git.io/JUvIJ) on MySQL.
 * `substring(str, pos, len)`, 截取长度为 `len` 的字符串
 * `substring_index(str, delim, pos)`, 以 `delim` 为分割符，取第 `pos` 个分割符前面的内容(包含分割符)；如果 `pos` 为负值，则取倒数 `abs(pos)` 个分割符之后的内容。 E.g., `substring_index(123.344.222.222, '.', -3)` = "344.222.222".
 * `mid`，是 `substring` 的别名
-* `cast(value as dtype)`, 数据类型转换, e.g., `cast('2020-02-02' as date); cast(150 as char);`
+* `cast(value as dtype)`, 数据类型转换, e.g., `cast('2020-02-02' as date)； cast(150 as char)；`
 * `extract(day|month|minute from date)`，从日期/时间中提取分项 
 * `length(), char_length()`，分别按字节、字符形式返回字符串长度。 E.g, `select length(_utf8 '和'), char_length(_utf8 '和')` 返回 `3, 1`。对于仅由 「英文字母+数字+标点」 组成的字符串二者没有区别。
   * 注: 当编码格式为 `utf8` （`SET character_set_client=utf8`） 时，中文及特殊符号字节及字符长度为3, 1。对于 `gbk `格式，尽管很多网络资料声明其 `length` 为2，但在实际测试(MacOS/MySQL 8.0.12)中通常不是2，而且不固定。比如下面两个长度均为3的字符串，返回的 length 并不一致:
@@ -30,8 +30,8 @@ A simple [cheatsheet](http://git.io/JUvIJ) on MySQL.
 * `md5(value)`, MD5 讯息摘要演算法运算，计算数据的 MD5 值。加盐可通过间接方p实现，比如 `md5(concat('sweetsalt', value))`
 * `sha1(value)`, Security Hash Algorithm 安全散列演算法，比 MD5 值长8位 (32 v.s. 40)，但仍然可以通过碰撞攻击破解(指找到一个具有相同 hash 值的输入)
 * `sha2(value, hash_length)`, SHA 2 代算法，hash 长度可选择 SHA-224, SHA-256, SHA-384, and SHA-512，即是 `hash_length` 只能为 224, 256, 384, 512 或者 0 (等同于256)。如果输入其他参数，e.g., `sha2("yellow", 222)` 则返回 `NULL`.  
-* `aes_encrypt(str, key)`, AES(Advanced Encryption Standard) 加密， e.g., `select hex(aes_encrypt("password", "private_key"));`, 其中 `hex()` 将字符串转为 16 进制, 避免加密后的输出乱码，对应的解析函数 `unhex()` 。 注：密钥的长度可任意，但官方不建议直接明文密钥 `key`，而是对其做散列演算(e.g., `sha2("key", 0)`) 之后再使用
-* `aes_decrypt(str, key)`, AES 解密， e.g., `select aes_decrypt(unhex("B7646....KDKDK2", "private_key"));`
+* `aes_encrypt(str, key)`, AES(Advanced Encryption Standard) 加密， e.g., `select hex(aes_encrypt("password", "private_key"))；`, 其中 `hex()` 将字符串转为 16 进制, 避免加密后的输出乱码，对应的解析函数 `unhex()` 。 注：密钥的长度可任意，但官方不建议直接明文密钥 `key`，而是对其做散列演算(e.g., `sha2("key", 0)`) 之后再使用
+* `aes_decrypt(str, key)`, AES 解密， e.g., `select aes_decrypt(unhex("B7646....KDKDK2", "private_key"))；`
 * `compress(str)`，压缩数据，对于重复性高的数据压缩效果较好，对应解析函数的 `uncompress()`
 * `statement_digist_text(state)`， 从输入字符串中提取 SQL 语句
 
@@ -53,15 +53,18 @@ A simple [cheatsheet](http://git.io/JUvIJ) on MySQL.
 * `having` v.s., `where`, 
     * `where` 在数据聚合前过滤条件，e.g., 
     ```bash 
-    select name, sum(bonus) from users where bonus bonus > 1 group by name;
+    select name, sum(bonus) from users where bonus bonus > 1 group by name；
     ```
 
     * `having` 数据聚后过滤数据， e.g., 
     ```mysql
-        select name, sum(bonus) from users group by bonus having sum(bonus) > 100;  
+        select name, sum(bonus) from users group by bonus having sum(bonus) > 100；  
     ```
     * 二者都定义过滤条件，`where` 对数据进行逐条过滤，而 `having` 按组过滤 .
 
+* `group by` v.s. `partition by`, 根本区别在于是否汇总数据
+    * `partition by` 没有汇总数据，用于分组，只适用于窗口函数，比如 `rank() over`； 不会影响返回的行数，但会更改窗口函数的结果计算方式； 
+    * `group by` 汇总数据，对集合进行拆分； 如果有集合大小大于 1，则必然影响(减少)返回的行数 
 
 
 ## NULL 与三元逻辑
@@ -75,7 +78,7 @@ A simple [cheatsheet](http://git.io/JUvIJ) on MySQL.
 通过比较谓语 `=` 来比较判断时，暗含了两条假设, 1. 等号两边都为变量或常量； 2. 类型相同。 但 `NULL` 不是数据，也没有类型，通过 `=` 比较得到的结果总是为 `NULL`，因此 `NULL = 3` 或者 `3 = NULL` 返回的结果都是 `NULL`，表示比较不适用。
 
 如果需要判断记录里的某一项是否为空时，需要使用谓语 `v is NULL` 来处理，得到以下结果之一：
-1. `1 is NULL -> false`; 
+1. `1 is NULL -> false`； 
 2. `NULL is NULL -> true`
 
 
@@ -99,3 +102,35 @@ select * from users where id > 0 and age > 1
 ``` 
 将返回除第一条 id = 1 之外的所有记录。因为 `id > 1(true) and null > 0 (unknown)` 得到的值为 `unknown`.
 
+
+## 效率优化
+### 求 median 
+Table: 'orderdetails', feature : 'unitprice', 目标求 'unitprice' 的中位值 
+
+* 一般写法
+```mysql
+SELECT avg ( distinct unitprice ) 
+FROM ( 
+  SELECT t1.unitprice  
+  FROM orderdetails t1, orderdetails t2 
+    GROUP BY t1.unitprice 
+    HAVING SUM ( CASE WHEN t2.unitprice >= t1.unitprice THEN 1 else 0 END ) >= COUNT (*) / 2 
+    AND  SUM ( CASE WHEN t2.unitprice <= t1.unitprice THEN 1 else 0 END ) >= COUNT (*) / 2 ) tmp；
+```
+运行时间 3.97 s (MBP 15 / MySQL 8.0.12)。 复用两次表格 `t1, t2`，对两表价格一一对比，时间 `O(2 * n * n)`
+
+* 高效率写法 
+```mysql
+-- After the first pass, @rownum will contain the total number of rows. 
+-- This can be used to determine the median, so no second pass or join is needed.
+SELECT AVG(dd.unitprice) as median
+FROM (
+    SELECT d.unitprice, @rownum := @rownum+1 as `row_number`, @total_rows:=@rownum
+    FROM orderdetails d, (SELECT @rownum:=0) r
+        WHERE d.unitprice is NOT NULL
+        -- put some where clause here
+        ORDER BY d.unitprice
+) AS dd
+    WHERE dd.row_number IN ( FLOOR((@total_rows+1)/2), FLOOR((@total_rows+2)/2) )；
+```
+运行时间 0.01 s. 这种方法只遍历一次表，将行数存放到 `total_rows` 里面，时间复杂度 `O(n)`。 
