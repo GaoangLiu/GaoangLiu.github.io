@@ -59,7 +59,7 @@ size_t m = 2;
 cout << n - s.size() << endl;
 ```
 这里使用`int`而不是`size_t`来声明 `n`，在我们 64 位 Mac OS 系统中的输出是：18446744073709551615 (2**64-1)，这是因为 `s.size()` 返回值是 `size_type` 一个无符号整数，而编译器在`int`与`size_type`做减法时，都视为了无符号整数。
- 
+
 <img src="http://git.io/JJ9R9" width="500px" alt="size_t example">
 
 
@@ -139,7 +139,7 @@ bitset<8> ba(s);  // generate [0, 0, 1, 0, 0, 0, 1, 1]
 std::bitset<8> b2(bit_string, 2);      // [0, 0, 0, 0, 0, 0, 1, 1] 
 
 // string from position 2 till next 3 positions 
-std::bitset<8> b3(bit_string, 0, 1);   // [0, 0, 0, 0, 0, 0, 0, 1] 
+std::bitset<8> b3(bit_string, 2, 3);   // [0, 0, 0, 0, 0, 0, 0, 1] 
 ```
 
 函数 
@@ -197,7 +197,7 @@ Tiny example, S = [2, 3, 4], bits 初始为 1 ， 迭代如下:
 2. n = 3, bits = 101101 ， 表示集合 $$\{2, 3\}$$ 可构成 0, 2, 3, 5
 3. n = 4, bits = 1011111101 ， 表示集合 $$\{2, 3, 4\}$$ 可构成 0, 2, 3, 4, 5, 6, 7, 9
 
-**注：** 算法中 `bitset<10001>` 大小为 10001 是因为原问题中集合大小限制在 200，元数大小限制在 100，因此我们的 target 不太于 10000 。
+**注：** 算法中 `bitset<10001>` 大小为 10001 是因为原问题中集合大小限制在 200，元素大小限制在 100，因此我们的 target 不太于 10000 。
 
 
 ## Multiset 
@@ -234,4 +234,36 @@ ms.insert(50);  // 60, 50, 50, 40
 | 查找时间 | $$\text{log}(n)$$ | 平均 $$O(1)$$ / 最坏 $$O(n)$$ |
 | 插入时间 | $$\text{log}(n)$$ + 平衡时间 | 平均 $$O(1)$$ / 最坏 $$O(n)$$ |
 | 删除时间 | $$\text{log}(n)$$ + 平衡时间 | 平均 $$O(1)$$ / 最坏 $$O(n)$$ |
+
+## std::vector v.s. std::array 
+在 C++11 中，STL 中提拱了一个新的容器 `std::array`，该容器取代了 C 类型的数组，在某些程度上也可以替代 `std::vector`。
+
+`array` 与 `vector` 的相同点在于：
+1. 底层存储结构都为数组，使用连续的内存
+2. 都对下标运算符 `[]` 进行了重载，可能使用下标运算符操控元素
+3. 都实现了 `front()`, `back()`, `size()`, `empty()` 等方法，提供迭代器(`begin(), end()`)遍历机制
+
+区别:
+* `vector` 属于可变长容器，可以动态更改容器容量； `array` 属于定长容量，初始化必须指定大小。
+    * 从语法上讲，`vector` 提供但 `array` 没有的 `resize()`, `erase()` 等方法归结于其容量是否可变动 
+* `array` 提供了静态数组，编译时确定大小、更轻量、更效率，当然在方便性上有一定局限
+
+### array vector 实现方法对比
+| Function | array | vector |
+|:---------|:-------|:-------|
+|`constructor/destructor`  |  ❌ | ✔ |
+|`push_back()`, `pop_back()` |  ❌ | ✔ |
+|`resize()`, `capacity()`, `reserve()` |  ❌ | ✔ |
+|`erase()`, `clear()` |  ❌ | ✔ |
+|`empty()`, `size()`, `max_size()`  |  ✔ | ✔ |
+|`at()`, `front()`, `back()`  |  ✔ | ✔ |
+|`assign()`, `swap()`  |  ✔ | ✔ |
+|`operator = < == []`  |  ✔ | ✔ |
+
+
+### 小结
+* `array` 有的特性，`vector` 基本上都有，反之不然。二者最大的区别在于容量是否可以动态变化，方法的差异也体现在这一点上； 
+* `vector` 方便安全，通常情况下都应该作为首选项，特别是在元素个数会动态增长/减少或者提前不可知的情况下。而如果预先确定元素个数且个数不多，可以考虑使用 `std::array`。
+
+
 

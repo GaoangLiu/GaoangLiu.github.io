@@ -54,9 +54,9 @@ where
 
 This function reduce the number of hash value collisions of strings with same counts of characters, e.g., `ab` v.s. `ba`.
 
-<img src='https://i.loli.net/2020/07/05/bqkGNJBm1phjI32.png' width='25px'> Could collisions be completely avoided ? 
+Question: Could collisions be completely avoided ? 
 
-<img src='https://i.loli.net/2020/07/05/ku4QMPcK6gdDpLN.png' width='25px'> No, if we're using the following implementations where the output hash values are modulated by a prime number `q` and thus constrained by a finite domain. We can increase this number, but the length of string is unbounded. 
+Ans: **No**, if we adopt an implementation where hash values are calculated by modulating a prime number `q`, then outputs are constrained by `q`, which is finite. Since we have infinite input strings, and the length of string is also unbounded, collision is unavoidable (very much like the case of MD5 method).
 
 
 ## How the above formula come ?

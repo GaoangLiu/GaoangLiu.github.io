@@ -10,11 +10,16 @@ author: GaoangLau
 {:toc}
 
 
+# `r2_score`
+R2 决定系数，拟合优度度量。越接近 1，表明模型预测结果越好。 
+
+
+
+
+$$r_2 = 1 -  \sum\limits_{i=0} (y_i - \hat{y_i})^2 / \sum\limits_i (y_i - \bar{y_i})^2 $$
+
 # `f1_score`
 `f1 = 2* (precision * recall) / (precision + recall)`
-
-
-
 
 ## usage 
 `sklearn.metrics.f1_score(y_true, y_pred, average='binary', ..)`
