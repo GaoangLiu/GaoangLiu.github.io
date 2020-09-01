@@ -23,6 +23,9 @@ toc:
         desc: 促进软件开发领域知识与创新的传播
   - title: 实用工具
     items:
+      - name: ncdu NCurses Disk Usage
+        url: https://dev.yorhel.nl/ncdu
+        desc: Linux 硬盘查看
       - name: asciinema
         url: https://asciinema.org/
         desc: 终端录屏工具
@@ -162,4 +165,4 @@ toc:
       - name: KMS MS 官方密钥
         url: https://docs.microsoft.com/zh-cn/windows-server/get-started/kmsclientkeys#windows-10-ltscltsb-versions
         desc: 可用于搭建自己的 KMS 激活服务器 
-        
+      

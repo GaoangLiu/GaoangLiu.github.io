@@ -7,6 +7,12 @@ categories:
 - sql
 ---
 
+
+
+SQL 处理的基本单位不是记录，而是集合。 —— Joe Celko 
+
+
+
 A simple [cheatsheet](http://git.io/JUvIJ) on MySQL. 
 
 
@@ -67,10 +73,85 @@ A simple [cheatsheet](http://git.io/JUvIJ) on MySQL.
     * `group by` 汇总数据，对集合进行拆分； 如果有集合大小大于 1，则必然影响(减少)返回的行数 
 
 
-### `inner join` v.s. `left join` v.s. `right join`
+
+## NULL 与三元逻辑
+<img src="http://git.io/JUTft" width="400px" height="140px" alt="NULL example">
+
+在 MySQL 中，`NULL` 不是一个值，也没有数据类型，因为它不是一个变量或者常量。它是一个表示"没有值"的标记。`NULL` 包含两种类型的含义:
+
+1. 未知，比如空缺值
+2. 不适用，比如 `1 = NULL`
+
+通过比较谓语 `=` 来比较判断时，暗含了两条假设, 1. 等号两边都为变量或常量； 2. 类型相同。 但 `NULL` 不是数据，也没有类型，通过 `=` 比较得到的结果总是为 `NULL`，因此 `NULL = 3` 或者 `3 = NULL` 返回的结果都是 `NULL`，表示比较不适用。
+
+如果需要判断记录里的某一项是否为空时，需要使用谓语 `v is NULL` 来处理，得到以下结果之一：
+1. `1 is NULL -> false`； 
+2. `NULL is NULL -> true`
+
+
+### 三元逻辑
+
+SQL-92标准
+
+```bash
+<truth value> ::= TRUE
+              | FALSE
+              | UNKNOWN
+```
+
+对应逻辑关系 :
+* `true and unknown = unknown`,  `true or unknown = true`
+* `false and unknown = false`,  `false or unknown = unknown`
+
+在 `where` 语句中返回为 `unknown` 的记录将被过滤掉，以上表为例，如果执行 
+```sql
+select * from users where id > 0 and age > 1
+```
+将返回除第一条 id = 1 之外的所有记录。因为 `id > 1(true) and null > 0 (unknown)` 得到的值为 `unknown`.
+
+
+## 效率优化
+### 求 median 
+Table: 'orderdetails', feature : 'unitprice', 目标求 'unitprice' 的中位值 
+
+* 一般写法
+```mysql
+SELECT avg ( distinct price ) 
+FROM ( 
+  SELECT s1.price
+  FROM sales s1, sales s2
+    GROUP BY s1.price
+    HAVING SUM ( CASE WHEN s2.price >= s1.price THEN 1 else 0 END ) >= COUNT (*) / 2 
+    AND  SUM ( CASE WHEN s2.price <= t1.price THEN 1 else 0 END ) >= COUNT (*) / 2 ) tmp；
+```
+运行时间 3.97 s (MBP 15 / MySQL 8.0.12)。 复用两次表格 `t1, t2`，对两表价格一一对比，时间 `O(2 * n * n)`
+
+* 高效率写法 
+```mysql
+-- After the first pass, @rownum will contain the total number of rows. 
+-- This can be used to determine the median, so no second pass or join is needed.
+SELECT AVG(dd.price) as median
+FROM (
+    SELECT price, @rownum := @rownum+1 as `row_number`, @total_rows:=@rownum
+    FROM sales s, (SELECT @rownum:=0) r
+        WHERE price is NOT NULL
+        -- put some where clause here
+        ORDER BY price
+) AS dd
+    WHERE dd.row_number IN ( FLOOR((@total_rows+1)/2), FLOOR((@total_rows+2)/2) )；
+```
+运行时间 0.01 s. 这种方法只遍历一次表，将行数存放到 `total_rows` 里面，时间复杂度 `O(n)`。 
+
+
+
+
+# SQL JOINs
+[C.L.Moffatt](https://link.zhihu.com/?target=https%3A//www.codeproject.com/script/Membership/View.aspx%3Fmid%3D5909363) 关于 SQL joins 的总结:
+<img src='http://git.io/JUq09' width='600px'>
+
 * `inner join` (等值联接) 只返回两个表中联结字段相等的行
-* `left join` (左联接) 返回包括左表中的所有记录和右表中联结字段相等的记录
-* `right join` (右联接) 返回包括右表中的所有记录和左表中联结字段相等的记录，则好与左联接对称
+* `left (outer) join` (左联接) 返回包括左表中的所有记录和右表中联结字段相等的记录
+* `right (outer) join` (右联接) 返回包括右表中的所有记录和左表中联结字段相等的记录，则好与左联接对称
 
 <img src='http://git.io/JUIAi' width='300px' alt='left/right join'>  <img src='http://git.io/JUIAX' width='300px' alt='left/right join'>
 
@@ -105,71 +186,11 @@ A simple [cheatsheet](http://git.io/JUvIJ) on MySQL.
 +---------+-------+---------+----------+
 ```
 
-
-## NULL 与三元逻辑
-<img src="http://git.io/JUTft" width="400px" height="140px" alt="NULL example">
-
-在 MySQL 中，`NULL` 不是一个值，也没有数据类型，因为它不是一个变量或者常量。它是一个表示"没有值"的标记。`NULL` 包含两种类型的含义:
-
-1. 未知，比如空缺值
-2. 不适用，比如 `1 = NULL`
-
-通过比较谓语 `=` 来比较判断时，暗含了两条假设, 1. 等号两边都为变量或常量； 2. 类型相同。 但 `NULL` 不是数据，也没有类型，通过 `=` 比较得到的结果总是为 `NULL`，因此 `NULL = 3` 或者 `3 = NULL` 返回的结果都是 `NULL`，表示比较不适用。
-
-如果需要判断记录里的某一项是否为空时，需要使用谓语 `v is NULL` 来处理，得到以下结果之一：
-1. `1 is NULL -> false`； 
-2. `NULL is NULL -> true`
-
-
-### 三元逻辑
-
-SQL-92标准
-
-```bash
-<truth value> ::= TRUE
-              | FALSE
-              | UNKNOWN
-```
-
-对应逻辑关系 :
-* `true and unknown = unknown`,  `true or unknown = true`
-* `false and unknown = false`,  `false or unknown = unknown`
-
-在 `where` 语句中返回为 `unknown` 的记录将被过滤掉，以上表为例，如果执行 
+## 小结
+* 与 `inner join` 的区别是，`outer join` 返回的表 A, B 的交集 + (`A (left join)| B (right join) | all A + B (full join)`)
+* Note: MySQL 中并没有 `full join` 命令，可以通过其他方式模拟这个命令，比如:
 ```sql
-select * from users where id > 0 and age > 1
-``` 
-将返回除第一条 id = 1 之外的所有记录。因为 `id > 1(true) and null > 0 (unknown)` 得到的值为 `unknown`.
-
-
-## 效率优化
-### 求 median 
-Table: 'orderdetails', feature : 'unitprice', 目标求 'unitprice' 的中位值 
-
-* 一般写法
-```mysql
-SELECT avg ( distinct unitprice ) 
-FROM ( 
-  SELECT t1.unitprice  
-  FROM orderdetails t1, orderdetails t2 
-    GROUP BY t1.unitprice 
-    HAVING SUM ( CASE WHEN t2.unitprice >= t1.unitprice THEN 1 else 0 END ) >= COUNT (*) / 2 
-    AND  SUM ( CASE WHEN t2.unitprice <= t1.unitprice THEN 1 else 0 END ) >= COUNT (*) / 2 ) tmp；
+SELECT * FROM sa left JOIN sb WHERE sa.id = sb.id 
+UNION 
+SELECT * FROM sa right JOIN sb WHERE sa.id = sb.id 
 ```
-运行时间 3.97 s (MBP 15 / MySQL 8.0.12)。 复用两次表格 `t1, t2`，对两表价格一一对比，时间 `O(2 * n * n)`
-
-* 高效率写法 
-```mysql
--- After the first pass, @rownum will contain the total number of rows. 
--- This can be used to determine the median, so no second pass or join is needed.
-SELECT AVG(dd.unitprice) as median
-FROM (
-    SELECT d.unitprice, @rownum := @rownum+1 as `row_number`, @total_rows:=@rownum
-    FROM orderdetails d, (SELECT @rownum:=0) r
-        WHERE d.unitprice is NOT NULL
-        -- put some where clause here
-        ORDER BY d.unitprice
-) AS dd
-    WHERE dd.row_number IN ( FLOOR((@total_rows+1)/2), FLOOR((@total_rows+2)/2) )；
-```
-运行时间 0.01 s. 这种方法只遍历一次表，将行数存放到 `total_rows` 里面，时间复杂度 `O(n)`。 
