@@ -11,7 +11,6 @@ author: GaoangLau
 
 
 
-
 SQL 处理的基本单位不是记录，而是集合。 —— Joe Celko 
 
 
@@ -19,11 +18,10 @@ SQL 处理的基本单位不是记录，而是集合。 —— Joe Celko
 
 
 
-A simple [cheatsheet](http://git.io/JUvIJ) on MySQL. 
-
-
 
 ## 基本语法
+A simple [cheatsheet](http://git.io/JUvIJ) on MySQL. 
+
 * `delete from table [where clause]`, 按条件删除数据
 * `left(str, len)`, 截取左边 `len` 长度字符。E.g., `left("abcd", 2)` = `ab`
 * `substring(str, pos)`, 从 `pos` 处截取字符, e.g., `substring("abcde", 2)` = `bcde`。注意 `pos` 下标从 1 开始。如果 `pos` 为负值，则从右边开始截取
@@ -118,10 +116,11 @@ select * from users where id > 0 and age > 1
 
 ## 效率优化
 ### 求 median 
-Table: 'orderdetails', feature : 'unitprice', 目标求 'unitprice' 的中位值 
+Table: 'sales', feature : 'price', 目标求 'price' 的中位值 
 
 * 一般写法
-```mysql
+
+```sql
 SELECT avg ( distinct price ) 
 FROM ( 
   SELECT s1.price
@@ -130,10 +129,12 @@ FROM (
     HAVING SUM ( CASE WHEN s2.price >= s1.price THEN 1 else 0 END ) >= COUNT (*) / 2 
     AND  SUM ( CASE WHEN s2.price <= t1.price THEN 1 else 0 END ) >= COUNT (*) / 2 ) tmp；
 ```
+
 运行时间 3.97 s (MBP 15 / MySQL 8.0.12)。 复用两次表格 `t1, t2`，对两表价格一一对比，时间 `O(2 * n * n)`
 
 * 高效率写法 
-```mysql
+
+```sql
 -- After the first pass, @rownum will contain the total number of rows. 
 -- This can be used to determine the median, so no second pass or join is needed.
 SELECT AVG(dd.price) as median
