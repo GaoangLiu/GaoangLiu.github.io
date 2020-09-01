@@ -76,6 +76,7 @@ plt.plot(range(2, 10), sse)
 将所有样本点的轮廓系数取平均，即得到聚类结果的轮廓系数。
 
 Examples with Sklearn
+
 ```python
 # Search for the best K
 from sklearn.metrics import silhouette_score
