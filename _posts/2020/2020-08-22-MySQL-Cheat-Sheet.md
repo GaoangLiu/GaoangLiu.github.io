@@ -10,10 +10,16 @@ author: GaoangLau
 {:toc}
 
 
+
+
+SQL 处理的基本单位不是记录，而是集合。 —— Joe Celko 
+
+
+
+
+
+
 A simple [cheatsheet](http://git.io/JUvIJ) on MySQL. 
-
-
-
 
 
 
@@ -53,7 +59,7 @@ A simple [cheatsheet](http://git.io/JUvIJ) on MySQL.
 
 
 
-## 关键字区分与联系
+## 相似函数区别与联系
 * `union` 与 `union all` 都会将多个结果整合出来，但存在一定的区别：`union` 会自动压缩多个结果集合中的重复结果，而 `union all` 则将所有的结果全部显示出来，不管是不是重复。
 
 * `having` v.s., `where`, 
@@ -71,6 +77,7 @@ A simple [cheatsheet](http://git.io/JUvIJ) on MySQL.
 * `group by` v.s. `partition by`, 根本区别在于是否汇总数据
     * `partition by` 没有汇总数据，用于分组，只适用于窗口函数，比如 `rank() over`； 不会影响返回的行数，但会更改窗口函数的结果计算方式； 
     * `group by` 汇总数据，对集合进行拆分； 如果有集合大小大于 1，则必然影响(减少)返回的行数 
+
 
 
 ## NULL 与三元逻辑
@@ -105,7 +112,7 @@ SQL-92标准
 在 `where` 语句中返回为 `unknown` 的记录将被过滤掉，以上表为例，如果执行 
 ```sql
 select * from users where id > 0 and age > 1
-``` 
+```
 将返回除第一条 id = 1 之外的所有记录。因为 `id > 1(true) and null > 0 (unknown)` 得到的值为 `unknown`.
 
 
@@ -115,13 +122,13 @@ Table: 'orderdetails', feature : 'unitprice', 目标求 'unitprice' 的中位值
 
 * 一般写法
 ```mysql
-SELECT avg ( distinct unitprice ) 
+SELECT avg ( distinct price ) 
 FROM ( 
-  SELECT t1.unitprice  
-  FROM orderdetails t1, orderdetails t2 
-    GROUP BY t1.unitprice 
-    HAVING SUM ( CASE WHEN t2.unitprice >= t1.unitprice THEN 1 else 0 END ) >= COUNT (*) / 2 
-    AND  SUM ( CASE WHEN t2.unitprice <= t1.unitprice THEN 1 else 0 END ) >= COUNT (*) / 2 ) tmp；
+  SELECT s1.price
+  FROM sales s1, sales s2
+    GROUP BY s1.price
+    HAVING SUM ( CASE WHEN s2.price >= s1.price THEN 1 else 0 END ) >= COUNT (*) / 2 
+    AND  SUM ( CASE WHEN s2.price <= t1.price THEN 1 else 0 END ) >= COUNT (*) / 2 ) tmp；
 ```
 运行时间 3.97 s (MBP 15 / MySQL 8.0.12)。 复用两次表格 `t1, t2`，对两表价格一一对比，时间 `O(2 * n * n)`
 
@@ -129,14 +136,67 @@ FROM (
 ```mysql
 -- After the first pass, @rownum will contain the total number of rows. 
 -- This can be used to determine the median, so no second pass or join is needed.
-SELECT AVG(dd.unitprice) as median
+SELECT AVG(dd.price) as median
 FROM (
-    SELECT d.unitprice, @rownum := @rownum+1 as `row_number`, @total_rows:=@rownum
-    FROM orderdetails d, (SELECT @rownum:=0) r
-        WHERE d.unitprice is NOT NULL
+    SELECT price, @rownum := @rownum+1 as `row_number`, @total_rows:=@rownum
+    FROM sales s, (SELECT @rownum:=0) r
+        WHERE price is NOT NULL
         -- put some where clause here
-        ORDER BY d.unitprice
+        ORDER BY price
 ) AS dd
     WHERE dd.row_number IN ( FLOOR((@total_rows+1)/2), FLOOR((@total_rows+2)/2) )；
 ```
 运行时间 0.01 s. 这种方法只遍历一次表，将行数存放到 `total_rows` 里面，时间复杂度 `O(n)`。 
+
+
+
+
+# SQL JOINs
+[C.L.Moffatt](https://link.zhihu.com/?target=https%3A//www.codeproject.com/script/Membership/View.aspx%3Fmid%3D5909363) 关于 SQL joins 的总结:
+<img src='http://git.io/JUq09' width='600px'>
+
+* `inner join` (等值联接) 只返回两个表中联结字段相等的行
+* `left (outer) join` (左联接) 返回包括左表中的所有记录和右表中联结字段相等的记录
+* `right (outer) join` (右联接) 返回包括右表中的所有记录和左表中联结字段相等的记录，则好与左联接对称
+
+<img src='http://git.io/JUIAi' width='300px' alt='left/right join'>  <img src='http://git.io/JUIAX' width='300px' alt='left/right join'>
+
+对以上两表进行左联接得到结果:
+```sql 
++---------+-------+---------+----------+  
+| sale_id | price | sale_id | newprice |
++---------+-------+---------+----------+
+|       1 |  5000 |       1 |     1000 |
+|       2 |  5000 |       2 |     3000 |
+|       7 |  9000 |    NULL |     NULL |
++---------+-------+---------+----------+
+```
+右联接得到结果
+```sql
++---------+-------+---------+----------+
+| sale_id | price | sale_id | newprice |
++---------+-------+---------+----------+
+|       1 |  5000 |       1 |     1000 |
+|       2 |  5000 |       2 |     3000 |
+|    NULL |  NULL |      10 |     1000 |
++---------+-------+---------+----------+
+```
+
+等值联接得到结果
+```sql
++---------+-------+---------+----------+
+| sale_id | price | sale_id | newprice |
++---------+-------+---------+----------+
+|       1 |  5000 |       1 |     1000 |
+|       2 |  5000 |       2 |     3000 |
++---------+-------+---------+----------+
+```
+
+## 小结
+* 与 `inner join` 的区别是，`outer join` 返回的表 A, B 的交集 + (`A (left join)| B (right join) | all A + B (full join)`)
+* Note: MySQL 中并没有 `full join` 命令，可以通过其他方式模拟这个命令，比如:
+```sql
+SELECT * FROM sa left JOIN sb WHERE sa.id = sb.id 
+UNION 
+SELECT * FROM sa right JOIN sb WHERE sa.id = sb.id 
+```
