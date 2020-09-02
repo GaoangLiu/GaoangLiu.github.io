@@ -66,14 +66,16 @@ class Blog:
     def post_drafts(self):
         # os.remove('_posts/*')
         draft_dir = '_drafts'
-        for f in os.listdir('_drafts'):
-            full_path = f'{draft_dir}/{f}'
-            if os.path.isfile(full_path) and full_path.endswith('.md'):
-                print(full_path)
-                self._export_to_post(full_path)
-                # return
+        for root, subdirs, files in os.walk(draft_dir):
+            if len(subdirs) == 0:
+                for f in files:
+                    full_path = f'{root}/{f}'
+                    if os.path.isfile(full_path) and full_path.endswith('.md'):
+                        self._export_to_post(full_path)
+                
 
 
 if __name__ == "__main__":
     b = Blog()
     b.post_drafts()
+            
