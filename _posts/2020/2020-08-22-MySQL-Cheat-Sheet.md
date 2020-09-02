@@ -18,7 +18,6 @@ SQL 处理的基本单位不是记录，而是集合。 —— Joe Celko
 
 
 
-
 ## 基本语法
 A simple [cheatsheet](http://git.io/JUvIJ) on MySQL. 
 
@@ -35,7 +34,7 @@ A simple [cheatsheet](http://git.io/JUvIJ) on MySQL.
   *  <img src="http://git.io/JUUj4" width="250px"> <img src="http://git.io/JUUjV" width="250px"> 
 * `ucase(), lcase()` 大小写转换。E.g., 首字母大写 `concat(ucase(mid(name, 1, 1)), mid(name, 2)) as name`
 
-### Hash/加密
+## Hash/加密
 
 * `md5(value)`, MD5 讯息摘要演算法运算，计算数据的 MD5 值。加盐可通过间接方p实现，比如 `md5(concat('sweetsalt', value))`
 * `sha1(value)`, Security Hash Algorithm 安全散列演算法，比 MD5 值长8位 (32 v.s. 40)，但仍然可以通过碰撞攻击破解(指找到一个具有相同 hash 值的输入)
@@ -152,7 +151,7 @@ FROM (
 
 
 
-# SQL JOINs
+## SQL JOINs
 [C.L.Moffatt](https://link.zhihu.com/?target=https%3A//www.codeproject.com/script/Membership/View.aspx%3Fmid%3D5909363) 关于 SQL joins 的总结:
 <img src='http://git.io/JUq09' width='600px'>
 
@@ -193,7 +192,7 @@ FROM (
 +---------+-------+---------+----------+
 ```
 
-## 小结
+### 小结
 * 与 `inner join` 的区别是，`outer join` 返回的表 A, B 的交集 + (`A (left join)| B (right join) | all A + B (full join)`)
 * Note: MySQL 中并没有 `full join` 命令，可以通过其他方式模拟这个命令，比如:
 ```sql
@@ -201,3 +200,44 @@ SELECT * FROM sa left JOIN sb WHERE sa.id = sb.id
 UNION 
 SELECT * FROM sa right JOIN sb WHERE sa.id = sb.id 
 ```
+
+
+
+## 其他 
+### 求累加和
+给定以下表格，对各个 id 求出 cnt 在日期上的累加和
+```sql
++-----------+------------+--------------+
+| player_id | event_date | games_played |
++-----------+------------+--------------+
+|         1 | 2016-03-01 |            5 |
+|         1 | 2016-05-02 |            6 |
+|         1 | 2017-06-25 |            1 |
+|         3 | 2016-03-02 |            0 |
+|         3 | 2018-07-03 |            5 |
++-----------+------------+--------------+
+```
+
+方法 1 , 使用变量存储上一步的累加和及 id，结合条件判断得到结果 
+
+```sql 
+SELECT player_id, event_date, CASE 
+    WHEN @id = player_id THEN @total:= @total + games_played
+    WHEN @id := player_id THEN @total:= games_played
+    END AS games_played_so_far
+FROM activity, (select @total:=0, @id:=null ) tmp 
+ORDER BY player_id, event_date 
+```
+
+方法 2，按 id ，日期的先后关系联接两个表格，然后聚合再求和 
+
+```sql 
+SELECT a1.player_id, a1.event_date, sum(a2.games_played) AS "games_played_so_far"
+FROM activity a1
+JOIN activity a2 
+    ON a1.player_id = a2.player_id 
+    AND a1.event_date >= a2.event_date 
+    GROUP BY a1.player_id, a1.event_date
+```
+
+第1种方法速度更快。
