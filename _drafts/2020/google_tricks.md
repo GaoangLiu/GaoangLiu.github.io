@@ -64,15 +64,17 @@ categories:
 
 <p style="align:center">
     <img src="http://git.io/JUO48" width="380px">
-<p>
+</p>
 
 
 ## 使用 OR 搜索多个词条
+
 示例: `iPhone OR Android`，注意这里使用的是大写的 OR (或者使用符号 `|` )，使用小写的 or 会被搜索引擎认定为用户在征求两选一相关的意见。作为对比，以下左右两图分别使用了大写与小写的 `or`:
 
 <img src="http://git.io/JUO4P" width="380px" height="500px">  <img src="http://git.io/JUO4F" height="500px" width="380px">
 
 
 ## 组合使用，融会贯通
+
 * 快速查找某人的社交档案 `周杰伦 (site:twitter.com | site:weibo.com | site:instagram.com)`
 * 对比搜索水果 Apple, Lemon 并排除 Apple.com 结果 `apple | lemon -apple.com`
