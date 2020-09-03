@@ -17,7 +17,7 @@ categories:
 
 对比搜索结果，左图为添加双引号搜索结果，右图为未添加双引号搜索结果：
 
-<img src="http://git.io/JUOlJ" width="300px"> <img src="http://git.io/JUOlI" width="300px">
+<img src="http://git.io/JUOlJ" width="380px"> <img src="http://git.io/JUOlI" width="380px">
 
 
 ## 过滤结果 
@@ -27,7 +27,7 @@ categories:
 
 对比搜索结果，左图为过滤搜索结果，右图为未过滤搜索搜索结果(前 5 条搜索结果中出现 2 次)
 
-<img src="http://git.io/JUOl4" width="350px"> <img src="http://git.io/JUOli" width="350px">
+<img src="http://git.io/JUOl4" width="380px"> <img src="http://git.io/JUOli" width="380px">
 
 过滤多条结果可通过添加多个过滤词条实现，e.g., `-worda -wordb`
 
@@ -35,7 +35,8 @@ categories:
 ## site: 指定你想搜索的站点
 
 在搜索词条之后添加 `site:stackoverflow.com` 指定只从 SO 上提取搜索结果，比如:
-<img src="http://git.io/JUO8m" width="350px">
+
+<img src="http://git.io/JUO8m" width="380px">
 
 
 ## filetype: 指定搜索文件类型
@@ -43,13 +44,14 @@ categories:
 
 示例: 搜索 `Rabin-Carp` 算法相关 pdf 文件 `Rabin Carp filetype:pdf`
 
-<img src="http://git.io/JUO82" width="350px">
+<img src="http://git.io/JUO82" width="380px">
 
 
 ## inurl: 搜索关键词在 url 链接中
 `inurl` 语法返回的网页链接中包含第一个关键字，后面的关键字则出现在链接中或者网页文档中。
 示例: `inurl:梵高` 注: `inurl:keyword` 之间不能有空格 
-<img src="http://git.io/JUO4J" width="350px">
+
+<img src="http://git.io/JUO4J" width="380px">
 
 类似的 `intitle` 语法指定搜索关键词包含在网页标题中。
 
@@ -58,13 +60,14 @@ categories:
 即正则搜索，星号作为一个占位符，会自动匹配所有可能情况。注: 星号匹配 0 个或者多个单词。 
 
 示例: `wake me up when * ends`
-<img src="http://git.io/JUO48" width="350px">
+
+<img src="http://git.io/JUO48" width="380px">
 
 
 ## 使用 OR 搜索多个词条
 示例: `iPhone OR Android`，注意这里使用的是大写的 OR (或者使用符号 `|` )，使用小写的 or 会被搜索引擎认定为用户在征求两选一相关的意见。作为对比，以下左右两图分别使用了大写与小写的 `or`:
 
-<img src="http://git.io/JUO4P" width="350px"> / <img src="http://git.io/JUO4F" width="350px">
+<img src="http://git.io/JUO4P" width="380px">  <img src="http://git.io/JUO4F" width="380px">
 
 
 ## 组合使用，融会贯通
