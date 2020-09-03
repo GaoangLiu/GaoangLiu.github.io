@@ -198,8 +198,8 @@ SELECT * FROM sa right JOIN sb WHERE sa.id = sb.id
 
 
 ## 其他 
-### 求累加和
-给定以下表格，对各个 id 求出 cnt 在日期上的累加和
+### 求移动累加和
+给定以下表格，对各个 id 求出 games_played 在日期上的累加和
 ```sql
 +-----------+------------+--------------+
 | player_id | event_date | games_played |
@@ -223,10 +223,10 @@ FROM activity, (select @total:=0, @id:=null ) tmp
 ORDER BY player_id, event_date 
 ```
 
-方法 2，按 id ，日期的先后关系联接两个表格，然后聚合再求和 
+方法 2，关联子查询，按 id ，日期的先后关系联接两个表格，然后聚合再求和 
 
 ```sql 
-SELECT a1.player_id, a1.event_date, sum(a2.games_played) AS "games_played_so_far"
+SELECT a1.player_id, a1.event_date, SUM(a2.games_played) AS "games_played_so_far"
 FROM activity a1
 JOIN activity a2 
     ON a1.player_id = a2.player_id 
@@ -234,4 +234,37 @@ JOIN activity a2
     GROUP BY a1.player_id, a1.event_date
 ```
 
-第1种方法速度更快。
+方法 3，滑动窗口函数
+```sql
+SELECT player_id
+    , event_date
+    , SUM(games_played) OVER (PARTITION BY player_id ORDER BY event_date ROWS UNBOUNDED PRECEDING) AS `games_played_so_far`
+FROM activity; 
+```
+
+### `group_concat()` 累加字符
+语法 
+```sql
+GROUP_CONCAT( DISTINCT expression ORDER BY expression SEPARATOR sep );
+```
+
+`GROUP_CONCAT` 将某一字段的值按指定的字符进行累加，系统默认的分隔符是逗号，可以累加的字符长度为 1024 字节。可通过以下命令进行修改:
+```sql
+set global group_concat_max_len=102400;
+set session group_concat_max_len=102400; 
+```
+
+* 分组字符累加。举例：按字段 `age` 进行分组，将名字进行累加 
+```sql 
+SELECT GROUP_CONCAT(name) FROM users GROUP BY age; 
+```
+
+* 修改默认分隔符为 ':'
+```sql 
+SELECT GROUP_CONCAT(name SEPERATOR ':') FROM users GROUP BY age; 
+```
+
+* 按字段 `id` 排序
+```sql 
+SELECT GROUP_CONCAT(name ORDER BY id SEPERATOR ':') FROM users GROUP BY age; 
+```
