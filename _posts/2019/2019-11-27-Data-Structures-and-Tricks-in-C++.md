@@ -235,30 +235,32 @@ ms.insert(50);  // 60, 50, 50, 40
 | 插入时间 | $$\text{log}(n)$$ + 平衡时间 | 平均 $$O(1)$$ / 最坏 $$O(n)$$ |
 | 删除时间 | $$\text{log}(n)$$ + 平衡时间 | 平均 $$O(1)$$ / 最坏 $$O(n)$$ |
 
-## std::vector v.s. std::array 
+## std::vector v.s. std::array
+
 在 C++11 中，STL 中提拱了一个新的容器 `std::array`，该容器取代了 C 类型的数组，在某些程度上也可以替代 `std::vector`。
 
 `array` 与 `vector` 的相同点在于：
-1. 底层存储结构都为数组，使用连续的内存
-2. 都对下标运算符 `[]` 进行了重载，可能使用下标运算符操控元素
-3. 都实现了 `front()`, `back()`, `size()`, `empty()` 等方法，提供迭代器(`begin(), end()`)遍历机制
+1. 都对下标运算符 `[]` 进行了重载，可能使用标准数组表示法访问各个元素
+2. 都实现了 `front()`, `back()`, `size()`, `empty()` 等方法，提供迭代器(`begin(), end()`)遍历机制
 
 区别:
+* `array` 使用栈(静态内存分配)，编译时确定大小、更轻量、更效率，而 `vector` 使用堆(动态存储)，使用 `new`, `delete` 来管理内存; 
 * `vector` 属于可变长容器，可以动态更改容器容量； `array` 属于定长容量，初始化必须指定大小。
     * 从语法上讲，`vector` 提供但 `array` 没有的 `resize()`, `erase()` 等方法归结于其容量是否可变动 
-* `array` 提供了静态数组，编译时确定大小、更轻量、更效率，当然在方便性上有一定局限
+
 
 ### array vector 实现方法对比
+
 | Function | array | vector |
 |:---------|:-------|:-------|
-|`constructor/destructor`  |  ❌ | ✔ |
+|`constructor and destructor`  |  ❌ | ✔ |
 |`push_back()`, `pop_back()` |  ❌ | ✔ |
 |`resize()`, `capacity()`, `reserve()` |  ❌ | ✔ |
 |`erase()`, `clear()` |  ❌ | ✔ |
 |`empty()`, `size()`, `max_size()`  |  ✔ | ✔ |
 |`at()`, `front()`, `back()`  |  ✔ | ✔ |
 |`assign()`, `swap()`  |  ✔ | ✔ |
-|`operator = < == []`  |  ✔ | ✔ |
+|`operator = \< == []`  |  ✔ | ✔ |
 
 
 ### 小结
