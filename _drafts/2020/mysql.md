@@ -195,6 +195,12 @@ UNION
 SELECT * FROM sa right JOIN sb WHERE sa.id = sb.id 
 ```
 
+## 关于时间与日期 
+* 获取一个日期是周几(数字形式)的两种方法 `dayofweek(date)` v.s., `weekday(date)`，区别在于
+    1. `dayofweek()` 从周日 'Sunday' 开始从 1 计数，即 'sunday = 1, monday = 2, ...'
+    2. `weekday()` 从周一开始从标号 0 开始计数，即 'monday = 0, ..., sunday = 6'
+* 直接得到指定日期周几名字命令  `dayname(date)`，对应的 `monthname()` 返回指定日期月份名字(英文单词)
+
 
 
 ## 其他 
