@@ -237,11 +237,12 @@ ms.insert(50);  // 60, 50, 50, 40
 
 ## std::vector v.s. std::array
 
-在 C++11 中，STL 中提拱了一个新的容器 `std::array`，该容器取代了 C 类型的数组，在某些程度上也可以替代 `std::vector`。
+在 C++11 中，STL 中提拱了一个新的容器 `std::array`，该容器取代了 C 类型的数组>
 
 `array` 与 `vector` 的相同点在于：
 1. 都对下标运算符 `[]` 进行了重载，可能使用标准数组表示法访问各个元素
-2. 都实现了 `front()`, `back()`, `size()`, `empty()` 等方法，提供迭代器(`begin(), end()`)遍历机制
+2. 都实现了 `front()`, `back()`, `size()`, `empty()` 等方法，提供迭代器(`begin()`, `end()`)遍历机制
+
 
 区别:
 * `array` 使用栈(静态内存分配)，编译时确定大小、更轻量、更效率，而 `vector` 使用堆(动态存储)，使用 `new`, `delete` 来管理内存; 
@@ -253,7 +254,7 @@ ms.insert(50);  // 60, 50, 50, 40
 
 | Function | array | vector |
 |:---------|:-------|:-------|
-|`constructor and destructor`  |  ❌ | ✔ |
+|`constructor`, `destructor`  |  ❌ | ✔ |
 |`push_back()`, `pop_back()` |  ❌ | ✔ |
 |`resize()`, `capacity()`, `reserve()` |  ❌ | ✔ |
 |`erase()`, `clear()` |  ❌ | ✔ |

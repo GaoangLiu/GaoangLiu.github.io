@@ -21,7 +21,8 @@ While iterating over a target text, this algorithm efficiently encodes its subst
 
 ---
 # A bird-view
-The Rabin-Karp algorithm works following pseudocode:
+Pseudocode of Rabin-Karp algorithm:
+
 ```python
 1 def rabin_karp(s[1..n]: string, pattern[1..m]:string)
 2     hpattern := hash(pattern[1..m])
@@ -35,9 +36,9 @@ The Rabin-Karp algorithm works following pseudocode:
 
 For such algorithm, lines 2, 4, and 6 each require `O(m)` time. However, line 2 is only executed once, and line 6 is only executed if the hash values match, which is unlikely to happen more than a few times. Line 5 is executed `O(n)` times, but each comparison only requires constant time, so its impact is `O(n)`. The issue is line 4.
 
-To calculate the hash value of substring `s[i..i+m-1]`, a naive method requires `O(m)` time if the value is calculated by examining each character. Then an algorithm with a naive hash computation method requires `O(mn)` time, the same complexity as a straightforward string matching algorithms. 
+To calculate the hash value of substring `s[i..i+m-1]`, a naive method requires `O(m)` time if the value is calculated by examining each character. Then an algorithm with a naive hash computation method requires `O(mn)` time, the same complexity as a straightforward string matching algorithm. 
 
-To speed up the algorithm, the hash must be computed in **constant time**. The trick is tos reuse the previously calculated hash value of `s[i+1..i+m-1]` when computing the next hash value of `s[i+1..i+m]`, which is possible with a (special) **rolling hash**, a hash function specially designed to enable this operation.
+To speed up the algorithm, the hash must be computed in **constant time**. The trick is to reuse the previously calculated hash value of `s[i+1..i+m-1]` when computing the next hash value of `s[i+1..i+m]`, which is possible with a **rolling hash**, providing us the ability to calculate the hash values without rehashing the whole string.
 
 ## Trivial Hash Function Won't Work
 
@@ -55,7 +56,7 @@ $$ H(s[i+1..i+n]) = ( ( ( H( s[i..n] ) - s[i] * base ) * d ) + s[i+n] + q) \% q 
 
 where 
 * `s` is the text string.
-* `q` is a prime modulus.
+* `q` is a prime modulus to avoid overflow 
 * `n` is the length of pattern string.
 * `base`, base offset. 
     * This method treats every substring as a number in some base, therefore, `base` should be large enough to avoid frequent hash collision. Usually be $$ d^ {(n-1)} $$, where $$ d = 256 $$ is the number of characters in the alphabet.
@@ -147,8 +148,6 @@ def rabin_karp(s: string, pat: string):
 
 
 ---
-
-# Extra
 
 ## Spurious Hit
 A **spurious hit** is a case when the hash value of the pattern matches with the hash value of a window of the text but the window is not the actual pattern. This is unavoidable because the hash function maps infinite inputs into finite outputs.
