@@ -111,21 +111,6 @@ int Graph::cost_of_mst() {
     cost += key[i], printf("%d - %d\n", parent[i], i);
   return cost;
 }
-
-int main() {
-  // create the graph given in above fugure
-  int V = 6;
-  Graph g(V);
-  vector<vector<int>> ns = {{0, 1, 0}, {1, 3, 10}, {1, 4, 7},
-                            {3, 4, 9}, {2, 4, 32}, {4, 5, 23}};
-  for (auto &p : ns)
-    g.add_edge(p[0], p[1], p[2]);
-
-  int c = g.primMST();
-  std::cout << c << std::endl;
-
-  return 0;
-}
 ```
 
 
@@ -200,21 +185,6 @@ int Graph::kruskal_mst() {
   }
 
   return cost;
-}
-
-int main() {
-  // create the graph given in above fugure
-  int V = 6;
-  Graph g(V);
-  vector<vector<int>> ns = {{0, 1, 0}, {1, 3, 10}, {1, 4, 7},
-                            {3, 4, 9}, {2, 4, 32}, {4, 5, 23}};
-  for (auto &p : ns)
-    g.add_edge(p[0], p[1], p[2]);
-
-  int c = g.kruskal_mst();
-  std::cout << c << std::endl;
-
-  return 0;
 }
 ```
 
