@@ -15,7 +15,7 @@ author: GaoangLau
 
 
 
-比如，在求 $$f(x,y)$$ 在 $$ g(x, y) = c $$ 时的最大值时，我们可以引入新变量拉格朗日乘数 $$\lambda$$，这时我们只需要计算下列拉格朗日函数的极值：
+比如，在求 $$f(x,y)$$ 在 $$ g(x, y) = c $$ 时的最大值时，我们可以引入拉格朗日乘数 $$\lambda$$，这时我们只需要计算下列拉格朗日函数的极值：
 $$
 \begin{aligned}
     \mathcal{L}(x, y, \lambda) = f(x, y) + \lambda(g(x, y) - c)
@@ -100,17 +100,17 @@ $$
 \end{aligned}
 $$
 
-此问题称为原问题的对偶问题，记其最优解为 $$d*$$ 
+此问题称为原问题的对偶问题，记其最优解为 $$d^*$$ 
 
 ### 原问题与对偶问题关第 
 以下定理表明对偶问题的最优值不大于原问题的最优值(弱对偶性)。 
 
-> 若两问题都存在最优解，那么 $$d* = \underset{\alpha, \beta}{\text{max }}\underset{x}{\text{min }} \mathcal{L}(x, \alpha, \beta) \leq \underset{x}{\text{min }} \underset{\alpha, \beta: \alpha_i \geq 0}{\text{max }} \mathcal{L}(x, \alpha, \beta) = p*$$ 。
+> 若两问题都存在最优解，那么 $$d^* = \underset{\alpha, \beta}{\text{max }}\underset{x}{\text{min }} \mathcal{L}(x, \alpha, \beta) \leq \underset{x}{\text{min }} \underset{\alpha, \beta: \alpha_i \geq 0}{\text{max }} \mathcal{L}(x, \alpha, \beta) = p^*$$ 。
 
 推论:
 * 假设 $$x^*, \alpha^*, \beta^*$$ 为对问题及对偶问题的可行解，且 $$p^* = d^*$$ (强对偶性)，那么 $$x^*, \alpha^*, \beta^*$$ 为原问题及对偶问题的最优解
 
-考虑对偶问题的一好处是：当原始问题不好求解而对偶问题相对好求解的时候，这时我们就可以用求解对偶问题替代求解原始问题。并且更重要的是，对偶问题是一个凸优化问题，他的极值是唯一的(因为$$d^* \leq p^*$$)。这样无论一个问题是不是凸优化的问题，我们都能将其转化成凸优化的问题。
+考虑对偶问题的一好处是：当原始问题不好求解而对偶问题相对好求解的时候，这时我们就可以用求解对偶问题替代求解原始问题。并且更重要的是，对偶问题是一个凸优化问题，它的极值是唯一的(因为$$d^* \leq p^*$$)。这样无论一个问题是不是凸优化的问题，我们都能将其转化成凸优化的问题。
 
 那么什么情况下有 $$ d^* = p^* $$? 其中一个为 KKT 条件(Karush-Kuhn-Tucker Conditions).
 
