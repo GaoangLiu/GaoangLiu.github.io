@@ -17,32 +17,34 @@ author: GaoangLau
 
 
 
-Formally, 给定无向连通图 $$ G = (V, E, W) $$，其中 $$ V = \{ v_i \vert 0 \leq i \leq N \}, W = \{ w \vert w \geq 0\}, E = \{(u, v, w) \vert u, v \in V, w \in W\} $$ 分别表示顶点集合、权重及边集合，记 $$ \omega(e) $$ 为边 $$e \in E$$ 的权重。 求 $$G$$ 的连通子图 $$T = (V, E' \subset E, W)$$ 使得 $$ \sum_{e \in E'} \omega(e) $$ 最小。
+Formally, 给定无向连通图 $$ G = (V, E, W) $$，其中 $$ V = \{ v_i \vert 0 \leq i \leq N \} $$，$$ W = \{ w \vert w \geq 0\}$$，$$ E = \{(u, v, w) \vert u, v \in V, w \in W\} $$ 分别表示顶点集合、边的权重及边集合，记 $$ \omega(e) $$ 为边 $$e \in E$$ 的权重。 求 $$G$$ 的连通子图 $$T = (V, E' \subset E, W)$$ 使得 $$ \sum_\limits{e \in E'} \omega(e) $$ 最小。
 
 ## Prim 算法
-Prim 算法的思想
-1. 将图的顶点 $$V$$ 分为两类，一类表示在查找过程中已经加入到最小生成树中的顶点(记为 $$A$$：初始为任意一个节点 $$ u $$ 构成的单子集)，另一类表示尚未加入到最小生成树中的顶点(记为 $$ B $$ ：初始为 $$V \backslash \{u\}$$)； 
-2. 从图中寻找一条权重最小的切割边(cut edge)$$^{[1]}$$，将边上位于 $$ B $$ 上的节点加入到 $$ A $$ 并从 $$ B $$ 中删除； 
+Prim 算法过程:
+1. 将图的顶点 $$V$$ 分为两类，一类表示在查找过程中已经加入到最小生成树中的顶点集合(记为 $$A$$：初始为任意一个节点 $$ u $$ 构成的单子集)，另一类表示尚未加入到最小生成树中的顶点集合(记为 $$ B $$ ：初始为 $$V \backslash \{u\}$$)； 
+2. 从图中寻找一条权重最小的切割边(cut edge)$$^{[1]}$$，将边上位于 $$ B $$ 上的节点加入到 $$ A $$，然后从 $$ B $$ 中删除； 
 3. 重复迭代过程 2，直到 $$ B $$ 为空，即所有节点都被加入到最小生成树中。
 
-### 算法正确性
-证明: 假设 $$G$$ 是由 Prim 算法生成的一棵树，而 $$H \ne G$$ 为一棵与 $$G$$ 有最长公共前缀的 MST 。
-记 $$E=(e_1, e_2, ..., e_{n-1})$$ 为算法依次选择的边，$$H_1 = (e_1, ..., e_i)$$ 为 $$G, H$$ 最长公共前缀，则 $$ H_2 = H-H_1$$ 与 $$H_1$$ 构成了 $$H$$ 的两个强连通分量。记 $$W$$ 为 $$H_1$$ 中节点构成的集合。
+> [1] 顶点集合 $$ A $$ 与 $$ B $$ 的一条切割边是一条节点分别在 $$ A $$ 与 $$ B $$ 上的边
 
-令 $$e_{i+1}=(u, v)$$，记 $$f=(x, y) ^{注[1]}$$ 为从 $$H_1$$ 到 $$H_2$$ 上的边且有 $$x \in W$$，则显然有 $$f \ne e_j, 0\leq j \leq i \wedge y \not \in W$$。 考虑:
-1. $$\omega(e_{i+1}) > \omega(f)$$，由 Prim 算法的贪心策略可知算法在第 $$i+1$$ 应该选择 $$f$$ 而不是 $$e_{i+1}$$，与假设 $$G$$ 是由 Prim 算法生成的树矛盾； 
+### 算法正确性
+证明: 假设 $$G$$ 是由 Prim 算法生成的一棵树，而 $$H \ne G$$ 为所有最小生成树中与 $$G$$ 有最长公共前缀的一棵树。
+
+记 $$E=(e_1, e_2, ..., e_{n-1})$$ 为算法依次选择的边，$$H_1 = (e_1, ..., e_i)$$ 为 $$G, H$$ 最长公共前缀，则 $$ H_2 = H \ H_1$$ 与 $$H_1$$ 分别构成了 $$H$$ 的两个强连通分量。记 $$W$$ 为 $$H_1$$ 中节点构成的集合。
+
+令 $$e_{i+1}=(u, v)$$，记 $$f=(x, y) ^{[1]}$$ 为从 $$H_1$$ 到 $$H_2$$ 上的边且有 $$x \in W$$，则显然有 $$f \ne e_j, 0\leq j \leq i \wedge y \not \in W$$。 考虑:
+1. $$\omega(e_{i+1}) > \omega(f)$$，由 Prim 算法的贪心策略可知算法在第 $$i+1$$ 步应该选择 $$f$$ 而不是 $$e_{i+1}$$，与假设 $$G$$ 是由 Prim 算法生成的树矛盾； 
 2. $$\omega(e_{i+1}) < \omega(f)$$，则树 $$T=H - \{f\} + \{e_{i+1}\}$$ 也是图的一棵生成树，且权重比 $$H$$ 更小，与 $$H$$ 是 MST 矛盾; 
 3. $$\omega(e_{i+1}) = \omega(f)$$，则树 $$T=H - \{f\} + \{e_{i+1}\}$$ 是图的一棵生成树且 $$E' = (e_1, ..., e_{i+1})$$ 是 $$G,T$$ 的公共前缀，与 $$H$$ 是与 $$G$$ 存在最长公共前缀的 MST 矛盾。
 
-注[1] $$x,u$$ 未必是同一个节点 
+> [2] $$x,u$$ 未必是同一个节点 
 
 ### 时间复杂度
-- 使用邻接矩阵图存储边时，寻找所有最小权边需要 $$ O(|V|^2) $$ 运行时间。
-- 如果在寻找最小权边过程中引入优先级队列(如下面 `C++` 算法)$$^{[2]}$$，则时间可以优化为 $$O(|E| \log(|V|)$$
 
-Side Notes
-[1] 顶点集合 $$ A $$ 与 $$ B $$ 的一条切割边是一条节点分别在 $$ A $$ 与 $$ B $$ 上的边
-[2] 典型的以空间换时间的思路
+- 使用邻接矩阵图存储边时，寻找所有最小权边需要 $$ O(\vert V \vert ^2) $$ 运行时间。
+- 如果在寻找最小权边过程中引入优先级队列(如下面 `C++` 算法)$$^{[3]}$$，则时间可以优化为 $$O( \vert E \vert \log( \vert V \vert)$$
+
+> [3] 典型的以空间换时间的思路
 
 ### C++ 实现
 ```c++
@@ -81,10 +83,13 @@ void Graph::add_edge(int u, int v, int w) {
 // Prints shortest paths from src to all other vertices
 int Graph::cost_of_mst() {
   // Create a priority queue to store visited vertices.
+  // Item is a pair <weight, node id>
   priority_queue<pii, vector<pii>, greater<pii>> pq;
 
   int cost = 0, src = 0; // Taking vertex 0 as source
 
+  // Vector `parent` is used to  print out Tree edges from source 0
+  // Vector `key` for storing weights to calculate cost
   vector<int> key(V, INF), parent(V, -1);
   vector<bool> visited(V, false);
 
@@ -128,7 +133,7 @@ int Graph::cost_of_mst() {
 4. 重复过程3，走到图 $$G'$$ 所有节点都在同一个连通分量中
 
 ### 时间复杂度
-- 边按权值排序储存到优先级队列 $$O(|E| \log (|E|)) ^{[3]}$$，算法迭代 $$O(|E| \log (|E|))$$
+- 边按权值排序储存到优先级队列 $$O(\vert E \vert \log (\vert E \vert)) ^{[3]}$$，算法迭代 $$O(\vert E \vert \log (\vert E \vert))$$
 
 [3] 算法使用 `priority_queue` 以权重为优先级来存储边
 
@@ -182,6 +187,7 @@ int Graph::kruskal_mst() {
     int weight = top.first, u = top.second.first, v = top.second.second;
 
     int pu = find(u, parents), pv = find(v, parents);
+    // Decide whether two nodes u, v belong to the same connected component 
     if (pu != pv) {
       cost -= weight; // Note that weights are stored as negative numbers to
                       // leverage min heap
