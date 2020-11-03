@@ -33,6 +33,7 @@ __● Blogs__
 * [The Keras blog](https://blog.keras.io/author/francois-chollet.html)
 * [GPU for deep learning](https://timdettmers.com/2019/04/03/which-gpu-for-deep-learning/)
 * [Machine learning Mastery](https://machinelearningmastery.com/)
+* [An cool Gihub.io blog](https://curiouschild.github.io)
 
 __● ML Packages__
 * [Machine Learning commonly imported packages](https://raw.githubusercontent.com/GaoangLiu/GaoangLiu.github.io/master/codes/mlpackages.py)
