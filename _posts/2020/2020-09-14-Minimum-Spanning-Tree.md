@@ -134,67 +134,73 @@ public:
 
 [3] 算法使用 `priority_queue` 以权重为优先级来存储边
 
+
 ### C++ 实现
 ```c++
+#include <deque>
 #include <iostream>
-#include <list>
+#include <map>
 #include <numeric>
 #include <queue>
+#include <set>
+#include <stack>
+#include <unordered_map>
+#include <unordered_set>
 #include <vector>
-
+#include <list>
 using namespace std;
 #define INF 0x3f3f3f3f
 
-typedef pair<int, int> pii;
-
-class Graph {
-  int V; // No. of vertices
-  std::priority_queue<pair<int, pii>> pq;
+class Kruskal {
+  priority_queue<pair<int, pair<int, int>>> pq;
+  unordered_map<int, int> labels;
 
 public:
-  Graph(int V);
-  void add_edge(int u, int v, int w);
-  int kruskal_mst();
-};
+  int cnt=0;;
+  Kruskal() { }
+  Kruskal(int N) {}
 
-Graph::Graph(int V) { this->V = V; }
-
-void Graph::add_edge(int u, int v, int w) { pq.push({-1 * w, {u, v}}); }
-
-int find(int u, vector<int> &parents) {
-  if (u != parents[u])
-    parents[u] = find(parents[u], parents);
-  return parents[u];
-}
-
-void merge(int u, int v, vector<int> &parents) {
-  int pu = find(u, parents), pv = find(v, parents);
-  parents[pu] = parents[pv] = min(pu, pv);
-}
-
-int Graph::kruskal_mst() {
-  int cost = 0;
-  std::vector<int> parents(V);
-  std::iota(parents.begin(), parents.end(), 0);
-  std::vector<pair<int, pii>> mst; // To store edges of minimum spanning tree
-
-  while (!pq.empty()) {
-    pair<int, pii> top = pq.top();
-    pq.pop();
-    int weight = top.first, u = top.second.first, v = top.second.second;
-
-    int pu = find(u, parents), pv = find(v, parents);
-    // Decide whether two nodes u, v belong to the same connected component 
-    if (pu != pv) {
-      cost -= weight; // Note that weights are stored as negative numbers to
-                      // leverage min heap
-      merge(u, v, parents);
-      mst.push_back(top);
-    }
+  int get_label(int u) {
+    if (labels.count(u) > 0) return labels[u];
+    return (labels[u] = cnt++);
   }
 
-  return cost;
-}
+  void add_edge(int u, int v, int w) {
+    int lu = get_label(u), lv = get_label(v);
+    pq.push({-1 * w, make_pair(lu, lv)});
+  }
+
+  int find(int u, vector<int> &parents) {
+    if (u != parents[u]) parents[u] = find(parents[u], parents);
+    return parents[u];
+  }
+
+  void merge(int u, int v, vector<int> &parents) {
+    int pu = find(u, parents), pv = find(v, parents);
+    parents[pu] = parents[pv] = min(pu, pv);
+  }
+
+  int cost_of_mst() {
+    int cost = 0;
+    vector<int> parents(cnt, 0);
+    std::iota(parents.begin(), parents.end(), 0);
+    vector<pair<int, pair<int, int>>> mst;
+
+    while (!pq.empty()) {
+      pair<int, pair<int, int>> top = pq.top();
+      pq.pop();
+      int w = top.first, u = top.second.first, v = top.second.second;
+
+      int pu = find(u, parents), pv = find(v, parents);
+      if (pv != pu) {
+        cost -= w;
+        merge(u, v, parents);
+        mst.push_back(top);
+      }
+    }
+    return cost;
+  }
+};
 ```
 
 ## References 
