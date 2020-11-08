@@ -25,19 +25,17 @@ categories:
 ## Classic Problem 1: Stone Game
 问题描述: [stone game](https://www.google.com/search?client=firefox-b-d&q=leetcode+stone+game) 考察对一排带有点数的石头序列，比如 [2,3,5,7]，两个玩家依次从序列任意一端取石头并获得相应的点数。假设二人都按最优方式来玩游戏，第一个玩家是否一定可以获胜(取得更多的点数)？
 
-例 1: [1, 3, 5]。第一个玩家可以获胜，先取 5 再取 1 
+例 1: [1, 3, 5]，第一个玩家可以获胜，先取 5 再取 1 
 
-例 2: [2, 24, 7]。第一个玩家无法获胜
+例 2: [2, 24, 7]，第一个玩家无法获胜
 
 ### 自顶向下 + 备忘录方法
 ```cpp
 int memo[501][501];
 int dfs(int i, int j, vector<int> &piles){
-    if (i, j) return piles[left];
-    if (memo[i][j] > 0) return memo[i][righj];
-    int res = max(piles[i] - dfs(i + 1, j, piles), piles[j] - dfs(i, j - 1, piles)); 
-    memo[i][j] = res; 
-    return res; 
+    if (i == j) return piles[i];
+    if (memo[i][j] > 0) return memo[i][j];
+    returm (memo[i][j] = max(piles[i] - dfs(i + 1, j, piles), piles[j] - dfs(i, j - 1, piles)));
 }
 
 bool stoneGame(vector<int>& piles) {
