@@ -29,7 +29,7 @@ author: GaoangLau
 
 
 ## Classic Problem 1: Stone Game
-问题描述: [stone game](https://www.google.com/search?client=firefox-b-d&q=leetcode+stone+game) 考察对一排带有点数的石头序列，比如 [2,3,5,7]，两个玩家依次从序列任意一端取石头并获得相应的点数。假设二人都按最优方式来玩游戏，第一个玩家是否一定可以获胜(取得更多的点数)？
+问题描述: [stone game](https://leetcode.com/problems/stone-game/) 考察对一排带有点数的石头序列，比如 [2,3,5,7]，两个玩家依次从序列任意一端取石头并获得相应的点数。假设二人都按最优方式来玩游戏，第一个玩家是否一定可以获胜(取得更多的点数)？
 
 例 1: [1, 3, 5]，第一个玩家可以获胜，先取 5 再取 1 
 
@@ -93,5 +93,45 @@ bool stone_game(vector<int> &piles) {
     dp[i] = std::max(piles[i+len] - dp[i], piles[i] - dp[i+1]);
 ```
 
+
+## 最长有效括号
+问题[Leetcode 32](https://leetcode.com/problems/longest-valid-parentheses/): 给定一个仅由小括号 `(`, `)` 构成的字符串 `s`，求 `s` 中最长有效子串的长度。比如 `()(()` 最长有效子串为 `()`，长度为2。
+
+思路：构造数列 `dp`，令`dp[i]` 表示以`s[i]`结尾的字符串最长有效子串长度，考虑
+1. `s[i]=='('`，则不可能构成有效字符串，这时`dp[i]=0`
+2. `s[i] == ')'`，考察
+    - `s[i-1] == '('`，那么`dp[i] = 2 + dp[i-2]` (暂不考虑边界条件)
+    - `s[i-1] == ')'` 并且 `s[i-dp[i-1]-1] == '('` ，那么`dp[i] = dp[i-1] + 2 + dp[i-dp[i-1]-2]`
+
+举个栗子，`s=()(())`，当前`i=5`,那么 `dp=[0,2,0,0,2,0]`。考虑到有 `s[4] = ')'` 且 `s[5-dp[4]-1] = s[2] = '('`，那么 `dp[5] = dp[4] + 2 + dp[1] = 6`. 
+
+### C++代码
+
+```cpp
+class Solution {
+public:
+  int longestValidParentheses(string s) {
+    int res = 0, n = s.size();
+    vector<int> dp(n, 0);
+    for (int i = 1; i < n; ++i) {
+      if (s[i] == ')') {
+        if (s[i - 1] == '(') {
+          dp[i] = i >= 2 ? 2 + dp[i - 2] : 2;
+          res = max(res, dp[i]);
+        } else { // s[i-1]==')'
+          if (i - dp[i - 1] - 1 >= 0 && s[i - dp[i - 1] - 1] == '(') {
+            dp[i] = 2 + dp[i - 1] + (i - dp[i - 1] - 2 >= 0 ? dp[i - dp[i - 1] - 2] : 0);
+            res = max(res, dp[i]);
+          }
+        }
+      }
+    }
+    return res;
+  }
+};
+```
+复杂度:
+- Time, $$O(n) $$
+- Space, $$ O(n) $$
 
 
