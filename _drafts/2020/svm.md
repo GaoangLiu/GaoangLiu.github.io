@@ -7,26 +7,13 @@ categories:
 - machine learning
 ---
 
-<img src='https://i.loli.net/2020/07/05/bqkGNJBm1phjI32.png' width='25px'> What is SVM exactly ?
+- 监督式学习模型，可用于线性及非线性(通过核技巧)**分类、回归及异常值检测**
+- 对分类任务而言，SVM 将实例表示为空间上的点，寻找一个超平面以最大化分类边界距离
+- 适合于复杂、中小规模数据集
 
-<img src='https://i.loli.net/2020/07/05/ku4QMPcK6gdDpLN.png' width='25px'> 
-* 一种多功能机器学习模型，可用于线性或线性**分类、回归及异常值检测**
-* 对分类任务而言，SVM 将实例表示为空间上的点，寻找一条良好的决策边界间隔使得??? (不是任意的决策边界，而是能最大化...)
-* 适合于复杂、中小规模数据集
-
-
----
-
-<img src='https://i.loli.net/2020/07/05/bqkGNJBm1phjI32.png' width='25px'> What is support vector ?
-
-<img src='https://i.loli.net/2020/07/05/ku4QMPcK6gdDpLN.png' width='25px'> 所谓向量，即是样本点 (每个样本都是一行数据，由向量表示)。支持向量即落在决策边界上的点 
+支持向量即是样本点 (每个样本都是一行数据，由向量表示)。支持向量即落在决策边界上的点 
 (T2improved)
 
-TODO: support vector determines decision boundary or the other way around ? 即先有决策边界还是先有支持向量?
-
-Ques: 可以多分类任务吗? 
-
-可以
 
 
 缺点:
