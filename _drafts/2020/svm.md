@@ -94,6 +94,7 @@ $$
     \end{aligned}
     $$
 2. 至此仅余下关于 $$\alpha$$ 的公式，问题 $$\underset{\alpha}{\text{max }} \mathcal{L} $$ 进而转化为 
+
     $$
     \begin{aligned}
             \underset{\alpha}{\text{min }}  \frac{1}{2} \sum\limits_i \sum\limits_j \alpha_i \alpha_j y_i y_j (x_i \cdot x_j) - \sum\limits_i \alpha_i \\
@@ -119,9 +120,11 @@ $$
     \xi_i \geq 0, i = 1, ..., n
 \end{aligned}
 $$
-其中目标函数中的 $$C\ge0$$ 为惩罚系数，值越大对误分类的惩罚也越大。最小化目标函数有两层含义: **1. 几何间隔尽可能大; 2. 误分类样本点个数尽可能少**。前者要求 $$C$$ 尽可能小，而后者要求 $$C$$ 尽可能大。 也即是 $$C$$ 是调节二者的系数(一般手动选择)。 
+
+其中目标函数中的 $$C\ge0$$ 为惩罚系数，值越大对误分类的惩罚也越大。如此，最小化目标函数包含两层含义: **1. 几何间隔尽可能大; 2. 误分类样本点个数尽可能少**。前者要求 $$C$$ 尽可能小，而后者要求 $$C$$ 尽可能大。 也即是 $$C$$ 是调节二者的系数(一般手动选择)。 
 
 以上优化问题可转化为:
+
 $$
 \begin{aligned}
             \underset{\alpha}{\text{min }}  \frac{1}{2} \sum\limits_i \sum\limits_j \alpha_i \alpha_j y_i y_j (x_i \cdot x_j) - \sum\limits_i \alpha_i &(\#3)\\
@@ -152,6 +155,7 @@ $$
     \xi_i \geq 0, i = 1, ..., n
 \end{aligned}
 $$
+
 下的的两条约束可缩短为  $$\xi_i = \text{max}(0, 1 - y_i(w x_i + b))$$，即 $$\xi_i = [1 - y_i(w x_i + b)]_+$$，代入到 (#5) 即得 (#4)。
 
 反之，(#4)=>(#3)，令 $$\xi_i = [1 - y_i(w x_i + b)]_+$$，则 $$\xi_i \geq 0 \wedge \xi_i \geq 1 - y_i(w x_i + b)$$。且对任意常数 $$C$$, (#4) 等价于 $$ \underset{w, b}{\text{min }} C \sum\limits_{i=1} \xi_i + C \cdot \lambda \|w\|^2  $$，令 $$ \lambda = \frac{1}{2C} $$，则 (#3) 成立。
@@ -172,10 +176,24 @@ $$
 向数据表示中添加非线性特征，可以让线性模型变得更强大。但通常来说，我们并不知道需要添加哪些特征，而且添加很多特征的计算开销可能会很大。而核技巧(kernel trick)可以让我们在更高维空间中学习分类器，原理是**直接计算扩展特征表示中数据点之间的距离**(内积)，而不用实际对扩展进行计算。
 
 ## 核函数 
-常用核函数 
-1. 多项式核函数， $$ K(x,z) = (x \cdot z + 1) ^ p$$
-2. 高斯核函数(Guassian Kernel Funcction) $$ K(x,z) = \exp(- \frac{\|x - z\|^3}{2 \sigma^2}) $$，对应的 SVM 称为高斯径向基函数(radial basis function, RBF)分类器
+常用核函数 (KF, kernel function)
+- 线性 KF $$\kappa(x, z)=(x^T \cdot z)$$，即 $$d=1$$ 的多项式核
+- 多项式 KF $$ \kappa (x, z) = (x^T \cdot z) ^ d$$
+- 高斯核 KF $$ \kappa (x, z) = \exp(- \frac{\|x - z\|^2}{2 \sigma^2}) $$，对应的 SVM 称为高斯径向基函数(radial basis function, RBF)分类器
+- Laplace KF $$\kappa (x, z) = \exp(- \frac{\| x-z\|}{\sigma})$$
+- Sigmoid KF $$ \kappa(x, z) = \tanh(\beta x^T z + \theta)$$, tahn 双曲正切函数, $$\beta > 0, \theta < 0$$
 
+此外，KF 的线性组合、直积、映射(e.g., $$g(x) \kappa(x,z) g(z)$$)也为 KF. Note, $$\tanh(x) = \frac{e^x-e^{-x}}{e^x+e^{-x}}$$
+
+### RBF
+1985年，Powell提出了多变量插值的径向基函数(RBF, Radial Base Function)方法。径向基函数是一个取值仅仅依赖于离原点距离的实值函数，也就是 $$f(x)=f(\|x\|)$$,或者还可以是到任意一点$$c$$的距离，$$c$$点称为中心点，即$$f(x,c)=f(\| x-c\|)$$。任意一个满足 $$f(x)=f(\|x\|)$$ 特性的函数都叫做径向基函数，标准的一般使用欧氏距离（也叫做欧式径向基函数）[(参考wiki)](https://zh.wikipedia.org/zh-hans/径向基函数).
+
+最常用的RBF是高斯核函数 $$ \kappa(\|x - \mu\|) = \exp\{ \|x - \mu\|^2 / 2 \sigma^2 \}$$， 其中 $$ \mu, \sigma $$ 分别为为KF中心，宽度参数，后者控制了函数的径向作用范围。
+
+<img src="https://git.io/JkKbw" width="50px" alt="Notice"> 与神经网络中RBF网络关系？
+RBF 网络是一种前馈NN,它使用RBF作为隐层神经元激活函数，输出层为隐层神经元输出的线性组合。假设输入为$$d$$维向量$$x$$，输出为实数，则RBF网络可表示为 $$ f(x) = \sum\limits_{i=1}^q \omega_i \rho(x, c_i)$$: $$\rho$$ is RBF。这种网络结构的思想是，用RBF作为隐单元的"基"构成隐含层空间，这样就可以将输入矢量直接映射到隐空间，而不需要通过权连接。
+
+RBF网络的学习可以看作是使用RBF去逼近从输入到输出的真实函数(假设存在)，每一个隐单元都可以看作是一个RBF，输出通过线性组合RBF获得。从几何意义上看，这个过程相当于根据稀疏的给定样本数据点构建一个连续的超曲面，在给定点处曲面的值要满足样本值。
 
 ## 计算复杂性
 以 scikit-learn 框架而言

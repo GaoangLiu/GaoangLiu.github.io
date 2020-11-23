@@ -20,7 +20,7 @@ class Blog:
                                  v)) if type(v) == list else v
             head += "\n"
         head += "author: GaoangLau\n---"
-        print(postpath, head)
+        # print(postpath, head)
         con = self._get_contents(fpath)
         open(postpath, 'w').write(head + con)
 
@@ -40,7 +40,7 @@ class Blog:
         layouts = dict()
         with open(fpath, 'r') as f:
             header = re.findall(r'---(.*?)---', f.read(), re.DOTALL)[0]
-            print(header)
+            # print(header)
             for line in header.split('\n'):
                 if ':' not in line: continue
                 key, value = line.split(':')
@@ -60,7 +60,7 @@ class Blog:
                         map(lambda e: e.strip('-').strip(),
                             cats[0].split('\n'))))
             layouts['categories'] = cats
-        print(layouts)
+        # print(layouts)
         return layouts
 
     def post_drafts(self):
