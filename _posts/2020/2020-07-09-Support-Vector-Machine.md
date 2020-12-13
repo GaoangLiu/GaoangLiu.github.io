@@ -179,17 +179,18 @@ $$
 
 
 ## 核技巧
-向数据表示中添加非线性特征，可以让线性模型变得更强大。但通常来说，我们并不知道需要添加哪些特征，而且添加很多特征的计算开销可能会很大。而核技巧(kernel trick)可以让我们在更高维空间中学习分类器，原理是**直接计算扩展特征表示中数据点之间的距离**(内积)，而不用实际对扩展进行计算。
+向数据表示中添加非线性特征，可以让线性模型变得更强大。但通常来说，我们并不知道需要添加哪些特征，而且添加很多特征的计算开销可能会很大。而核技巧(kernel trick)可以让我们在更高维空间中学习分类器，原理是**直接计算扩展特征表示中数据点之间的距离**(内积)，而不用将特征向量先映射到高维(甚至无穷维)空间，再做内积，而后者计算量往往很大甚至于无法实现。 KF 的选择是一个难点，在分布未知的情况，通常可以考虑高斯KF.
 
 ## 核函数 
 常用核函数 (KF, kernel function)
-- 线性 KF $$\kappa(x, z)=(x^T \cdot z)$$，即 $$d=1$$ 的多项式核
-- 多项式 KF $$ \kappa (x, z) = (x^T \cdot z) ^ d$$
-- 高斯核 KF $$ \kappa (x, z) = \exp(- \frac{\|x - z\|^2}{2 \sigma^2}) $$，对应的 SVM 称为高斯径向基函数(radial basis function, RBF)分类器
+- 线性 KF $$\kappa(x, z) = (x^T \cdot z + 1)$$，即 $$d=1$$ 的多项式核
+- 多项式 KF $$ \kappa (x, z) = (x^T \cdot z + 1) ^ d$$
+- 高斯 KF $$ \kappa (x, z) = \exp(- \frac{\|x - z\|^2}{2 \sigma^2}) $$，对应的 SVM 称为高斯径向基函数(radial basis function, RBF)分类器
+- Gaussian RBF $$\kappa(x,z) = \exp(- \gamma \|x-z\|^2) $$, 高斯KF是这个KF $$\gamma = 1/2\sigma^2$$ 的特例，
 - Laplace KF $$\kappa (x, z) = \exp(- \frac{\| x-z\|}{\sigma})$$
 - Sigmoid KF $$ \kappa(x, z) = \tanh(\beta x^T z + \theta)$$, tahn 双曲正切函数, $$\beta > 0, \theta < 0$$
 
-此外，KF 的线性组合、直积、映射(e.g., $$g(x) \kappa(x,z) g(z)$$)也为 KF. Note, $$\tanh(x) = \frac{e^x-e^{-x}}{e^x+e^{-x}}$$
+此外，KF 的线性组合、直积、映射(e.g., $$g(x) \kappa(x,z) g(z)$$)也为 KF. Note, $$\tanh(x) = \frac{e^x-e^{-x}}{e^x+e^{-x}}=\frac{e^{2x}-1}{e^{2x}+1}$$
 
 ### RBF
 1985年，Powell提出了多变量插值的径向基函数(RBF, Radial Base Function)方法。径向基函数是一个取值仅仅依赖于离原点距离的实值函数，也就是 $$f(x)=f(\|x\|)$$,或者还可以是到任意一点$$c$$的距离，$$c$$点称为中心点，即$$f(x,c)=f(\| x-c\|)$$。任意一个满足 $$f(x)=f(\|x\|)$$ 特性的函数都叫做径向基函数，标准的一般使用欧氏距离（也叫做欧式径向基函数）[(参考wiki)](https://zh.wikipedia.org/zh-hans/径向基函数).

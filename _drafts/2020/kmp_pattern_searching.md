@@ -40,14 +40,13 @@ Let's denote `t = s[0..n-2]` as the longest prefix of `s`, and `lhp_s = s[0..j]`
 
 The first case is trivial, and `s` has no LHP  longer than 4. For otherwise,  if `s` has a LHP `u` such that `len(u) > 4`, then `u[0..len(u)-2]` is a LHP of `t` and its length is surely larger than 3, a contradiction. 
 
-The second case is a little tricky. We know the length of `lhp_s` is 3 if and only if  `s[n-1] = s[2]`. But in our case, we find that `s[n-1](b) != s[2](c)`, what should we do next ?
+The second case is a little tricky. We know the length of `lhp_s` is 3 only when  `s[n-1] = s[2]`. But in our case, we find that `s[n-1](b) != s[2](c)`, what should we do next ?
 
-Now consider the following facts:
+Now consider the following facts on the LHP of `s`:
 
-1. By now, `lhp_s = s[0..j] = s[n-1-j..n-1]` can only be a prefix of `abc,` and
-2. obviously, `s[0..j-1]` (excludes `s[j]`) is a prefix of `abc`
-3. `s[0..j-1]` is also a suffix of `abc` since `s[0..j-1] = s[n-1-j..n-2]`, and `s[n-1-j..n-2]`  is a suffix of `abc`.
-
+1. By now, `lhp_s = s[0..j] = s[n-1-j..n-1]` can only be a prefix of `abc,` and thus `s[0..j-1]` is also a prefix of `abc`
+2. `s[0..j-1]` is a suffix of `abc` since `s[0..j-1] = s[n-1-j..n-2]`
+s
 This means the subsequence `s[0..j-1]` is a **happy prefix** of `abc` ! Therefore, `lhp_s`  COULD be the LHP of `abc`. 
 
 One more thing we need to do is checking whether `s[n-1] = s[len(lhp[abc])]`, if true, `lhp(s) = j` and our algorithm ends; if false, we repeat the above procedure until we finally found a non-empty LHP of `s` or nothing, in later case `lhp[s] = 0`.
