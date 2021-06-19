@@ -1,5 +1,5 @@
-import re, os, sys
-import bisect
+#!/usr/bin/env python
+import re, os
 
 
 class Blog:
@@ -72,10 +72,8 @@ class Blog:
                     full_path = f'{root}/{f}'
                     if os.path.isfile(full_path) and full_path.endswith('.md'):
                         self._export_to_post(full_path)
-                
 
 
 if __name__ == "__main__":
     b = Blog()
     b.post_drafts()
-            
