@@ -1,15 +1,21 @@
 ---
-layout:     post
-title:      HMM Segment
-date:       2021-07-13
-tags: [nlp, hmm, segment]
-categories: 
-- algorithm
+layout: post
+title: HMM Segment
+date: 2021-07-13
+tags: nlp hmm segment
+categories: algorithm
+author: GaoangLau
 ---
+* content
+{:toc}
+
 
 文章结构
 1. HMM 基本概念
 2. HMM 与分词关系 
+
+
+
 3. 如何用 HMM 分词
 
 在 [自然语言处理 -分词初窥](https://blog.csdn.net/SLP_L/article/details/112763427?spm=1001.2014.3001.5501) 我们介绍了基于词典的（最大匹配）分词方法，这种方法依赖于现有的词典库，对于新词（也称未登录词，out of vocabulary, OOV），则无法准确的进行分词。针对 OVV 问题，本文着重阐述下如何利用 HMM 实现基于字的分词方法。
