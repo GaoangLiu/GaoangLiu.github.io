@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import os
 import re
-
+import codefast as cf
 
 class Blog:
     def _export_to_post(self, fpath):
@@ -10,7 +10,7 @@ class Blog:
         nm = lo['date'] + '-' + lo['title'].replace(' ', '-') + '.md'
         year = lo['date'].split('-')[0]
         postpath = f'_posts/{year}/{nm}'
-        if not os.path.exists(f'_posts/{year}'):
+        if not cf.io.exists(f'_posts/{year}'):
             os.makedirs(f'_posts/{year}')
 
         head = "---\n"

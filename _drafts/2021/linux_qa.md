@@ -1,12 +1,12 @@
 ---
 layout:     post
-title:      Linux QA
+title:      Linux_QA
 date:       2021-08-29
 tags: [linux]
 categories: 
 - linux 
 ---
-
+                                                                
 # 扩展 swap 
 ```bash
 swapoff -a # move stuff in swap to main memory
