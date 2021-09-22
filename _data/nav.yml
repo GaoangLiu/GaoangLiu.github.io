@@ -1,23 +1,9 @@
 toc:
-  - title: 热门
-    items:
-      - name: Docker
-        url: https://www.docker.com/
-        desc: 容器
-      - name: MySql
-        url: https://www.mysql.com/cn/
-        desc: mysql关系型数据库
-      - name: Python
-        url: https://www.python.org/
-        desc: 程序语言
-      - name: Nginx
-        url: https://nginx.org/
-        desc: 反向代理和web服务器
   - title: 推荐博客
     items:
-      - name: 鳥哥的 Linux 私房菜
-        url: http://linux.vbird.org/
-        desc: 鳥哥的Linux私房菜
+      - name: https://www.integralist.co.uk/
+        url: https://www.integralist.co.uk/ 
+        desc: Inspiring posts 
       - name: InfoQ
         url: https://www.infoq.cn/topic/operation
         desc: 促进软件开发领域知识与创新的传播
