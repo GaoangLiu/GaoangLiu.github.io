@@ -15,6 +15,27 @@ author: GaoangLau
 
 
 
+## `fold`
+Folds every element into an accumulator by applying an operation, returning the final result.
+`fold()` takes two arguments: **an initial value**, and **a closure** with two arguments: an accumulator, and an element. The closure returns the value that the accumulator should have for the next iteration.
+
+### Example 1
+```rust
+let a = [1,2,3];
+let sum = a.iter().fold(0, |acc, n| acc + n); // 6
+```
+
+### Example 2
+```rust
+// Calculate sum of distances all characters from 'a' in the following string.
+let ss = "abcdefg";
+let n = ss.as_bytes().iter().fold((0, 'a'), |(sum, prev), &c| {
+    (sum + (prev as i32 - 'a' as i32).abs(), c)
+}).0;
+println!("{:?}", n); // 15
+```
+
+
 ## `flat_map`
 Creates an iterator that works like map, but flattens nested structure. 
 You can think of `flat_map(f)` as the semantic equivalent of `mapping`, and then flattening as in `map(f).flatten()`.

@@ -23,6 +23,11 @@ git log --stat --fellow -p -- file_name #
 git log -p -2 file_name # show only the last 2 entries
 ```
 
+## compare two branches
+```bash
+ git diff --stat --color another_branch
+ ```
+
 ## `git show`
 ```bash
 git show abc2323abc # 显示版本 abc2323 所有文件变更
