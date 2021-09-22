@@ -26,6 +26,7 @@ __● Datasets__
 * [GloVe 6B http://downloads.cs.stanford.edu/nlp/data/glove.6B.zip](http://downloads.cs.stanford.edu/nlp/data/glove.6B.zip)
 
 __● Blogs__
+* [10 Great machine learning and AI blogs to follow](https://www.tableau.com/learn/articles/blogs-about-machine-learning-artificial-intelligence)
 * [Using pre-trained word embeddings in a Keras model](https://blog.keras.io/using-pre-trained-word-embeddings-in-a-keras-model.html)
 * [Radim Řehůřek’s, creator of Gensim](https://rare-technologies.com/author/radim/)
 * [Kavita Ganesan, NLP & Data Application](https://kavita-ganesan.com/)
@@ -33,7 +34,7 @@ __● Blogs__
 * [The Keras blog](https://blog.keras.io/author/francois-chollet.html)
 * [GPU for deep learning](https://timdettmers.com/2019/04/03/which-gpu-for-deep-learning/)
 * [Machine learning Mastery](https://machinelearningmastery.com/)
-* [An cool Gihub.io blog](https://curiouschild.github.io)
+* [An cool Github.io blog](https://curiouschild.github.io)
 
 __● ML Packages__
 * [Machine Learning commonly imported packages](https://raw.githubusercontent.com/GaoangLiu/GaoangLiu.github.io/master/codes/mlpackages.py)
