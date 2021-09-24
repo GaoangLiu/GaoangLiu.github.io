@@ -21,21 +21,21 @@ Like vectors, hash maps are **homogeneous**: all of the keys must have the same 
 
 ## Constructing a HashMap
 We can create a `HashMap` with `new` and add elements with `insert`. E.g., 
-```Rust
+```rust
 let mut hm = HashMap::new(); 
 hm.insert(1, 10);
 hm.insert(2, 20);
 ```
 
 Another way of constructing a hash map is by using the `collect` method on a vector of tuples. E.g., 
-```Rust
+```rust
 let scores = vec![90, 80];
 let judges = vec![String::from("Excellent"), String::from("Good")];
 let hm: HashMap<_, _> = scores.iter().zip(judges.iter()).collect(); 
 ```
 
 ## Iterate 
-```Rust
+```rust
 for (k, v) in &hm {
         println!("{}: {}", k, );
 }
@@ -61,18 +61,13 @@ for word in text.split_whitespace() {
 }
 ```
 
-
-
-
-
-
 # HashSet
 
 A hash set is a `HashMap` where the value is (), i.e., it is a wrapper around `HashMap<T, ()>)`.
 
 ## Usage
 ### Examples
-```Rust
+```rust
 use std::collections::HashMap; 
 let mut users = HashSet::new(); 
 users.insert("John Smith".to_string());

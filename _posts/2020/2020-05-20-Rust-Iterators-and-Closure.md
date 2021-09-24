@@ -1,14 +1,20 @@
 ---
-layout:     post
-title:      Rust Iterators and Closure
-date:       2020-05-20
-img: 
-tags: [rust, iterator]
-catagories: [programming]
+layout: post
+title: Rust Iterators and Closure
+date: 2020-05-20
+tags: rust iterator
+categories: 
+author: GaoangLau
 ---
+* content
+{:toc}
+
 
 # Closures
 Closures, also known as **lambda expressions**, are **functions that can capture the enclosing environment**. For example, a closure that captures the `x` variable: `|val| val + x`.
+
+
+
 
 Characteristics of closure includes:
 1. using `||` instead of `()` around input variables.
