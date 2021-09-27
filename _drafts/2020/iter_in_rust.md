@@ -31,6 +31,17 @@ fn main() {
 }
 ```
 
+Note the double references `**a` here. `v.iter()` creates an iterator of references to elements. The closure passed to `filter()` takes another level of reference to the iterator item(find more detail on [Rust filter() doc](https://doc.rust-lang.org/std/iter/trait.Iterator.html)). 
+
+However, we can destructure on the argument to strip away one:
+```rust
+let p = v.iter().filter(|&a| *a > 3).collect::<Vec<_>>();
+```
+or both:
+```rust
+let p = v.iter().filter(|&&a| a > 3).collect::<Vec<_>>();
+```
+
 
 ## About `into_iter()`
 This function creates a `IntoIter<T>` type that now has ownership of the original value. 
@@ -41,7 +52,7 @@ This in the above example, if we replace the third line by:
 let p = v.into_iter().filter(|a| *a > 3).collect::<Vec<_>>(); 
 // we use into_iter()
 ```
-The owership of the value `v` is removed from `v` after the code, and we can no longer access (*borrow*) from it. 
+The ownership of the value `v` is removed from `v` after the code, and we can no longer access (*borrow*) from it. 
 
 
 
