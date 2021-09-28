@@ -28,6 +28,23 @@ Binding to reference annotation, i.e., named function, is optional. Also the arg
 
 [`std::iter::Iterator`](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.chain)
 
+## `scan`
+Example
+```rust
+// accumulate running sum of a vaector
+let v = vec![1, 2, 3];
+let rs = nums.iter().scan(0, |acc, &n| {
+            *acc += n;
+            Some(*acc)
+        }).collect()
+```
+`scan()` takes two arguments: an initial value (0 in the above case) which seeds the internal state (`acc`), and a closure with two arguments, the first being a **mutable reference** to the internal state and the second an iterator element (`&n`). The closure can assign to the internal state to share state between iterations.
+
+<img src="https://cdn.jsdelivr.net/gh/ddots/stuff@master/2021/cf201c0e-ad84-499a-badb-4df1986b2167.png" width=20px> : Then why `Some(*acc)` ?
+
+<img src="https://cdn.jsdelivr.net/gh/ddots/stuff@master/2021/bb98669b-8864-4abb-8a91-ad3f8ee84dde.png" width=20px> : 
+By the [document](https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.scan), on iteration, the closure will be applied to each element of the iterator and the return value from the closure, **an Option**, is yielded by the iterator. That's the closure return an Option `Some()` of value `*acc`, where `acc` is only mutable reference. 
+
 ## `fold`
 Folds every element into an accumulator by applying an operation, returning the final result.
 `fold()` takes two arguments: **an initial value**, and **a closure** with two arguments: an accumulator, and an element. The closure returns the value that the accumulator should have for the next iteration.
