@@ -15,8 +15,6 @@ Build [MTProxy](https://github.com/TelegramMessenger/MTProxy) for Telegram on yo
 
 
 
-Configuring MTProxy is not that hard.
-
 First, install dependencies, you would need common set of tools for building from source, and development packages for `openssl` and `zlib`.
 
 ```bash
@@ -50,14 +48,14 @@ The binary file will be in `objs/bin/mtproto-proxy`. Run  `make clean` if buildi
 You also need a generate a secret (i.e., password) to be used by users to connect to your proxy. You can always craft your onw passphrase, e.g., `d87dasfsadfa9sd8fasdf7as`, but if you want to generate a random passphrase, you can use commands like:
 
 ```bash
-cat /proc/sys/kernel/random/uuid # or 
 head -c 16 /dev/urandom | xxd -ps  # generating 16-bytes passphrase	
 ```
 
 ## Run MTProxy
 
 ```bash
-./mtproto-proxy -u username -p 8888 -H 9999 -S <secret> --aes-pwd proxy-secret proxy-multi.conf -M 1
+cp objs/bin/mtproto-proxy /usr/local/bin/
+/usr/local/bin/mtproto-proxy -u username -p 8888 -H 9999 -S <secret> --aes-pwd proxy-secret proxy-multi.conf -M 10
 ```
 
 Where: 
@@ -97,7 +95,7 @@ Where:
    [Service]
    Type=simple
    WorkingDirectory=/opt/MTProxy
-   ExecStart=/opt/MTProxy/mtproto-proxy -u nobody -p 8888 -H 9999 -S <passphrase> --aes-pwd proxy-secret proxy-multi.conf -M 0
+   ExecStart=/usr/local/bin/mtproto-proxy -u nobody -p 8888 -H 9999 -S <passphrase> --aes-pwd proxy-secret proxy-multi.conf -M 10
    Restart=on-failure
    
    [Install]
@@ -119,20 +117,14 @@ Where:
    ```
 
 
-When you see `main loop` in the output, you know the program is running correctly. 
+If you see `main loop` in the output, then the program is running correctly. 
 
 <img src="{{site.baseurl}}/images/2019/mtproxy.png" >
 
-Good luck and Enjoy !
+## Faster setup
+Another git repo [mtprotoproxy](https://github.com/alexbers/mtprotoproxy/tree/stable) providing a simple, faster MTProto proxy. 
 
-
------ 
-**Update** on Sep 3: The data feature of MTProxy can be easily recognized by GFW, thus pure MTProxy is discouraged and will not survive for long.
-
----- 
-**Update** on Oct 28: There is another repo [mtprotoproxy](https://github.com/alexbers/mtprotoproxy/tree/stable) provides a simple MTProto proxy. 
-
-## How to use?
+### How to use?
 1. `git clone -b stable https://github.com/alexbers/mtprotoproxy.git; cd mtprotoproxy`
 2. edit `config.py`, config **PORT, USERS, AD_TAG**
 3. `docker-compose up -d` to run the script
@@ -143,8 +135,5 @@ A major merit of this tool: **the proxy performance should be enough to comforta
 One thing that bugs us is we can not remove from Telegram the sponsor channel of this tool.
 
 <img src="{{site.baseurl}}/images/2019/mtproxy-sponsor.png" width="300px" class="center">
-
-## Stability 
-We have installed this tool on our VPS (Debian GNU/Linux 9.11 (stretch) x 64) and tested it on Telegram v5.8 (macOS), by today(28-10-2019), it has been working fine for more than two weeks.
 
 

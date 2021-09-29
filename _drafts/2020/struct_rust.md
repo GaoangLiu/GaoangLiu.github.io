@@ -2,7 +2,7 @@
 layout:     post
 title:      struct & impl in Rust
 date:       2020-04-17
-tags: [Rust, impl, struc]
+tags: [Rust, impl, struct]
 categories: 
 - Rust
 
