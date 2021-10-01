@@ -10,12 +10,13 @@ author: GaoangLau
 {:toc}
 
 
+<img src="https://cdn.jsdelivr.net/gh/ddots/stuff@master/2021/2207d05d-8203-4da6-ade9-3de869006009.png" width="70%"> :
+
+
+
 
 # About
 Proxying is typically used to **distribute the load among several servers**, seamlessly show content from different websites, or **pass requests** for processing to application servers over protocols other than HTTP.
-
-
-
 
 When NGINX proxies a request, it sends the request to a specified proxied server, fetches the response, and sends it back to the client. 
 To pass a request to an HTTP proxied server, the `proxy_pass` directive is specified inside a location. For example:
