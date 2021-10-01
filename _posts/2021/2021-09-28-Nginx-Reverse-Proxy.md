@@ -71,7 +71,7 @@ location /api {
 ```
 This will forward all requests `http://domain.cc/api/xxx` to `http://localhost:8868/api/xxx` or `http://192.168.2.3:8888/api/xxx`.
 
-There are several **load balancing mechanisms** (or methods) are supported in nginx:
+There are several **load balancing mechanisms** (or methods) supported in nginx:
 1. round-robin (default) -  requests to the application servers are distributed in a round-robin fashion,
 2. least-connected — next request is assigned to the server with the least number of active connections,
 3. ip-hash — a hash-function is used to determine what server should be selected for the next request (based on the client’s IP address).
@@ -107,6 +107,6 @@ upstream myapp1 {
 
 
 # References
-- [NGINX Reverse Proxy official document](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/)
-- [NGINX Reverse Proxy HTTP/Socks](https://www.shuzhiduo.com/A/MyJx74bRzn/)
+- [NGINX Reverse Proxy -- official document](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/)
+- [NGINX Reverse Proxy HTTP/Socks -- blogs](https://www.shuzhiduo.com/A/MyJx74bRzn/)
 - [Understanding Nginx HTTP Proxying, Load Balancing, Buffering, and Caching - DigitalOcean](https://www.digitalocean.com/community/tutorials/understanding-nginx-http-proxying-load-balancing-buffering-and-caching)
