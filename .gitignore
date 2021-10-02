@@ -7,3 +7,4 @@ vendor
 rust_test/*
 rust_test
 .gitignore
+/rusttest

@@ -10,7 +10,8 @@ author: GaoangLau
 {:toc}
 
 
-<img src="https://cdn.jsdelivr.net/gh/ddots/stuff@master/2021/2207d05d-8203-4da6-ade9-3de869006009.png" width="70%"> :
+<img src="https://cdn.jsdelivr.net/gh/ddots/stuff@master/2021/2207d05d-8203-4da6-ade9-3de869006009.png" width="70%"> 
+
 
 
 
