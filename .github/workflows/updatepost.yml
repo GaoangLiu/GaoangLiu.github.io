@@ -1,0 +1,29 @@
+
+name: daily weather alert script
+
+on: 
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Python3 sample
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.8'
+      
+      - name: install dependencies
+        run: |
+            sudo apt -y install graphviz
+            
+            python -m pip install --upgrade pip
+            pip install joblib requests tqdm pandas codefast
+        
+      - name: run weather alert python script
+        run: python update_post.py
+        
