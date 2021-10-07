@@ -1,5 +1,5 @@
 
-name: daily weather alert script
+name: Blog posts helper
 
 on: 
   push:
@@ -24,6 +24,6 @@ jobs:
             python -m pip install --upgrade pip
             pip install joblib requests tqdm pandas codefast
         
-      - name: run weather alert python script
+      - name: update drafts into posts
         run: python update_post.py
         

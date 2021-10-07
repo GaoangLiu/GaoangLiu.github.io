@@ -49,9 +49,9 @@ And even if the string contains only Latin letters, returning the byte value is 
 let s = String::from("罄竹难书");
 println!("{}", &s[..3]) ; // 罄
 ```
-Be careful when creating string slices, the program will crash if you mess up. Guess what will happen if we used `&s[..4]`? 
 
-Rust will panic at runtime in the same way that accessing an invalid index in a vector does:
+But be careful when creating string slices, the program will crash if you mess up. Guess what will happen if we used `&s[..4]`?  Rust will panic at runtime in the same way that accessing an invalid index in a vector does:
+
 ```bash
 thread 'main' panicked at 'byte index 4 is not a char boundary; it is inside '竹' (bytes 3..6) of `罄竹难书`', src/main.rs:4:22
 note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
