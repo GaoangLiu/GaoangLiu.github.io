@@ -42,7 +42,7 @@ let v = vec![1, 2, 3];
 let rs = nums.iter().scan(0, |acc, &n| {
             *acc += n;
             Some(*acc)
-        }).collect()
+        }).collect(); // [1, 3, 6]
 ```
 `scan()` takes two arguments: an initial value (0 in the above case) which seeds the internal state (`acc`), and a closure with two arguments, the first being a **mutable reference** to the internal state and the second an iterator element (`&n`). The closure can assign to the internal state to share state between iterations.
 
@@ -71,6 +71,8 @@ let n = ss.as_bytes().iter().fold((0, 'a'), |(sum, prev), &c| {
 println!("{:?}", n); // 15
 ```
 
+### `scan` v.s. `fold`
+`scan` gives the intermediate results instead of only the last one.
 
 ## `flat_map`
 Creates an iterator that works like map, but flattens nested structure. 
@@ -103,4 +105,49 @@ Combine `flat_map` and `chain` to capitalize a string:
 ```rust
 let s = "rust is awesome".to_string();
 let t = s.chars().take(1).flat_map(char::to_uppercase).chain(s.chars().skip(1)).collect::<String>();
+```
+
+
+## `inspect`
+```rust
+fn inspect<F>(self, f: F) -> Inspect<Self, F>
+where
+    F: FnMut(&Self::Item)
+```
+View, process elements in iterators, usually used in debugging. E.g., 
+```rust
+let a = [1, 4, 2, 3];
+
+let sum = a.iter()
+    .cloned()
+    .inspect(|x| println!("INSPECT: about to filter: {}", x))
+    .filter(|x| x % 2 == 0)
+    .inspect(|x| println!("made it through filter: {}", x))
+    .fold(0, |sum, i| sum + i);
+
+println!("{}", sum);
+```
+This will print:
+```bash
+INSPECT: about to filter: 1
+INSPECT: about to filter: 4
+made it through filter: 4
+INSPECT: about to filter: 2
+made it through filter: 2
+INSPECT: about to filter: 3
+6
+```
+
+## `partition`
+Consumes an iterator, creating two collections from it.
+
+The predicate passed to `partition()` can return true, or false. `partition()` returns a pair, all of the elements for which it returned true, and all of the elements for which it returned false. E.g., 
+```rust
+let a = [1, 2, 3];
+let (even, odd): (Vec<i32>, Vec<i32>) = a
+    .iter()
+    .partition(|&n| n % 2 == 0);
+
+assert_eq!(even, vec![2]);
+assert_eq!(odd, vec![1, 3]);
 ```
