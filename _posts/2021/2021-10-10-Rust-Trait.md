@@ -10,10 +10,11 @@ author: GaoangLau
 {:toc}
 
 
-A **trait**, called **interfaces** in other languages, tells the Rust compiler about functionality a particular type has and can share with other types. We can use traits to define shared behavior in an abstract way. We can use trait bounds to specify that a generic type can be any type that has certain behavior.
+A **trait** is a **group of methods** that are defined for a particular type. Similiar concepts in other languages are called **interfaces** or **abstract classes**.
 
 
 
+Traits tells the Rust compiler about **functionality** a particular type has and can share with other types. We can use traits to define shared behavior in an abstract way. We can use trait bounds to specify that a generic type can be any type that has certain behavior.
 
 ## Defining a Trait
 
@@ -96,4 +97,4 @@ impl Summary for Post {
 
 # References
 - [rust doc on Traits](https://doc.rust-lang.org/book/ch10-02-traits.html)
-
+- [web mit Traits](http://web.mit.edu/rust-lang_v1.25/arch/amd64_ubuntu1404/share/doc/rust/html/book/first-edition/traits.html)

@@ -1,13 +1,19 @@
 ---
-layout:     post
-title:      Smart Goals
-date:       2021-10-12
-tags: [smart]
-categories: 
-- investment
+layout: post
+title: Smart Goals
+date: 2021-10-12
+tags: smart
+categories: investment
+author: GaoangLau
 ---
+* content
+{:toc}
+
 
 Implementing a plan requires perseverance, determination and a good strategy, making a plan requires a smart mind. A great plan will pay you back twice as much with half the effort.
+
+
+
 
 
 **SMART** is an acronym that can be used to guide your goal setting.
