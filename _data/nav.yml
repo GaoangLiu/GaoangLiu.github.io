@@ -9,6 +9,9 @@ toc:
         desc: 促进软件开发领域知识与创新的传播
   - title: 实用工具
     items:
+      - neofetch: A command-line system information tool
+        url: https://github.com/dylanaraps/neofetch
+        desc: 查看系统信息
       - name: ncdu NCurses Disk Usage
         url: https://dev.yorhel.nl/ncdu
         desc: Linux 硬盘查看
