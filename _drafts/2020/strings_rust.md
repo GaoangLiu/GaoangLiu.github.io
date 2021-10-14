@@ -15,6 +15,14 @@ The `String` type is provided in Rust’s standard library rather than coded int
 
 To summarize the differences, `String`, stored as a vector of bytes (`Vec<u8>`), is guaranteed to be a valid UTF-8 sequence. While, `&str`, is a slice (`&[u8]`) that always **points to** a valid UTF-8 sequence, and can be used to view into a `String`, just like `&[T]` is a view into `Vec<T>`.
 
+## Difference
+- `String` is the dynamic heap string type, like `Vec`: use it when you need to own or modify your string data.
+- `str` is an immutable1 sequence of UTF-8 bytes of dynamic length somewhere in memory. Since the size is unknown, one can only handle it behind a pointer. This means that str most commonly appears as `&str`: a reference to some UTF-8 data, normally called a "string slice" or just a "slice". A slice is just a **view onto some data**, and that data can be anywhere.  You can also search, split, parse, and even replace chunks without needing to allocate new memory.
+
+In summary, use `String` if you need **owned** string data (like passing strings to other threads, or building them at runtime), and use `&str` if you only need a view of a string.
+
+
+
 # Create new String
 1. use the `to_string` method
 ```rust
