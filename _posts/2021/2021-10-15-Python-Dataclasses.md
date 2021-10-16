@@ -1,13 +1,19 @@
 ---
-layout:     post
-title:      Python Dataclasses
-date:       2021-10-15
-tags: [dataclass]
-categories: 
-- python
+layout: post
+title: Python Dataclasses
+date: 2021-10-15
+tags: dataclass
+categories: python
+author: GaoangLau
 ---
+* content
+{:toc}
+
 
 <img src="https://cdn.jsdelivr.net/gh/ddots/stuff@master/2021/work_in_progress_pixabay.png" width="50%">
+
+
+
 
 A data class is a class typically containing mainly data. It is created using the `@dataclass` decorator from `dataclasses` module. The decorator `@dataclass` automatically adds generated special methods such as `__init__()` and `__repr__()` to user-defined classes.
 
