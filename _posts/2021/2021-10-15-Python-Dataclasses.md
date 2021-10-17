@@ -15,7 +15,7 @@ author: GaoangLau
 
 
 
-A data class is a class typically containing mainly data. It is created using the `@dataclass` decorator from `dataclasses` module. The decorator `@dataclass` automatically adds generated special methods such as `__init__()` and `__repr__()` to user-defined classes.
+A data class is a class typically containing mainly data. It is created using the `@dataclass` decorator from `dataclasses` module. The decorator `@dataclass` automatically adds generated special methods such as `__init__()` and `__repr__()` to user-defined classes. 
 
 A simple example:   
 ```python
@@ -26,7 +26,7 @@ class User:
 ```
 Rules: 
 - A field without a default vallue must occur before fileds with default values.
-- ...
+
 
 # Decorator parameters
 By default, a simple `@detaclass` (without signature and brackets) is equivalent to the following usage:
@@ -76,6 +76,8 @@ class User:
 
 
 # Use `__post_init__` to control Python dataclass initialization
+If `__post_init__()` is defined on the class, the generated `__init__()` code will call a method named `__post_init__()`. This allows for initializing field values that depend on one or more other fields. For example,  
+
 ```python
 from dataclasses import dataclass, field
 from typing import List
@@ -89,13 +91,15 @@ class User:
     tasks: List[str] = field(default_factory=list)
     
     def __post_init__(self):
-        self.tasks = ['read', 'code']
+        self.basic_info = [self.name, self.age]
 ```
 
 # Use `InitVar` to control Python dataclass initialization
-Another way to customize Python dataclass setup is to use the `InitVar` type. This lets you specify a field that will be passed to `__init__` and then to `__post_init__`, but won’t be stored in the class instance.
+If a field is an `InitVar`, it is considered a pseudo-field called an init-only field. As it is **NOT a true field**, it is not returned by the module-level `fields()` function, or `dataclasses.asdict()`, `dataclasses.astuple()`. 
 
-By using `InitVar`, You can pass in parameters that are only used during initialization when setting up the dataclasses. For example, only assign tasks to users in 'Good' `condition`:
+One use of `InitVar` is to customize Python dataclass setup. It allows you specify a pseudo-field that will be passed to `__init__` and then to `__post_init__` so that you can complete certain tasks, possibly do some filtering of a `List` type field when certain condition was fullfilled, on dataclass initialization.
+
+For example, only assign tasks to users in 'Good' `condition`:
 
 ```python
 from dataclasses import dataclass, field, InitVar
@@ -115,8 +119,10 @@ class User:
             self.tasks = ['read', 'code']
 ```
 
-# methods
-## `dataclasses.asdict(instance, *, dict_factory=dict)`
+# Methods
+## `dataclasses.asdict`
+`dataclasses.asdict(instance, *, dict_factory=dict)`
+
 Converts the dataclass instance to a dict, using the factory function `dict_factory`. Each dataclass is converted to a dict of its fields, as `name: value` pairs. dataclasses, dicts, lists, and tuples are recursed into. For example:
 ```python
 @dataclass
@@ -133,14 +139,51 @@ u = User('john')
 r = dataclasses.asdict(u) # {'name': 'john', 'extra': {'devices', 'interests'}, 'info': {1: 42, 2: 99}}
 ```
 
-## `dataclasses.astuple(instance, *, tuple_factory=tuple)`
+## `astuple`
+`dataclasses.astuple(instance, *, tuple_factory=tuple)`
+
 Converts the dataclass instance to a tuple, using the factory function `dict_factory`. Each dataclass is converted to a tuple of its fields, as `name: value` pairs. dataclasses, dicts, lists, and tuples are recursed into. Note that, only values are retained, while the keys of fields are discarded.  
 
-## `dataclasses.replace(instance, /, **changes)`
-## `dataclasses.is_dataclass(instance_or_class)`
-## `dataclasses.make_dataclass(cls_name, fields, *, bases=(), namespace=None, init=True, repr=True, eq=True, order=False, unsafe_hash=False, frozen=False, match_args=True, kw_only=False, slots=False)`  
+## `replace`
+`dataclasses.replace(instance, /, **changes)`
+Creates a new object of the same type as instance, replacing fields with values from `changes`. 
+```python
 
+@dataclass
+class User:
+    name: str
+    extra: typing.Set[str] = field(
+        default_factory=lambda: ({"interests", "devices"}))
+    info: typing.Dict[int, int] = field(default_factory=lambda: ({
+        1: 42,
+        2: 99
+    }))
+u = User('john')
+print(dataclasses.replace(u, extra=(42), name='toy', info=23)) # User(name='toy', extra=42, info=23)
+```
 
+Note that, there is a bug([StackOverflow: Python dataclasses.replace not working for InitVar](https://stackoverflow.com/questions/59597283/python-dataclasses-replace-not-working-for-initvar)) on `replace()` for Python 3.7, 3.8, 3.9.  If init-only fileds are presented in the data class, you must munally pass then to `replace()` so that they can be passed to `__init__()` and `__post_init__()`, even if you have no desire to change their values. Otherwise, your codes will respond with `ValueError`:
+
+> ValueError: InitVar 'int_value' must be specified with replace()
+
+This bug was [fixed](https://github.com/python/cpython/commit/bdee2a389e4b10e1c0ab65bbd4fd03defe7b2837) in Python 3.10.
+
+## `is_dataclass`
+Return True if its parameter is a `dataclass` or an instance of one, otherwise return False.
+
+`dataclasses.is_dataclass(instance_or_class)`
+
+## `make_dataclass`
+`dataclasses.make_dataclass(cls_name, fields, *, bases=(), namespace=None, init=True, repr=True, eq=True, order=False, unsafe_hash=False, frozen=False, match_args=True, kw_only=False, slots=False)`  
+
+Creates a new dataclass with name `cls_name`, fields as defined in `fields`, base classes as given in `bases`, and initialized with a namespace as given in namespace. 
+`fields` is an iterable whose elements are each either `name`, `(name, type)`, or `(name, type, Field)`.
+
+```python
+Coda = dataclasses.make_dataclass(
+    'Coda', [('name', str, 'Cola'), ('year', int, 3039)],
+    namespace={'add_one': lambda self: self.year + 1})
+```
 
 # When to use Python dataclasses — and when not to use them
 - One common scenario for using `dataclasses` is as a replacement for the `namedtuple`. Dataclasses offer the same behaviors and more, and they can be made immutable (as `namedtuples` are) by simply using `@dataclass(frozen=True)` as the decorator.
