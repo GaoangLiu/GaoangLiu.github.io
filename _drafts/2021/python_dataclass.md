@@ -7,8 +7,6 @@ categories:
 - python
 ---
 
-<img src="https://cdn.jsdelivr.net/gh/ddots/stuff@master/2021/work_in_progress_pixabay.png" width="50%">
-
 A data class is a class typically containing mainly data. It is created using the `@dataclass` decorator from `dataclasses` module. The decorator `@dataclass` automatically adds generated special methods such as `__init__()` and `__repr__()` to user-defined classes. 
 
 A simple example:   
@@ -41,7 +39,6 @@ The parameters to `dataclass` are:
 The later three parameters `match_args`, `kw_only`, `slots` are new in Python 3.10. 
 
 
-
 <img src="https://cdn.jsdelivr.net/gh/ddots/stuff@master/2021/fc1c74f8-4935-4d2f-9cca-c84677f5f6b3.png" width="70%">
 
 
@@ -67,6 +64,40 @@ class User:
     - Immutable means this paramaters work on data types such as **int, float, decimal, bool, string, tuple, and range**. If user assign a `dict` to a field with `default` parameter, for example,  `info:Dict[int, int] = field(default={1:42})`, `ValueError` will be raised.
 
 - `default_factory`, requires a **zero-argument callable** that will be called when a default value is needed for a field. This parameter can be used to specify fields with **mutable** default values, values of type list, dict, set or user-defined classes.
+
+
+## Class Variables
+To create a class variable, annotate the field as a `typing.ClassVar` or not at all. Both way create a variable that will be excluded consideration as a field. For example, in the following codes, `fields(C)` returns: 
+```bash
+(Field(name='c',type=<class 'int'>,default=42,default_factory=<dataclasses._MISSING_TYPE object at 0x7f13ce0798b0>,init=True,repr=True,hash=None,compare=True,metadata=mappingproxy({}),_field_type=_FIELD),)
+```
+None of `a` and `b` was included.
+
+The subtle difference is that the unannotated field is completely ignored by `@dataclass`, whereas the ClassVar field is stored but not converted to an attribute. That is with `C.__dataclass_fields__`, we get:
+```bash
+{'b': Field(name='b',type=typing.ClassVar[int],default=1,default_factory=<dataclasses._MISSING_TYPE object at 0x7f48ff19d8e0>,init=True,repr=True,hash=None,compare=True,metadata=mappingproxy({}),_field_type=_FIELD_CLASSVAR),
+ 'c': Field(name='c',type=<class 'int'>,default=42,default_factory=<dataclasses._MISSING_TYPE object at 0x7f48ff19d8e0>,init=True,repr=True,hash=None,compare=True,metadata=mappingproxy({}),_field_type=_FIELD)}
+```
+
+Notes: 
+- **All fields are class variables**. However, since the `@dataclass` decorator will automatically add special methods, such as `__init__()`, to user-defined classes. The value from an instance `c=C()` will be overwritten, whatever the value `C.c` is. This is because `c = C()` is essentially `c=C(c=1)`.
+- Pseudo-fields, variables annotated by `ClassVar` or not annotated by any type, are class variables shared among and can be changed by all instances.
+
+Example: 
+```python
+from typing import ClassVar
+@dataclass
+class C:
+    a = 1
+    b: ClassVar[int] = 1
+    c: int = 1
+
+C.a = 2
+C.b = 2
+C.c = 2
+print(C.a, C.b, C.c) # 2,2,2
+print(C().c)  # 1
+```
 
 
 # Use `__post_init__` to control Python dataclass initialization

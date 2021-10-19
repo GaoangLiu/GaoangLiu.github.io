@@ -1,0 +1,14 @@
+digraph D{
+    graph [dpi=300]
+    labelloc="b";
+    label="Pic B: Dir Read structs";
+
+    direntry[shape=record, style=rounded, label="{fs::File\l|...\l|fs::DirEntry\l}"];
+    traits[shape=record, style=rounded, label="{fmt::Debug\l}|{std::os::unix::fs::DirEntryExt2\l}|{std::os::unix::fs::DirEntryExt\l}"];
+    direntry->traits[shape=record,label="impl"];
+
+
+    dir_methods[shape=record, style=rounded, label="{path\l|metadata\l|file_name\l|file_type\l}"];
+    
+    direntry->dir_methods [label="methods"];
+}
