@@ -7,8 +7,22 @@ digraph D{
     traits[shape=record, style=rounded, label="{fmt::Debug\l}|{std::os::unix::fs::DirEntryExt2\l}|{std::os::unix::fs::DirEntryExt\l}"];
     direntry->traits[shape=record,label="impl"];
 
+    node_pathbuf [shape=plaintext, label="fn path(&self) -> PathBuf"]
+    node_pathbuf->dir_methods:path [label=" ReturnType: PathBuf", dir=back]; 
 
-    dir_methods[shape=record, style=rounded, label="{path\l|metadata\l|file_name\l|file_type\l}"];
-    
+    dir_methods[shape=record, style=rounded, label="{<path>path\l|metadata\l|file_name\l|file_type\l}"];
     direntry->dir_methods [label="methods"];
+
+    path[shape=record, style=rounded, label="{std::path}|{<path>std::path::Path\l|<pathbuf>std::path::PathBuf\l}"];
+    pathmethods [shape=record, style=rounded,label="{as_os_str\l|display\l|ends_with\l|is_dir\l|read_dir\l|...}"];
+    pathmethods->path:path [label="methods", dir=back];
+    
+
+
+    pathbufmethods [shape=record, style=rounded,label="{<aspath>as_path\l|capacity\l|clear\l|set_extension\l|...}"];
+    path:pathbuf->pathbufmethods;
+
+    path_new [label="Path::new()"];
+    path_new->pathbufmethods:aspath [label="Type: &Path", dir=back];
+
 }
