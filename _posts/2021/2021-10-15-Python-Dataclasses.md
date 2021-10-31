@@ -88,6 +88,9 @@ The subtle difference is that the unannotated field is completely ignored by `@d
 Notes: 
 - **All fields are class variables**. However, since the `@dataclass` decorator will automatically add special methods, such as `__init__()`, to user-defined classes. The value from an instance `c=C()` will be overwritten, whatever the value `C.c` is. This is because `c = C()` is essentially `c=C(c=1)`.
 - Pseudo-fields, variables annotated by `ClassVar` or not annotated by any type, are class variables shared among and can be changed by all instances.
+- When the value of an object variable changes, it does not affect the value of a class variable with the same name. In the following example, `C.c` remains 2 even we set `C().c = 42`.
+
+
 
 Example: 
 ```python
@@ -103,6 +106,7 @@ C.b = 2
 C.c = 2
 print(C.a, C.b, C.c) # 2,2,2
 print(C().c)  # 1
+print(C.a, C.b, C.c) # 2,2,2
 ```
 
 
@@ -217,11 +221,13 @@ Coda = dataclasses.make_dataclass(
 ```
 
 # When to use Python dataclasses — and when not to use them
-- One common scenario for using `dataclasses` is as a replacement for the `namedtuple`. Dataclasses offer the same behaviors and more, and they can be made immutable (as `namedtuples` are) by simply using `@dataclass(frozen=True)` as the decorator.
-- Another possible use case is replacing nested dictionaries, which can be clumsy to work with, with nested instances of `dataclasses`. 
+- Case 1, you want to create classes that just store **attributes**.
+- Case 2, use `dataclasses` as a replacement for the `namedtuple`. Dataclasses offer the same behaviors and more, and they can be made immutable (as `namedtuples` are) by simply using `@dataclass(frozen=True)` as the decorator.
+- Case 3, use `dataclasses` to replace nested dictionaries, which can be clumsy to work with, with nested instances of `dataclasses`. 
 
 Not every Python class needs to be a dataclass. If the purpose of a class is not a container for data, you don't have to make it a dataclass.
 
 
 # References
 - [How to use Python dataclasses](https://www.infoworld.com/article/3563878/how-to-use-python-dataclasses.html)
+- [Everything you need to know about Python dataclasses](https://rmcomplexity.com/article/2021/01/04/everything-you-need-to-know-about-dataclasses.html)

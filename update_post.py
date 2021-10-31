@@ -28,9 +28,10 @@ class Blog:
     def _get_contents(self, fpath):
         f = open(fpath, 'r').read()
         cs = re.findall(r'---.*?---(.*)', f, re.DOTALL)[0]
+        
         if "{:toc}" not in cs:
             i = 0
-            while cs[i] != '\n' or i < 30:
+            while i < min(len(cs), 30) or cs[i] != '\n':
                 i += 1
             cs = cs[:i] + '\n\n\n' + cs[i:]
             return "\n* content\n{:toc}\n" + cs
