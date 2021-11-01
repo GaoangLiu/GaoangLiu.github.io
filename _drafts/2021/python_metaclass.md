@@ -12,7 +12,7 @@ categories:
 The type of an object is called a class, and the class of a class is called a **metaclass**.
 
 Create a class with `type`:
->`type(class_name, tuple_of_parent_class, dict_of_attribute_names_and_values)`
+> `type(class_name, tuple_of_parent_class, dict_of_attribute_names_and_values)`
 
 where, 
 - `name`: name of the class.
