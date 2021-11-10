@@ -44,3 +44,31 @@ Note: the \# symbol indicates the location of the cursor.
 |`gU}`| change to uppercase util the end of paragraph|
 |`gU5j`| change 5 lines below to upper case|
 |`gU5k`| change 5 lines above to upper case|
+
+# Visual select
+
+- `Vap`: select around the current paragraph
+- `V35G`: select current line up to line 35
+
+
+## Pattern search
+For example, `v / f o o` will select from your current position to the next instance of "foo." If you actually wanted to expand to the next instance of "foo,", for example, just press `n` to expand selection to the next instance, and so on.
+
+
+# Comment / Uncomment 
+## To comment out a block 
+1. press `esc` (to leave editing or other mode)
+2. hit `ctrl+v` (visual block mode, not `v`)
+3. use the `↑/↓` arrow keys to select lines you want
+4. `shift+i` (capital I)
+5. insert the text you want, e.g. `#`
+6. press `esc` twice. 
+
+## To uncomment block
+1. press `esc` (to leave editing or other mode)
+2. hit `ctrl+v` (visual block mode, not `v`)
+3. use the `↑/↓` arrow keys to select lines you want
+4. press `d` or `x` to delete characters
+
+refer to [so:quick way to comment/uncomment](https://stackoverflow.com/questions/1676632/whats-a-quick-way-to-comment-uncomment-lines-in-vim) for more solutions.
+
