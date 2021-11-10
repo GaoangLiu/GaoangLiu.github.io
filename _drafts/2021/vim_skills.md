@@ -33,6 +33,7 @@ categories:
 Note: the \# symbol indicates the location of the cursor.
 
 ## Change the case of a line/sentence
+
 |Command|Function|
 |:---|:----|
 |`guu`| change all words in current line from **upper to lower** |
