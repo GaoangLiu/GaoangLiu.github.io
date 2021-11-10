@@ -179,9 +179,9 @@ let another_path: PathBuf = [r"C:\", "windows", "system32.dll"].iter().collect()
 ### `std::path::Path`
 A slice of a path (akin to `str`).  Usage:
 - Create a `Path` slice from `str` slice:
+
 ```rust
 let path = Path::new("/etc/hosts"); 
-
 ```
 
 
