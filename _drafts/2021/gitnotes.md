@@ -21,11 +21,37 @@ git log -p -2 file_name # show only the last 2 entries
 ```bash
  git diff --stat --color another_branch
  ```
+output example:
+<img src="https://cdn.jsdelivr.net/gh/117v2/stuff@master/2021/21499dc9-f6e3-4d48-b1c6-fdc91f723a4a.png" width="800pt">
+
+
+Show all file changes for a past commit.
+
+```bash
+git diff HEAD~1 
+```
+
+Show all file changes during the last 5 commits.
+
+```bash
+git diff HEAD~5
+```
+Append argument `--name-only` if you want to see just the name of involved files.
+
+To show change of a certain file for a past commit
+```bash
+git diff a1b2c3d4^! utils/core.py
+```
+remove the file name if you want to see all file changes in the commit.
+
+
 
 ## `git show`
 ```bash
 git show abc2323abc # 显示版本 abc2323 所有文件变更
 ```
+
+
 
 
  
