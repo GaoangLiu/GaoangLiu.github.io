@@ -72,3 +72,28 @@ For example, `v / f o o` will select from your current position to the next inst
 
 refer to [so:quick way to comment/uncomment](https://stackoverflow.com/questions/1676632/whats-a-quick-way-to-comment-uncomment-lines-in-vim) for more solutions.
 
+# Search and Replace
+
+|Command | Function |
+|:---- |:-----|
+|`:s/foo/bar/3` | Find first occurrence of 'foo' (in three lines), and replace it with 'bar'. |
+|`:s/foo/bar/g3` | Find each occurrence of 'foo' (in three lines), and replace it with 'bar'. |
+|`:s/foo/bar/g` | Find each occurrence of 'foo' (in the current line only), and replace it with 'bar'. |
+|`:%s/foo/bar/g` | Find each occurrence of 'foo' (in all lines), and replace it with 'bar'.|
+|`:%s/foo/bar/gc` | Find each occurrence of 'foo' (in all lines), and replace it with 'bar'.|
+|`:%s/\<foo\>/bar/gc`| Change only whole words exactly matching 'foo' to 'bar'; ask for confirmation.|
+|`:%s/foo/bar/gi` | Change each 'foo' (case insensitive due to the i flag) to 'bar'; ask for confirmation.|
+
+Q: search and replace the first N occurrance of foo with bar ?
+1. when N is small, use `:%s/foo/bar/gc` and confirm replacement for N times.
+2. when N is large, use `:call feedkeys(repeat("y", N) . "q") | %s/foo/bar/gc` 
+
+## Search Range
+
+|Command | Function |
+|:---- |:-----|
+|`:5,12s/foo/bar/g` | Change each 'foo' to 'bar' for all lines from line 5 to line 12 (inclusive).|
+|`:.,+2s/foo/bar/g` | Change each 'foo' to 'bar' for the current line (.) and the two next lines (+2).|
+|`:.,$s/foo/bar/g` | Change each 'foo' to 'bar' for all lines from the current line (.) to the last line ($) inclusive.|
+|`:g/^baz/s/foo/bar/g` | Change each 'foo' to 'bar' in each line starting with 'baz'. |
+
