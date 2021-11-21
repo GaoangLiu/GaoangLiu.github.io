@@ -1,9 +1,6 @@
 toc:
   - title: 推荐博客
     items:
-      - name: https://www.integralist.co.uk/
-        url: https://www.integralist.co.uk/ 
-        desc: Inspiring posts 
       - name: InfoQ
         url: https://www.infoq.cn/topic/operation
         desc: 促进软件开发领域知识与创新的传播

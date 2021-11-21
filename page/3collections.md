@@ -12,8 +12,11 @@ Resources for learning &amp; review.
 
 
 
-
 <!-- ### ○ Technology Docs -->
+__● Inspirations__
+* [Must write code everyday](https://johnresig.com/blog/write-code-every-day/)
+* [Integralist.co.uk](https://www.integralist.co.uk/)
+
 __● Models__
 * [Gensim word2vec data and models, e.g., Google-news-300](https://github.com/RaRe-Technologies/gensim-data)
 * [Transformers Library on Github, 40 state-of-the-art pre-trained NLP models (BERT, GPT-2, RoBERTa, CTRL…).](https://github.com/huggingface/transformers)
