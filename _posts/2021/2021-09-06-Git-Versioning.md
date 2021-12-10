@@ -58,6 +58,10 @@ git show abc2323abc # 显示版本 abc2323 所有文件变更
 ```
 
 
-
+## Give up changes on a file
+```bash
+git checkout c5f567 -- file1/to/restore file2/to/restore
+```
+This will acturally restore files to its older version. 
 
  
