@@ -1,15 +1,21 @@
 ---
-layout:     post
-title:      vim skills
-date:       2021-11-10
-tags: [vim]
-categories: 
-- editor
+layout: post
+title: vim skills
+date: 2021-11-10
+tags: vim
+categories: editor
+author: GaoangLau
 ---
+* content
+{:toc}
+
 
 
 # Change case in vim
 ## Change the case of a charactor
+
+
+
 
 |Command|Function|
 |:---|:----|

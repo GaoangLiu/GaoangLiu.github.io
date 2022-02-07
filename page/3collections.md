@@ -8,14 +8,17 @@ type: page
 * content
 {:toc}
 
-Resources for learning &amp; review.
 
+Resources for learning &amp; review.
 
 
 <!-- ### ○ Technology Docs -->
 __● Inspirations__
+* [为什么你需要习惯而不是激情 / HappyXiao letter](https://xiao.do/issues/079-1000344)
+* [科学空间](https://kexue.fm/)
 * [Must write code everyday](https://johnresig.com/blog/write-code-every-day/)
 * [Integralist.co.uk](https://www.integralist.co.uk/)
+
 
 __● Models__
 * [Gensim word2vec data and models, e.g., Google-news-300](https://github.com/RaRe-Technologies/gensim-data)
@@ -29,6 +32,7 @@ __● Datasets__
 * [GloVe 6B http://downloads.cs.stanford.edu/nlp/data/glove.6B.zip](http://downloads.cs.stanford.edu/nlp/data/glove.6B.zip)
 
 __● Blogs__
+* [paddlepedia, 深度学习百科及面试资源](https://paddlepedia.readthedocs.io/en/latest/index.html)
 * [10 Great machine learning and AI blogs to follow](https://www.tableau.com/learn/articles/blogs-about-machine-learning-artificial-intelligence)
 * [Using pre-trained word embeddings in a Keras model](https://blog.keras.io/using-pre-trained-word-embeddings-in-a-keras-model.html)
 * [Radim Řehůřek’s, creator of Gensim](https://rare-technologies.com/author/radim/)
