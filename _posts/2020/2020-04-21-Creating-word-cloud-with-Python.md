@@ -110,4 +110,5 @@ Background image sources:
 # References 
 * [Generating word cloud in Python  - Geeks for geeks](https://www.geeksforgeeks.org/generating-word-cloud-python/)
 * [A longer list of stopwords - Github repo](https://raw.githubusercontent.com/117ami/117ami.github.io/master/materials/stopwords.txt)
+* [Applications of Python - Scaler Topics](https://www.scaler.com/topics/python/applications-of-python/)
 
