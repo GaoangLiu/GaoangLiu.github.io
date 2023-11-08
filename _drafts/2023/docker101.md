@@ -1,0 +1,156 @@
+---
+layout:     post
+title:      Docker 101
+date:       2023-02-09
+tags: 
+categories: 
+- docker
+---
+
+
+# Dockerfile 编写
+
+## RUN
+Dockerfile 中被用于执行命令行命令，并在镜像构建的过程中将执行结果作为新的一层加入到镜像中。因此，每一条 `RUN` 命令都会对镜像产生影响，而且任何错误也会导致构建失败。
+
+`RUN` 命令常用于安装软件包、配置环境变量、创建文件夹等操作。例如以下命令将会在镜像中安装 `python3-pip` 软件包，并创建 `/app` 文件夹：
+
+```bash
+RUN apt-get update && apt-get install -y python3-pip
+RUN echo 'export PATH="$PATH:/app/bin"' >> ~/.bashrc
+RUN mkdir /app
+```
+
+ChatGPT 大佬给的最佳实践：
+- 尽可能使用单行命令：将多行命令合并为单行命令可以减少镜像层数，加速构建速度，并且使镜像更加可读。
+- 使用静态分支：把可变的部分放在 `RUN` 命令的后面，以保证缓存的有效性。
+- 避免无用的命令：避免使用不必要的命令，如下载源的列表、更新索引等。
+- 避免使用 `RUN` 来执行与镜像无关的操作，例如安装软件包、配置环境变量、创建文件夹等操作。
+- 使用轻量级的命令：对于安装软件包，应该使用轻量级的命令，例如：`apt-get install` 和 `apt-get update`，而不是 `apt-get upgrade`。
+
+总的来说，在使用 `RUN` 命令时应该注重性能、镜像可读性和镜像层数
+
+## `CMD` 
+用于设置容器启动时默认运行的命令。当使用 `docker run 命令启动容器时，如果没有指定其他命令，就会使用默认的命令。
+
+`CMD` 命令有三种格式：
+
+- `CMD` ["executable","param1","param2"]：在 shell 模式下运行，可以接受多个参数。
+- `CMD` ["param1","param2"]：在 exec 模式下运行，可以接受多个参数。
+- `CMD` command param1 param2：在 shell 模式下运行，以字符串形式提供命令和参数。
+
+在 Dockerfile 中只能有一个 `CMD` 命令，如果有多个，则只会执行最后一个。
+
+
+`RUN` v.s. `CMD`
+- 目的不同：`RUN` 命令用于在镜像构建过程中执行命令，通常用来安装软件包、创建目录等；`CMD` 命令用于设置容器启动时默认执行的命令。
+- 执行顺序不同：`RUN` 命令在镜像构建过程中执行，且可以多次执行；`CMD` 命令仅在容器启动时执行，一个镜像中只能执行一个 `CMD` 命令。
+- 被覆盖的情况不同：`RUN` 命令的执行结果是作为新的一层存储在镜像中的，不能被覆盖；`CMD` 命令在容器启动时可以被覆盖，例如使用 docker run 命令指定新的命令。
+
+## `VOLEME`
+Docker 的 `VOLUME` 指令可以将容器内的目录映射到宿主机的目录，这样可以保证数据的持久化，因此容器内的数据在容器被删除时不会丢失。
+
+示例，以下操作将容器内的 /data 目录将映射到宿主机的某个目录。如果没有明确指定，Docker 会自动创建一个目录并将其映射到容器内。
+```bash 
+# Dockerfile
+FROM ubuntu:20.04
+VOLUME /data
+
+# 在容器内创建数据
+$ docker run -it --name test-container ubuntu:20.04
+root@so:/# echo "hello world" > /data/test.txt
+root@bf6c5b6a5d23:/# exit
+
+# 在宿主机查看数据
+$ docker inspect test-container | grep Source
+"Source": "/var/lib/docker/volumes/96eb37c3b7701c3f7b3c32b69c7b9ee2905fcf2d0f89c48e039b07dd1d2f88a8/_data"
+
+$ cat /var/lib/docker/volumes/96eb37c3b7701c3f7b3c32b69c7b9ee2905fcf2d0f89c48e039b07dd1d2f88a8/_data/test.txt
+hello world
+```
+
+运行时，可以使用 -v 选项将容器内的目录映射到宿主机的目录：
+```bash
+$ docker run -it --name test-container -v $(pwd)/data:/data ubuntu:20.04
+```
+## ADD COPY
+`ADD` 和 `COPY` 指令都是用于将宿主机的文件复制到镜像中。两者的区别：
+
+- 文件来源：`ADD` 命令不仅可以从主机复制文件，还可以从网络 URL 下载文件，而 `COPY` 命令只能从主机复制文件。
+  - 例如 `ADD https://example.com/example.tar.gz /tmp/` 会将网络上的文件下载到容器中的 /tmp 目录。
+- 压缩文件：`ADD` 命令可以将压缩文件直接复制到容器中，并通过解压缩步骤解压缩文件，而 `COPY` 命令只能将原始文件复制到容器中，如果需要解压缩文件，必须在容器中执行相应的解压缩命令。
+- 镜像层数量：由于每个 `ADD` 命令会添加一个新的镜像层，因此使用多个 `ADD` 命令可能导致镜像层数量增加，而使用 `COPY` 命令不会对镜像层数量产生影响。
+
+
+# Docker image 构建
+# Docker container 运行
+
+启动一个临时的 debain 系统容器， 并打开 bash，用完后删除：
+```bash
+docker run --rm --name my-temp-debian -it debian:latest /bin/bash
+```
+
+# docker 命令
+## `inspect`
+docker `inspect` 命令用于查看 Docker 容器或镜像的详细信息。该命令提供了容器或镜像的配置信息、状态信息、以及运行环境信息等。
+
+语法格式如下：
+```bash
+docker inspect [OPTIONS] NAME|ID [NAME|ID...]
+```
+
+# Docker-Compose
+Docker-Compose 是一个用于定义和运行多个 Docker 容器的工具。使用 YAML 文件来定义应用组件，通过一条命令来简化容器的管理。Docker Compose 可以在单个主机上管理整个应用，包括数据库、缓存、队列等。
+
+## 优势 
+- 简化管理：可以在一个单独的文件中管理多个 Docker 容器。
+- 多容器部署：可以同时部署多个容器，并且可以管理它们之间的网络连接和数据卷共享。
+- 易于维护：可以使用简单的命令行接口来管理多个容器，这样你就可以很方便地创建，启动，停止和删除容器。
+- 开发和生产环境的一致性：通过使用 Docker Compose，用户可以在开发环境中模拟生产环境，从而确保在部署之前应用程序已经在真实环境中进行了充分测试。
+
+## 示例
+```bash
+version: '3'
+services:
+  redis:
+    image: redis
+    ports:
+      - "16379:6379"
+    environment:
+      - REDIS_PASSWORD=mypassword
+    command: redis-server --appendonly yes --appendfsync every 30 seconds
+```
+该配置文件定义了一个 Redis 服务。它映射本地的端口 16379 到容器内部的 Redis 端口 6379。用户可以通过环境变量 `REDIS_PASSWORD` 设置 Redis 密码。
+
+配置在 command 部分启用了 Redis 的 AOF 模式，并使用 `--appendfsync every 30 seconds` 选项告诉 Redis 每 30 秒持久化一次数据。
+
+## 关于 Docker-Compose 版本
+几乎每个 docker-compose 配置文件第一行都会有一个神秘的版本号，例如：
+```bash
+version: '3'
+```
+Docker Compose 目前有三个大版本，分别是 version 1，version 2 和 version 3。
+
+Version 1 在 2013 年发布，它简化了在 Docker 容器中运行多个应用程序的过程。
+
+Version 2 在 2015 年发布，它支持了 Docker 1.10 及更高版本的新特性，例如 Docker 容器网络和 Docker 容器数据卷。
+
+Version 3 在 2016 年发布，它提供了许多改进，例如支持与 Docker 服务进行交互，以及对部署和管理大型应用程序的更高级别支持。
+
+目前，version 3 是最新的版本，并且是最常用的版本。version 3 兼容性也比 version 2 更好，因此推荐使用 version 3。
+
+参考: https://docs.docker.com.zh.xy2401.com/compose/compose-file/compose-versioning/
+
+
+# 优势 
+同样是 Python 脚本或服务，打包成 docker 镜像再运行对比直接运行有什么优势？
+- 环境隔离：Docker 可以为应用创建一个独立的环境，确保应用在任何环境下都能够正常运行。特别是本地的开发环境和生产环境可能存在差异，使用 Docker 可以避免这种差异对应用的影响。典型的差异比如：
+  - Python 版本：本地开发环境可能使用 Python 3.7，而生产环境可能使用 Python 3.6。
+  - 依赖包版本：本地开发环境可能使用 Flask 1.0，而生产环境可能使用 Flask 0.12。
+  - 系统配置：本地开发环境可能使用 4 核 CPU，而生产环境可能使用 2 核 CPU。
+- 复制和部署方便：通过镜像和容器的概念，Docker 可以方便地复制和部署应用。
+- 资源隔离：Docker 可以管理每个容器的资源使用情况，避免因某个应用对系统的资源过多的占用而影响其他应用的正常运行。
+- 易于维护：Docker 可以方便地管理和升级应用，提高系统的可维护性。
+
+
+

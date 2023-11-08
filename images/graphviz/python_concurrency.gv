@@ -1,0 +1,41 @@
+digraph {
+    graph [pad="0.5", nodesep="0.5", ranksep="2",dpi="300", bgcolor="lightgray"];
+    node [shape=plain]
+    rankdir=LR;
+
+    extra[label=<
+    <table color='pink' style="width:100%" border="0" cellborder="1" cellspacing="0">
+      <th>
+        <td align="left"> </td>
+        <td align="left">Processes</td>
+        <td align="left">Threads</td>
+        <td align="left">Async</td>
+      </th>
+      <tr>
+        <td align="left">Use all cores</td>
+        <td align="left" bgcolor="green">Yes</td>
+        <td align="left" bgcolor="lightyellow">No</td>
+        <td align="left" bgcolor="lightyellow">No</td>
+      </tr>
+      <tr>
+        <td align="left">Scalability</td>
+        <td align="left" bgcolor="lightyellow">Low(one - ten)</td>
+        <td align="left" bgcolor="lightgreen">Medium(hundreds)</td>
+        <td align="left" bgcolor="green">High(thousands+)</td>
+      </tr>
+      <tr>
+        <td align="left">Use blocking std library functions</td>
+        <td align="left" bgcolor="green">Yes</td>
+        <td align="left" bgcolor="green">Yes</td>
+        <td align="left" bgcolor="lightyellow">No</td>
+      </tr>
+      <tr>
+        <td align="left">GIL interference</td>
+        <td align="left" bgcolor="green">No</td>
+        <td align="left" bgcolor="lightyellow">Some</td>
+        <td align="left" bgcolor="green">No</td>
+      </tr>
+    </table>
+    >];
+
+}

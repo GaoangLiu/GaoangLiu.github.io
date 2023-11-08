@@ -1,0 +1,32 @@
+digraph D{
+    graph [dpi=300]
+    labelloc="b";
+    label="Pic A: File Read structs";
+
+    trait_bufread_methods[shape=record,label="{consume\l|read_until\l|read_line\l|split\l|...\l|lines\l}"];
+    trait_ioread_methods[shape=record,label="{read\l|read_to_end\l|read_to_string\l|by_ref\l|bytes\l|chain\l|...\l|take\l}"];
+
+    io[shape=record, label="{Traits:}|{<write>io::write}|{<read>io::Read}|{<seek>io::Seek}|{<debug>fmt::Debug}|{<bufread>io::BufRead}"]
+
+    fs[shape=record, label="{std::fs}|{<fsfile>fs::File\l|fs::FileType\l|fs::Metadata\l|fs::ReadDir\l|fs::OpenOptions\l|fs::DirEntry\l}"];
+    io:read->fs:fsfile [label="impl", dir=back];
+    io:write->fs:fsfile [dir=back];
+    io:seek->fs:fsfile [dir=back];
+
+    fs_file_methods[shape=record,label="{create\l|metadata\l|open\l|...\l|with_options\l}"];
+    fs_file_methods->fs:fsfile [label="methods", dir=back];
+
+    //bufread[shape=record, label="{<ioread>io::Read}|{<debug>fmt::Debug}|{io::Seek}|{io::BufRead}"];
+    
+    bufreader[shape=record, label="{io::BufReader}"];
+    bufreader_methods[shape=record,label="{buffer\l|new\l|capacity\l|...\l|get_ref\l}"];
+
+    bufreader->io:read [arrowhead=none];
+    io:debug->bufreader [dir=back];
+    io:seek->bufreader [dir=none];
+    io:bufread->bufreader [dir=back, label="impl"];
+    bufreader->bufreader_methods [label=" methods"];
+
+    trait_bufread_methods->io:bufread[label=" methods", dir=back];
+    trait_ioread_methods->io:read[label=" methods", dir=back];
+}
