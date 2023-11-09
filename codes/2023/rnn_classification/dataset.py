@@ -27,26 +27,29 @@ train_dataset, test_dataset = to_map_style_dataset(
 
 target_classes = ["World", "Sports", "Business", "Sci/Tech"]
 
-max_words = 25
 
-def vectorize_batch(batch):
+def vectorize_batch(batch, max_length):
     Y, X = list(zip(*batch))
     X = [vocab(tokenizer(text)) for text in X]
     X = [
-        tokens + ([0] * (max_words - len(tokens)))
-        if len(tokens) < max_words else tokens[:max_words] for tokens in X
-    ]  ## Bringing all samples to max_words length.
+        tokens + ([0] * (max_length - len(tokens)))
+        if len(tokens) < max_length else tokens[:max_length] for tokens in X
+    ]  ## Bringing all samples to max_length length.
 
     return torch.tensor(X, dtype=torch.int32), torch.tensor(
         Y
     ) - 1  ## We have deducted 1 from target names to get them in range [0,1,2,3] from [1,2,3,4]
 
 
-train_loader = DataLoader(train_dataset,
-                          batch_size=1024,
-                          collate_fn=vectorize_batch,
-                          shuffle=True)
-test_loader = DataLoader(test_dataset,
-                         batch_size=1024,
-                         collate_fn=vectorize_batch)
+def get_dataloaders(max_length:int):
+    collate_fn = lambda batch: vectorize_batch(batch, max_length)
+    train_loader = DataLoader(train_dataset,
+                            batch_size=1024,
+                            collate_fn=collate_fn,
+                            shuffle=True)
+    test_loader = DataLoader(test_dataset,
+                            batch_size=1024,
+                            collate_fn=collate_fn)
+    return train_loader, test_loader
 vocab_size = len(vocab)
+
