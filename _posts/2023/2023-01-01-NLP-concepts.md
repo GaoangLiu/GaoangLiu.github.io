@@ -84,7 +84,7 @@ Leaky ReLU 是对 ReLU 的改进，当输入小于 0 时，Leaky ReLU 的输出�
 
 
 ### ELU
-<img src='https://file.ddot.cc/imagehost/2023/elu.png' width=345pt>
+<img src='https://image.ddot.cc/202311/elu_rc.png' width=345pt>
 
 $$\text{ELU}(x) = \begin{cases} x & x \geq 0 \\ \alpha (e^x - 1) & x < 0 \end{cases}$$
 

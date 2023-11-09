@@ -11,7 +11,7 @@ class RNNClassifier(nn.Module):
                  vocab_size: int,
                  target_classes: int,
                  embed_len: int = 50,
-                 hidden_dim: int = 50,
+                 hidden_dim: int = 100,
                  bidirectional: bool = False,
                  num_layers: int = 1):
         super(RNNClassifier, self).__init__()

@@ -16,6 +16,13 @@ def build_vocabulary(datasets):
 
 
 train_dataset, test_dataset = torchtext.datasets.AG_NEWS()
+
+lens = []
+for _, text in train_dataset:
+    lens.append(len(tokenizer(text)))
+print('max length', max(lens), 'min length', min(lens), 'average length',
+      sum(lens) / len(lens))
+
 vocab = build_vocab_from_iterator(build_vocabulary(
     [train_dataset, test_dataset]),
                                   min_freq=1,
@@ -29,28 +36,27 @@ target_classes = ["World", "Sports", "Business", "Sci/Tech"]
 
 
 def vectorize_batch(batch, max_length):
-    Y, X = list(zip(*batch))
-    X = [vocab(tokenizer(text)) for text in X]
-    X = [
+    y, x = list(zip(*batch))
+    x = [vocab(tokenizer(text)) for text in x]
+    x = [
         tokens + ([0] * (max_length - len(tokens)))
-        if len(tokens) < max_length else tokens[:max_length] for tokens in X
-    ]  ## Bringing all samples to max_length length.
+        if len(tokens) < max_length else tokens[:max_length] for tokens in x
+    ]
 
-    return torch.tensor(X, dtype=torch.int32), torch.tensor(
-        Y
-    ) - 1  ## We have deducted 1 from target names to get them in range [0,1,2,3] from [1,2,3,4]
+    # We have deducted 1 from target names to get them in range [0,1,2,3] from [1,2,3,4]
+    return torch.tensor(x, dtype=torch.int32), torch.tensor(y) - 1
+
 
 vocab_size = len(vocab)
-def get_dataloaders(max_length:int):
+
+
+def get_dataloaders(max_length: int, batch_size: int):
     collate_fn = lambda batch: vectorize_batch(batch, max_length)
     train_loader = DataLoader(train_dataset,
-                            batch_size=1024,
-                            collate_fn=collate_fn,
-                            shuffle=True)
+                              batch_size=batch_size,
+                              collate_fn=collate_fn,
+                              shuffle=True)
     test_loader = DataLoader(test_dataset,
-                            batch_size=1024,
-                            collate_fn=collate_fn)
+                             batch_size=batch_size,
+                             collate_fn=collate_fn)
     return train_loader, test_loader
-
-
-
