@@ -3,7 +3,7 @@ from torch import nn
 from torch.nn import functional as F
 
 
-class SingleRNN(nn.Module):
+class RNNClassifier(nn.Module):
     """ One layer RNN classifier.
     """
 
@@ -14,7 +14,7 @@ class SingleRNN(nn.Module):
                  hidden_dim: int = 50,
                  bidirectional: bool = False,
                  num_layers: int = 1):
-        super(SingleRNN, self).__init__()
+        super(RNNClassifier, self).__init__()
         self.embedding_layer = nn.Embedding(num_embeddings=vocab_size,
                                             embedding_dim=embed_len)
         self.rnn = nn.RNN(input_size=embed_len,
@@ -33,10 +33,14 @@ class SingleRNN(nn.Module):
     def forward(self, x_batch):
         embeddings = self.embedding_layer(x_batch)
         if self.bidirectional:
-            init_hidden = torch.randn(self.num_layers * 2, len(x_batch),
-                                        self.hidden_dim)
+            init_hidden = torch.randn(self.num_layers * 2,
+                                      len(x_batch),
+                                      self.hidden_dim,
+                                      device=x_batch.device)
         else:
-            init_hidden = torch.randn(self.num_layers, len(x_batch),
-                                        self.hidden_dim)
+            init_hidden = torch.randn(self.num_layers,
+                                      len(x_batch),
+                                      self.hidden_dim,
+                                      device=x_batch.device)
         output, hidden = self.rnn(embeddings, init_hidden)
         return self.linear(output[:, -1])

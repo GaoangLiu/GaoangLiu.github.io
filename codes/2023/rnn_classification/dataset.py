@@ -40,7 +40,7 @@ def vectorize_batch(batch, max_length):
         Y
     ) - 1  ## We have deducted 1 from target names to get them in range [0,1,2,3] from [1,2,3,4]
 
-
+vocab_size = len(vocab)
 def get_dataloaders(max_length:int):
     collate_fn = lambda batch: vectorize_batch(batch, max_length)
     train_loader = DataLoader(train_dataset,
@@ -51,5 +51,6 @@ def get_dataloaders(max_length:int):
                             batch_size=1024,
                             collate_fn=collate_fn)
     return train_loader, test_loader
-vocab_size = len(vocab)
+
+
 
