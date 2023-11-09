@@ -128,11 +128,32 @@ $$o^{t} = \sigma(W_{o}[h^{t-1}, x^t] + b_{o})$$
 </figure>
 
 ## 更新单元状态
-单元状态 $$c^t$$ 的更新公式为：
+单元状态 $$c^t$$ 的更新会考虑两个因素，第一个是上一个时间步的单元状态 $$c^{t-1}$$，第二个是当前时间步的输入 $$x^t$$。
+1. 首先，需要决定哪些信息应该被丢弃，这是通过一个称为“遗忘门”的 sigmoid 层（$$f^t$$）来完成的。
+2. 然后，需要决定哪些新信息应该被添加到单元状态中，这是通过一个称为“输入门”“输入门”的 sigmoid 层（$$i^t$$）来完成的。
+
+公式为：
 
 $$c^{t} = f^{t} \odot c^{t-1} + i^{t} \odot \tilde{c}^{t}$$
 
 其中 $$f^{t}$$ 是遗忘门，$$i^{t}$$ 是输入门，$$\tilde{c}^{t}$$ 是新信息，$$\odot$$ 表示逐元素相乘。
+
+遗忘门的值又依赖于 $$h^{t-1}, x^t$$，对应的公式为：
+
+$$f^{t} = \sigma(W_{f}[h^{t-1}, x^t] + b_{f})$$
+
+<figure style="text-align: center;">
+    <img src="https://image.ddot.cc/202311/lstm_forget_door_20231110_0716.png" width=478>
+    <figcaption style="text-align:center"> 遗忘门 </figcaption>
+</figure>
+
+同样输入门 $$i^t$$ 及新的单元状态 $$\tilde{c}^{t}$$的值也依赖于 $$h^{t-1}, x^t$$，对应的公式为：
+
+$$\begin{aligned}
+i^{t} &= \sigma(W_{i}[h^{t-1}, x^t] + b_{i}) \\\
+\tilde{c}^{t} &= \tanh(W_{c}[h^{t-1}, x^t] + b_{c})
+\end{aligned}$$
+
 
 ## 思考一些问题 
 1. 为什么叫门控机制？

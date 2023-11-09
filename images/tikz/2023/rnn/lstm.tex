@@ -64,6 +64,7 @@
 
     % Draw inputs named ibox#
     \node [gt] (ibox1) at (-2,-0.75) {$\sigma$};
+    \node [mylabel] (iboxx) at (-3.4,-0.33) {$f^t=\sigma(W_f[h^{t-1}, x^t] + b_f)$};
     \node [gt] (ibox2) at (-1.5,-0.75) {$\sigma$};
     \node [gt, minimum width=1cm] (ibox3) at (-0.5,-0.75) {Tanh};
     \node [gt] (ibox4) at (0.5,-0.75) {$\sigma$};
@@ -85,31 +86,34 @@
     \node[ct, label={[mylabel]Label2}] (h2) at (4,-1.5) {\empt{h}{t}};
     \node[ct, label={[mylabel]left:Label3}] (x2) at (2.5,3) {\empt{h}{t}};
 
-% Start connecting all.
-    %Intersections and displacements are used. 
+    % Start connecting all.
+    % Intersections and displacements are used. 
     % Drawing arrows    
     \draw [ArrowC1] (add1) -- (c2);
-    \draw [ArrowC1,red] (c) -- (mux1) -- (add1) -| (func1);
+    \draw [ArrowC1,red] (c) -- (mux1);
+    \draw [ArrowC1] (mux1)  -- (add1) -| (func1);
     
     % Inputs
-    \draw [ArrowC2,red] (h) -| (ibox4);
-    \draw [ArrowC1] (h -| ibox1)++(-0.5,0) -| (ibox1); 
+    \draw [ArrowC2] (h) -| (ibox4);
+    \draw [ArrowC1,red] (h -| ibox1)++(-0.5,0) -| (ibox1); 
     \draw [ArrowC1] (h -| ibox2)++(-0.5,0) -| (ibox2);
     \draw [ArrowC1] (h -| ibox3)++(-0.5,0) -| (ibox3);
+
+    \draw [ArrowC1,red] (h) -| (ibox1);
     \draw [ArrowC1,red] (x) -- (x |- h);
     % -| (ibox3);
 
     % Internal
-    \draw [->, ArrowC2] (ibox1) -- (mux1);
+    \draw [->, ArrowC2,red] (ibox1) -- (mux1);
     \draw [->, ArrowC2] (ibox2) |- (mux2);
     \draw [->, ArrowC2] (ibox3) -- (mux2);
-    \draw [->, ArrowC2,red] (ibox4) |- (mux3);
+    \draw [->, ArrowC2] (ibox4) |- (mux3);
     \draw [->, ArrowC2] (mux2) -- (add1);
-    \draw [->, ArrowC1,red] (add1 -| func1)++(-0.5,0) -| (func1);
-    \draw [->, ArrowC2,red] (func1) -- (mux3);
+    \draw [->, ArrowC1] (add1 -| func1)++(-0.5,0) -| (func1);
+    \draw [->, ArrowC2] (func1) -- (mux3);
 
     %Outputs
-    \draw [-, ArrowC2,red] (mux3) |- (h2);
+    \draw [-, ArrowC2] (mux3) |- (h2);
     \draw (c2 -| x2) ++(0,-0.1) coordinate (i1);
     \draw [-, ArrowC2] (h2 -| x2)++(-0.5,0) -| (i1);
     \draw [-, ArrowC2] (i1)++(0,0.2) -- (x2);
