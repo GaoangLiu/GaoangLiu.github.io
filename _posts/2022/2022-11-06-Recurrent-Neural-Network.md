@@ -123,13 +123,16 @@ $$h^{t} = o^{t} \odot \tanh(c^{t})$$
 $$o^{t} = \sigma(W_{o}[h^{t-1}, x^t] + b_{o})$$
 
 <figure style="text-align: center;">
-    <img src="https://image.ddot.cc/202311/lstm_output_rc.png" width=678>
+    <img src="https://image.ddot.cc/202311/lstm_out_20231110.png" width=478>
     <figcaption style="text-align:center"> LSTM 隐藏状态更新 </figcaption>
 </figure>
 
-
-
 ## 更新单元状态
+单元状态 $$c^t$$ 的更新公式为：
+
+$$c^{t} = f^{t} \odot c^{t-1} + i^{t} \odot \tilde{c}^{t}$$
+
+其中 $$f^{t}$$ 是遗忘门，$$i^{t}$$ 是输入门，$$\tilde{c}^{t}$$ 是新信息，$$\odot$$ 表示逐元素相乘。
 
 ## 思考一些问题 
 1. 为什么叫门控机制？
