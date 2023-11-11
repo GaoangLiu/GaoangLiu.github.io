@@ -1,0 +1,36 @@
+---
+layout:     post
+title:      也说解码策略 
+date:       2023-11-11
+tags: [nlp, sampling]
+categories: 
+- nlp
+---
+
+- [ ] 核采样是什么？
+- [ ] 与 beam search 有什么区别？
+- [ ] 有什么优势？
+
+
+对于自回归模型，一个比较重要的问题是如何解码。贪婪解码（greedy decoding）是最简单的解码方法，它在每个时间步选择概率最大的词作为输出。贪婪解码的优点是简单高效，但是它的缺点也很明显，即容易陷入局部最优，导致输出文本不连贯，或者重复循环。为了解决这个问题，人们提出了束搜索（beam search）等解码策略。束搜索通过宽度优先搜索创建搜索树，在每个时间步选择概率最大的 $k$ 个词，然后在下一个时间步对这 $k$ 个词分别计算概率，再次选择概率最大的 $k$ 个词，以此类推。束搜索的计算量大，而且束搜索也不能完全避免陷入局部最优的问题。论文[《THE CURIOUS CASE OF NEURAL TEXT DeGENERATION》](https://arxiv.org/pdf/1904.09751.pdf)(ICLR 2020) 指出这种基于最大化的解码方法仍然会导致**退化**现象，即产生苍白（没新意）、不连贯或陷入重复循环的输出文本。
+
+<figure style="text-align: center;">
+    <img src="https://image.ddot.cc/202311/beam_search_vs_human_20231111_0828.png" width=478>
+    <figcaption style="text-align:center"> 图1. 贪婪解码和束搜索 </figcaption>
+</figure>
+
+
+# 形式化描述 
+给定由 $m$ 个词元(tokens)构成的上下文序列 $x_1,...,x_m$，解码任务是生成后续 $n$ 个词元$x_{m+1},...,x_{m+n}$ 来补齐这个序列。可能的生成方法有很多种，常用的指导思想找到最优的序列 $x_{m+1},...,x_{m+n}$，使得其概率最大，即：
+$$
+\begin{aligned}
+\hat{x}_{m+1},...,\hat{x}_{m+n} &= \arg \max_{x_{m+1},...,x_{m+n}} p(x_{m+1},...,x_{m+n}|x_1,...,x_m) \\\
+&= \arg \max_{x_{m+1},...,x_{m+n}} \prod_{i=1}^{n} p(x_{m+i}|x_1,...,x_{m+i-1})
+\end{aligned}$$
+
+# 贪婪解码
+
+
+作为解码策略的一种改进，上述 text degeneration 论文提出了核采样（Nucleus Sampling）的方法。它的核心思想是在生成过程中，只保留概率最高的一部分词，而不是像贪婪解码那样只保留概率最高的一个词。这种方法可以有效的解决贪婪解码中的问题，比如重复、无意义的词等等。本文将介绍核采样的原理及其实现。
+
+
