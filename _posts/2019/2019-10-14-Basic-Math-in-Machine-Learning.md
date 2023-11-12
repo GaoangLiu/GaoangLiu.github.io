@@ -15,12 +15,12 @@ author: berrysleaf
 
 
 
-$$
-\begin{aligned}
+
+$$\begin{aligned}
     A = U \Sigma V^T
-\end{aligned}
-$$
-其中 $$U$$ 为 $$m$$ 阶正交矩阵， $$V$$ 为 $$n$$ 阶正交矩阵， $$\Sigma$$ 为对角矩阵，且对角元素 $$\lambda_1 \geq \lambda_2 \geq ... \lambda_p \geq 0$$。
+\end{aligned}$$
+
+其中 $$U$$ 为 $$m$$ 阶正交矩阵， $$V$$ 为 $$n$$ 阶正交矩阵， $$\Sigma$$ 为对角矩阵，且对角元素 $$\lambda_1 \geq \lambda_2 \geq ... \lambda_p \geq 0$$。
 则 $$U \Sigma V^T$$ 称为 $$A$$ 的奇异值分解(singular value decomposition, SVD), $$\sigma_i$$ 为奇异值。
 
 [定理] 设 $$A \in \mathrm{R}^{m \times n}$$ 为一实矩阵，则 $$A$$ 的奇异值分解必须存在。
@@ -38,9 +38,9 @@ $$p(x) = \frac{1}{\sqrt{2\pi} \sigma} e^{-\frac{(x-\mu)^2}{2\sigma^2}}, -\infty 
 
 $$F(x) = \frac{1}{\sqrt{2\pi}\sigma} \int_{- \infty}^x  e^{-\frac{(t-\mu)^2}{2\sigma^2}} dt$$
 
-正态分布由两个参数决定 $$\mu, \sigma$$：$$\mu$$决定密度函数的位置，称为位置参数； $$\sigma$$决定函数的尺度，称为尺度函数。
+正态分布由两个参数决定 $$\mu, \sigma$$：$$\mu$$ 决定密度函数的位置，称为位置参数； $$\sigma$$ 决定函数的尺度，称为尺度函数。
 
-特别的，当$$\mu=0, \sigma=1$$的正态分布$$N(0, 1)$$为标准正态分布。 
+特别的，当 $$\mu=0, \sigma=1$$ 的正态分布$$N(0, 1)$$为标准正态分布。 
 
 ### 一般正态分布的标准化
 
