@@ -30,7 +30,7 @@ $$\begin{aligned}
 
 相当于暴力搜索与贪婪解码的折中，对比贪婪解码，集束搜索增大了搜索空间，计算复杂度是 $O(k \cdot n \cdot V)$，其中 $k$ 是束宽，$n$ 是序列长度，$V$ 是词表大小。当 $k=1$ 时，集束搜索退化为贪婪解码。
 
-注： $n$ 选 top $k$ 有[Quickselect](https://en.wikipedia.org/wiki/Quickselect)算法，不需要 $O(n\log n)$ 的排序。QuickSelect 的思路可以参考之前的笔记[《Algorithm》]({{site.baseurl}/2019/06/23/Algorithm)。
+注： $n$ 选 top $k$ 有[Quickselect](https://en.wikipedia.org/wiki/Quickselect)算法，不需要 $O(n\log n)$ 的排序。QuickSelect 的思路可以参考之前的笔记[《Algorithm》]({{site.baseurl}}/2019/06/23/Algorithm)。
 
 
 # Top-k 采样（top-k sampling）
