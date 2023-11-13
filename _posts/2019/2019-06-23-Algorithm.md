@@ -2,7 +2,7 @@
 layout: post
 title: Algorithm
 date: 2019-06-23
-tags: 
+tags: algorithm
 categories: 
 author: berrysleaf
 ---
@@ -10,11 +10,25 @@ author: berrysleaf
 {:toc}
 
 
+# 快速选择算法 QuickSelect
+要解决的问题是：从无序数组中寻找第 $$k$$ 个最大（小）的元素，在思路上跟快排比较类似（都是 Tony Hoare 提出的）。
+
+
+
+
+快排的思路是：
+1. 选择一个 pivot;
+2. 将数组分为两部分，左边的元素都小于 pivot，右边的元素都大于 pivot；
+3. 递归的对左右两部分进行快排。
+
+Quick Select 也是递归的思路，差异在于，既然要确定第 $$k$$ 个最小的元素，只要确定一个 pivot，使得比它小的元素个数为 $$k-1$$ 个，至于这个 $$k$$ 个元素之间的大小如何，这并不重要。因此，在做完一次 partition 后，只需要判断 pivot 的位置是否为 $$k$$。如果是，说明这个 pivot 就是第 $$k$$ 个最小的元素，如果不是，那么就继续对左边或者右边进行递归。
+
+Quick Select 的平均时间复杂度为 $$O(n)$$，复杂度分析参考 [wikipedia](https://zh.wikipedia.org/wiki/%E5%BF%AB%E9%80%9F%E9%80%89%E6%8B%A9)。
+
+
+
 # Bézout's identity
 [Bézout's identity](https://en.wikipedia.org/wiki/B%C3%A9zout%27s_identity):
-
-
-
 如果两个整数 $$a, b$$ 的最大公因子为 $$d$$，那么存在两个整数 $$x, y$$ 使用 $$ax+by=d$$。更一般的，对于任意整数 $$x, y$$，那么  $$ax+by$$ 都是 $$d$$ 的倍数。 
 
 这样的一对整数 $$x, y$$ 称为 Bézout 系数，Bézout 系数可以通过[扩展欧几里得算法](https://en.wikipedia.org/wiki/Extended_Euclidean_algorithm)求出。而假设我们已经得到了这样一对系数 $$(x, y)$$，那么其他所有的系数都可以通过以下公式获得：
@@ -150,7 +164,7 @@ def generate_decimal_gray_code(n):
 ## TimSort 
 - 提出者: [Tim Peters](https://en.wikipedia.org/wiki/Tim_Peters_(software_engineer))
 - 出现时间： 2002 
-- 应用: 从 `Python 2.3` 开始作为 `Python` 的标准默认算法，e.g., `a_list.sort()`
+- 应用: 从 `Python 2.3` 开始作为 `Python` 的标准默认算法，e.g., `a_list.sort()`
 - 复杂度
     - worst-case $$O(n \text{log}n)$$
     - best-case $$O(n)$$
