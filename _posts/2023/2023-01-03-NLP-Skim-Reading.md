@@ -22,7 +22,7 @@ author: berrysleaf
 - 提出了一个高效的推理方法，在牺牲一点点性能（1% drop on f1）的情况下，推理速度有 8-16 倍的提升。
 
 <div style="display: flex; justify-content: center;">
-    <img src="https://file.ddot.cc/imagehost/2023/joint_entity_relation_model.png" width=678pt id='joint-entity-relation-model-image'>
+    <img src="https://image.ddot.cc/202311/joint_entity_relation_model_20231114_0746.png" width=678pt id='joint-entity-relation-model-image'>
 </div>
 
 Pipeline 模型：
@@ -45,4 +45,35 @@ Pipeline 模型：
 - Q: Joint model 跟 end2end model 有什么区别？
 
 - Q: 有哪些可以推广的？
+
+
+# Highway Networks
+论文：[《Highway Networks》](https://arxiv.org/pdf/1505.00387.pdf)
+
+主要贡献：
+- 提出了一种新的网络结构，Highway Network，可以有效地训练深层网络，避免梯度消失或梯度爆炸的问题。如下图所示，在 MNIST 分类实验上，Highway Network 在网络层数较深时，相比于传统的深层网络，仍然可以取得很好的效果。
+
+<figure style="text-align: center;">
+    <img src="https://image.ddot.cc/202311/highway_networks_20231114_0752.png" width=678pt>
+    <figcaption style="text-align:center"> 图. Highway Network 结构 </figcaption>
+</figure>
+
+主要思路也比较直观，令 $$y=H(x, W_H)$$ 表示网络的上一层输出。 Highway 定义了两个非线性变换：
+1. $$T(x, W_T)$$ 表示 transform gate，$$x$$ 是输入；
+2. $$C(x, W_C)$$ 表示 carry gate，$$x$$ 是输入。
+
+Highway Network 的输出为定义为输出 $$y$$ 和输入 $$x$$ 的加权和，即：
+$$y = H(x, W_H) \odot T(x, W_T) + x \odot C(x, W_C)$$
+
+在实验中，$$T$$ 定义为 sigmoid 函数，$$C$$ 定义为 $$1-T$$，即：
+
+$$T(x, W_T) = \sigma(W_Tx + b_T)$$
+
+后面还有 KaiMing He 的 [《Deep Residual Learning for Image Recognition》](https://arxiv.org/pdf/1512.03385.pdf) 也是类似的思路，但是 Highway Network 的思路更加简单，而且 Highway Network 的输出可以是任意的，而 ResNet 的输出必须是输入加上残差。
+He 提出了 skip connection（跳跃连接）的概念，即在网络中间的某一层，将输出直接连接到网络的最后一层，如下图所示。这样做的好处是，可以避免梯度消失或梯度爆炸的问题，因为在反向传播时，梯度可以直接从最后一层传到中间层，而不需要经过多层的传递。两个工作在理念上都是一样的，都是将**输出表述为输入和输入的一个非线性变换的线性叠加**。
+
+<figure style="text-align: center;">
+    <img src="https://image.ddot.cc/202311/skip_conn_20231114_0840.png" width=378pt>
+    <figcaption style="text-align:center"> 图. skip block 结构 </figcaption>
+</figure>
 
