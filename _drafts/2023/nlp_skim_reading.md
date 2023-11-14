@@ -45,16 +45,16 @@ Pipeline 模型：
 论文：[《Highway Networks》](https://arxiv.org/pdf/1505.00387.pdf)
 
 主要贡献：
-- 提出了一种新的网络结构，Highway Network，可以有效地训练深层网络，避免梯度消失或梯度爆炸的问题。如下图所示，在 MNIST 分类实验上，Highway Network 在网络层数较深时，相比于传统的深层网络，仍然可以取得很好的效果。
+- 提出了一种新的网络结构，Highway Network，可以有效地训练深层网络，缓解梯度消失或梯度爆炸的问题。如下图所示，在 MNIST 分类实验上，Highway Network 在网络层数较深时，相比于传统的深层网络，仍然可以取得很好的效果。
 
 <figure style="text-align: center;">
     <img src="https://image.ddot.cc/202311/highway_networks_20231114_0752.png" width=678pt>
     <figcaption style="text-align:center"> 图. Highway Network 结构 </figcaption>
 </figure>
 
-主要思路也比较直观，令 $y=H(x, W_H)$ 表示网络的上一层输出。 Highway 定义了两个非线性变换：
+主要思路也比较直观，即将一层的输出 $y$ 与输入 $x$ 进行叠加，并传给下一层。令 $y=H(x, W_H)$ 表示网络的上一层输出。 Highway 定义了两个非线性变换：
 1. $T(x, W_T)$ 表示 transform gate，$x$ 是输入；
-2. $C(x, W_C)$ 表示 carry gate，$x$ 是输入。
+2. $C(x, W_C)$ 表示 carry gate。
 
 Highway Network 的输出为定义为输出 $y$ 和输入 $x$ 的加权和，即：
 $$y = H(x, W_H) \odot T(x, W_T) + x \odot C(x, W_C)$$
@@ -63,11 +63,17 @@ $$y = H(x, W_H) \odot T(x, W_T) + x \odot C(x, W_C)$$
 
 $$T(x, W_T) = \sigma(W_Tx + b_T)$$
 
-后面还有 KaiMing He 的 [《Deep Residual Learning for Image Recognition》](https://arxiv.org/pdf/1512.03385.pdf) 也是类似的思路，但是 Highway Network 的思路更加简单，而且 Highway Network 的输出可以是任意的，而 ResNet 的输出必须是输入加上残差。
-He 提出了 skip connection（跳跃连接）的概念，即在网络中间的某一层，将输出直接连接到网络的最后一层，如下图所示。这样做的好处是，可以避免梯度消失或梯度爆炸的问题，因为在反向传播时，梯度可以直接从最后一层传到中间层，而不需要经过多层的传递。两个工作在理念上都是一样的，都是将**输出表述为输入和输入的一个非线性变换的线性叠加**。
+后面还有 KaiMing He 的 [《Deep Residual Learning for Image Recognition》](https://arxiv.org/pdf/1512.03385.pdf) 也是类似的思路。
+
+He 提出了 residual learning（残差学习）的概念，即在网络中间的某一层，将输出直接连接到网络的最后一层，如下图所示。这样做的好处是，可以避免梯度消失或梯度爆炸的问题，因为在反向传播时，梯度可以直接从最后一层传到中间层，而不需要经过多层的传递。两个工作在理念上都是一样的，都是将**输出表述为输入和输入的一个非线性变换的线性叠加**。
 
 <figure style="text-align: center;">
     <img src="https://image.ddot.cc/202311/skip_conn_20231114_0840.png" width=378pt>
-    <figcaption style="text-align:center"> 图. skip block 结构 </figcaption>
+    <figcaption style="text-align:center"> 图. residual learning 结构 </figcaption>
 </figure>
+
+差异主要在**设计思路/实现方式**上：Highway Network 是通过门控机制，控制信息的流动，参数通过学习获得，依赖于具体数据。 而 Residual Network 直接叠加输入与及非线性变换，是无参的。
+
+这个设计带来的结果是，residual network 不需要额外的参数，训练起来更加简单；highway 更为灵活，通过学习可以获得不同的叠加权重。
+
 
