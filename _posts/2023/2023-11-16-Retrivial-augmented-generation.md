@@ -26,6 +26,11 @@ ChatGPT 爆火之后，有一段时间内很多公司都在竞相做向量数据
 
 # RAG 结构 
 
+<figure style="text-align: center;">
+    <img src="https://image.ddot.cc/202311/rag.svg" width=678>
+    <figcaption style="text-align:center"> RAG 结构 </figcaption>
+</figure>
+
 
 
 
