@@ -1,0 +1,65 @@
+
+digraph G {
+    graph [dpi=300]
+    subgraph cluster_siamese {
+        question[shape=box,style="filled,rounded",label="Question",margin=0.1,fillcolor=lightblue]
+        answer[shape=box,style="filled,rounded",label="Answer",margin=0.1,fillcolor=lightyellow]
+        // hidden[shape=none,label="",width=0, height=0, margin=0]
+
+        token[shape=box,style="rounded,filled",label="Token Embedder",margin=0.1,fillcolor=lightgrey]
+        encoder[shape=box,style="rounded,filled",label="Encoder",margin=0.1,fillcolor=lightgrey, height=1.2,width=1.5]
+        projection[shape=box,style="rounded,filled",label="Projection Layer",margin=0.1,fillcolor=lightgrey]
+        q_embedding[shape=box,style="rounded,filled",label="Q-Embedding",margin=0.1,fillcolor=lightblue]
+        a_embedding[shape=box,style="rounded,filled",label="A-Embedding",margin=0.1,fillcolor=lightyellow]
+
+        dotproduct[shape=oval,label="sim",style="rounded,filled",margin=0.1,fillcolor=peru]
+
+        {rank=same; question, answer};
+        edge[samehead=h1, sametail=t1];
+        {question, answer}->token;
+        token->encoder->projection;
+        projection->{q_embedding, a_embedding};
+        {q_embedding, a_embedding}->dotproduct;
+        
+        label="Siamese Dual Encoder"
+        labelloc=b
+        color=lavender
+        style="filled,rounded"
+        margin=10
+    }
+
+    subgraph sub_hidden{
+        hidden223[shape=none,label="",width=1, height=0, margin=0]
+    }
+
+    subgraph cluster_asymmetric {
+        question2[shape=box,style="filled,rounded",label="Question",margin=0.1,fillcolor=lightblue]
+        answer2[shape=box,style="filled,rounded",label="Answer",margin=0.1,fillcolor=lightyellow]
+
+        token21[shape=box,style="rounded,filled",label="Token Embedder",margin=0.1,fillcolor=lightblue]
+        token22[shape=box,style="rounded,filled",label="Token Embedder",margin=0.1,fillcolor=lightyellow]
+
+        encoder21[shape=box,style="rounded,filled",label="Encoder",margin=0.1,fillcolor=lightblue, height=1.2,width=1.5]
+        encoder22[shape=box,style="rounded,filled",label="Encoder",margin=0.1,fillcolor=lightyellow, height=1.2,width=1.5]
+
+        projection21[shape=box,style="rounded,filled",label="Projection Layer",margin=0.1,fillcolor=lightblue]
+        projection22[shape=box,style="rounded,filled",label="Projection Layer",margin=0.1,fillcolor=lightyellow]
+
+        q_embedding2[shape=box,style="rounded,filled",label="Q-Embedding",margin=0.1,fillcolor=lightblue]
+        a_embedding2[shape=box,style="rounded,filled",label="A-Embedding",margin=0.1,fillcolor=lightyellow]
+
+        dotproduct2[shape=oval,label="sim",style="rounded,filled",margin=0.1,fillcolor=peru]
+
+        {rank=same; question2, answer2};
+        edge[samehead=h1, sametail=t1];
+        question2->token21->encoder21->projection21->q_embedding2;
+        answer2->token22->encoder22->projection22->a_embedding2;
+        {q_embedding2, a_embedding2}->dotproduct2;
+        
+        label="Asymmetric Dual Encoder"
+        labelloc=b
+        color=lavender
+        style="filled,rounded"
+        margin=10
+    }
+}
