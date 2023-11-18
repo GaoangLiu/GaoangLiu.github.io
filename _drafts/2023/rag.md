@@ -16,7 +16,7 @@ categories:
 ChatGPT 爆火之后，有一段时间内很多公司都在竞相做向量数据库，一些数据库厂商也在竞相在传统数据库上增加向量存储功能。常见的做法是通过预训练获取一个大模型，然后将数据向量化并存储。
 
 
-关于检索，一个比较引入注目的技术是 RAG （Retrieval-Augmented Generation）。这个技术与 meta 于 2020 年在论文 [《Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks》](https://arxiv.org/pdf/2005.11401.pdf) 中提出，它是一个检索增强的生成模型，通过检索得到的上下文信息来指导生成，从而提高生成的质量。这里面有两个主要的模块，一个是检索，使用的技术是 DPR(Dense Passage Retrieval)，即是 20 年出的暴打前浪 BM25 的技术，同样也是 meta 的工作，这个工作丹琦大佬也有参与。关于 DPR 的结构，我们在之前的文章[《Okapi-BM25》]({{site.baseur}}/2022/11/17/Okapi-BM25/)里稍有提过。另一个模块是 seq2seq 生成器，模型使用的 [BART](https://arxiv.org/abs/1910.13461)（也是 meta 的工作）。
+关于检索，一个比较引入注目的技术是 RAG （Retrieval-Augmented Generation）。这个技术与 meta 于 2020 年在论文 [《Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks》](https://arxiv.org/pdf/2005.11401.pdf) 中被提出，它是一个检索增强的生成模型，通过检索得到的上下文信息来指导生成，从而提高生成的质量。这里面有两个主要的模块，一个是检索，使用的技术是 DPR(Dense Passage Retrieval)，即是 20 年推出的“暴打前浪 BM25” 的技术，同样也是 meta 的工作。DPR 整体结构是一个 dual encoder: document encoder 和 query encoder，两个 encoder 使用的模型都是 $\text{BERT}_\text{BASE}$。关于 DPR 的机制，我们在之前的文章[《Okapi-BM25》]({{site.baseur}}/2022/11/17/Okapi-BM25/)里稍有提过。另一个模块是 seq2seq 生成器，模型使用的 [BART-large](https://arxiv.org/abs/1910.13461)（也是 meta 的工作）。
 
 
 # RAG 结构 
@@ -43,6 +43,15 @@ $$\begin{aligned}
 p_\text{RAG-token}(y\lvert x) &\approx \prod_{i=1}^N \sum_{z\in \mathcal{Z}} p_\eta(z\lvert x)p_\theta(y_i\lvert x, z, y_{1,...,i-1})
 \end{aligned}$$
 
+# 训练 
+RAG 联合训练检索模块跟生成模块，不需要关于检索文档的监督信息（这也是为什么文中说将 document 视为潜变量），在给定数据集 $\mathcal{D} = \{(x^{(i)}, y^{(i)})\}_{i=1}^N$ 的情况下，最小下面的负对数似然：
+
+$$\begin{aligned}
+\mathcal{L}(\theta, \eta) &= - \sum_{(x, y)\in \mathcal{D}} \log p_\text{RAG}(y\lvert x) \\\
+&= - \sum_{(x, y)\in \mathcal{D}} \log \sum_{z\in \mathcal{Z}} p_\eta(z\lvert x)p_\theta(y\lvert x, z)
+\end{aligned}$$
+
+在训练过程，由于更新检索库的编码器消耗巨大，因为每更新一次文档编码器就需要对所有文档重新编码，所以在训练过程 RAG 选择固定文档编码器 $\text{BERT}_d$ 的参数，只训练 $\text{BERT}_q$ 编码器与 BART 生成器。 
 
 # 效果
 
