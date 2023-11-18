@@ -22,7 +22,7 @@ author: berrysleaf
 ChatGPT 爆火之后，有一段时间内很多公司都在竞相做向量数据库，一些数据库厂商也在竞相在传统数据库上增加向量存储功能。常见的做法是通过预训练获取一个大模型，然后将数据向量化并存储。
 
 
-关于检索，一个比较引入注目的技术是 RAG （Retrieval-Augmented Generation）。这个技术与 meta 于 2020 年在论文 [《Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks》](https://arxiv.org/pdf/2005.11401.pdf) 中被提出，它是一个检索增强的生成模型，通过检索得到的上下文信息来指导生成，从而提高生成的质量。这里面有两个主要的模块，一个是检索，使用的技术是 DPR(Dense Passage Retrieval)，即是 20 年推出的“暴打前浪 BM25” 的技术，同样也是 meta 的工作。DPR 整体结构是一个 dual encoder: document encoder 和 query encoder，两个 encoder 使用的模型都是 $$\text{BERT}_\text{BASE}$$。关于 DPR 的机制，我们在之前的文章[《Okapi-BM25》]({{site.baseur}}/2022/11/17/Okapi-BM25/)里稍有提过。另一个模块是 seq2seq 生成器，模型使用的 [BART-large](https://arxiv.org/abs/1910.13461)（也是 meta 的工作）。
+关于检索，一个比较引入注目的技术是 RAG （Retrieval-Augmented Generation）。这个技术由 meta 于 2020 年在论文 [《Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks》](https://arxiv.org/pdf/2005.11401.pdf) 中提出，它是一个检索增强的生成模型，通过检索得到的上下文信息来指导生成，从而提高生成的质量。这里面有两个主要的模块，一个是检索，使用的技术是 DPR(Dense Passage Retrieval)，即是 20 年推出的“暴打前浪 BM25” 的技术，同样也是 meta 的工作。DPR 整体结构是一个 dual encoder: document encoder 和 query encoder，两个 encoder 使用的模型都是 $$\text{BERT}_\text{BASE}$$。关于 DPR 的机制，我们在之前的文章[《Okapi-BM25》]({{site.baseur}}/2022/11/17/Okapi-BM25/)里稍有提过。另一个模块是 seq2seq 生成器，模型使用的 [BART-large](https://arxiv.org/abs/1910.13461)（也是 meta 的工作）。
 
 
 # RAG 结构 
@@ -32,7 +32,7 @@ ChatGPT 爆火之后，有一段时间内很多公司都在竞相做向量数据
     <figcaption style="text-align:center"> RAG 结构 </figcaption>
 </figure>
 
-给定输入为 $$x$$，retreiver $$p_\eta(x)$$ 召回 top-K 个 $$z_i$$，($$z_i$$ 形成一个分布，按概率选择一个，有点像 sampling？)，然后生成器 $$p_\theta(y_i\lvert x, z, y_{1,...,i-1})$$ 逐 token 生成 $$y_i$$。
+给定输入为 $$x$$，retriever $$p_\eta(x)$$ 召回 top-K 个 $$z_i$$，($$z_i$$ 形成一个分布，按概率选择一个，有点像 sampling？)，然后生成器 $$p_\theta(y_i\lvert x, z, y_{1,...,i-1})$$ 逐 token 生成 $$y_i$$。
 
 比较重要的一点，RAG 将被检索文档视为潜变量，即 $$z$$ 是隐变量，这样可以使用变分推断来训练模型。模型有两种结构，一个是 RAG-sequence，一个是 RAG-token。RAG-sequences 在生成一条序列的每个 token 时，使用是同一个文档，而 RAG-token 在生成每一个 token 时，使用的是不同的文档。
 
@@ -48,6 +48,11 @@ p_\text{RAG-sequence}(y\lvert x) &\approx \sum_{z\in \mathcal{Z}} p_\eta(z\lvert
 $$\begin{aligned}
 p_\text{RAG-token}(y\lvert x) &\approx \prod_{i=1}^N \sum_{z\in \mathcal{Z}} p_\eta(z\lvert x)p_\theta(y_i\lvert x, z, y_{1,...,i-1})
 \end{aligned}$$
+
+## Retriever 
+在 extractive QA 任务中，答案存在于语料一个或多个段落中，答案对应于段落的一个 span。DRP 的做法是先将文档拆分成等长的段落，然后再从段落中提取 span。
+形式化的，假设语料由 $$D$$ 个文档构成，$$d_1, d_2, ..., d_D$$，拆分后得到 $$M$$ 个段落，$$ \mathcal{C} = \{ p_1, p_2, ..., p_M\}$$，其中每一个 $$p_i$$ 可以视为一个 token 序列 $$p_i = \{w_{i,1}, w_{i,2}, ..., w_{i,|p_i|}\}$$。那么给定一个问题 $$q$$，retriever 的目标是从 $$\mathcal{C}$$ 中检索出最相关的 $$K$$ 个段落，即：$$R: (q, \mathcal{C}) \rightarrow \mathcal{C}_\mathcal{F}$$，其中 $$\lvert \mathcal{C}_\mathcal{F}\rvert = K \ll M$$。
+
 
 # 训练 
 RAG 联合训练检索模块跟生成模块，不需要关于检索文档的监督信息（这也是为什么文中说将 document 视为潜变量），在给定数据集 $$\mathcal{D} = \{(x^{(i)}, y^{(i)})\}_{i=1}^N$$ 的情况下，最小下面的负对数似然：

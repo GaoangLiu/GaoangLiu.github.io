@@ -161,13 +161,13 @@ SimCSE 整体结构如下图所示：
 
 <img src="https://image.ddot.cc/202311/simcse_process_rc.png" width=678pt>
 
-损失函数：
+Supervised SimCSE 的损失函数：
 
-$\begin{aligned}
+$$\begin{aligned}
 -\log \frac{e^{\text{sim}(h_i, h_i^+)/\tau}}{\sum_j^N(e^{\text{sim}(h_i, h_j^+)/\tau} + e^{\text{sim}(h_i, h_j^-)/\tau})}
-\end{aligned}$
+\end{aligned}$$
 
-其中，$h_i$ 表示原始文本的嵌入，$h_i^+$ 对应句与 $x_i$ 为蕴含关系，$h_i^-$ 对应句与 $x_i$ 为矛盾关系，$N$ 表示批次中的文本数量，$\tau$ 表示温度参数，$\text{sim}$ 表示余弦相似度。
+其中，$h_i$ 表示原始文本的嵌入，$h_i^+$ 对应句与 $x_i$ 为蕴含关系，$h_i^-$ 对应句与 $x_i$ 为矛盾关系，$N$ 表示批次中的文本数量，$\tau$ 表示温度参数，$\tau$ 参数的值越小，相似度分布的“温度”越低，表示对相似度的判别更加严格。意味着在训练时，相似的句子会更有可能被赋予较高的概率，而相似度较低的句子则会有较低的概率。通过调节 $\tau$ 参数，可以影响相似度分布的平滑程度，从而对模型的训练产生影响。
 
 
 
