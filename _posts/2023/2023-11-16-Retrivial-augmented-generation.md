@@ -10,19 +10,15 @@ author: berrysleaf
 {:toc}
 
 
-本文关注以下几个问题 。
-- [ ] RAG 是什么？
-- [ ] 如何实现的？
+ChatGPT 爆火之后，有一段时间内很多公司都在竞相做向量数据库，一些数据库厂商也在竞相在传统数据库上增加向量存储功能，支持相似度检索。常规做法是通过预训练获取一个大模型，然后将数据向量化并存储。这种做法有几个问题：
 
 
 
-- [ ] 有什么优势 ？
-- [ ] 使用场景有哪些？
+1. 幻觉问题。这是 LLM 的通病之一 。 
+2. 无法更新、扩展。模型一旦训练好，就无法更新了，而且更新模型的成本很高。
+3. 可解释性差。难以解释解释为什么这个向量与这个文档相关。
 
-ChatGPT 爆火之后，有一段时间内很多公司都在竞相做向量数据库，一些数据库厂商也在竞相在传统数据库上增加向量存储功能。常见的做法是通过预训练获取一个大模型，然后将数据向量化并存储。
-
-
-关于检索，一个比较引入注目的技术是 RAG （Retrieval-Augmented Generation）。这个技术由 meta 于 2020 年在论文 [《Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks》](https://arxiv.org/pdf/2005.11401.pdf) 中提出，它是一个检索增强的生成模型，通过检索得到的上下文信息来指导生成，从而提高生成的质量。这里面有两个主要的模块，一个是检索，使用的技术是 DPR(Dense Passage Retrieval)，即是 20 年推出的“暴打前浪 BM25” 的技术，同样也是 meta 的工作。DPR 整体结构是一个 dual encoder: document encoder 和 query encoder，两个 encoder 使用的模型都是 $$\text{BERT}_\text{BASE}$$。关于 DPR 的机制，我们在之前的文章[《Okapi-BM25》]({{site.baseur}}/2022/11/17/Okapi-BM25/)里稍有提过。另一个模块是 seq2seq 生成器，模型使用的 [BART-large](https://arxiv.org/abs/1910.13461)（也是 meta 的工作）。
+知识难以更新的问题对于一些信息动态更新的任务来说，是一个巨大的挑战。例如，对于一些 QA 任务，答案可能会随着时间的推移而变化，e.g., “最近一届奥运会在哪个城市举办的？”，这时候就需要更新模型的知识，传统的做法对于这一问题就无能为力了。LLM 在近两年的发展中，一个被广泛认可的技术是 RAG （Retrieval-Augmented Generation）。这个技术由 meta 于 2020 年在论文 [《Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks》](https://arxiv.org/pdf/2005.11401.pdf) 中提出，它是一个检索增强的生成模型，通过检索得到的上下文信息来指导生成，从而提高生成的质量。这里面比较关键的一环是“检索增强”，检索用到的知识可以轻松地随时更改或补充，在需要更新知识时，不需要重新训练整个模型。RAG 使用的检索方案是 DPR(Dense Passage Retrieval)，即是 20 年推出的“暴打前浪 BM25” 的技术，同样也是 meta 的工作。DPR 整体结构是一个 dual encoder: document encoder 和 query encoder，两个 encoder 使用的模型都是 $$\text{BERT}_\text{BASE}$$。关于 DPR 的机制，我们在之前的文章[《Okapi-BM25》]({{site.baseur}}/2022/11/17/Okapi-BM25/)里稍有提过。另一个模块是 seq2seq 生成器，模型使用的 [BART-large](https://arxiv.org/abs/1910.13461)（也是 meta 的工作）。
 
 
 # RAG 结构 
@@ -46,7 +42,7 @@ p_\text{RAG-sequence}(y\lvert x) &\approx \sum_{z\in \mathcal{Z}} p_\eta(z\lvert
 对应的 RAG-token 在生成每一个 token 时都有一个对应的边际分布，训练模型也即是最大化下面的概率：
 
 $$\begin{aligned}
-p_\text{RAG-token}(y\lvert x) &\approx \prod_{i=1}^N \sum_{z\in \mathcal{Z}} p_\eta(z\lvert x)p_\theta(y_i\lvert x, z, y_{1,...,i-1})
+p_\text{RAG-token}(y\lvert x) &\approx \prod_{i=1}^N \sum_{z\in \mathcal{Z}} p_\eta(z\lvert x)p_\theta(y_i\lvert x, z_i, y_{1,...,i-1})
 \end{aligned}$$
 
 ## Retriever 
@@ -96,6 +92,7 @@ $$p(z\lvert x) = \frac{p(x\lvert z)p(z)}{p(x)}$$
 
 
 ## 参考 
+- [NeurIPS 2020|RAG：为知识密集型任务而生](https://zhuanlan.zhihu.com/p/264485658)
 - [变分推断（Variational Inference）进展简述](https://zhuanlan.zhihu.com/p/88336614)
 - [《Variational Inference: A Review for Statisticians》](https://arxiv.org/pdf/1601.00670.pdf)。
 - [变分推断(Variational Inference)初探](https://www.cnblogs.com/song-lei/p/16210740.html)
