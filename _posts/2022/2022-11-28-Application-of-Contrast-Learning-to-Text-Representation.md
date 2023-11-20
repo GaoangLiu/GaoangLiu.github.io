@@ -30,16 +30,23 @@ author: berrysleaf
 # 对比学习
 对比学习（contrast learning）一般划分到无监督学习（USL）的范畴，典型范式就是：<span style="color:blue">[代理任务](https://stats.stackexchange.com/questions/404602/pretext-task-in-computer-vision)+目标函数</span>，这两项也是对比学习与有监督学习（SL）最大的区别。
 
-
-SL 中有输入 $$x$$，有对应的 ground truth $$y$$，计算模型输出的 $$y_p$$ 与 $$y$$ 通过目标函数计算损失，指导模型训练。对于 USL 来说，是没有 ground truth 的，而这里就是代理任务发挥作用的地方，代理任务用来定义正负样本，我们通过训练一个模型来解决代理任务，从而学习到一个好的表征，使得这个表征可以轻松适应到下游任务。[SimCLR](https://arxiv.org/pdf/2002.05709.pdf) 的框架如下图，大体流程：
+SL 中有输入 $$x$$，有对应的 ground truth $$y$$，计算模型输出的 $$y_p$$ 与 $$y$$ 通过目标函数计算损失，指导模型训练。对于 USL 来说，是没有 ground truth 的，而这里就是代理任务发挥作用的地方，代理任务的目标是学习到一个好的表征，使得这个表征可以轻松适应到下游任务。Pretext tasks 从未标注数据中采样输入与标签，再结合特定损失函数进行训练。[SimCLR](https://arxiv.org/pdf/2002.05709.pdf) 的框架如下图，大体流程：
 1. 数据增强，采样，构造正负样本。
 2. 通过对比损失训练特征提取器 （encoder） $$f$$ 及一个映射头 $$g$$，$$g$$ 用来将 $$f$$ 的输出映射到一个低维空间。在 SimCLR 中 projection head 是一个两层的 MLP，维度是 128 维。
 3. 在下游任务中，把 projection head 去掉，只保留 $$f$$，用 $$f$$ 的输出作为特征，进行下游任务的训练。
 
-<figure class="half">
-    <img src="https://image.ddot.cc/202311/simclr_20231120_2017.png" width="700" />
+<figure style="text-align: center;">
+    <img src="https://image.ddot.cc/202311/simclr_20231120_2017.png" width="600" />
     <figcaption>SimCLR framework</figcaption>
 </figure>
+
+SimCLR 采用的损失是 InfoNCE loss，这个损失函数的目标是最大化正样本的相似度，最小化负样本的相似度。具体的计算方式如下：
+
+$$\begin{aligned}
+\mathcal{L} &= -\log \frac{\exp(\text{sim}(z_i, z_j)/\tau)}{\sum_{k=1}^{2N} \mathbb{1}_{[k\neq i]}\exp(\text{sim}(z_i, z_k)/\tau)} 
+\end{aligned}$$
+
+其中 $$\text{sim}(z_i, z_j) = \frac{z_i^Tz_j}{\lVert z_i\rVert \lVert z_j\rVert}$$，$$\tau$$ 是一个温度参数，$$\mathbb{1}_{[k\neq i]}$$ 是一个指示函数，当 $$k\neq i$$ 时，$$\mathbb{1}_{[k\neq i]}=1$$，否则为 0。$$N$$ 是 batch size，对一个 batch 内的 $$N$$ 个样本，通过数据增强的方式构造 $$2N$$ 个样本，对于每一个样本 $$x$$，都有一个正样本 $$x^+$$ 和 $$2N-1$$ 个负样本 $$x^-$$。
 
 
 
