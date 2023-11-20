@@ -62,4 +62,42 @@ digraph G {
         style="filled,rounded"
         margin=10
     }
+
+    subgraph sub_hiddenxxx{
+        hiddenxxx[shape=none,label="",width=1, height=0, margin=0]
+    }
+
+    subgraph cluster_cross_encoder {
+        cls1[shape=box,style="filled,rounded",label="[CLS]",margin=0.1,fillcolor=lightblue]
+        q1[shape=box,style="filled,rounded",label="q_1",margin=0.1,fillcolor=lightblue]
+        qdots[shape=box,style="filled,rounded",label="...",margin=0.1,fillcolor=lightblue]
+        qn[shape=box,style="filled,rounded",label="q_n",margin=0.1,fillcolor=lightblue]
+
+        sep[shape=box,style="filled,rounded",label="[SEP]",margin=0.1,fillcolor=cyan]
+
+        cls2[shape=box,style="filled,rounded",label="[CLS]",margin=0.1,fillcolor=lightyellow]
+        p1[shape=box,style="filled,rounded",label="p_1",margin=0.1,fillcolor=lightyellow]
+        pdots[shape=box,style="filled,rounded",label="...",margin=0.1,fillcolor=lightyellow]
+        pn[shape=box,style="filled,rounded",label="p_n",margin=0.1,fillcolor=lightyellow]
+
+        token3[shape=box,style="rounded,filled",label="Token Embedder",margin=0.1,fillcolor=lightyellow,width=2]
+
+        encoder3[shape=box,style="rounded,filled",label="Encoder",margin=0.1,fillcolor=lightblue, height=1.2,width=1.5]
+
+        embedding3[shape=box,style="rounded,filled",label="Embedding",margin=0.1,fillcolor=lightblue]
+
+        sim3[shape=oval,label="sim",style="rounded,filled",margin=0.1,fillcolor=peru]
+
+        edge[samehead=h1, sametail=t1];
+
+        cls1->q1->qdots->qn->sep->cls2->p1->pdots->pn[style=invis];
+        {rank=same; cls1, q1, qdots, qn, sep, cls2, p1, pdots, pn};
+        {cls1, q1, qn, sep, cls2, p1, pn}->token3 ->encoder3->embedding3->sim3;
+
+        label="Cross Encoder"
+        labelloc=b
+        color=lavender
+        style="filled,rounded"
+        margin=10
+    }
 }
