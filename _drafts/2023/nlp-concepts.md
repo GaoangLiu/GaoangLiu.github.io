@@ -126,17 +126,3 @@ PyTorch 对量化的支持：
 2 与 3 的区别在于，2 是在模型的输入输出上进行量化，3 是在模型的权重上进行量化。
 
 
-# Loss functions
-
-## Sparse softmax <span id='sparse-softmax'> </span>
-
-用于需要输出一个 sparse output 的场景，比如推荐系统中，只保留一些最相关的选项。原作[《From Softmax to Sparsemax:A Sparse Model of Attention and Multi-Label Classification》](https://arxiv.org/pdf/1602.02068.pdf)称可增强解释性并提升效果。 参考苏老师设计一个[版本](https://spaces.ac.cn/archives/8046/comment-page-2):
-
-||orginal|sparse|
-|---|---|---|
-|softmax|$$p_i=\frac{e^{x_i}}{\sum_{j=1}^n e^{x_j}}$$|$$p_i=\begin{cases}\frac{e^{x_i}}{\sum_{j \in \Omega_k} e^{x_j}}& i \in \Omega_k \\0& i \not \in \Omega_k\end{cases}$$|
-
-其中 $\Omega_k$ 是将 $x_1, x_2, ..., x_n$ 从大到小排序后的前 $k$ 个元素的下标集合。思路是，计算出来结果后，只保留前 $k$ 个最大的概率，其余的概率置为 0。$k$ 是一个超参数，$k=n$时，等价于原始的 softmax。
-
-Torch 版本的一个实现参考[Github](https://github.com/KrisKorrel/sparsemax-pytorch/blob/master/sparsemax.py)。
-

@@ -64,12 +64,7 @@ $$\begin{aligned}
 1. 损失联合方式自监督：将 CL 的 loss 和其他 loss 混合，通过联合优化，使 CL 起到效果：CLEAR，DeCLUTER，SCCL。
 2. 非联合方法自监督：构造增强样本，微调模型：Bert-CT，ConSERT，SimCSE
 
-CLEAR
-Paper: https://arxiv.org/pdf/2012.15466.pdf
 
-
-
-https://www.51cto.com/article/681705.html
 
 # 参考
 - [1] [A Simple but Tough-to-Beat Baseline for Sentence Embeddings](https://openreview.net/pdf?id=SyK00v5xx)
