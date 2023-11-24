@@ -42,9 +42,28 @@ Torch 版本的一个实现参考[Github](https://github.com/KrisKorrel/sparsema
 # Contrastive Loss
 
 ## Noise Contrastive Estimation
-噪声对比估计（NCE）是一种用来估计 softmax 的方法，通过负采样的方式，将 softmax 的计算复杂度从 $O(V)$ 降低到 $O(K)$，其中 $V$ 是词汇表大小，$K$ 是负采样的个数。
-基本思想是将一个多分类问题转成一个二分类问题，一类是数据类别 data sample，另一个类是噪声类别 noisy sample，通过学习数据样本和噪声样本之间的区别，将数据样本去和噪声样本做对比，也就是“噪声对比（noise contrastive）”，从而发现数据中的一些特性。但是，如果把整个数据集剩下的数据都当作负样本（即噪声样本），虽然解决了类别多的问题，计算复杂度还是没有降下来，解决办法就是**做负样本采样来**计算 loss，这就是 estimation 的含义，也就是说它只是估计和近似。一般来说，负样本选取的越多，就越接近整个数据集，效果自然会更好。
+噪声对比估计（NCE）是一种用来估计 softmax 的方法，基本思想是将**从词表中预测某个词的多分类问题，转为从噪音词中区分出目标词的二分类问题**，一类是数据类别 data sample，另一个类是噪声类别 noisy sample，通过学习数据样本和噪声样本之间的区别，将数据样本去和噪声样本做对比，也就是“噪声对比（noise contrastive）”，从而发现数据中的一些特性。但是，如果把整个数据集剩下的数据都当作负样本（即噪声样本），虽然解决了类别多的问题，计算复杂度还是没有降下来，解决办法就是**做负样本采样来**计算 loss，这就是 estimation 的含义，也就是说它只是估计和近似。一般来说，负样本选取的越多，就越接近整个数据集，效果自然会更好。
+
+以语言模型为例，训练的目标是最小化每一个词的交叉熵，即：
+
+$$\begin{aligned}
+\mathcal{J}(\theta) &= - \log \frac{\exp(h^T v'_w)}{\sum_{w_i \in V} \exp(h^T v'_{w_i})} \\\
+&= - h^T v'_w + \log \sum_{w_i \in V} \exp(h^T v'_{w_i})
+\end{aligned}$$
+
+NCE loss 的一般形式为：
+$$\begin{aligned}
+\mathcal{L}_{\text{NCE}_k} &= \sum_{(w,c) \in \mathcal{D}} \log p(D=1\lvert w, c) + k \mathbb{E}_{\tilde{w} \sim P_n(w)} \log p(D=0\lvert \tilde{w}, c) \\\
+&= \sum_{(w,c) \in \mathcal{D}} \log \frac{p(w\lvert c)}{p(w\lvert c) + k \sum_{\tilde{w} \in \mathcal{V}} p(\tilde{w}\lvert c)} + k \sum_{(w,c) \in \mathcal{D}} \log \frac{k p(\tilde{w}\lvert c)}{p(w\lvert c) + k \sum_{\tilde{w} \in \mathcal{V}} p(\tilde{w}\lvert c)}
+\end{aligned}$$
 
 
-参考：
+## InfoNCE
+Info NCE loss是NCE的一个简单变体，它认为如果你只把问题看作是一个二分类，只有数据样本和噪声样本的话，可能对模型学习不友好，因为很多噪声样本可能本就不是一个类，因此还是把它看成一个多分类问题比较合理，公式如下：
+
+$$\begin{aligned}
+\mathcal{L}_q = -\log \frac{\exp(q^T k_+ / \tau)}{\exp(q^T k_+ / \tau) + \sum_{k \in \mathcal{K}} \exp(q^T k / \tau)}
+\end{aligned}$$
+
+# 参考
 - [On word embeddings - Part 2: Approximating the Softmax](https://www.ruder.io/word-embeddings-softmax/)

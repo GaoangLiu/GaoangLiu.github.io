@@ -1,9 +1,10 @@
 
-- [ ] 不同对比 loss, https://zhuanlan.zhihu.com/p/506544456
+
 - [ ] HyperFormer https://juejin.cn/post/7300809038245806132
 - [ ] Unsupervised Keyphrase Extraction via Interpretable Neural Networks， https://aclanthology.org/2023.findings-eacl.82.pdf
 - [ ] prompt tunning 综述 https://zhuanlan.zhihu.com/p/618871247
-- [ ] 层次 softmax 
+- [x] 不同对比 loss, https://zhuanlan.zhihu.com/p/506544456
+- [x] 层次 softmax 
 - [x] RAG https://arxiv.org/pdf/2005.11401.pdf
 - [x] 负采样 
 - [x] 解码策略，https://finisky.github.io/nucleussampling/，提到了一篇有意思的论文 
