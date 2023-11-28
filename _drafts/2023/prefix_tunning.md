@@ -44,3 +44,22 @@ Prompt-Tuning 的一般流程：
 2. 将所有 pattern-specific PLM 进行 ensemble，使用这些模型进行标注，得到一个软件标签数据集 $\mathcal{D}$。
 3. 在  $\mathcal{D}$ 上训练一个分类器。 
 
+定义 
+
+令 $M$ 表示一个语言模型，$V$ 表示词汇表，$\mathcal{L}$ 表示分类任务的标签集合。
+
+令 $s_i \in \Omega = V^*$ 表示一条序列，这个序列可以是一条短语或者一条句子。 
+
+1. *pattern*，一个 pattern $P: \Omega^k \rightarrow \Omega$ 是一个将一个序列集合映射到一条序列的函数。输入 $x = (s_1, ..., s_k) \in \Omega^k$ 表示由 $k$ 个序列构成的集合。例如，当 $k=2$ 时，对应的任务 $T$ 可以是一个相似度判断任务。 
+2. *verbalizer*， $v:\mathcal{L} \rightarrow V$，将每一个标签映射到词汇表中的一个词。例如，对于情感分类任务，可以定义两个 verbalizer，分别是 $v_+$ 和 $v_-$，将 positive 和 negative 映射到词汇表中的一个词。
+
+一个 pattern-verbalizer-pair(PVP) $(P,v)$ 将任务转化成 ？？？ 的任务 。 
+
+以 Yelp 评论打分为例，给定一条评论 $r$，可能的 patterns 有：
+1. $P_1(r) = \text{It was [M]. } r$; 
+2. $P_1(r) = r \text{. All in all, it was [M]. }$; 
+
+其中 $\text{[M]} \in V$ 表示一个 mask 词。对应的 verbalizer 为 $v: [1,2,3,4,5] \rightarrow \{ \text{great, good, okay, bad, terrible} \}$.
+
+
+
