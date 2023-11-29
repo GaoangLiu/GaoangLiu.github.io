@@ -39,6 +39,7 @@ Prompt-Tuning 的一般流程：
 
 
 # Pattern Exploiting Traing(PTE)
+这个工作开创了 prompt tunning 的先河。 
 
 1. 对每一个 pattern，一个单独的 PLM 在一个小的训练集 $\mathcal{\tau}$ 上进行训练，得到一个 pattern-specific PLM。
 2. 将所有 pattern-specific PLM 进行 ensemble，使用这些模型进行标注，得到一个软件标签数据集 $\mathcal{D}$。
@@ -50,7 +51,7 @@ Prompt-Tuning 的一般流程：
 
 令 $s_i \in \Omega = V^*$ 表示一条序列，这个序列可以是一条短语或者一条句子。 
 
-1. *pattern*，一个 pattern $P: \Omega^k \rightarrow \Omega$ 是一个将一个序列集合映射到一条序列的函数。输入 $x = (s_1, ..., s_k) \in \Omega^k$ 表示由 $k$ 个序列构成的集合。例如，当 $k=2$ 时，对应的任务 $T$ 可以是一个相似度判断任务。 
+1. *pattern*，一个 pattern $P: \Omega^k \rightarrow \Omega$ 是一个将一个序列集合映射到一条序列的函数。输入 $x = (s_1, ..., s_k) \in \Omega^k$ 表示由 $k$ 个序列构成的集合。例如，当 $k=2$ 时，$x=(s,t)$ 由两条序列构成，对应的任务 $T$ 可以是一个相似度判断任务。 
 2. *verbalizer*， $v:\mathcal{L} \rightarrow V$，将每一个标签映射到词汇表中的一个词。例如，对于情感分类任务，可以定义两个 verbalizer，分别是 $v_+$ 和 $v_-$，将 positive 和 negative 映射到词汇表中的一个词。
 
 一个 pattern-verbalizer-pair(PVP) $(P,v)$ 将任务转化成 ？？？ 的任务 。 
@@ -60,6 +61,40 @@ Prompt-Tuning 的一般流程：
 2. $P_1(r) = r \text{. All in all, it was [M]. }$; 
 
 其中 $\text{[M]} \in V$ 表示一个 mask 词。对应的 verbalizer 为 $v: [1,2,3,4,5] \rightarrow \{ \text{great, good, okay, bad, terrible} \}$.
+
+## 训练 
+Pattern 实际上把输入序列转成 MLM 的输入，MLM 对这个序列进行预测，得到一个概率分布，用 $M(w | z), w \in V, z \in \Omega$。 给定  $p=(P, v)$，定义 $l \in \mathcal{L}$ 的得分为：
+
+$$s_p(l) = M(v(l) \lvert P(x))$$
+
+通过 softmax 函数，可以得到一个概率分布：
+
+$$q_p(l) = \frac{\exp(s_p(l))}{\sum_{l' \in \mathcal{L}} \exp(s_p(l'))}$$
+
+
+## PVP 集成 
+PVP 的选择对效果有直接的影响，但有监督数据 $\mathcal{T}$ 比较少，不可能有验证集来验证一个 PVP 的效果。 一个方法是根据直觉定义一批 PVPs $\mathcal{P}$，对每一个  $p\in \mathcal{P}$ 都微调一个 $M_p$。然后集成这样模型 $\mathcal{M} = \{ M_p | p \in \mathcal{P} \}$ 对无标注样本集 $\mathcal{D}$ 进行标注:
+
+$$s_\mathcal{M}(l |x) = \frac{1}{Z} \sum_{p \in \mathcal{P}} w(p) \cdot s_p(l | x) $$
+
+其中，$Z= \sum w(p)$，$w(p)$ 表示每一对 $(P, v)$ 的权重。权重的设计有很多种方案，简直暴力一点的，可以将所有权重都调成相等的值，即 $w(p) = 1$，或者引入先验知识赋予不同的值。 文中给定的另一种方案是 $w(p) = \text{precision}_{p, \mathcal{T}}$，即使用 $p$ 在训练集 $\mathcal{T}$ 的精度。 
+
+<figure style="text-align:center">
+    <img src="https://image.ddot.cc/202311/pet_20231129_1423.png" width=678pt>
+    <figcaption style="text-align: center;"> PET schematic representation </figcaption>
+</figure>
+
+## iPET
+迭代版本的 PET，通过训练——模型标注——再训练——再标注的迭代获得最终数据集。 每次标注时，选择模型的一个子集进行标注。 好处是什么？好处，在每一步迭代时，只选择模型比较自信的样本做为下一步的训练数据，这样可以相较于一步到位的标注，错标的数据更少。  
+
+
+
+## QA
+1. 如何利用 MLM 的？
+2. 为什么这种方法会有效果？
+
+
+
 
 
 
