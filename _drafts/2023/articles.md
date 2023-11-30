@@ -16,13 +16,15 @@ categories:
 5. [Batch normalization]({{site.baseurl}}/2023/10/11/Normalization/)
 6. [ALiBi]({{site.baseurl}}/2023/10/27/Attention-With-Linear-Biases/)
 7. [ELMo]({{site.baseurl}}/2023/11/06/ElMO/)
-
+8. [Pattern Exploiting Training]({{site.baseurl}}/2023/11/19/Prefix-Tunning/)
+9. [SimCSE]({{site.baseurl}}/2022/10/18/Semantic-Similarity/)
+10. [How Contextual are Contextualized Word Representations]({{site.baseurl}}/2023/09/28/How-Contextual-are-Contextualized-Word-Representations/)
 
 ## Candidates
-- [https://arxliv.org/abs/2104.08821](https://arxiv.org/abs/2104.08821) , SimCSEnn
+- ~~[https://arxliv.org/abs/2104.08821](https://arxiv.org/abs/2104.08821) , SimCSE~~
 - https://aclanthology.org/D17-1308.pdf, The strange geometry of skip-gram with negative sampling
 - https://arxiv.org/abs/2011.05864 BERT-flow
-- https://arxiv.org/pdf/1802.05365.pdf ELMo
+- ~~https://arxiv.org/pdf/1802.05365.pdf ELMo~~
 - [https://kexue.fm/tag/语义相似度/1/](https://kexue.fm/tag/%E8%AF%AD%E4%B9%89%E7%9B%B8%E4%BC%BC%E5%BA%A6/1/) CoSENT，语义相似度，科学空间
 - https://arxiv.org/pdf/1910.10683v3.pdf T5
 - https://arxiv.org/pdf/1803.11175.pdf  USE paper
