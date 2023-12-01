@@ -65,9 +65,7 @@ Language Models](https://arxiv.org/pdf/1912.10165.pdf)）。Prompt 的思想是�
 1. *pattern*，一个 pattern $$P: \Omega^k \rightarrow \Omega$$ 是一个将一个序列集合映射到一条序列的函数。输入 $$x = (s_1, ..., s_k) \in \Omega^k$$ 表示由 $$k$$ 个序列构成的集合。例如，当 $$k=2$$ 时，$$x=(s,t)$$ 由两条序列构成，对应的任务 $$T$$ 可以是一个相似度判断任务。 
 2. *verbalizer*， $$v:\mathcal{L} \rightarrow V$$，将每一个标签映射到词汇表中的一个词。例如，对于情感分类任务，可以定义两个 verbalizer，分别是 $$v_+$$ 和 $$v_-$$，将 positive 和 negative 映射到词汇表中的一个词。
 
-一个 pattern-verbalizer-pair(PVP) $$(P,v)$$ 将任务转化成 ？？？ 的任务 。 
-
-以 Yelp 评论打分为例，给定一条评论 $$r$$，可能的 patterns 有：
+Pattern 是对原始输入进行格式转换，适配下游模型，Verbalizer 是将下游模型的输出映射到任务标签上。以 Yelp 评论打分为例，给定一条评论 $$r$$，可能的 patterns 有：
 1. $$P_1(r) = \text{It was [M]. } r$$; 
 2. $$P_1(r) = r \text{. All in all, it was [M]. }$$; 
 
