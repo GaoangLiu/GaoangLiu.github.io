@@ -12,7 +12,7 @@ author: berrysleaf
 
 
 # Reading Progress
-1. [Sentence-Transformer](https://www.notion.so/Sentence-BERT-b5e3e305ae3b47bf8bd72bb7743a7efd?pvs=24)
+1. [Sentence-Transformer](https://www.notion.so/Sentence-BERT-b5e3e305ae3b47bf8bd72bb7743a7efd)
 
 
 
@@ -25,6 +25,7 @@ author: berrysleaf
 8. [Pattern Exploiting Training]({{site.baseurl}}/2023/11/19/Prefix-Tunning/)
 9. [SimCSE]({{site.baseurl}}/2022/10/18/Semantic-Similarity/)
 10. [How Contextual are Contextualized Word Representations]({{site.baseurl}}/2023/09/28/How-Contextual-are-Contextualized-Word-Representations/)
+11. [RAG]({{site.baseurl}}/2023/11/16/Retrivial-augmented-generation/)
 
 ## Candidates
 - ~~[https://arxliv.org/abs/2104.08821](https://arxiv.org/abs/2104.08821) , SimCSE~~

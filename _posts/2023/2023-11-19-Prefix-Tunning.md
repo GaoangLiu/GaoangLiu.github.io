@@ -45,17 +45,22 @@ Prompt-Tuning 的一般流程：
 
 
 # Pattern Exploiting Training(PTE)
-这个工作开创了 prompt tunning 的先河。 
+这个工作算是 prompt 范式的开山之作，prompt tunning 的思想其实很早就有了，比如使用 GPT-2 将文本分类任务转换成问答任务（参考论文：[Zero-shot Text Classification With Generative
+Language Models](https://arxiv.org/pdf/1912.10165.pdf)）。Prompt 的思想是对**输入进行改造，挖掘语言模型的潜力，获得任务相关的输出，从而避免精调模式带来的灾难性遗忘问题**。因此要考虑的问题是：
 
-1. 对每一个 pattern，一个单独的 PLM 在一个小的训练集 $$\mathcal{\tau}$$ 上进行训练，得到一个 pattern-specific PLM。
-2. 将所有 pattern-specific PLM 进行 ensemble，使用这些模型进行伪标注（pseudo-labeling），得到一个软件标签数据集 $$\mathcal{D}$$。
-3. 在  $$\mathcal{D}$$ 上训练一个分类器。 
+1. 如何设计合适的 Prompt，激发模型的潜能。
+2. 输出结果如何跟最终的任务结果关联起来。比如用生成模型作情感分类，如何将生成的结果映射到情感值上。 
+3. 存在一定标注数据的情况下， 如何微调模型，使得模型能够学到任务相关的知识。
 
-定义 
+这个工作的贡献是提出了一种通用的方法，可以将不同任务转换成一个**模板填空**的任务，然后使用预训练模型进行微调。这个方法的优点是可以在不改变模型参数的情况下，优化模型的效果，而且可以在小数据集上取得很好的效果。大概流程：
 
-令 $$M$$ 表示一个语言模型，$$V$$ 表示词汇表，$$\mathcal{L}$$ 表示分类任务的标签集合。
+1. 使用少量的标注数据，对每一个 prompt 训练一个语言模型（LM）； 
+2. 使用多个 prompt 模型对未标注数据进行伪标注，得到一个软标签数据集；
+3. 在软标签数据集上训练一个模型，得到最终的模型。
 
-令 $$s_i \in \Omega = V^*$$ 表示一条序列，这个序列可以是一条短语或者一条句子。 
+## 细节
+
+令 $$M$$ 表示一个语言模型，$$V$$ 表示词汇表，$$\mathcal{L}$$ 表示分类任务的标签集合。令 $$s_i \in \Omega = V^*$$ 表示一条序列，这个序列可以是一条短语或者一条句子。 
 
 1. *pattern*，一个 pattern $$P: \Omega^k \rightarrow \Omega$$ 是一个将一个序列集合映射到一条序列的函数。输入 $$x = (s_1, ..., s_k) \in \Omega^k$$ 表示由 $$k$$ 个序列构成的集合。例如，当 $$k=2$$ 时，$$x=(s,t)$$ 由两条序列构成，对应的任务 $$T$$ 可以是一个相似度判断任务。 
 2. *verbalizer*， $$v:\mathcal{L} \rightarrow V$$，将每一个标签映射到词汇表中的一个词。例如，对于情感分类任务，可以定义两个 verbalizer，分别是 $$v_+$$ 和 $$v_-$$，将 positive 和 negative 映射到词汇表中的一个词。
@@ -91,12 +96,21 @@ $$s_\mathcal{M}(l |x) = \frac{1}{Z} \sum_{p \in \mathcal{P}} w(p) \cdot s_p(l | 
 </figure>
 
 ## iPET
-迭代版本的 PET，通过**训练——模型标注——再训练——再标注**的迭代 $$k$$ 次获得最终数据集。 iPET 优势是什么？优势是标注的更准确。 在每一步迭代时，只选择模型比较自信的样本做为下一步的训练数据，这样可以相较于一步到位的标注，错标的数据更少。 通过实验验证，当数据集大小较小时，比如只有几十个样本时，iPET 能带来几个点的效果提升。
 
-<a class="twitter-timeline" href="https://twitter.com/Sprout Social?ref_src=twsrc%5Etfw">Tweets by Sprout Social</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8″></script>
+迭代版本的 PET，通过**训练——模型标注——再训练——再标注**的迭代 $$k$$ 次获得最终数据集。 
+
+iPET 优势是什么？优势是标注的更准确。作者设计了一个实验， 在 Yelp、AG News 等 4 个数据集上使用 iPET 进行 zero-shot 学习，总迭代轮次等于 4。对 AG News、Yahoo 任务还设计了跳过第二、三次迭代，即第一次迭代后直接伪标注 $$d^3 \cdot \lvert \mathcal{T}_1 \rvert$$ 个数据供 $$\mathcal{M}_4$$ 训练。 实验有如下结果：
+
+1. 随着迭代次数增加，模型效果也逐渐提升； 
+2. 跳过中间迭代过程，一次性伪标注相同数量样本并训练的效果**弱于逐步迭代**的效果。 
 
 
-<blockquote class="twitter-tweet"><p lang="zh" dir="ltr"><a href="https://twitter.com/hashtag/%E7%94%9F%E6%B4%BB%E5%B0%8F%E6%8A%80%E5%B7%A7?src=hash&amp;ref_src=twsrc%5Etfw">#生活小技巧</a> 关于我的老手机号 29 块每月 100G 流量用了半年多了，有一种很久没有 Care 交手机话费和担心流量的感觉了，可以试试淘宝搜索「不换号码改套餐」，然后选择一个自己省份类型的即可。 <a href="https://t.co/X6mibaVDli">pic.twitter.com/X6mibaVDli</a></p>&mdash; Tw93 (@HiTw93) <a href="https://twitter.com/HiTw93/status/1715879890992427313?ref_src=twsrc%5Etfw">October 21, 2023</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+在每一步迭代时，只选择模型比较自信的样本做为下一步的训练数据，这样可以相较于一步到位的标注，错标的数据更少。 通过实验验证，当数据集大小较小时，比如只有几十个样本时，iPET 能带来几个点的效果提升。
+
+<figure style="text-align:center">
+    <img src="https://image.ddot.cc/202312/ipet_generation_result_20231201_1401.png" width=678pt>
+    <figcaption style="text-align: center;"> iPET schematic representation </figcaption>
+</figure>
 
 
 几个点：

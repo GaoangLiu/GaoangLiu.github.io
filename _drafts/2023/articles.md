@@ -9,7 +9,7 @@ categories:
 
 
 # Reading Progress
-1. [Sentence-Transformer](https://www.notion.so/Sentence-BERT-b5e3e305ae3b47bf8bd72bb7743a7efd?pvs=24)
+1. [Sentence-Transformer](https://www.notion.so/Sentence-BERT-b5e3e305ae3b47bf8bd72bb7743a7efd)
 2. [TSDAE](https://www.notion.so/slipper/TSDAE-8b98d10d2170492ca42813240ef0c591?pvs=4)
 3. [Word embedding isotraphy](https://www.notion.so/slipper/Isotraphy-42e3b84fed044a47a48f32a544c1aff1?pvs=4)
 4. [Attention is all you need]({{site.baseurl}}/2022/09/30/Attention-is-all-you-need-reread/)
@@ -19,6 +19,7 @@ categories:
 8. [Pattern Exploiting Training]({{site.baseurl}}/2023/11/19/Prefix-Tunning/)
 9. [SimCSE]({{site.baseurl}}/2022/10/18/Semantic-Similarity/)
 10. [How Contextual are Contextualized Word Representations]({{site.baseurl}}/2023/09/28/How-Contextual-are-Contextualized-Word-Representations/)
+11. [RAG]({{site.baseurl}}/2023/11/16/Retrivial-augmented-generation/)
 
 ## Candidates
 - ~~[https://arxliv.org/abs/2104.08821](https://arxiv.org/abs/2104.08821) , SimCSE~~
