@@ -7,10 +7,19 @@ categories:
 - nlp
 ---
 
-ChatGPT 爆火之后，有一段时间内很多公司都在竞相做向量数据库，一些数据库厂商也在竞相在传统数据库上增加向量存储功能，支持相似度检索。常规做法是通过预训练获取一个大模型，然后将数据向量化并存储。这种做法有几个问题：
-1. 幻觉问题。这是 LLM 的通病之一 。 
-2. 无法更新、扩展。模型一旦训练好，就无法更新了，而且更新模型的成本很高。
-3. 可解释性差。难以解释解释为什么这个向量与这个文档相关。
+ChatGPT 爆火之后，有一段时间内很多公司都在竞相做向量数据库，一些数据库厂商也在竞相在传统数据库上增加向量存储功能，支持相似度检索。常规做法是通过预训练获取一个大模型，然后将数据向量化并存储。在实际使用中，通过 DB 与 LLM 结合使用，如下图所示。第二种方法是将 DB 当成一个长期记忆库，场景是召回跟 query 最相关的 N 条信息，然后通过 LLM 生成答案。第三种是拿 DB 当缓存。而第一种方法就是本文的主角 RAG。  
+
+<figure style="text-align: center;">
+    <img src="https://image.ddot.cc/202312/rag_usage_20231201_1725.png" width=568>
+    <figcaption style="text-align:center"> DB 的几种用法</figcaption>
+</figure>
+
+
+二、三的做法有几个问题：
+
+1. 难以更新、扩展。模型一旦训练好，就很难进行更新了，而且更新模型的成本很高。
+2. 可解释性差。难以解释为什么这个向量与这个文档相关。
+3. 无法处理 OOV 问题。如果一个文档没有在训练集中出现过，那么它的向量就无法计算出来。
 
 知识难以更新的问题对于一些信息动态更新的任务来说，是一个巨大的挑战。例如，对于一些 QA 任务，答案可能会随着时间的推移而变化，e.g., “最近一届奥运会在哪个城市举办的？”，这时候就需要更新模型的知识，传统的做法对于这一问题就无能为力了。LLM 在近两年的发展中，一个被广泛认可的技术是 RAG （Retrieval-Augmented Generation）。这个技术由 meta 于 2020 年在论文 [《Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks》](https://arxiv.org/pdf/2005.11401.pdf) 中提出，它是一个检索增强的生成模型，通过检索得到的上下文信息来指导生成，从而提高生成的质量。这里面比较关键的一环是“检索增强”，检索用到的知识可以轻松地随时更改或补充，在需要更新知识时，不需要重新训练整个模型。RAG 使用的检索方案是 DPR(Dense Passage Retrieval)，即是 20 年推出的“暴打前浪 BM25” 的技术，同样也是 meta 的工作。DPR 整体结构是一个 dual encoder: document encoder 和 query encoder，两个 encoder 使用的模型都是 $\text{BERT}_\text{BASE}$。关于 DPR 的机制，我们在之前的文章[《Okapi-BM25》]({{site.baseur}}/2022/11/17/Okapi-BM25/)里稍有提过。另一个模块是 seq2seq 生成器，模型使用的 [BART-large](https://arxiv.org/abs/1910.13461)（也是 meta 的工作）。
 
@@ -85,7 +94,7 @@ $$p(z\lvert x) = \frac{p(x\lvert z)p(z)}{p(x)}$$
 其中，$p(x\lvert z)$ 是似然函数，$p(z)$ 是先验分布，$p(x) = \int p(x\lvert z)p(z) dz = \int p(x,z) dz$ 是关于潜变量的 $z$ 的边际似然，也称 evidence。对很多模型来说， $p(x)$ 没有解析解，或者即使有，计算复杂度也很高。VI 可以通过优化变分下界来近似后验分布，从而不需要直接计算 $p(x)$。当然也有其他方法，例如 MCMC，但 MCMC 的计算复杂度高，而且收敛速度慢。关于 VI 如何近似后验分布，可以参考博客 [变分推断(Variational Inference)初探](https://www.cnblogs.com/song-lei/p/16210740.html)。
 
 
-## 参考 
+# 参考 
 - [NeurIPS 2020|RAG：为知识密集型任务而生](https://zhuanlan.zhihu.com/p/264485658)
 - [变分推断（Variational Inference）进展简述](https://zhuanlan.zhihu.com/p/88336614)
 - [《Variational Inference: A Review for Statisticians》](https://arxiv.org/pdf/1601.00670.pdf)。
