@@ -48,4 +48,5 @@ author: berrysleaf
 6. https://www.sbert.net/docs/publications.html 
 7. https://arxiv.org/pdf/1503.03832.pdf, FaceNet, triplet network
 8. [Named Entity Recognition as Dependency Parsing](https://aclanthology.org/2020.acl-main.577.pdf), 2020, NER，biaffine model
-
+9. https://arxiv.org/pdf/2107.13586.pdf, prompt learning survey
+10. https://arxiv.org/pdf/2111.01243.pdf, Recent Advances in Natural Language Processing via Large Pre-Trained Language Models: A Survey

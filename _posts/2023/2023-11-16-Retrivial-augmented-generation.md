@@ -10,10 +10,14 @@ author: berrysleaf
 {:toc}
 
 
-ChatGPT 爆火之后，有一段时间内很多公司都在竞相做向量数据库，一些数据库厂商也在竞相在传统数据库上增加向量存储功能，支持相似度检索。常规做法是通过预训练获取一个大模型，然后将数据向量化并存储。在实际使用中，通过 DB 与 LLM 结合使用，如下图所示。第二种方法是将 DB 当成一个长期记忆库，场景是召回跟 query 最相关的 N 条信息，然后通过 LLM 生成答案。第三种是拿 DB 当缓存。而第一种方法就是本文的主角 RAG。  
+[向量数据库（Vector Database）](https://en.wikipedia.org/wiki/Vector_database)这个概念据说是由 NVIDIA 的黄老板在 NVIDIA GTC Keynote （2023.3）中首次提及，在会上，黄老板表示：|
 
 
 
+> “Vector database 一个重要 use-case 是（结合）大语言模型，通过文本生成的方式，进行领域特定或专有知识的检索。”。
+
+ChatGPT 爆火之后，有一段时间内很多公司都在竞相在向量数据库上做工作
+一些数据库厂商也在竞相在传统数据库上增加向量存储功能，支持相似度检索。常规做法是通过预训练获取一个大模型，然后将数据向量化并存储。在实际使用中，通过 DB 与 LLM 结合使用，如下图所示。第二种方法是将 DB 当成一个长期记忆库，场景是召回跟 query 最相关的 N 条信息，然后通过 LLM 生成答案。第三种是拿 DB 当缓存。而第一种方法就是本文的主角 RAG。  
 
 <figure style="text-align: center;">
     <img src="https://image.ddot.cc/202312/rag_usage_20231201_1725.png" width=568>
