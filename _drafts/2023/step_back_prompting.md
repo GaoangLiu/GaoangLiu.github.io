@@ -46,10 +46,17 @@ LLM 对一些问题需要大量的细节，比如一道关于气体状态的物�
 
 
 # 效果
+在实验环节，研究人员对以下不同种类的任务进行了实验：
+1. STEM。MMLU 高中物理、化学，这部分任务需要深度推理。
+2. 知识 QA。实验数据集：TimeQA，包含时间敏感的复杂问题，SituatedQA，要求根据时间或地理背景回答问题。
+3. 多跳推理。实验数据集：MuSiQue 及 StrategyQA。
+
+实验的基准模型是 `PaLM-2L`，其它参与对比的模型及方案有 `PaLM-2L + 1-shot`、`PaLM-2L + CoT`、`PaLM-2L + CoT + 1-shot`、`PaLM-2L + TDB`、`PaLM-2L + RAG` 等。结果评估阶段，使用 few-shot prompt `PaLM-2L` 来判断推理答案与真实答案是否一致。
+
 
 - 在 MMLU 物理、化学任务中较 `PaLM-2L` 分别提升了 6.8 及 10.9 个点，且效果均优于 GPT-4；
-- 在 TimeQA, MuSiQue, StrategyQA 上表现类似。特别地，在 TimeQA 上较 `PaLM-2L` 提升了 37.2 个点，且比 CoT 及 GPT-4 都有 30+ 点的提升。 
-
+- 在 TimeQA 上较 `PaLM-2L` 提升了 37.2 个点，且比 CoT 及 GPT-4 都有 30+ 点的提升。 
+- 在 MusiQue 上 `PaLM-2L + Step-Back` 方案以 42.8% v.s., 35.5% 超出 `PaLM-2L` 7.3 个百分点，较 `PaLM-2L + CoT` 的 38.7% 也有 4.1 个点的提升。 在 StrategyQA 上的表现类似。 
 
 <figure style="text-align:center">
     <img src="https://image.ddot.cc/202312/step_back_prompting_performance_20231204_2152.png" width=678pt>
