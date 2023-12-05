@@ -7,6 +7,7 @@ categories:
 - nlp
 ---
 
+
 关于 Prompting 的技术层出不穷，前面有经典的 [CoT](https://arxiv.org/abs/2201.11903)，
 有催眠式的 "Take a deep breath and work on this problem"(TDB，[LARGE LANGUAGE MODELS AS OPTIMIZERS](https://arxiv.org/pdf/2309.03409.pdf))，也有风格清奇的 “PUA” 式 emontional stimuli ([Large Language Models Understand and Can be Enhanced by Emotional Stimuli](https://arxiv.org/abs/2307.11760))，最近 Google DeepMind 团队又提出来一个 [Step back prompting](https://arxiv.org/pdf/2310.06117.pdf) 技术，通过对问题先抽象+再回答的方式进行推理。
 
@@ -69,17 +70,22 @@ This means that if the temperature is increased by a factor of 2 and the volume 
 </figure>
 
 # 消融实验
+针对任务 STEM tasks, Knowledge QA, Multi-Hop Reasoning 都分别做了 ablation analysis，总的结论是 step-back prompting 这个策略本身对效果有较大的提升。
+
 ## [STEM tasks](https://arxiv.org/pdf/2009.03300.pdf)
 
-- Few shot ablation。在 MMLU 物理任务中，示例个数从 1 到 5 表现没有明显差异。说明检索相关原理和概念的任务相对容易学习，一个示例就足够了。 
-- 错误分析。仍以 MMLU 物理任务为基准，abstraction 阶段的错误，即提取的 principle 错误或者不完整（*Principle Error*），仅占所有错误中的 9%，而超过 90% 的错误都发生在 reasoning 阶段，这表明在复杂任务推理过程中，使用 step-back prompting 技术时产生的错误，主要原因在于模型本身推理能力的局限性，而非 step-back prompting 的不足。
+- Few shot ablation。在 MMLU 物理任务中，示例个数从 1 到 5 增长时，模型表现没有明显差异。说明检索相关原理和概念的任务相对容易学习，一个示例就足够了。 
+- 错误分析。仍以 MMLU 物理任务为基准，abstraction 阶段的错误，即提取的 principle 错误或者不完整（*Principle Error*），仅占所有错误类型中的 9%，而超过 90% 的错误都发生在 reasoning 阶段，这个阶段里的错误包括*事实错误*、*数学错误*、*上下文丢失*及*推理错误*。这表明在复杂任务推理过程中，错误产生的主要原因在于模型本身推理能力的局限性，而非 step-back prompting 技术上的缺陷。这里面 Math Error 及 Reasoning Error 的总占比高达 80%，这说明对这一类任务 LLM 的数学及推理能力仍然是解决问题的关键。 
 
 ## Knowledge QA
-- Few shot ablation。在 TimeQA 上实验结果上面 MMLU 一致，一个示例就足以学习到 abstraction skills。
-- 错误分析。在所有错误中，Step-back 错误，即产生的 step-back question 没有什么用，占的比例较少，仅为 1%，有一半以上的错误源于推理错误，45%的错误源于 RAG 没有召回到相关信息。
+- Few shot ablation。在 TimeQA 上实验结果上面 MMLU 一致，一个示例就足以让 `PaLM-2L` 学习到 abstraction skills。
+- 错误分析。
+    - 在所有错误中，Step-back 错误，即产生了 not-helpful 的 step-back question 的情况占比较少，仅为 1%，而有一半以上的错误源于推理错误，45% 的错误源于 RAG 没有召回到相关信息。
+    - 作者对比了 `PaLM-2L + RAG` 与 `PaLM-2L + RAG + Step-Back`，后者修正了前者 21.6% 的错误，彰显了在做 Knowledge QA 问题前进行抽象的必要性。 
 
 <figure style="text-align:center">
-    <img src="https://image.ddot.cc/202312/ablation_step_back_prompting_20231205_1040.png" width=789pt>
+    <img src="https://image.ddot.cc/202312/ablation_step_back_prompting_20231205_1040.png" width=649pt>
+    <img src="https://image.ddot.cc/202312/error_analysis_of_step_back_qa_20231205_1202.png" width=589pt>
     <figcaption> Ablation and error analysis of STEP-BACK PROMPTING on TimeQA. </figcaption>
 </figure>
 
