@@ -27,7 +27,7 @@ Step back 有关键的两步 ：
 
 思路乍一看，有点类似 [RAG]({{site.baseurl}}/2023/11/16/Retrivial-augmented-generation/)，不同之处在于 RAG 的方法是使用问题先检索相关文档，再结合文档与问题生成答案，而 Step back prompting 是先对问题做抽象，生成出相关背景知识及原理，再结合原问题进行推理。
 
-# 如何实现的？
+# 如何实现
 LLM 对一些问题需要大量的细节，比如一道关于气体状态的物理题：“*如果温度增加 2 倍，体积增加 8 倍，理想气体的压强 $$P$$ 会发生什么变化？*”。如果直接对这个问题进行推理，LLM 可能不会想到要使用[理想气体状态方程](https://zh.wikipedia.org/zh-cn/%E7%90%86%E6%83%B3%E6%B0%94%E4%BD%93%E7%8A%B6%E6%80%81%E6%96%B9%E7%A8%8B) $$pV=nRT$$。Step-back prompting 做的事情是先 prompt 模型去“思考”这道题考察的是什么内容，背后的原理是什么。迫使 LLM 从更深层、宽泛的角度去看待问题，提取出相关基础概念、原理及相关事实，再结合这些知识去对原问题进行推理。
 
 
@@ -67,11 +67,26 @@ LLM 对一些问题需要大量的细节，比如一道关于气体状态的物�
 This means that if the temperature is increased by a factor of 2 and the volume is increased by a factor of 8, the pressure of the ideal gas will also increase by a factor of 2.
 ```
 
-而使用 step-back prompting 的方式，ChatGPT 在 factor 数值（`4`）上推理有提升，但在最后一步把因子放错了位置，应该是 $$P_1 = 4P_2$$，导致最终的答案错误。
+而使用 step-back prompting 的方式，ChatGPT 在 factor 数值（`4`）上推理有提升，但在最后一步把因子放错了位置（对应于文中的 *Math Error*），应该是 $$P_1 = 4P_2$$，导致最终的答案错误。
 
 <figure style="text-align:center">
     <img src="https://image.ddot.cc/202312/chatgpt_step_back_20231205_0858.png" width=678pt>
     <figcaption> Step-back prompting on ChatGPT </figcaption>
+</figure>
+
+# 消融实验
+## [STEM tasks](https://arxiv.org/pdf/2009.03300.pdf)
+
+- Few shot ablation。在 MMLU 物理任务中，示例个数从 1 到 5 表现没有明显差异。说明检索相关原理和概念的任务相对容易学习，一个示例就足够了。 
+- 错误分析。仍以 MMLU 物理任务为基准，abstraction 阶段的错误，即提取的 principle 错误或者不完整（*Principle Error*），仅占所有错误中的 9%，而超过 90% 的错误都发生在 reasoning 阶段，这表明在复杂任务推理过程中，使用 step-back prompting 技术时产生的错误，主要原因在于模型本身推理能力的局限性，而非 step-back prompting 的不足。
+
+## Knowledge QA
+- Few shot ablation。在 TimeQA 上实验结果上面 MMLU 一致，一个示例就足以学习到 abstraction skills。
+- 错误分析。在所有错误中，Step-back 错误，即产生的 step-back question 没有什么用，占的比例较少，仅为 1%，有一半以上的错误源于推理错误，45%的错误源于 RAG 没有召回到相关信息。
+
+<figure style="text-align:center">
+    <img src="https://image.ddot.cc/202312/ablation_step_back_prompting_20231205_1040.png" width=789pt>
+    <figcaption> Ablation and error analysis of STEP-BACK PROMPTING on TimeQA. </figcaption>
 </figure>
 
 
@@ -79,3 +94,4 @@ This means that if the temperature is increased by a factor of 2 and the volume 
 相似点都是在回答最终问题前，先对原始问题进行挖掘，获得更多相关信息。
 
 不同点是 `PaLM-2L + RAG` 是通过检索 wikipedia 的方式获得相关的事实知识，再将知识与答案一并交给 LLM，检索使用的是 LLM 外部的知识。而 step back prompting 是通过 few shot learning 先回答一个更抽象的问题，从 LLM 获取与 original qustion 相关的背影知识。
+
