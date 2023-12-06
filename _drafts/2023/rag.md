@@ -7,7 +7,7 @@ categories:
 - nlp
 ---
 
-在 NLP 中，将文本（文档 、段落、句子等）向量化，再结合向量距离来解决特定任务的工作其实有很久的历史了，而[向量数据库（Vector Database）](https://en.wikipedia.org/wiki/Vector_database)这个概念据说是由 NVIDIA 的 CEO 黄老板在 [NVIDIA GTC Keynote (2023.3)](https://www.nvidia.com/gtc/keynote/4k/)中首次提及，在会上，黄老板表示：|
+在 NLP 中，将文本（文档 、段落、句子等）向量化，再结合向量距离来解决特定任务的工作其实有很久的历史了，而[向量数据库（Vector Database）](https://en.wikipedia.org/wiki/Vector_database)这个概念据说是由 NVIDIA 的 CEO 黄老板在 [NVIDIA GTC Keynote (2023.3)](https://www.nvidia.com/gtc/keynote/4k/)中首次提及，在会上，黄老板表示：
 
 > “Vector database 一个重要 use-case 是（结合）大语言模型，通过文本生成的方式，进行领域特定或专有知识的检索。”。
 
@@ -96,7 +96,7 @@ $$p(z\lvert x) = \frac{p(x\lvert z)p(z)}{p(x)}$$
 
 
 # 参考 
-- [NeurIPS 2020|RAG：为知识密集型任务而生](https://zhuanlan.zhihu.com/p/264485658)
+- [NeurIPS 2020, RAG：为知识密集型任务而生](https://zhuanlan.zhihu.com/p/264485658)
 - [变分推断（Variational Inference）进展简述](https://zhuanlan.zhihu.com/p/88336614)
 - [《Variational Inference: A Review for Statisticians》](https://arxiv.org/pdf/1601.00670.pdf)。
 - [变分推断(Variational Inference)初探](https://www.cnblogs.com/song-lei/p/16210740.html)
