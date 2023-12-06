@@ -7,21 +7,22 @@ categories:
 - nlp
 ---
 
-ChatGPT 爆火之后，有一段时间内很多公司都在竞相做向量数据库，一些数据库厂商也在竞相在传统数据库上增加向量存储功能，支持相似度检索。常规做法是通过预训练获取一个大模型，然后将数据向量化并存储。在实际使用中，通过 DB 与 LLM 结合使用，如下图所示。第二种方法是将 DB 当成一个长期记忆库，场景是召回跟 query 最相关的 N 条信息，然后通过 LLM 生成答案。第三种是拿 DB 当缓存。而第一种方法就是本文的主角 RAG。  
+在 NLP 中，将文本（文档 、段落、句子等）向量化，再结合向量距离来解决特定任务的工作其实有很久的历史了，而[向量数据库（Vector Database）](https://en.wikipedia.org/wiki/Vector_database)这个概念据说是由 NVIDIA 的 CEO 黄老板在 [NVIDIA GTC Keynote (2023.3)](https://www.nvidia.com/gtc/keynote/4k/)中首次提及，在会上，黄老板表示：|
+
+> “Vector database 一个重要 use-case 是（结合）大语言模型，通过文本生成的方式，进行领域特定或专有知识的检索。”。
+
+概括地说，LLM 提供数据处理能力，而 VD 提供数据存储能力，当然，VD 本身也可以通过相似度搜索来做相似内容推荐。常规做法是通过预训练获取一个 LLM，然后将数据向量化并存储。下图是几种典型的用法。先说第二种，这种用法是将 DB 当成一个长期记忆库，场景是召回跟 query 最相关的 N 条信息，然后通过 LLM 生成答案。第三种是拿 DB 当缓存。而第一种方法就是使用 vector database 来实现 RAG。  
 
 <figure style="text-align: center;">
     <img src="https://image.ddot.cc/202312/rag_usage_20231201_1725.png" width=568>
     <figcaption style="text-align:center"> DB 的几种用法</figcaption>
 </figure>
 
+LLM 本身存在几个问题，
+1. 知识难以更新、扩展。模型一旦训练好，就很难进行更新了，而且更新模型的成本很高。
+2. 决策的可溯源性。一个回答是如何跟 query 关联起来的难以决断。
 
-二、三的做法有几个问题：
-
-1. 难以更新、扩展。模型一旦训练好，就很难进行更新了，而且更新模型的成本很高。
-2. 可解释性差。难以解释为什么这个向量与这个文档相关。
-3. 无法处理 OOV 问题。如果一个文档没有在训练集中出现过，那么它的向量就无法计算出来。
-
-知识难以更新的问题对于一些信息动态更新的任务来说，是一个巨大的挑战。例如，对于一些 QA 任务，答案可能会随着时间的推移而变化，e.g., “最近一届奥运会在哪个城市举办的？”，这时候就需要更新模型的知识，传统的做法对于这一问题就无能为力了。LLM 在近两年的发展中，一个被广泛认可的技术是 RAG （Retrieval-Augmented Generation）。这个技术由 meta 于 2020 年在论文 [《Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks》](https://arxiv.org/pdf/2005.11401.pdf) 中提出，它是一个检索增强的生成模型，通过检索得到的上下文信息来指导生成，从而提高生成的质量。这里面比较关键的一环是“检索增强”，检索用到的知识可以轻松地随时更改或补充，在需要更新知识时，不需要重新训练整个模型。RAG 使用的检索方案是 DPR(Dense Passage Retrieval)，即是 20 年推出的“暴打前浪 BM25” 的技术，同样也是 meta 的工作。DPR 整体结构是一个 dual encoder: document encoder 和 query encoder，两个 encoder 使用的模型都是 $\text{BERT}_\text{BASE}$。关于 DPR 的机制，我们在之前的文章[《Okapi-BM25》]({{site.baseur}}/2022/11/17/Okapi-BM25/)里稍有提过。另一个模块是 seq2seq 生成器，模型使用的 [BART-large](https://arxiv.org/abs/1910.13461)（也是 meta 的工作）。
+其中，知识的滞后性对于一些经常更新知识的任务来说是一个巨大的挑战。例如，对于一些 QA 任务，答案可能会随着时间的推移而变化。举个例子, “最近一届奥运会在哪个城市举办的？”，这时候就需要更新模型的知识，传统的做法对于这一问题就无能为力了。LLM 在近两年的发展中，一个被广泛认可的技术是 RAG （Retrieval-Augmented Generation）。这个技术由 meta 于 2020 年在论文 [《Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks》](https://arxiv.org/pdf/2005.11401.pdf) 中提出，它是一个检索增强的生成模型，通过检索得到的上下文信息来指导生成，从而提高生成的质量。这里面比较关键的一环是“检索增强”，检索用到的知识可以轻松地随时更改或补充，在需要更新知识时，不需要重新训练整个模型。RAG 使用的检索方案是 DPR(Dense Passage Retrieval)，即于 2020 年提出的“暴打前浪 BM25” 的技术，同样也是 meta 的工作。DPR 整体结构是一个 dual encoder: document encoder 和 query encoder，两个 encoder 使用的模型都是 $\text{BERT}_\text{BASE}$，训练使用 [n-pair 损失函数](https://papers.nips.cc/paper_files/paper/2016/file/6b180037abbebea991d8b1232f8a8ca9-Paper.pdf)，相似性通过向量内积获得。关于 DPR 的机制，我们在之前的文章[《Okapi-BM25》]({{site.baseur}}/2022/11/17/Okapi-BM25/)里稍有提过。另一个模块是 seq2seq 生成器，模型使用的 [BART-large](https://arxiv.org/abs/1910.13461)（也是 meta 的工作）。
 
 
 # RAG 结构 
