@@ -143,3 +143,14 @@ This means that if the temperature is increased by a factor of 2 and the volume 
     <img src="https://image.ddot.cc/202312/timeqa_easy_hard_20231205_1446.png" width=749pt>
     <figcaption> Strong performance of step-back prompting on Knowledge QA tasks. </figcaption>
 </figure>
+
+
+# 小结 
+作为一种新的 prompting 技术 ，step-back prompting 通过 few shot learning 的方式，让 LLM 先抽象、思考总结，再回答原问题，从而提升 LLM 的推理能力，为 LLM 的应用提供一个新的思路。但如开篇的盘点所示，类似的技术层出不穷，几乎每过几周就有一个新的 prompt 思路。有人对这类工作提出批评，认为这些工作都是在水文章，没有实际意义。例如 Haitham Bou Ammar 在 [twitter](https://twitter.com/hbouammar/status/1731970658278469714?s=12) 上就对 step-back prompting 及 CoT 进行了吐槽，觉得这类工作“is not science”。
+
+<figure style="text-align:center">
+    <img src="https://image.ddot.cc/202312/prompting_review_haitham_20231206_1129.png" width=678pt>
+</figure>
+
+笔者认为这类工作的确有一定的水分，创新性一般，但奈何实验好做，易出结果。研究人员也确实应该关注一下其他方向的问题，比如如何提高 LLM 的数学及推理能力，如何让 LLM 生成的答案更加合理，及生成的答案更加可解释等等。
+
