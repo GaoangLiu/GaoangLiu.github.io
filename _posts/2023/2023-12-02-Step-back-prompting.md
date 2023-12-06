@@ -11,14 +11,22 @@ author: berrysleaf
 
 
 
-关于 Prompting 的技术层出不穷，前面有经典的 [CoT](https://arxiv.org/abs/2201.11903)，
+Prompting 技术层出不穷，前面有经典的 [CoT](https://arxiv.org/abs/2201.11903)，
 
 
 
-有催眠式的 "Take a deep breath and work on this problem"(TDB，[LARGE LANGUAGE MODELS AS OPTIMIZERS](https://arxiv.org/pdf/2309.03409.pdf))，也有风格清奇的 “PUA” 式 emontional stimuli ([Large Language Models Understand and Can be Enhanced by Emotional Stimuli](https://arxiv.org/abs/2307.11760))，最近 Google DeepMind 团队又提出了 [Step back prompting](https://arxiv.org/pdf/2310.06117.pdf) 技术，通过对问题先抽象+再回答的方式进行推理。
+有催眠式的 "Take a deep breath and work on this problem"(TDB，[LARGE LANGUAGE MODELS AS OPTIMIZERS](https://arxiv.org/pdf/2309.03409.pdf))，也有风格清奇的 “PUA” 式 emontional stimuli ([Large Language Models Understand and Can be Enhanced by Emotional Stimuli](https://arxiv.org/abs/2307.11760))，其他的还有:
+- ToT: [Tree of Thoughts: Deliberate Problem Solving with Large Language Models](https://arxiv.org/abs/2305.10601)
+- SC: [Self-Consistency Improves Chain of Thought Reasoning in Language Models](https://arxiv.org/abs/2203.11171)
+- Multi-Persona: [Unleashing Cognitive Synergy in Large Language Models: A Task-Solving Agent through Multi-Persona Self-Collaboration](https://arxiv.org/abs/2307.05300)
+- Least to Most: [Least-to-Most Prompting Enables Complex Reasoning in Large Language Models](https://arxiv.org/abs/2205.10625)
+- ART: [ART: Automatic multi-step reasoning and tool-use for large language models](https://arxiv.org/abs/2303.09014)
+- ReART: [ReAct: Synergizing Reasoning and Acting in Language Models](https://arxiv.org/abs/2210.03629)
+- Reflextion: [Reflexion: Language Agents with Verbal Reinforcement Learning](https://arxiv.org/abs/2303.11366)
+- HyDE: [Precise Zero-Shot Dense Retrieval without Relevance Labels](https://arxiv.org/abs/2212.10496)
 
-Step back 有关键的两步 ：
-1. **Abstraction**，提示模型把具体问题抽象化，提取出与问题相关的更基础、更高层的事实知识； 
+最近 Google DeepMind 团队又提出了 [Step back prompting](https://arxiv.org/pdf/2310.06117.pdf) 技术，通过对问题先抽象+再回答的方式进行推理。Step back 有关键的两步 ：
+1. **Abstraction**，提示模型把具体问题抽象化，先提取出更基础、更高层的事实知识； 
 2. **Reasoning**，利用相关事实，提示模型进行推理，得到最终的答案。
 
 <figure style="text-align: center">
