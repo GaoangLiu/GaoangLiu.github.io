@@ -9,9 +9,9 @@ categories:
 
 # Google is so back
 
-自 [ChatGPT](https://chat.openai.com) 问世以来，包括笔者在内，很多用户的搜索习惯都经历了一场翻天覆地的变革。有问题需要解决？直接找 ChatGPT 问就对了，不用在 Google 搜索里翻来翻去。这种变化对 Google 搜索可谓一记重拳，直接导致一段时间内 Google 的搜索份额大幅下降。ChatGPT 对 Google 搜索的威胁之大，据说连创始人都开始亲自下场搞 LLM（[Back At Google Again, Cofounder Sergey Brin Just Filed His First Code Request In Years —— Forbes](https://dlj.one/zprxug)）。
+自 [ChatGPT](https://chat.openai.com) 问世以来，包括笔者在内的很多用户在搜索习惯上都经历了一场翻天覆地的变革。有编程、设计、哲学问题需要解答？直接找 ChatGPT 问就对了，不用在 Google 搜索里翻来翻去。这种变化对 Google 搜索可谓一记重拳，直接导致一段时间内 Google 的搜索份额大幅下降。ChatGPT 对 Google 搜索的威胁之大，据说连创始人都开始亲自下场搞 LLM（[Back At Google Again, Cofounder Sergey Brin Just Filed His First Code Request In Years —— Forbes](https://dlj.one/zprxug)）。
 
-在 AI 领域，Google 其实一直处于领先地位，毕竟旗下有 Google Brain 和 DeepMind 两大顶级 AI 研究机构，DeepMind 出品的 AlphaGo 也是当年风头无两、家喻户晓的明星 AI 作品。在 NLP 领域，Google 也颇有建树，率先提出了 transformer 结构，也先后发布了 BERT、T5、ALBERT、Switch Transformer 等多个知名模型。但是，和 OpenAI 的 GPT 系列对比，Google 在聊天机器人这块有点跟不上节奏，在 ChatGPT 问世三个月之后，Google 才匆忙赶 [Bard](https://bard.google.com) 上架。Bard 做为 Google 的第一款 AI 聊天机器人，被广大用户寄予了厚望，但 Bard 效果着实太差，连个简单的加减法都搞不定，语言能力更是一言难尽，早期的版本甚至只支持英文，对比 ChatGPT 简直是天壤之别，也难怪有人调侃称 [“Bard is a joke”](https://twitter.com/high_byte/status/1639596716339896322)。为了赶超 OpenAI，Google 不惜将两个 AI 研究机构合并，成立了 Google DeepMind。在今年 5 月份的 Google I/O 大会上，Google 宣布新的 Google DeepMind 实验室已开始开发 Gemini。
+在 AI 领域，Google 其实一直处于领先地位，毕竟旗下有 Google Brain 和 DeepMind 两大顶级 AI 研究机构，DeepMind 出品的 AlphaGo 也是当年风头无两、家喻户晓的明星 AI 作品。在 NLP 领域，Google 也颇有建树，率先提出了 transformer 结构，也先后发布了 BERT、T5、ALBERT、Switch Transformer 等多个知名模型。但是，和 OpenAI 的 GPT 系列对比，Google 在聊天机器人这块有点跟不上节奏，在 ChatGPT 问世三个月之后，Google 才匆忙赶 [Bard](https://bard.google.com) 上架。Bard 做为 Google 的第一款 AI 聊天机器人，被广大用户寄予了厚望，但奈何 Bard 效果着实太差，连个简单的加减法都搞不定，语言能力更是一言难尽，早期的版本甚至只支持英文，对比 ChatGPT 简直是天壤之别，也难怪有人调侃称 [“Bard is a joke”](https://twitter.com/high_byte/status/1639596716339896322)。为了赶超 OpenAI，Google 不惜将两个 AI 研究机构合并，成立了 Google DeepMind。在今年 5 月份的 Google I/O 大会上，Google 宣布新的 Google DeepMind 实验室已开始开发 Gemini。
 
 经过半年的沉寂，Google DeepMind 终于搞了一个大新闻，发布了 [Gemini 1.0](https://deepmind.google/technologies/gemini/) 多模态 AI 语言模型，同时支持文字、图片、音频、视频等多种输入数据的处理。根据 CEO Sundar Pichai 在 [twitter](https://twitter.com/sundarpichai/status/1732433036929589301) 上发布的效果展示视频中可以看到，Gemini 在音频、图片识别、文字理解、推理方面都表现出惊人的能力。更令人振奋的是，Gemini 在一系列开源数据集任务的评测中都刷新了 SoTA，效果堪称出色，可以说是目前最强综合 AI 语言模型了。
 
