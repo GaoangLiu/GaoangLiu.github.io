@@ -45,7 +45,7 @@ Gemini Nano 细分还有两个版本，一个 Nano 1, 参数 1.8B，另一个 Na
 
 
 # Gemini Pro 使用体验 
-## 能力出众，但理解能力还有待提升
+## 视频解析能力出众，但指令对齐能力还有待提升
 笔者线下感受了一下集成了 Gemini Pro 的新版 Bard，实际使用的体验是，Bard 的理解（泛化）能力还有很大的提升空间，拒绝回答问题的情况仍然普遍，尽管这个问题是它可以解决的。下面 Bard 官方推荐的一条示例:
 ```
 Give me insights about this video: https://www.youtube.com/watch?v=lr87yrvK86w 
@@ -137,7 +137,10 @@ AlphaCode 2 的主要组件包括：
 - 聚类算法（clustering），将语义相似的代码示例分组，从而避免冗余； 
 - 评分模型（scoring），用于从每个前10个代码示例集群中呈现最佳候选项。
 
-AlphaCode 2 效果看起来非常棒，但为什么没有放出来让大家用用？Google 在 report 里说了：“Our system requires a lot of trial and error, and remains too costly to operate at scale. Further, it relies heavily on being able to filter out obviously bad code samples.”。简单来说，就是还不太稳定，且成本太高，仍然需要继续优化。因为仔细观察一下上面的组件，其中在 policy 与 scoring 阶段要分别微调一个 Gemini Pro 模型，在 clustering 阶段，也需要再训练一个模型进行聚类，这些都需要大量的计算资源。
+AlphaCode 2 效果看起来非常棒，但为什么没有放出来让大家用用？Google 在 report 里说了：“Our system requires a lot of trial and error, and remains too costly to operate at scale. Further, it relies heavily on being able to filter out obviously bad code samples.”。简单来说，就是还不太稳定，且成本太高，仍然需要继续优化。实际上仔细观察一下上面的组件，可以看到其中在 policy 与 scoring 阶段要分别微调一个 Gemini Pro 模型，在 clustering 阶段，也需要再训练一个模型进行聚类，这些都需要大量的计算资源。
+
+# 小结
+从 2022/11/30 OpenAI 发布 ChatGPT 到现在已经刚好有一年的时间，过去的一年对 Google 来说是疲于奔命的一年。现在是 2023 的最后一个月，眼看快到圣诞节，Google 在这个时间点放出来 Gemini，估计也是急于对外展示自己仍然是 AI 领域的佼佼者。Gemini 在基准测试任务上的表现确实很好，但要实际投入使用中还有很长一段路要走，最起码现在的 Bard 还难以达到用户的要求。等到明年 Ultla 最终放出来时，OpenAI 或者 Anthropic Inc. 也许也会有新的模型发布，到时候又是一场新的竞争。
 
 
 # 参考 
