@@ -1,15 +1,21 @@
 ---
-layout:     post
-title:      Gemini, The best AI model in the world 
-date:       2023-12-06
-tags:   [gemini, llm, deepmind]
-categories: 
-- nlp
+layout: post
+title: Gemini, The best AI model in the world
+date: 2023-12-06
+tags: gemini llm deepmind
+categories: nlp
+author: berrysleaf
 ---
+* content
+{:toc}
+
 
 # Google is so back
 
 从 [ChatGPT](https://chat.openai.com) 发布之后，Google 搜索流量曾一度大幅下降，ChatGPT 对 Google 搜索威胁之大，据说连创始人都亲自下场搞 LLM（[Back At Google Again, Cofounder Sergey Brin Just Filed His First Code Request In Years —— Forbes](https://dlj.one/zprxug)）。其实在 AI 领域，Google 一直处于领先地位，毕竟旗下有 Google Brain 和 DeepMind 两大顶级 AI 研究机构，DeepMind 旗下的 AlphaGo 也是当年风头无两、家喻户晓的明星 AI 产品。在 NLP 领域，Google 也颇有建树，率先提出了 transformer 结构，也先后发布了 BERT、T5、ALBERT、Switch Transformer 等多个知名模型，但在聊天机器人上，对比 OpenAI 的 GPT 系列，Google 就比较滞后。在 ChatGPT 发布三个月之后，Google
+
+
+
 才匆忙赶 [Bard](https://bard.google.com) 上架，做为 Google 的第一个 AI 聊天机器人，大家对 Bard 寄予厚望，但 Bard 效果太差，连基本的算术都会算错，能力有限，早期的版本只支持英文，对比 ChatGPT 简直是天壤之别，有人甚至调侃称为[“Bard is a joke”](https://twitter.com/high_byte/status/1639596716339896322)。为了追平 OpenAI，Google 甚至将两个 AI 研究机构合并，成立了 Google DeepMind。在今年 5 月份的 Google I/O 大会上，Google 宣布新的 Google DeepMind 实验室已开始开发 Gemini。
 
 时隔半年，Google DeepMind 终于搞了一个大新闻，发布了 [Gemini 1.0](https://deepmind.google/technologies/gemini/) 多模态 AI 语言模型，同时支持文字、图片、音频、视频等多种模态的处理。根据 CEO Sundar Pichai 在 [twitter](https://twitter.com/sundarpichai/status/1732433036929589301) 上发布的 Gemini 效果展示视频中可以看到，Gemini 在音频、图片识别、文字理解、推理方面都表现出惊人的能力。此外，Gemini 在文本、音频、视频及编程等一系列开源数据集任务的评测中都刷新了 SoTA，效果非常好，可以说是目前最强综合 AI 语言模型了。
@@ -66,7 +72,7 @@ I'm not able to help with that, as I'm only a language model.
 ## 计算、推理能力强，纠错能力弱
 之前我们在 [Step-Back Prompting]({{site.baseurl}}/2023/12/02/Step-back-prompting/)聊到 LLM 通过 step-back prompting 可以提高模型的泛化能力，在 ChatGPT 上也做过测试，测试样例是一道高中物理题
 
-| 如果温度增加 2 倍，体积增加 8 倍，理想气体的压强 $P$ 会发生什么变化？
+| 如果温度增加 2 倍，体积增加 8 倍，理想气体的压强 $$P$$ 会发生什么变化？
 
 ChatGPT 在经过提示之后可以将前面的错误改成过来，比如比例关系，但是 Bard 就比较自信，无论如何提示，都不会改变错误的答案。上题中正确结果是“压强降为原来的 1/4”，而 Bard 一口咬定是“压强降为原来的 1/8 倍”：
 

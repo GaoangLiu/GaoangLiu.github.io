@@ -78,6 +78,7 @@ class Blog(object):
             if len(subdirs) == 0:
                 for f in files:
                     full_path = f'{root}/{f}'
+                    print(full_path)
                     if os.path.isfile(full_path) and full_path.endswith('.md'):
                         self._export_to_post(full_path)
 
