@@ -151,9 +151,9 @@ Google 同时还推出基于 Gemini Pro 微调的 [AlphaCode 2](https://storage.
 
 
 # 参考 
-- AlphaCode 2 technical report: https://storage.googleapis.com/deepmind-media/AlphaCode2/AlphaCode2_Tech_Report.pdf
-- Gemini 1.0 technical report: https://storage.googleapis.com/deepmind-media/gemini/gemini_1_report.pdf
-- Bard gets its biggest upgrade yet with Gemini: https://blog.google/products/bard/google-bard-try-gemini-ai/
-- The Best AI Model in the World: Google DeepMind’s Gemini Has Surpassed GPT-4: https://albertoromgar.medium.com/the-best-ai-model-in-the-world-google-deepminds-gemini-has-surpassed-gpt-4-1ee07f84d2ff
-- Introducing Gemini: our largest and most capable AI model: https://blog.google/technology/ai/google-gemini-ai/#capabilities
+- AlphaCode 2 technical report: [https://storage.googleapis.com/deepmind-media/AlphaCode2/AlphaCode2_Tech_Report.pdf](https://storage.googleapis.com/deepmind-media/AlphaCode2/AlphaCode2_Tech_Report.pdf)
+- Gemini 1.0 technical report: [https://storage.googleapis.com/deepmind-media/gemini/gemini_1_report.pdf](https://storage.googleapis.com/deepmind-media/gemini/gemini_1_report.pdf)
+- Bard gets its biggest upgrade yet with Gemini: [https://blog.google/products/bard/google-bard-try-gemini-ai/](https://blog.google/products/bard/google-bard-try-gemini-ai/)
+- The Best AI Model in the World: Google DeepMind’s Gemini Has Surpassed GPT-4: [https://albertoromgar.medium.com/the-best-ai-model-in-the-world-google-deepminds-gemini-has-surpassed-gpt-4-1ee07f84d2ff](https://albertoromgar.medium.com/the-best-ai-model-in-the-world-google-deepminds-gemini-has-surpassed-gpt-4-1ee07f84d2ff)
+- Introducing Gemini: our largest and most capable AI model: [https://blog.google/technology/ai/google-gemini-ai/#capabilities](https://blog.google/technology/ai/google-gemini-ai/#capabilities)
 
