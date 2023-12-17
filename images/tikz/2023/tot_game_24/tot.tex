@@ -1,0 +1,185 @@
+\documentclass[tikz,border=10pt]{standalone}
+\usepackage{tikz}
+\usetikzlibrary{positioning, arrows.meta}
+\usetikzlibrary{calc}
+
+\begin{document}
+
+\begin{tikzpicture}[>=Stealth, 
+    node distance=1cm,
+    every node/.style={font=\bfseries},
+    every path/.style={line width=1pt}, % Make all lines bold]
+]
+% Input node
+\node (input) [draw, rectangle, rounded corners, minimum width=1.5cm, minimum height=0.5cm] {3 4 5 7};
+
+\node (gpt1) [below=2cm of input, align=left] {
+    \includegraphics[width=2cm]{gpt.png}  % Adjust width as needed
+};
+
+\node (proposal_prompt) [draw, rectangle, rounded corners, minimum width=1.5cm, minimum height=0.5cm, right=of input, align=left] {// Propose prompt \\
+Input: 2 8 8 14 \\
+Possible next steps:\\
+2 + 8 = 10 (left: 8 10 14)\\
+8 / 2 = 4 (left: 4 8 14)\\
+14 + 2 = 16 (left: 8 8 16)\\
+2 * 8 = 16 (left: 8 14 16)\\
+8 - 2 = 6 (left: 6 8 14)\\
+14 - 8 = 6 (left: 2 6 8)\\
+14 /  2 = 7 (left: 7 8 8)\\
+14 - 2 = 12 (left: 8 8 12)\\
+Input: 
+};
+
+
+% Edge with label
+\coordinate (Qf) at ([yshift=0.5cm]gpt1.north); 
+\draw[->] (input) -- (Qf) -- (gpt1);
+\draw[dashed] (proposal_prompt.west) .. controls +(left:0cm) and +(up:0.5cm) .. (Qf);
+
+\node (thoughts1) [draw, rectangle, rounded corners, minimum width=2.5cm, minimum height=1cm, below=of gpt1, align=left] 
+{%
+    // New thoughts \\
+    $3 \times 4 = 12$ (left: 12 5 7)\\
+    $4 - 3 = 1$ (left: 1 5 7)\\
+    $7 - 5 = 2$ (left: 3 4 2)\\
+    ... \\
+};
+
+\node (gpt2) [below=2cm of thoughts1, align=left] {
+    \includegraphics[width=2cm]{gpt.png}  % Adjust width as needed
+};
+
+\node (value_prompt) [draw, rectangle, rounded corners, right=of thoughts1, align=left] {// Value prompt \\
+Evaluate if given numbers can reach 24 (sure/likely/impossible)\\
+10 14\\
+10 + 14 = 24\\
+sure\\
+5 7 8\\
+5 + 7 + 8 = 12 + 8 = 20\\
+(8 - 5) * 7 = 3 * 7 = 21\\
+I cannot obtain 24 now, but numbers are within a reasonable range\\
+likely\\
+...\\
+12 5 7\\
+};
+
+
+% Edge with label
+\draw[->] (gpt1) -- (thoughts1);
+\coordinate (Qf2) at ([yshift=0.5cm]gpt2.north); 
+\draw[->] (thoughts1) -- (Qf2) -- (gpt2);
+\draw[dashed] (value_prompt.west) .. controls +(left:0cm) and +(up:0.5cm) .. (Qf2);
+
+
+\node (valid_state1) [draw, rectangle, rounded corners, minimum width=2.5cm, minimum height=1cm, below=of gpt2, align=left] 
+{%
+    // Evaluated states, may include invalid states \\
+    3 4 5 7\textbackslash n$3 \times 4 = 12$ (left: 12 5 7)\\
+    3 4 5 7\textbackslash n$7 - 5 = 2$ (left: 3 4 2)\\
+    ... \\
+};
+\draw[->] (gpt2) -- (valid_state1);
+
+\node [right=of valid_state1] (dots1) {\dots};
+\node (thoughts2) [draw, rectangle, rounded corners, minimum width=2.5cm, minimum height=1cm, right=of dots1, align=left] 
+{%
+    // New thoughts \\
+    $7 - 5 = 2$ (left: 12 2)\\
+    $12 - 5= 7$ (left: 7 7)\\
+    ... \\
+    $2 * 3 = 6$ (left: 4 6)\\
+};
+\draw[->] (valid_state1) -- (dots1) -- (thoughts2);
+
+\node [right=of thoughts2] (dots2) {\dots};
+\node (valid_state2) [draw, rectangle, rounded corners, minimum width=2.5cm, minimum height=1cm, right=of dots2, align=left] 
+{%
+    // Evaluated states, may include invalid states \\
+    3 4 5 7\textbackslash n$3 \times 4 = 12$ (left: 12 5 7)\textbackslash n$7 - 5 = 2$ (left: 12 2)\textbackslash n$12*2=24$ (left: 24)\\
+    3 4 5 7\textbackslash n$7 - 5 = 2$ (left: 3 4 2)\textbackslash n$2 * 4 = 8$ (left: 3 8)\textbackslash n$3 * 8 = 24$ (left: 24)\\
+    ... \\
+};
+\draw[->] (thoughts2) -- (dots2) -- (valid_state2);
+
+
+\node (gpt3) [above=2cm of valid_state2, align=left] {
+    \includegraphics[width=2cm]{gpt.png}  % Adjust width as needed
+};
+
+\node (cot_prompt) [draw, rectangle, rounded corners, right=of valid_state2, align=left] {// CoT prompt to get the ANSWERs \\
+Use numbers and basic arithmetic operations (+ - * /) to obtain 24.\\
+Each step, you are only allowed to choose two of the remaining numbers\\
+to obtain a new number.\\
+Input: 4 4 6 8\\
+Steps:\\
+4 + 8 = 12 (left: 4 6 12)\\
+6 - 4 = 2 (left: 2 12)\\
+2 * 12 = 24 (left: 24)\\
+Answer: (6 - 4) * (4 + 8) = 24\\
+... // 4 more shots\\
+\\
+
+Input: 3 4 5 7 // our input \\
+3 * 4 = 12 (left: 12 5 7)\\
+7 - 5 = 2 (left: 12 2)\\
+12*2=24 (left: 24)\\
+Answer: 
+};
+
+\coordinate (Qf3) at ([yshift=-0.5cm]gpt3.south);
+\draw[->] (valid_state2) -- (Qf3) -- (gpt3);
+\draw[dashed] (cot_prompt.west) .. controls +(left:0cm) and +(down:0.5cm) .. (Qf3);
+
+
+\node (answers) [draw, rectangle, rounded corners, minimum width=2.5cm, minimum height=1cm, above=2cm of gpt3, align=left] 
+{%
+    // ANSWERs (note, wrong answers maybe generated) \\
+    (3 * 4) * (7 - 5) = 24\\
+    (7 - 5) * 3 * 4 = 24 \\
+    ...\\
+    (3 * 4) * (7 + 5) = 42\\
+};
+\draw[->] (gpt3) -- (answers);
+
+\node (last_prompt) [draw, rectangle, rounded corners, right=of answers, align=left] {// Answer judge prompt \\
+Use numbers and basic arithmetic operations (+ - * /) to obtain 24. \\
+Given an input and an answer, give a judgement (sure/impossible) if the \\answer is correct, i.e. it uses each input exactly once and no other \\numbers, and reach 24.\\
+Input: 4 4 6 8\\
+Answer: (4 + 8) * (6 - 4) = 24\\
+Judge: \\
+sure\\
+Input: 2 9 10 12\\
+Answer: 2 * 12 * (10 - 9) = 24\\
+Judge: \\
+sure\\
+\\
+3 4 5 7\\
+Answer: (3 * 4) * (7 - 5) = 24\\
+Judge: 
+};
+
+\node (gtp4) [above=2cm of answers, align=left] {
+    \includegraphics[width=2cm]{gpt.png}  % Adjust width as needed
+};
+
+\coordinate (Qf4) at ([yshift=-0.5cm]gtp4.south);
+\draw[->] (answers) -- (Qf4) -- (gtp4);
+\draw[dashed] (last_prompt.west) .. controls +(left:0cm) and +(down:0.5cm) .. (Qf4);
+
+
+\node (final_answer) [draw, rectangle, rounded corners, minimum width=2.5cm, minimum height=1cm, above=2cm of gtp4, align=left] 
+{%
+    // Final answers, pick one(sample or ensemble) for final evaluation \\
+    (3 * 4) * (7 - 5) = 24\\
+    ...\\
+    (3 * 4) * (7 + 5) = 42\\
+};
+
+\draw[->] (gtp4) -- (final_answer);
+
+
+\end{tikzpicture}
+
+\end{document}
+
