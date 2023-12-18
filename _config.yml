@@ -6,7 +6,7 @@
 # 'jekyll serve'. If you change this file, please restart the server process.
 encoding: utf-8
 # Site settings
-title: A.Blog
+title: Berry's blog
 brief-intro: Do what you love & Love what you do. 
 baseurl: '' # the subpath of your site, e.g. /blog
 url: 'https://berrysleaf.github.io' # the base hostname & protocol for your site
@@ -14,10 +14,10 @@ url: 'https://berrysleaf.github.io' # the base hostname & protocol for your site
 permalink: /:year/:month/:day/:title/
 
 # other links
-twitter_username: 
+twitter_username: berrysleaf
 facebook_username:
-github_username: berrysleaf
 email: cyaeyz@gmail.com
+github_username: berrysleaf
 weibo_username: 
 zhihu_username:
 linkedIn_username:
@@ -43,9 +43,9 @@ utteranc_es:
 
 # 赞赏
 # reward:
-#   enable: false
-#   wechat: /assets/images/reward/wechat.png
-#   alipay: /assets/images/reward/alipay.png
+#   enable: true
+#   wechat: /assets/wechat.png
+  # alipay: /assets/images/reward/alipay.png
 
 # statistic analysis 统计代码
 # 百度统计 id，将统计代码替换为自己的百度统计id，即
