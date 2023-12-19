@@ -1,5 +1,5 @@
 ---
-layout:     post
+layout:     draft
 title:      Self Supervised Learning
 date:       2023-05-01
 tags: 

@@ -1,20 +1,19 @@
 ---
 layout:     post
-title:      Prefix Tunning
+title:      Prefix tuning
 date:       2023-11-19
-tags:   [prefix-tunning, peft]
+tags:   [prefix-tuning, peft]
 categories: 
 - nlp
 ---
 
 
-# Prompt tunning
-- [ ] Prefix-tunning 是什么，解决什么问题？
+# Prompt tuning
+- [ ] Prefix-tuning 是什么，解决什么问题？
 - [ ] 是如何解决这个问题的？
 - [ ] 有什么特点？
 - [ ] 适用场景？
 
-参考 [Prompt-Tuning：深度解读一种新的微调范式](https://zhuanlan.zhihu.com/p/618871247)
 
 在进入 LLM 时代之前，NLP 任务的主流范式是 pretraining + fine-tuning，即在预训练模型的基础上，针对特定任务进行微调。这种方法的优点是简单，但在当下模型越来越大的情况下，fine-tuning 的成本也越来越高。另外，fine-tuning 也有一些缺点，例如，模型的泛化能力不强，对于一些小数据集，模型的效果很差。
 
@@ -33,13 +32,20 @@ Prompt-Tuning 的一般流程：
 
 
 
-# Prefix tunning 
+# 前缀微调 Prefix-tuning 
 
-主流的 NLP 任务都是 pretraining + fine-tuning 的范式，即在预训练模型的基础上，针对特定任务进行微调。这种方法的优点是简单，但在当下模型越来越大的情况下，fine-tuning 的成本也越来越高。另外，fine-tuning 也有一些缺点，例如，模型的泛化能力不强，对于一些小数据集，模型的效果很差。针对这些问题，有一些研究者提出了一些方法，例如，[《Prefix-Tuning: Optimizing Continuous Prompts for Generation》](https://arxiv.org/pdf/2101.00190.pdf) 就是一种新的 fine-tuning 方法，它可以在不改变模型参数的情况下，通过修改输入的前缀来优化模型的效果。这种方法的优点是可以在不改变模型参数的情况下，优化模型的效果，而且可以在小数据集上取得很好的效果。
+主流的 NLP 任务都是 pretraining + fine-tuning 的范式，即在预训练模型的基础上，针对特定任务进行微调。这种方法的优点是简单，但在当下模型越来越大的情况下，fine-tuning 的成本也越来越高。此外，fine-tuning 也有一些不足，例如，在小数据集上 finetuned 的模型的泛化能力不强，效果很差。针对这些问题，斯坦福的研究人员 Xiang Lisa Li et.al. 提出了 [《Prefix-Tuning: Optimizing Continuous Prompts for Generation》](https://arxiv.org/abs/2101.00190)， prefix-tuning 是一种轻量级的自然语言生成任务(natural language generation, NLG)的微调方法，它可以在**不改变模型参数的情况下？？？？，通过修改输入的前缀来优化模型的效果**，在小数据集上也有很好的效果。（是吗，给个例子）
 
+全量 fine-tuning 太过笨重，一个改进方案是 *lightweight fine-tuning*，思路是**冻结大部分预训练参数，在模型上添加额外一个小规模训练模块进行训练**，其实在分类任务中，冻结 BERT，只训练分类头就是这种思路。 Lightweight fine-tuning 中的一个方法是 [*Adapter-tuning*](https://proceedings.mlr.press/v97/houlsby19a.html)，在只微调了 2-4% 参数的情况在，在 NLU 及 NLG 任务上都有不俗的表现。
+
+<figure style="text-align: center;">
+    <img src="https://image.ddot.cc/202312/prefix_vs_fine_tuning_1_20231219_0857.png" width=456pt>
+    <img src="https://image.ddot.cc/202312/prefix_vs_fine_tuning_2_20231219_0857.png" width=466pt>
+    <figcaption style="text-align:center"> Prefix-tuning V.S. Fine-tuning </figcaption>
+</figure>
 
 # Pattern Exploiting Training(PTE)
-这个工作算是 prompt 范式的开山之作，prompt tunning 的思想其实很早就有了，比如使用 GPT-2 将文本分类任务转换成问答任务（参考论文：[Zero-shot Text Classification With Generative
+这个工作算是 prompt 范式的开山之作，prompt tuning 的思想其实很早就有了，比如使用 GPT-2 将文本分类任务转换成问答任务（参考论文：[Zero-shot Text Classification With Generative
 Language Models](https://arxiv.org/pdf/1912.10165.pdf)）。Prompt 的思想是对**输入进行改造，挖掘语言模型的潜力，获得任务相关的输出，从而避免精调模式带来的灾难性遗忘问题**。因此要考虑的问题是：
 
 1. 如何设计合适的 Prompt，激发模型的潜能。
@@ -133,14 +139,13 @@ PET 对比 supervised 方案。 整体上而言，训练集 $\mathcal{T}$ 越小
 
 
 
+
 ## QA
 1. 如何利用 MLM 的？
 2. 为什么这种方法会有效果？
 3. 跟主动学习有什么区别？ 
 4. 为什么不直接用伪标签？
 
-
-
-
-
+# 扩展阅读 
+- Prompt-Tuning：深度解读一种新的微调范式, [https://zhuanlan.zhihu.com/p/618871247](https://zhuanlan.zhihu.com/p/618871247)
 
