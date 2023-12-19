@@ -46,6 +46,8 @@ Prompt-Tuning 的一般流程：
     <figcaption style="text-align:center"> Prefix-tuning V.S. Fine-tuning </figcaption>
 </figure>
 
+## 背后的直觉
+**在不改变语言模型（LM）参数的情况下，通过提供适当的上下文可以引导 LM**。例如，如果我们想让 LM 生成一个词（比如Obama），我们可以把常见搭配词（比如 Barack）加入到上下文，这样 LM 就会更有可能生成我们想要的词。直觉上，上下文做为一个“向导”，可以影响 $x$ 的编码，并且可以通过引导下一个 token 的分布来影响 $y$ 的生成。难点在于，给定一个任务，是否存在这样的上下文并不是显而易见的，人类能轻易理解的指令对 LLM 来说可能是难以理解的。研究人员举了一个例子，给定指令 `summarize the following table in one sentence`，GPT-2 与 BART 都没有对齐这个指令。
 
 
 # Pattern Exploiting Training(PTE)
