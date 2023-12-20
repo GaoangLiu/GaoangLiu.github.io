@@ -9,9 +9,6 @@ author: berrysleaf
 * content
 {:toc}
 
-
-# 概览
-
 [Tree of thoughts(ToT)](https://arxiv.org/abs/2305.10601) 是由普林斯顿大学和谷歌 DeepMind 联合提出的一种新型模型推理框架，是 [Chain of Thoughts Prompting](https://arxiv.org/abs/2201.11903)(CoT) 的泛化形式。ToT 将语言模型的推理过程建模为对树状结构的搜索，通过逐步将问题拆解为更易处理的子问题，每一步都探索并缓存可行的解题路径，从而提高语言模型解决问题的能力。更多详细内容可参考论文： [Tree of Thoughts: Deliberate Problem Solving with Large Language Models](https://arxiv.org/abs/2305.10601)。
 
 
@@ -22,6 +19,9 @@ author: berrysleaf
     <img src="https://image.ddot.cc/202312/various_approaches_20231212_1609.png" width=789pt>
     <figcaption>图1：ToT 与其他语言模型推理框架的比较</figcaption>
 </figure>
+
+
+# 概览
 
 CoT 的提出旨在解决输入 $$x$$ 到输出 $$y$$ 的映射关系非平凡（non-trivial）的情况，即那些难以通过简单的一步推理就能解决的问题，典型代表为数学和逻辑问题。CoT 的核心思想是从 $$x$$ 到生成 $$y$$ 的过程中，引入一系列 thoughts $$z_i$$ 以协助模型进行推理。对于数学问题而言，$$z_i$$ 可以表示解题时的中间步骤。 形式化地，CoT: $$y \sim p_\theta^\text{CoT}(x, z_{1,...,n})$$，其中:
 - $$z_i \sim p_\theta^\text{CoT}(x, z_{1,...,{i-1}})$$，每一个 thought $$z_i$$ 都依赖于输入 $$x$$ 及前面的 thoughts $$z_1, ..., z_{i-1}$$。
