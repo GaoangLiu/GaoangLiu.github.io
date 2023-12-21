@@ -1,20 +1,21 @@
 ---
 layout:     post
-title:      Prefix Tunning
+title:      Prefix tuning
 date:       2023-11-19
-tags:   [prefix-tunning, peft]
+tags:   [prefix-tuning, peft]
 categories: 
 - nlp
 ---
 
+<!-- excerpt -->
+Prefix-tuning 是一个轻量级的自然语言生成任务(natural language generation, NLG)的微调方法，它可以在**不改变模型参数的情况下，通过修改输入的前缀来优化模型的效果**，在小数据集上也有很好的效果。
 
-# Prompt tunning
-- [ ] Prefix-tunning 是什么，解决什么问题？
+# Prompt tuning
+- [ ] Prefix-tuning 是什么，解决什么问题？
 - [ ] 是如何解决这个问题的？
 - [ ] 有什么特点？
 - [ ] 适用场景？
 
-参考 [Prompt-Tuning：深度解读一种新的微调范式](https://zhuanlan.zhihu.com/p/618871247)
 
 在进入 LLM 时代之前，NLP 任务的主流范式是 pretraining + fine-tuning，即在预训练模型的基础上，针对特定任务进行微调。这种方法的优点是简单，但在当下模型越来越大的情况下，fine-tuning 的成本也越来越高。另外，fine-tuning 也有一些缺点，例如，模型的泛化能力不强，对于一些小数据集，模型的效果很差。
 
@@ -33,13 +34,41 @@ Prompt-Tuning 的一般流程：
 
 
 
-# Prefix tunning 
+# 前缀微调 Prefix-tuning 
 
-主流的 NLP 任务都是 pretraining + fine-tuning 的范式，即在预训练模型的基础上，针对特定任务进行微调。这种方法的优点是简单，但在当下模型越来越大的情况下，fine-tuning 的成本也越来越高。另外，fine-tuning 也有一些缺点，例如，模型的泛化能力不强，对于一些小数据集，模型的效果很差。针对这些问题，有一些研究者提出了一些方法，例如，[《Prefix-Tuning: Optimizing Continuous Prompts for Generation》](https://arxiv.org/pdf/2101.00190.pdf) 就是一种新的 fine-tuning 方法，它可以在不改变模型参数的情况下，通过修改输入的前缀来优化模型的效果。这种方法的优点是可以在不改变模型参数的情况下，优化模型的效果，而且可以在小数据集上取得很好的效果。
+在 prefix tuning 之前的 prompting 工作主要是人工设计离散的模版或者自动化搜索离散的模版。对于人工设计的模版，模型最终的性能对模版的变化特别敏感，加一个词、少一个词或者位置变动都会造成比较大的变化。而对于自动化搜索模版，成本也比较高；同时，以前这种离散化的 token 搜索出来的结果可能并不是最优的。
+
+除此之外，传统的微调范式利用预训练模型去对不同的下游任务进行 fine-tuning，对每个任务都要保存一份微调后的模型权重，一方面微调整个模型耗时长；另一方面也会占很多存储空间。另外，传统的微调范式对于小数据集的效果不好，因为模型的参数量太大，很容易过拟合。
+
+基于上述两点，[Prefix-tuning](https://arxiv.org/abs/2101.00190) 提出固定预训练 LM，为 LM 添加可训练，任务特定的前缀，这样就可以为不同任务保存不同的前缀，微调成本也小；同时，这种 prefix 实际就是连续可微的 Virtual Token（Soft Prompt/Continuous Prompt），相比离散的 token，更好优化，效果更好。
+
+全量 fine-tuning 太过笨重，一个改进方案是 *lightweight fine-tuning*，思路是**冻结大部分预训练参数，通过添加、微调一小部分可训练模块进行训练**，其实在分类任务中，冻结 BERT，只训练分类头就是这种思路。 Lightweight fine-tuning 中的一个方法是 [*Adapter-tuning*](https://proceedings.mlr.press/v97/houlsby19a.html)，在只微调了 2-4% 参数的情况在，在 NLU 及 NLG 任务上都有不俗的表现。Prefix-tuning 在参数量上比 Adapter-tuning 更加轻量，只需要微调 0.1% 的参数，而且在 NLG 任务上有不错的效果。
+
+但 lightweight fine-tuning 带来的麻烦是，需要在效果与参数量上取得一个平衡，确定训练哪些层是一个需要仔细考虑的问题。
+
+<figure style="text-align: center;">
+    <img src="https://image.ddot.cc/202312/prefix_vs_fine_tuning_1_20231219_0857.png" width=456pt>
+    <img src="https://image.ddot.cc/202312/prefix_vs_fine_tuning_2_20231219_0857.png" width=466pt>
+    <figcaption style="text-align:center"> Prefix-tuning V.S. Fine-tuning </figcaption>
+</figure>
+
+## 背后的直觉
+**在不改变语言模型（LM）参数的情况下，通过提供适当的上下文可以引导 LM**。例如，如果我们想让 LM 生成一个词 Obama，我们可以把常见搭配词（比如 Barack）加入到上下文，这样 LM 就会更有可能生成我们想要的词。直觉上，上下文做为一个“向导”，可以影响 $x$ 的编码，并且可以通过引导下一个 token 的分布来影响 $y$ 的生成。难点在于，给定一个任务，是否存在这样的上下文并不是显而易见的，人类能轻易理解的指令对 LLM 来说可能是难以理解的。研究人员举了一个例子，给定指令 `summarize the following table in one sentence`，GPT-2 与 BART 都没能对齐这个指令。
+
+### 形式化表示 
+用 $p_\theta(y\vert x)$ 表示一个参数为 $\theta$ 的自回归语言模型（以下简称模型），用符号 $z=[x;y]$ 表示 $x$ 和 $y$ 的拼接，在时间 $t$ 第 $j$ 层的输出为 $h_t^{(j)}$，则模型以 $z_i$ 及过去的输出 $h_{<i}^{(j)}$ 为输入，计算 $h_i$：
+
+$$h_i=p_\theta(z_i, h_{<i})$$
+
+### 技术原理
+在输入 token 之前构造一段任务相关的 virtual tokens 作为 prefix，然后训练的时候只更新 prefix 部分的参数，而 PLM 中的其他部分参数固定。根据不同的模型结构，需要构造不同的 prefix：
+- 自回归模型结构：在句子前面添加一个 prefix，即原来的输入变成了 $z=[\text{PREFIX}; x;y]$，合适的 prefix 可以引导模型生成任务相关的结果；
+- Encoder-decoder 模型结构：在 encoder 及 decoder 的输入前面分别添加 prefix，即原来的输入变成了 $z=[\text{PREFIX}; x; \text{PREFIX}'; y]$，encoder 端增加前缀是为了引导输入部分的编码，decoder 端增加前缀是为了引导后续token的生成。
+
 
 
 # Pattern Exploiting Training(PTE)
-这个工作算是 prompt 范式的开山之作，prompt tunning 的思想其实很早就有了，比如使用 GPT-2 将文本分类任务转换成问答任务（参考论文：[Zero-shot Text Classification With Generative
+这个工作算是 prompt 范式的开山之作，prompt tuning 的思想其实很早就有了，比如使用 GPT-2 将文本分类任务转换成问答任务（参考论文：[Zero-shot Text Classification With Generative
 Language Models](https://arxiv.org/pdf/1912.10165.pdf)）。Prompt 的思想是对**输入进行改造，挖掘语言模型的潜力，获得任务相关的输出，从而避免精调模式带来的灾难性遗忘问题**。因此要考虑的问题是：
 
 1. 如何设计合适的 Prompt，激发模型的潜能。
@@ -133,14 +162,13 @@ PET 对比 supervised 方案。 整体上而言，训练集 $\mathcal{T}$ 越小
 
 
 
+
 ## QA
 1. 如何利用 MLM 的？
 2. 为什么这种方法会有效果？
 3. 跟主动学习有什么区别？ 
 4. 为什么不直接用伪标签？
 
-
-
-
-
+# 扩展阅读 
+- Prompt-Tuning：深度解读一种新的微调范式, [https://zhuanlan.zhihu.com/p/618871247](https://zhuanlan.zhihu.com/p/618871247)
 

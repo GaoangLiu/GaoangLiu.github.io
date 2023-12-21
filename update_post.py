@@ -9,6 +9,8 @@ import codefast as cf
 class Blog(object):
     def _export_to_post(self, fpath):
         lo = self._get_layouts(fpath)
+        if lo['layout'] == 'draft': # keep it to local
+            return 
         lo['layout'] = 'post'
         nm = lo['date'] + '-' + lo['title'].replace(' ', '-') + '.md'
         year = lo['date'].split('-')[0]

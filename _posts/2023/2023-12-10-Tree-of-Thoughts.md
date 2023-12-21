@@ -9,9 +9,6 @@ author: berrysleaf
 * content
 {:toc}
 
-
-# 概览
-
 [Tree of thoughts(ToT)](https://arxiv.org/abs/2305.10601) 是由普林斯顿大学和谷歌 DeepMind 联合提出的一种新型模型推理框架，是 [Chain of Thoughts Prompting](https://arxiv.org/abs/2201.11903)(CoT) 的泛化形式。ToT 将语言模型的推理过程建模为对树状结构的搜索，通过逐步将问题拆解为更易处理的子问题，每一步都探索并缓存可行的解题路径，从而提高语言模型解决问题的能力。更多详细内容可参考论文： [Tree of Thoughts: Deliberate Problem Solving with Large Language Models](https://arxiv.org/abs/2305.10601)。
 
 
@@ -22,6 +19,9 @@ author: berrysleaf
     <img src="https://image.ddot.cc/202312/various_approaches_20231212_1609.png" width=789pt>
     <figcaption>图1：ToT 与其他语言模型推理框架的比较</figcaption>
 </figure>
+
+
+# 概览
 
 CoT 的提出旨在解决输入 $$x$$ 到输出 $$y$$ 的映射关系非平凡（non-trivial）的情况，即那些难以通过简单的一步推理就能解决的问题，典型代表为数学和逻辑问题。CoT 的核心思想是从 $$x$$ 到生成 $$y$$ 的过程中，引入一系列 thoughts $$z_i$$ 以协助模型进行推理。对于数学问题而言，$$z_i$$ 可以表示解题时的中间步骤。 形式化地，CoT: $$y \sim p_\theta^\text{CoT}(x, z_{1,...,n})$$，其中:
 - $$z_i \sim p_\theta^\text{CoT}(x, z_{1,...,{i-1}})$$，每一个 thought $$z_i$$ 都依赖于输入 $$x$$ 及前面的 thoughts $$z_1, ..., z_{i-1}$$。
@@ -151,7 +151,7 @@ ToT 的实验流程如下图所示：
 
 但 ToT + $$b=1$$ 的三次结果分别为 0.06, 0.11, 0.07，平均成功率为 0.08，跟论文中的 0.45 出入较多，这个结果甚至不如 IO prompt。$$b=5$$ 时三次实验结果分别为 0.13, 0.23, 0.14，平均成功率为 0.167，这个结果对比 IO prompting 及 CoT 无疑有一定提升，但跟论文中的 0.74 相差还是很大。
 
-差距较大的一个原因可能是笔者在实验中使用了 ChatGPT 而非 GPT-4，效果上有折扣。如上面[状态评估](#state-evaluate)小节里分析，ChatGPT 在<span style="color:red">状态评估阶段效果并不理想</span>。为验证这一点，笔者还专门做了一个小实验，这个实验的任务跟 state evaluation 一致，即给定第一次思维生成后的状态（e.g., `3 4 5 7\n7-5=2(left: 3 4 2)`），让 ChatGPT 判断凑成 24 的可能性是 `sure`、`likely` 还是 `impossible`，实验数据是 30 条结果都应该为 `sure` 的状态，数据集见[thoughts.txt](https://dlj.one/h9m6gl)。实验重复 3 次并求平均结果，ChatGPT 在 30 条状态评估的正确率仅为 0.17，也即是错误率在 0.8 以上。
+差距较大的一个原因可能是笔者在实验中使用了 ChatGPT 而非 GPT-4，效果上有折扣。如上面[状态评估](#state-evaluate)小节里分析，ChatGPT 在**状态评估阶段效果并不理想**。为验证这一点，笔者还专门做了一个小实验，这个实验的任务跟 state evaluation 一致，即给定第一次思维生成后的状态（e.g., `3 4 5 7\n7-5=2(left: 3 4 2)`），让 ChatGPT 判断凑成 24 的可能性是 `sure`、`likely` 还是 `impossible`，实验数据是 30 条结果都应该为 `sure` 的状态，数据集见 [thoughts.txt](https://dlj.one/h9m6gl)。实验重复 3 次并求平均结果，ChatGPT 在 30 条状态评估的正确率仅为 0.17，也即是错误率在 0.8 以上。
 
 另一个原因是，**thought 生成及状态评估并没有显著降低推理的难度**。没错，笔者对论文结果，特别是 Game of 24 的结果表示置疑。因为 state evaluation 这一步也是通过 LLM 来实现的，效果直接依赖 LLM 本身的理解推理能力。像 Game of 24 的实验设计里，第一步 thought generation 之后，输入从 4 个数减少为 3 个数，然后让 LLM 判断这 3 个数能否凑够 24，这个问题在难度上比原问题其实并没有降低多少。再延伸一下，我们考虑新的 “Game of 100”：输入不是 4 个数，而是 10 个数，目标值是 100，那么第一步 thought generation 之后，让 LLM 去评估余下的 9 个数能否凑够 100，GPT 在这一步的表现等同于盲猜这一点应该就容易理解了。结果是，如果 GPT 在状态评估阶段的表现比较差，那 ToT 的搜索算法就会陷入到一条不可行的路径上，这也是笔者在实验中遇到的情况。
 
