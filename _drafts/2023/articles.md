@@ -23,6 +23,7 @@ categories:
 11. [RAG]({{site.baseurl}}/2023/11/16/Retrivial-augmented-generation/)
 12. [Step back prompting]({{site.baseurl}}/2023/12/02/Step-back-prompting/)
 13. [Tree of thought]({{site.baseurl}}/2023/12/10/Tree-of-Thoughts/)
+14. [Prefix-tunning]({{site.baseurl}}/2023/11/19/Prefix-tunning/)
 
 
 ## Candidates
