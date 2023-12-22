@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Gemini - The best AI model in the world
+title: Gemini - The second best AI model in the world
 date: 2023-12-06
 tags: gemini llm deepmind
 categories: nlp
@@ -18,9 +18,9 @@ author: berrysleaf
 
 # Google is so back
 
-自 ChatGPT 问世以来，包括笔者在内的很多用户在搜索习惯上都经历了一场翻天覆地的变革。有编程、设计、方案、生活及哲学问题需要解答？直接抛给 ChatGPT，只要 prompt 写得得当，没有 ChatGPT 解决不了的问题，当然，模型“幻觉”又是另回事了。这种变化对 Google 搜索可谓一记重拳，直接导致一段时间内 Google 的搜索份额大幅下降。ChatGPT 对 Google 搜索的威胁之大，据说连创始人都开始亲自下场搞 LLM（[Back At Google Again, Cofounder Sergey Brin Just Filed His First Code Request In Years —— Forbes](https://dlj.one/zprxug)）。
+自 ChatGPT 问世以来，包括笔者在内的很多用户在搜索习惯上都经历了一场翻天覆地的变革。有编程、设计、方案、生活及哲学问题需要解答？直接抛给 ChatGPT，只要 prompt 写得得当，没有 ChatGPT 解决不了的问题，当然，模型“幻觉”又是另外一回事了。这种变化对 Google 搜索可谓一记重拳，直接导致一段时间内 Google 的搜索份额大幅下降。ChatGPT 对 Google 搜索的威胁之大，据说连创始人都开始亲自下场搞 LLM（[Back At Google Again, Cofounder Sergey Brin Just Filed His First Code Request In Years —— Forbes](https://dlj.one/zprxug)）。
 
-在 AI 领域，Google 其实一直处于领先地位，毕竟旗下有 Google Brain 和 DeepMind 两大顶级 AI 研究机构，DeepMind 出品的 AlphaGo 也是当年风头无两、家喻户晓的明星 AI 作品。在 NLP 领域，Google 也颇有建树，率先提出了 transformer 结构，也先后发布了 BERT、T5、ALBERT、Switch Transformer 等多个知名模型。但是，和 OpenAI 的 GPT 系列对比，Google 在聊天机器人这块有点跟不上节奏，在 ChatGPT 问世三个月之后，Google 才匆忙赶 [Bard](https://bard.google.com) 上架。Bard 做为 Google 的第一款 AI 聊天机器人，被广大用户寄予了厚望，但奈何 Bard 效果着实太差，连个简单的加减法都搞不定，语言能力更是一言难尽，早期的版本甚至只支持英文，对比 ChatGPT 简直是天壤之别，也难怪有人调侃称 [“Bard is a joke”](https://twitter.com/high_byte/status/1639596716339896322)。为了赶超 OpenAI，Google 不惜将两个 AI 研究机构合并，成立了 Google DeepMind。在今年 5 月份的 Google I/O 大会上，Google 宣布新的 Google DeepMind 实验室已开始开发 Gemini。
+在 AI 领域，Google 其实一直处于领先地位，毕竟旗下有 Google Brain 和 DeepMind 两大顶级 AI 研究机构，DeepMind 出品的 AlphaGo 也是当年风头无两、家喻户晓的明星 AI 作品。在 NLP 领域，Google 也颇有建树，率先提出了 transformer 结构，也先后发布了 BERT、T5、ALBERT、Switch Transformer 等多个知名模型。但是，和 OpenAI 的 GPT 系列对比，Google 在聊天机器人这块有点跟不上节奏，在 ChatGPT 问世三个月之后，Google 才匆忙赶 [Bard](https://bard.google.com) 上架。Bard 做为 Google 的第一款 AI 聊天机器人，被广大用户寄予了厚望，但奈何 Bard 效果着实太差，连个简单的加减法都搞不定，语言能力更是一言难尽，早期的版本甚至只支持英文，对比 ChatGPT 简直是云泥之别，也难怪有人调侃称 [“Bard is a joke”](https://twitter.com/high_byte/status/1639596716339896322)。为了赶超 OpenAI，Google 不惜将两个 AI 研究机构合并，成立了 Google DeepMind。在今年 5 月份的 Google I/O 大会上，Google 宣布新的 Google DeepMind 实验室已开始开发 Gemini。
 
 经过半年的沉寂，Google DeepMind 终于搞了一个大新闻，发布了 [Gemini 1.0](https://deepmind.google/technologies/gemini/) 多模态 AI 语言模型，同时支持文字、图片、音频、视频等多种输入数据的处理。根据 CEO Sundar Pichai 在 [twitter](https://twitter.com/sundarpichai/status/1732433036929589301) 上发布的效果展示视频中可以看到，Gemini 在音频、图片识别、文字理解、推理方面都表现出惊人的能力。更令人振奋的是，Gemini 在一系列开源数据集任务的评测中都刷新了 SoTA，效果堪称出色，可以说是目前最强综合 AI 语言模型了。
 
@@ -151,14 +151,20 @@ Google 同时还推出基于 Gemini Pro 微调的 [AlphaCode 2](https://storage.
 实际上，仔细观察一下上面的系统结构，可以看到在 policy 与 scoring 阶段都需要一个模型，而 AlphaCode 2 实际上在这两个阶段分别微调了一个 Gemini Pro 模型，在 clustering 阶段，也需要再训练一个模型进行聚类。两个 Gemini Pro + 一个聚类模型，这个成本确实不低。
 
 # 第三方基准测试 
-上一节的结果都是 Google 于  2023-12-06 在 [technical report](https://storage.googleapis.com/deepmind-media/gemini/gemini_1_report.pdf) 中发布的，大约两周后的 2023-12-19，Aran Komatsuzaki 在 [Twitter](https://twitter.com/arankomatsuzaki/status/1736998198697238672?s=51) 上分享了一个由 [CMU](https://cmu.edu), [Zeno](https://zenoml.com), and [BerriAI LiteLLM](https://github.com/BerriAI/litellm) 联合完成的工作 [《An In-depth Look at Gemini's Language Abilities》](https://arxiv.org/abs/2312.11444)。在这个工作里，他们重新对比了 Gemini 与 GPT 的效果，结论是：
+上一章的结果都是 Google 于  2023-12-06 在 [technical report](https://storage.googleapis.com/deepmind-media/gemini/gemini_1_report.pdf) 中发布的，而最近两日（2023-12-19）Aran Komatsuzaki 在 [Twitter](https://twitter.com/arankomatsuzaki/status/1736998198697238672?s=51) 上分享了一项由 [CMU](https://cmu.edu), [Zeno](https://zenoml.com), and [BerriAI LiteLLM](https://github.com/BerriAI/litellm) 联合完成的工作 [《An In-depth Look at Gemini's Language Abilities》](https://arxiv.org/abs/2312.11444)。在这个工作里，他们重新对比了 Gemini 与 GPT 的效果，关于 Gemini 的结论是：
 
-- **整体能力弱于 GPT 3.5**：Google Pro 在所有任务上效果都接近但弱于 GPT 3.5 Turbo。
-- **不稳定**：在处理具有多个数字的数学推理任务时，Gemini 有时间不能完成任务。在多答案问题排序、激进内容过滤等任务上也比较不稳定。
-- **部分领域能力出众**：在生成非英语语言、处理更长、更复杂的推理链以及解决单词排序/重新排列问题方面，Gemini 展现出了相当高的性能水平。
+* **整体能力弱于 GPT 3.5**：Google Pro 在所有任务上效果都接近但弱于 GPT 3.5 Turbo。
+* **不稳定**：在处理具有多个数字的数学推理任务时，Gemini 有时候不能完成任务。在多答案问题排序、激进内容过滤等任务上也比较不稳定。
+* **在部分领域能力出众**：在生成非英语语言、处理更长、更复杂的推理链以及解决单词排序/重新排列问题方面，Gemini 展现出了相当高的水平。
 
 
-第一条结论对应数据如下表，GPT 3.5 Turbo 在 12 组实验中完胜 Gemini Pro，完全是摁在地上摩擦的节奏。特别是 MMLU(CoT) 的效果，Gemini 落后了有 10 个点，这个结论相悖于 Gemini Team 的结论，估计 Google 不会喜欢。不过这次第三方实验设计也比较公正，没有什么槽点，从问题到 prompts 再到评估方式都一样，不像 Google 拿 Gemini + uncertainty-routed CoT 对比 GPT-4 + CoT，结果难以服众。 
+第一条结论对应数据如下表，GPT 3.5 Turbo 在 12 组实验中完胜 Gemini Pro，完全是把 Gemini 摁在地上摩擦的节奏，特别是 MMLU(CoT) 的效果，以 10 个点的优势遥遥领先于 Gemini。
+
+<figure style="text-align:center">
+    <img src="https://image.ddot.cc/202312/far_ahead_20231222_0952.png" width="334pt">
+</figure> 
+
+这个结论相悖于 Gemini Team 的结论，估计 Google 不会喜欢。不过这次第三方实验设计也比较公正，没有什么槽点，从问题到 prompts 再到评估方式都一样，不像 Google 拿 Gemini + uncertainty-routed CoT 对比 GPT-4 + CoT，结果难以服众。
 
 
 | Task| Dataset| Gemini Pro | GPT 3.5 Turbo | GPT 4 Turbo | Mixtral |
@@ -176,12 +182,11 @@ Google 同时还推出基于 Gemini Pro 微调的 [AlphaCode 2](https://storage.
 |                               | **FLORES (5-shot)** | 29.00      | 38.08         | **48.60**   | -       |
 | **Web Agents**                | **WebArena**        | 7.09       | 8.75          | **15.16**   | 1.37    |
 
-研究人员分析了 Gemini underperformance 的原因，一个原因是无法回答问题（这一点笔者在 Bard 的实验中也遇到了），特别是跟道德场景（moral scenarios）及人类性行为（human sexuality）相关的问题，Gemini 经常拒绝回答，估计 Google 在审查上做了很多限制。另一个原因是 Gemini 数学能力很差，这一点，笔者在文章[《Tree of Thoughts》]({{site.baseurl}}/2023/12/10/Tree-of-Thoughts/)中也有提到，做 24 点游戏时， Gemini 在数学推理上的表现确实不如 ChatGPT（底层模型 GPT 3.5 Turbo）。
+研究人员分析了 Gemini underperformance 的原因，一个原因是无法回答问题（这一点笔者在 Bard 的实验中也遇到了），特别是跟道德场景（moral scenarios）及人类性行为（human sexuality）相关的问题，Gemini 经常拒绝回答，估计 Google 之前吃了审查不严的亏（比如之前的[“大猩猩事件”](https://www.theverge.com/2018/1/12/16882408/google-racist-gorillas-photo-recognition-algorithm-ai)），所以这次在审查上做了很多限制。另一个原因是 Gemini 数学能力很差，这一点，笔者在文章[《Tree of Thoughts》]({{site.baseurl}}/2023/12/10/Tree-of-Thoughts/)中也有提到，做 24 点游戏时， Gemini 在数学推理上的表现确实不如 ChatGPT（底层模型 GPT 3.5 Turbo）。
 
 
 # The LLM war is not over yet
-从 2022/11/30 OpenAI 发布 ChatGPT，如今已有一年时间，GPT-4 发布也差不多已有 8 个月，在当前众多大模型混战的情况下，Gemini 表现出了一定竞争力，但对比一年前的 GPT 3.5 ~~也就以微弱的优势领~~并没有特别明显的优势，而且 Bard 的表现对比 ChatGPT 还差很远。等到 24 年初 Gemini Ultla 最终亮相的时候，OpenAI 或者 Anthropic Inc. 可能会再次掀起新一轮的模型发布热潮，到时候又是一场新的竞争。
-
+从 2022/11/30 OpenAI 发布 ChatGPT，如今已有一年时间，GPT-4 发布也差不多已有 8 个月，在当前众多大模型混战的情况下，Gemini 表现出了一定竞争力，但对比一年前的 GPT 3.5 ~~也就以微弱的优势领~~并没有体现出优势，而且 Bard 的表现对比 ChatGPT 还差很远。等到 24 年初 Gemini Ultla 最终亮相的时候，OpenAI 或者 Anthropic Inc. 可能会再次掀起新一轮的模型发布热潮，到时候又是一场腥风血雨的战争。
 
 # 参考 
 - AlphaCode 2 technical report: [https://storage.googleapis.com/deepmind-media/AlphaCode2/AlphaCode2_Tech_Report.pdf](https://storage.googleapis.com/deepmind-media/AlphaCode2/AlphaCode2_Tech_Report.pdf)
