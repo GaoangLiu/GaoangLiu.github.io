@@ -54,7 +54,7 @@
     searchResultTemplate: '<li><a href="{url}">{title}</a></li>',
     noResultsText: 'No results found',
     limit: 10,
-    fuzzy: false,
+    fuzzy: true,
 	templateMiddleware: function(prop, value, template) {
 		if (prop === 'title') {
 			var v = document.getElementById('search_box').value;

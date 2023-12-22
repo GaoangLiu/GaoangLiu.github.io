@@ -1,0 +1,10 @@
+_site/*
+Makefile
+*.py
+*.png
+*.jpg
+*.gif
+*.jpeg 
+gitignore
+.jekyll-cache/
+.jekyll-metadata
