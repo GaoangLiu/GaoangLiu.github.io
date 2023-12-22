@@ -11,17 +11,13 @@ author: berrysleaf
 
 
 <!-- excerpt -->
-Prefix-tuning 是一个轻量级的自然语言生成任务(natural language generation, NLG)的微调方法，它可以在**不改变模型参数的情况下，通过修改输入的前缀来优化模型的效果**，在小数据集上也有很好的效果。
+Prefix-tuning 是一个轻量级的自然语言生成任务(natural language generation, NLG)的微调方法，它可以在**不改变底层模型参数的情况下，通过修改输入的前缀来优化模型的效果**，在低数据场景下也有较好的表现。
 
 
 
 
-# Prompt tuning
-- [ ] Prefix-tuning 是什么，解决什么问题？
-- [ ] 是如何解决这个问题的？
-- [ ] 有什么特点？
-- [ ] 适用场景？
 
+# 背景
 
 在进入 LLM 时代之前，NLP 任务的主流范式是 pretraining + fine-tuning，即在预训练模型的基础上，针对特定任务进行微调。这种方法的优点是简单，但在当下模型越来越大的情况下，fine-tuning 的成本也越来越高。另外，fine-tuning 也有一些缺点，例如，模型的泛化能力不强，对于一些小数据集，模型的效果很差。
 
@@ -58,122 +54,53 @@ Prompt-Tuning 的一般流程：
     <figcaption style="text-align:center"> Prefix-tuning V.S. Fine-tuning </figcaption>
 </figure>
 
-## 背后的直觉
+# 背后的直觉
 **在不改变语言模型（LM）参数的情况下，通过提供适当的上下文可以引导 LM**。例如，如果我们想让 LM 生成一个词 Obama，我们可以把常见搭配词（比如 Barack）加入到上下文，这样 LM 就会更有可能生成我们想要的词。直觉上，上下文做为一个“向导”，可以影响 $$x$$ 的编码，并且可以通过引导下一个 token 的分布来影响 $$y$$ 的生成。难点在于，给定一个任务，是否存在这样的上下文并不是显而易见的，人类能轻易理解的指令对 LLM 来说可能是难以理解的。研究人员举了一个例子，给定指令 `summarize the following table in one sentence`，GPT-2 与 BART 都没能对齐这个指令。
 
-### 形式化表示 
+## 形式化表示 
 用 $$p_\theta(y\vert x)$$ 表示一个参数为 $$\theta$$ 的自回归语言模型（以下简称模型），用符号 $$z=[x;y]$$ 表示 $$x$$ 和 $$y$$ 的拼接，在时间 $$t$$ 第 $$j$$ 层的输出为 $$h_t^{(j)}$$，则模型以 $$z_i$$ 及过去的输出 $$h_{<i}^{(j)}$$ 为输入，计算 $$h_i$$：
 
 $$h_i=p_\theta(z_i, h_{<i})$$
 
-### 技术原理
+## 技术原理
 在输入 token 之前构造一段任务相关的 virtual tokens 作为 prefix，然后训练的时候只更新 prefix 部分的参数，而 PLM 中的其他部分参数固定。根据不同的模型结构，需要构造不同的 prefix：
 - 自回归模型结构：在句子前面添加一个 prefix，即原来的输入变成了 $$z=[\text{PREFIX}; x;y]$$，合适的 prefix 可以引导模型生成任务相关的结果；
 - Encoder-decoder 模型结构：在 encoder 及 decoder 的输入前面分别添加 prefix，即原来的输入变成了 $$z=[\text{PREFIX}; x; \text{PREFIX}'; y]$$，encoder 端增加前缀是为了引导输入部分的编码，decoder 端增加前缀是为了引导后续token的生成。
 
 
+# 效果 
+## Task 1: tabel to text generation
 
-# Pattern Exploiting Training(PTE)
-这个工作算是 prompt 范式的开山之作，prompt tuning 的思想其实很早就有了，比如使用 GPT-2 将文本分类任务转换成问答任务（参考论文：[Zero-shot Text Classification With Generative
-Language Models](https://arxiv.org/pdf/1912.10165.pdf)）。Prompt 的思想是对**输入进行改造，挖掘语言模型的潜力，获得任务相关的输出，从而避免精调模式带来的灾难性遗忘问题**。因此要考虑的问题是：
-
-1. 如何设计合适的 Prompt，激发模型的潜能。
-2. 输出结果如何跟最终的任务结果关联起来。比如用生成模型作情感分类，如何将生成的结果映射到情感值上。 
-3. 存在一定标注数据的情况下， 如何微调模型，使得模型能够学到任务相关的知识。
-
-这个工作的贡献是提出了一种通用的方法，可以将不同任务转换成一个**模板填空**的任务，然后使用预训练模型进行微调。这个方法的优点是可以在不改变模型参数的情况下，优化模型的效果，而且可以在小数据集上取得很好的效果。大概流程：
-
-1. **训练 PVP 模型**。使用少量的标注数据，对每一个 prompt 使用 PLM 微调出一个模型； 
-2. **样本扩充**。使用上个步骤得到 PVP 集成模型，给无标注数据集打标，生成对应的 soft label，得到一个打标数据。
-3. **有监督训练**。在伪标签数据集上训练一个模型，即得到最终的模型。
-
-## 细节
-
-令 $$M$$ 表示一个语言模型，$$V$$ 表示词汇表，$$\mathcal{L}$$ 表示分类任务的标签集合。令 $$s_i \in \Omega = V^*$$ 表示一条序列，这个序列可以是一条短语或者一条句子。 
-
-1. *pattern*，一个 pattern $$P: \Omega^k \rightarrow \Omega$$ 是一个将一个序列集合映射到一条序列的函数。输入 $$x = (s_1, ..., s_k) \in \Omega^k$$ 表示由 $$k$$ 个序列构成的集合。例如，当 $$k=2$$ 时，$$x=(s,t)$$ 由两条序列构成，对应的任务 $$T$$ 可以是一个相似度判断任务。 
-2. *verbalizer*， $$v:\mathcal{L} \rightarrow V$$，将每一个标签映射到词汇表中的一个词。例如，对于情感分类任务，可以定义两个 verbalizer，分别是 $$v_+$$ 和 $$v_-$$，将 positive 和 negative 映射到词汇表中的一个词。
-
-Pattern 是对原始输入进行格式转换，适配下游模型，Verbalizer 是将下游模型的输出映射到任务标签上。以 Yelp 评论打分为例，给定一条评论 $$r$$，可能的 patterns 有：
-1. $$P_1(r) = \text{It was [M]. } r$$; 
-2. $$P_1(r) = r \text{. All in all, it was [M]. }$$; 
-
-其中 $$\text{[M]} \in V$$ 表示一个 mask 词。对应的 verbalizer 为 $$v: [1,2,3,4,5] \rightarrow \{ \text{great, good, okay, bad, terrible} \}$$.
-
-## 训练 
-Pattern 实际上把输入序列转成 MLM 的输入，MLM 对这个序列进行预测，得到一个概率分布，用 $$M(w | z), w \in V, z \in \Omega$$。 给定  $$p=(P, v)$$，定义 $$l \in \mathcal{L}$$ 的得分为：
-
-$$s_p(l) = M(v(l) \lvert P(x))$$
-
-通过 softmax 函数，可以得到一个概率分布：
-
-$$q_p(l) = \frac{\exp(s_p(l))}{\sum_{l' \in \mathcal{L}} \exp(s_p(l'))}$$
-
-
-## PVP 集成 
-PVP 的选择对效果有直接的影响，但有监督数据 $$\mathcal{T}$$ 比较少，不可能有验证集来验证一个 PVP 的效果，所以难以判断最佳的 PVP。作者通过**模型集成**与**模型蒸馏**的思想进行训练：
-
-1. **微调**。首先使用 多个PLM 在不同的 PVP设定 下进行微调，得到多个「PVP 微调模型」。
-2. **集成**。然后将这些模型集成，得到一个「PVP 集成模型」。集成的方法是将所有模型的输出相加，然后归一化，得到一个概率分布。
-3. **蒸馏**。将知识蒸馏到输出模型 $$C$$。即使用「PVP 集成模型」对无标注数据集进行打标，得到一个伪标签数据集，然后在这个数据集上训练 $$C$$。
-
-具体地，根据直觉定义一批 PVPs $$\mathcal{P}$$，对每一个  $$p\in \mathcal{P}$$ 都微调一个 $$M_p$$。然后集成这样模型 $$\mathcal{M} = \{ M_p | p \in \mathcal{P} \}$$ 对无标注样本集 $$\mathcal{D}$$ 进行打标:
-
-$$s_\mathcal{M}(l |x) = \frac{1}{Z} \sum_{p \in \mathcal{P}} w(p) \cdot s_p(l | x)$$
-
-其中，$$Z= \sum w(p)$$，$$w(p)$$ 表示每一对 $$(P, v)$$ 的权重。权重的设计有很多种方案，简直暴力一点的，可以将所有权重都调成相等的值，即 $$w(p) = 1$$，或者引入先验知识赋予不同的值。 文中给定的另一种方案是 $$w(p) = \text{precision}_{p, \mathcal{T}}$$，即使用 $$p$$ 在训练集 $$\mathcal{T}$$ 的精度。在论文实验（Table 4）中，两种权重方案的效果没有明显差异 ($$\lvert \mathcal{T} \rvert = 10$$)。 
-
-<figure style="text-align:center">
-    <img src="https://image.ddot.cc/202311/pet_20231129_1423.png" width=678pt>
-    <figcaption style="text-align: center;"> PET schematic representation </figcaption>
+<figure style="text-align: center;">
+    <img src="https://image.ddot.cc/202312/prefix_tuning_result_20231222_1059.png" width=789pt>
+    <figcaption style="text-align:center"> Prefix-tuning 的效果 </figcaption>
 </figure>
 
-## iPET
+尽管 prefix-tuning 只更新了 0.1% 的参数，在 E2E, WebNLG, DART 的效果上
+1. 比 adapter tuning (0.1%) 的总体效果要好（笔者注：从数值上来看，没有特别大优势，只在 BLEU 数据集差距明显一些）；
+2. 跟 full fine-tuning (100%) 及 adapter tuning (3%) 的效果相当；
 
-迭代版本的 PET，通过**训练——模型标注——再训练——再标注**的迭代 $$k$$ 次获得最终数据集。 
-
-iPET 优势是什么？优势是标注的更准确。作者设计了一个实验， 在 Yelp、AG News 等 4 个数据集上使用 iPET 进行 zero-shot 学习，总迭代轮次等于 4。对 AG News、Yahoo 任务还设计了跳过第二、三次迭代，即第一次迭代后直接打标 $$d^3 \cdot \lvert \mathcal{T}_1 \rvert$$ 个数据供 $$\mathcal{M}_4$$ 训练。 实验有如下结果：
-
-1. 随着迭代次数增加，模型效果也逐渐提升； 
-2. 跳过中间迭代过程，一次性打标相同数量样本并训练的效果**弱于逐步迭代**的效果。 
-
-
-在每一步迭代时，只选择模型比较自信的样本做为下一步的训练数据，这样可以相较于一步到位的标注，错标的数据更少。 通过实验验证，当数据集大小较小时，比如只有几十个样本时，iPET 能带来几个点的效果提升。
-
-<figure style="text-align:center">
-    <img src="https://image.ddot.cc/202312/ipet_generation_result_20231201_1401.png" width=678pt>
-    <figcaption style="text-align: center;"> iPET schematic representation </figcaption>
+## Task 2: low data setting 
+<figure style="text-align: center;">
+    <img src="https://image.ddot.cc/202312/prefix_tuning_low_data_20231222_1117.png" width=789pt>
+    <figcaption style="text-align:center"> Prefix-tuning low data 的效果 </figcaption>
 </figure>
 
-
-几个点：
-1. 每次标注时，不是选择所有模型，而是选择模型的一个子集进行标注； 
-2. 在每一次迭代中，数据等比缩放。 通过随机采样，保证新标注数据中各标签的比例都与原始数据中的比例保持一致，即 $$\lvert \mathcal{T}_i \rvert = d \cdot \lvert \mathcal{T}_{i-1} \rvert $$，其中 $$d$$ 是缩放比例。在原文实验中，$$d$$ 设置为 5，迭代终止条件是每个模型都最终在 1000 条样本上训练，即轮次 $$k = \lceil \log_d(1000 / \lvert \mathcal{T} \rvert)$$；
-3. 在整个未标注数据集 $$\mathcal{D}$$ 上都进行打标，得到 $$\mathcal{T}_\mathcal{N} = \{ (x, \argmax_{\substack{l \in \mathcal{L}}} s_\mathcal{N}(l | x)) | x \in \mathcal{D}\}$$，在下一步训练使用时，从所有伪标数据集中抽取一部分。一对样本 $$(x, y)$$ 被抽取的概率正比于 $$s_\mathcal{N}(l|x)$$。
-
-## 效果 
-### 纵向对比  
-PET 对比 supervised 方案。 整体上而言，训练集 $$\mathcal{T}$$ 越小，PET 提升越大。以分类任务 Yelp, AG News 例，iPET 在 $$\lvert \mathcal{T} \rvert = 10$$ 上的提升分别为 0.365 和 0.642，而在 $$\lvert \mathcal{T} \rvert = 100$$ 上的提升分别为 0.099 和 0.036。因此一个粗糙的结论：**对于分类任务，如果在几百条标数据上效果不好，那个效果基本上也接近半监督学习的上限了**。
-差异比较大的是 MNLI 数据集，在 $$\lvert \mathcal{T} \rvert = 1000$$ 时，iPET 对比 supervised 仍然有 10 个点的提升。
-
-### 横向对比
-对比两个基于数据增强的方案 UDA、MixText， PET 在数据量比较小（小于 50）时都表现出明显的优势。  
+在训练数据很少，例如只有几百条甚至几十条数据的情况下，prefix-tuning 的效果要好于 full fine-tuning。上图右是 prefix-tuning 与 fine-tuning 在 summarization 及 tabel-to-text 任务上的效果对比，可以看到 prefix-tuning 在数据量很少的情况下，效果要好于 fine-tuning。左侧是一条 table-to-text 任务下，两种方法给出的答案的直观对比。
 
 
-
-<figure style="text-align:center">
-    <img src="https://image.ddot.cc/202311/ipet_vs_supervised.png" width=678pt>
-    <figcaption style="text-align: center;"> iPET v.s. Supervised </figcaption>
+## Task 3: extrapolation
+<figure style="text-align: center;">
+    <img src="https://image.ddot.cc/202312/prefix_tuning_extrapolation_20231222_1134.png" width=789pt>
+    <figcaption style="text-align:center"> Prefix-tuning extrapolation 的效果 </figcaption>
 </figure>
 
+按照不同的主题（topics）把数据集切分开，在一个数据集上训练，另一个作验证，prefix-tuning 的外推性（泛化性）以微弱的优势好于 fine-tuning。
 
 
+# 适用场景
 
-## QA
-1. 如何利用 MLM 的？
-2. 为什么这种方法会有效果？
-3. 跟主动学习有什么区别？ 
-4. 为什么不直接用伪标签？
+当存在大量需要独立训练的任务时，prefix-tuning 就显得非常有优势。一个实际的应用场景是在处理用户隐私，为了保护用户隐私，需要将每个用户的数据分隔开，并分别训练个性化模型。因此，每个用户可以被视为一个独立的任务。如果有数百万用户，prefix-tuning 可以适应这种情况并保持模块化，通过添加或删除前缀，轻松地增加或删除用户，而不会发生交叉污染。
 
 # 扩展阅读 
 - Prompt-Tuning：深度解读一种新的微调范式, [https://zhuanlan.zhihu.com/p/618871247](https://zhuanlan.zhihu.com/p/618871247)
