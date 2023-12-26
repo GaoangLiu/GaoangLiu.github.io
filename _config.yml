@@ -7,7 +7,7 @@
 encoding: utf-8
 # Site settings
 title: Berry's blog
-brief-intro: Do what you love & Love what you do. 
+brief-intro: 编程、算法、NLP
 baseurl: '' # the subpath of your site, e.g. /blog
 url: 'https://blog.atomicstep.org' # the base hostname & protocol for your site
 
