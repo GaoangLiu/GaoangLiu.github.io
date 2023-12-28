@@ -6,7 +6,7 @@ tags:   [prompt, tot]
 categories: 
 - nlp
 ---
-[Tree of thoughts(ToT)](https://arxiv.org/abs/2305.10601) 是由普林斯顿大学和谷歌 DeepMind 联合提出的一种新型模型推理框架，是 [Chain of Thoughts Prompting](https://arxiv.org/abs/2201.11903)(CoT) 的泛化形式。ToT 将语言模型的推理过程建模为对树状结构的搜索，通过逐步将问题拆解为更易处理的子问题，每一步都探索并缓存可行的解题路径，从而提高语言模型解决问题的能力。更多详细内容可参考论文： [Tree of Thoughts: Deliberate Problem Solving with Large Language Models](https://arxiv.org/abs/2305.10601)。
+[Tree of thoughts(ToT)](https://arxiv.org/abs/2305.10601) 是由普林斯顿大学和谷歌 DeepMind 联合提出的一种新型模型推理框架，是 [Chain of Thoughts Prompting](https://arxiv.org/abs/2201.11903)(CoT) 的泛化形式。ToT 将语言模型的推理过程建模为对树的搜索，通过将问题拆解为更易处理的子问题，并输出中间思考过程，每一步都探索并缓存可行的解题路径，从而提高语言模型解决问题的能力。更多详细内容可参考论文： [Tree of Thoughts: Deliberate Problem Solving with Large Language Models](https://arxiv.org/abs/2305.10601)。
 
 
 <figure style="text-align: center">
@@ -161,4 +161,5 @@ ToT 的实验流程如下图所示：
 # 代价
 ToT 对比 CoT 在效果上确实有提升，但对应的计算量的增加也是显而易见的，根据 prompt 的设计及搜索算法的不同，ToT 生成的 tokens 数量通常是是 CoT 的 5 到 100 倍。Game of 24 及 Creative Writing 的实验花费了 106 刀。在 Game of 24 上平均每个 case 大概消耗 6.9k 个 tokens。因此研究人员也推荐，仅当任务需要精细推理且 CoT 效果不好时，才使用 ToT。
 
+阿里最近发表了一个基于小模型的复杂任务推理方案 [cognitive tree](https://arxiv.org/pdf/2311.06754.pdf)，思路上跟 ToT 类似，即解决问题时同时生成多个解决问题的中间路径，对其进行打分，保留其中的最具价值的路径，重复该过程直到任务完成。不同点在于 CogTree 探索了小模型的能力，该方案在两个复杂推理的任务上（GSM8K,Entailment Bank），基于 LLaMA-7B 小模型的 cognitive tree 效果可以媲美采用了 chain-of-thought，tree-of-thought 等方式的 175B 的 GPT 3.5。
 
