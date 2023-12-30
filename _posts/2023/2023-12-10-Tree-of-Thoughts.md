@@ -169,4 +169,3 @@ ToT 对比 CoT 在效果上确实有提升，但对应的计算量的增加也�
 
 阿里最近发表了一个基于小模型的复杂任务推理方案 [cognitive tree](https://arxiv.org/pdf/2311.06754.pdf)，思路上跟 ToT 类似，即解决问题时同时生成多个解决问题的中间路径，对其进行打分，保留其中的最具价值的路径，重复该过程直到任务完成。不同点在于 CogTree 探索了小模型的能力，该方案在两个复杂推理的任务上（GSM8K,Entailment Bank），基于 LLaMA-7B 小模型的 cognitive tree 效果可以媲美采用了 chain-of-thought，tree-of-thought 等方式的 175B 的 GPT 3.5。
 
-这说明 ToT 这种思路确实还是可行的，但还需要更多的工作去提升效率。
