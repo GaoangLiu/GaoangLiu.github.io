@@ -15,6 +15,10 @@ categories:
 
 其他的还有**可视化、与外部系统的连接、多语言支持**等等。
 
+LangChain 有几个核心的模块：
+- 模型输入输出 / Model I/O
+- 检索 / Retrieval
+- 代理 / Agents
 
 # 教程与资料
 - 由 [Harrison Chase](https://dlj.one/8g4dq3) 和 Andrew Ng 联合开发的两门短课程，[https://www.deeplearning.ai/short-courses/langchain-for-llm-application-development/](https://www.deeplearning.ai/short-courses/langchain-for-llm-application-development/)，前者是 LangChain 创始人。
