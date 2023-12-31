@@ -2,9 +2,9 @@
 layout:     post
 title:      NLP article reading
 date:       2023-04-01
-tags: 
+tags: [articles] 
 categories: 
-- nlp,
+- nlp
 ---
 
 
@@ -26,8 +26,12 @@ categories:
 14. [Prefix-tunning]({{site.baseurl}}/2023/11/19/Prefix-tunning/)
 
 
-## Candidates
-- ~~[https://arxliv.org/abs/2104.08821](https://arxiv.org/abs/2104.08821) , SimCSE~~
+# 数据 
+## 数据安全
+- [Detecting pretraining data from large language models](https://arxiv.org/pdf/2310.16789.pdf)。探讨了**预训练数据检测问题**，这一问题核心在于判断一段文本是否曾被用来训练一个大型语言模型
+
+# 文本表征方案 
+- [https://arxliv.org/abs/2104.08821](https://arxiv.org/abs/2104.08821) , SimCSE
 - https://aclanthology.org/D17-1308.pdf, The strange geometry of skip-gram with negative sampling
 - https://arxiv.org/abs/2011.05864 BERT-flow
 - ~~https://arxiv.org/pdf/1802.05365.pdf ELMo~~
@@ -38,12 +42,12 @@ categories:
 - https://arxiv.org/abs/2011.05864, ****On the Sentence Embeddings from Pre-trained Language Models,**** Bert flow,
 - https://aclanthology.org/N16-1162.pdf， Learning Distributed Representations of Sentences from Unlabelled Data，
 
-## Skip Reading List
+# Transformer 类模型 
 1. https://aclanthology.org/2020.findings-emnlp.58.pdf MacBERT，pay attention to the dataset they’ve used. 
-2. https://arxiv.org/abs/2211.05344, hfl lert model ✅
-3. https://arxiv.org/abs/1907.10529 spanBert, a new way to train BERT ✅
+2. https://arxiv.org/abs/2211.05344, hfl lert model 
+3. https://arxiv.org/abs/1907.10529 spanBert, a new way to train BERT 
 4. https://arxiv.org/pdf/2107.02137.pdf , Ernie 3.0 
-5. https://arxiv.org/pdf/2309.09558.pdf, summarization is (almost) dead ✅ 
+5. https://arxiv.org/pdf/2309.09558.pdf, summarization is (almost) dead 
 6. https://www.sbert.net/docs/publications.html 
 7. https://arxiv.org/pdf/1503.03832.pdf, FaceNet, triplet network
 8. [Named Entity Recognition as Dependency Parsing](https://aclanthology.org/2020.acl-main.577.pdf), 2020, NER，biaffine model

@@ -1,5 +1,5 @@
 ---
-layout:     post
+layout:     draft
 title:      NLP Skim Reading
 date:       2023-01-03
 tags:   [nlp]

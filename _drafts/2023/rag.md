@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      Retrivial augmented generation
+title:      RAG 初探
 date:       2023-11-16
 tags:   [rag, embedding]
 categories: 
@@ -74,7 +74,6 @@ RAG 在 MSMARCO NLG 等任务上训练时，对比 SotA 并没有使用 golden p
     <img src="https://image.ddot.cc/202311/rag_result_20231117_2131.png" width=778>
     <figcaption style="text-align:center"> RAG 实验结果 </figcaption>
 </figure>
-
 
 
 
