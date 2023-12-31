@@ -26,6 +26,15 @@ categories:
 ## 创建索引 
 索引有很多成熟的工具：[faiss](https://faiss.ai/)，[nmslib](https://github.com/nmslib/nmslib)，[annoy](https://github.com/spotify/annoy)。LlamaIndex 也支持许多[向量存储索引](https://docs.llamaindex.ai/en/latest/community/integrations/vector_stores.html)。
 
+## 索引优化 
+**层次索引**：如果文档比较多，考虑创建两个索引：一个摘要索引，一个文档块索引。搜索时两步走，先通过摘要筛选出相关文档，然后仅在这个相关组内进行搜索。
+
+<figure style="text-align: center;">
+    <img src="https://image.ddot.cc/202312/hierarchinal_rag_20231231_1208.png" width=786pt>
+    <figcaption style="text-align:center"> 层次索引 </figcaption>
+</figure>
+
+另一个思路是为每一个 chunk 都用 LLM 生成一个相关的问题，然后向量化并存储这些问题，搜索时先将 query 与问题做匹配，然后将匹配到的问题对应的 chunk 送入 LLM 生成答案。
 
 
 refer: https://pub.towardsai.net/advanced-rag-techniques-an-illustrated-overview-04d193d8fec6
