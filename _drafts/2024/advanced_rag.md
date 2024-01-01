@@ -37,6 +37,26 @@ categories:
 另一个思路是为每一个 chunk 都用 LLM 生成一个相关的问题，然后向量化并存储这些问题，搜索时先将 query 与问题做匹配，然后将匹配到的问题对应的 chunk 送入 LLM 生成答案。
 
 
+# 搜索 
+## 混合/融合搜索 
+把基于关键字（比如 TFIDF、BM25）的搜索结果与基于向量的搜索结果组合起来。 这种方法的关键一环是把具有不同相似度分数的检索结果正确融合起来，毕竟 BM25 的分数跟向量的相似度分数具备不同的物理意义。
+一个办法是借助[倒排融合算法（reciprocal rank fusion,RRF）](https://plg.uwaterloo.ca/~gvcormac/cormacksigir09-rrf.pdf)来解决，对检索结果进行重新排序以获得最终输出。
+
+$$RRF(d\in D)=\sum_{r\in R} \frac{1}{k+r(d)}$$
+
+RRF 的思路是，对于每一个文档 $d\in D$，计算它在每一个检索结果中的排名 $r(d)$，然后将这些排名加权求和，权重是 $\frac{1}{k+r(d)}$，其中 $k$ 是一个超参数，用来扼制异常高排名的影响。这个方案的一个优点是，它不需要知道检索结果的具体分数，只需要知道排名就可以了。
+
+# Query 改造
+有些 query 比较复杂，比如 “LangChain, LlamaIndex 在 Github 上哪个 star 更多”，这时候就需要对 query 进行拆分，变成两个简单的问题 “LangChain 在 Github 上的 star 数是多少” 以及 “LlamaIndex 在 Github 上的 star 数是多少”，然后将两个问题的答案相减，得到最终的答案。这个过程叫做 query 变换（query transformation）。
+
+
+# 响应合成 
+RAG pipeline 的最后一步，是将检索到的文档及 query 送入 LLM 生成答案。简单粗暴的做法是所有检索召回的上文都拼接到一起，然后跟 query 一起丢给 LLM。精细一点的做法也有，比如：
+1. 先 summarize 检索到的文档，然后跟 query 一起丢给 LLM。
+2. 根据不同的 context chunks 生成多个不同的答案，在答案的基础上做 summary。
+3. 一次只给 LLM 一个 context chunk，迭代的优化答案。
+
+
 refer: https://pub.towardsai.net/advanced-rag-techniques-an-illustrated-overview-04d193d8fec6
 
 
