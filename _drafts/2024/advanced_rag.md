@@ -57,7 +57,8 @@ RAG pipeline 的最后一步，是将检索到的文档及 query 送入 LLM 生�
 3. 一次只给 LLM 一个 context chunk，迭代的优化答案。
 
 
-refer: https://pub.towardsai.net/advanced-rag-techniques-an-illustrated-overview-04d193d8fec6
+# 参考
+- Ivan Ilin, [Advanced RAG Techniques: an Illustrated Overview](https://pub.towardsai.net/advanced-rag-techniques-an-illustrated-overview-04d193d8fec6), torwardsai blog, 2023.12.17
 
 
 
