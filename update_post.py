@@ -111,6 +111,7 @@ class ProgressTracker(object):
 
 def clean_previous_posts():
     os.system('rm _posts/2023/*')
+    os.system('rm _posts/2024/*')
 
 if __name__ == "__main__":
     clean_previous_posts()
