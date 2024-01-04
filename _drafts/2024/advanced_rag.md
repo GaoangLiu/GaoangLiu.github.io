@@ -1,14 +1,16 @@
 ---
-layout:     post
-title:      RAG 再探
+layout:     draft
+title:      真实场景下，RAG 是怎么用的
 date:       2024-01-01
 tags:   [rag, embedding]
 categories: 
 - nlp
 ---
 
-
 在之前的文章[《RAG 初探》]({{site.baseurl}}/2023/11/16/Retrivial-augmented-generation/)里，我们浅聊了 RAG 的基本原理，vanilla RAG 的工作方式概述下来说是：将文本切块，然后使用 transformer encoder 向量化，将向量放入索引。在用户发起一个 query 时，我们把 query 用同一个 encoder 向量化，然后跟索引中的向量做相似度计算，得到 top-K 个文档，最后将这些文档及 query 送入 LLM 里，让 LLM 生成答案。
+
+
+
 
 整个 pipeline 的结构如下图所示：
 
