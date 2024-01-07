@@ -14,7 +14,7 @@ Notes, blogs on
 * `Linux` 
 * and so on.
 
-Drop me an email at [cyaeyz[at]gmail.com](mailto:cyaeyz@gmail.com) or leave a comment if you have any thoughts.
+Drop me an email at [GaoangLau[at]gmail.com](mailto:GaoangLau@gmail.com) or leave a comment if you have any thoughts.
 
 <!-- 
 算法、数据分析及机器学习笔记。请使用 Mozilla Firefox、Google Chrome 等现代浏览器浏览本博客。
