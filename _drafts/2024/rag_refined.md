@@ -70,8 +70,6 @@ SELF-RAG Llama2 7B 对比 RAG Llama2 7B，基本上是全线超越，个别任�
 </figure>
 
 
-
-
 # 参考
 - Akari Asai et al., [Self-RAG: Learning to Retrieve, Generate, and Critique through Self-Reflection](https://arxiv.org/abs/2310.11511), arXiv, 2023.10.17
 
