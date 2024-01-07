@@ -4,7 +4,7 @@ title: Add ipv6 tunnel to VPS
 date: 2020-03-17
 tags: linux vps ipv6
 categories: 
-author: berrysleaf
+author: gaonagliu
 ---
 * content
 {:toc}

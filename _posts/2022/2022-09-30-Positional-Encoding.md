@@ -4,7 +4,7 @@ title: Positional Encoding
 date: 2022-09-30
 tags: nlp transformer
 categories: nlp
-author: berrysleaf
+author: gaonagliu
 ---
 * content
 {:toc}

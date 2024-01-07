@@ -4,7 +4,7 @@ title: Recurrent Neural Network
 date: 2022-11-06
 tags: rnn nlp
 categories: nlp
-author: berrysleaf
+author: gaonagliu
 ---
 * content
 {:toc}
@@ -66,7 +66,7 @@ print(output.shape)
 ## AG_NEWS 分类小实验
 - 学习率 0.001, epoch=15, batch_size=1024
 
-AG_news 训练集上的平均长度（单词数）为 43.28，`max_length` 设置大于 50 后效果较差，应该是过拟合了。作为对比，最大长度设定为 44 时，效果比 25、50 都要好。代码实现: [Here](https://github.com/berrysleaf/berrysleaf.github.io/tree/master/codes/2023/rnn_classification)。
+AG_news 训练集上的平均长度（单词数）为 43.28，`max_length` 设置大于 50 后效果较差，应该是过拟合了。作为对比，最大长度设定为 44 时，效果比 25、50 都要好。代码实现: [Here](https://github.com/gaonagliu/gaonagliu.github.io/tree/master/codes/2023/rnn_classification)。
 
 |max_length|num_layers|bidirectional|f1-score(sorted)|precision|recall|
 |-|-|-|-|-|-|

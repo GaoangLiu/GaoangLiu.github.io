@@ -4,7 +4,7 @@ title: AutoEncoders
 date: 2022-10-10
 tags: nlp encoder
 categories: nlp
-author: berrysleaf
+author: gaonagliu
 ---
 * content
 {:toc}

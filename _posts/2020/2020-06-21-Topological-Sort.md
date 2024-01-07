@@ -4,7 +4,7 @@ title: Topological Sort
 date: 2020-06-21
 tags: sort topological
 categories: algorithm
-author: berrysleaf
+author: gaonagliu
 ---
 * content
 {:toc}
@@ -45,7 +45,7 @@ def kahn(graph, indegree):
 
 
 ## Topological sort with DFS 
-Another way to conduct Topological sort is [DFS](https://raw.githubusercontent.com/berrysleaf/figures/master/codes/dfs_topological_sort.py) (or BFS). 
+Another way to conduct Topological sort is [DFS](https://raw.githubusercontent.com/gaonagliu/figures/master/codes/dfs_topological_sort.py) (or BFS). 
 
 ```python
 def dfs_topological_sort(arr, n):

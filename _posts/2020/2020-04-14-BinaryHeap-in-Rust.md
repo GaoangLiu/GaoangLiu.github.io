@@ -4,7 +4,7 @@ title: BinaryHeap in Rust
 date: 2020-04-14
 tags: rust binary_heap
 categories: rust
-author: berrysleaf
+author: gaonagliu
 ---
 * content
 {:toc}

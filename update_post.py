@@ -25,7 +25,7 @@ class Blog(object):
             head += " ".join(map(lambda e: e.lower().replace(' ', '_'),
                                  v)) if type(v) == list else v
             head += "\n"
-        head += "author: berrysleaf\n---"
+        head += "author: GaoangLiu\n---"
         # print(postpath, head)
         con = self._get_contents(fpath)
         con = re.sub(r'\$(.*?)\$', r'$$\1$$', con)

@@ -4,7 +4,7 @@ title: Prefix tuning
 date: 2023-11-19
 tags: prefix-tuning peft
 categories: nlp
-author: berrysleaf
+author: gaonagliu
 ---
 * content
 {:toc}

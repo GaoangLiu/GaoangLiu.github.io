@@ -4,7 +4,7 @@ title: vim skills
 date: 2021-11-10
 tags: vim
 categories: editor
-author: berrysleaf
+author: gaonagliu
 ---
 * content
 {:toc}

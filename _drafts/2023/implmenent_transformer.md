@@ -98,7 +98,7 @@ class PositionWisefeedForward(torch.nn.Module):
         return self.ffn(x)
 ```
 
-完整实现参考 [transformer.py](https://github.com/berrysleaf/berrysleaf.github.io/blob/master/codes/2023/transformer.py)
+完整实现参考 [transformer.py](https://github.com/gaonagliu/gaonagliu.github.io/blob/master/codes/2023/transformer.py)
 
 
 

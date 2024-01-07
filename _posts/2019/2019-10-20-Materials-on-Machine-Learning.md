@@ -4,7 +4,7 @@ title: Materials on Machine Learning
 date: 2019-10-20
 tags: machine_learning papers
 categories: machine_learning papers
-author: berrysleaf
+author: gaonagliu
 ---
 * content
 {:toc}

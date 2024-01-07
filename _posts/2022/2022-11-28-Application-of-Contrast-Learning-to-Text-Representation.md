@@ -4,7 +4,7 @@ title: Application of Contrast Learning to Text Representation
 date: 2022-11-28
 tags: nlp contrast_learning
 categories: nlp
-author: berrysleaf
+author: gaonagliu
 ---
 * content
 {:toc}

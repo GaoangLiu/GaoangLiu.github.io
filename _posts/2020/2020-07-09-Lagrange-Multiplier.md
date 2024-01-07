@@ -4,7 +4,7 @@ title: Lagrange Multiplier
 date: 2020-07-09
 tags: lagrange svm
 categories: math
-author: berrysleaf
+author: gaonagliu
 ---
 * content
 {:toc}

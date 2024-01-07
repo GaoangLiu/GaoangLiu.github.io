@@ -119,7 +119,7 @@ $$FFN(x) = max(0, xW_1 + b_1)W_2 + b_2$$
 
 第一层扩大感受野，扩展每个位置的表示，为学习更复杂的特征提供可能性，激活函数能帮助模型学习更复杂的非线性特征，然后用第二线性层将每个位置的表示压缩回原始维度。
 
-代码实现 [Github](https://github.com/berrysleaf/berrysleaf.github.io/blob/master/codes/2023/position_wise_feed_forward.py)。
+代码实现 [Github](https://github.com/gaonagliu/gaonagliu.github.io/blob/master/codes/2023/position_wise_feed_forward.py)。
 
 
 ## 对比传统的 encoder-decoder 结构，transformer 有什么优势？

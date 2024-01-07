@@ -4,7 +4,7 @@ title: Minimum Spanning Tree
 date: 2020-09-14
 tags: prim mst kruskal
 categories: algorithm
-author: berrysleaf
+author: gaonagliu
 ---
 * content
 {:toc}

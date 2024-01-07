@@ -4,7 +4,7 @@ title: Rust Trait
 date: 2021-10-10
 tags: trait
 categories: rust
-author: berrysleaf
+author: gaonagliu
 ---
 * content
 {:toc}

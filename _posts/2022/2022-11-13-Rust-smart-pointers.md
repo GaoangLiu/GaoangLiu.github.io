@@ -4,7 +4,7 @@ title: Rust smart pointers
 date: 2022-11-13
 tags: rust
 categories: rust
-author: berrysleaf
+author: gaonagliu
 ---
 * content
 {:toc}

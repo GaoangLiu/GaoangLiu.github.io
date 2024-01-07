@@ -4,7 +4,7 @@ title: AdaBoost Algorithm
 date: 2020-06-11
 tags: adaboost
 categories: machine_learning
-author: berrysleaf
+author: gaonagliu
 ---
 * content
 {:toc}
@@ -27,7 +27,7 @@ Basic steps:
 
 # Implementation 
 
-[AdaBoost Classifier Python Implementation](https://github.com/berrysleaf/berrysleaf.github.io/blob/master/codes/mlmodels/adaboost.ipynb)
+[AdaBoost Classifier Python Implementation](https://github.com/gaonagliu/gaonagliu.github.io/blob/master/codes/mlmodels/adaboost.ipynb)
 
 ---
 

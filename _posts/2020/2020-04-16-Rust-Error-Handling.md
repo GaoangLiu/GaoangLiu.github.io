@@ -4,7 +4,7 @@ title: Rust Error Handling
 date: 2020-04-16
 tags: rust error_handling
 categories: rust
-author: berrysleaf
+author: gaonagliu
 ---
 * content
 {:toc}

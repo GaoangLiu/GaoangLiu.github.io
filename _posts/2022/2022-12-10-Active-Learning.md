@@ -4,7 +4,7 @@ title: Active Learning
 date: 2022-12-10
 tags: active_learning
 categories: deeplearning
-author: berrysleaf
+author: gaonagliu
 ---
 * content
 {:toc}

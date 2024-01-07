@@ -7,4 +7,4 @@ categories:
 - machine learning
 ---
 
-Find a simple tutorial on [Github](https://github.com/berrysleaf/AA_ipynb/blob/master/Deal_with_imbalanced_data_with_SMOTE.ipynb).
+Find a simple tutorial on [Github](https://github.com/gaonagliu/AA_ipynb/blob/master/Deal_with_imbalanced_data_with_SMOTE.ipynb).

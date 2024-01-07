@@ -4,7 +4,7 @@ title: Strings in Rust
 date: 2020-04-15
 tags: rust string
 categories: rust
-author: berrysleaf
+author: gaonagliu
 ---
 * content
 {:toc}

@@ -4,7 +4,7 @@ title: Naive Bayes Classifier
 date: 2020-04-06
 tags: bayes machine_learning
 categories: machine_learning
-author: berrysleaf
+author: gaonagliu
 ---
 * content
 {:toc}
@@ -42,7 +42,7 @@ from sklearn.naive_bayes import MultinomialNB, GaussianNB, \
 ```
 
 ## Implementation
-简单 NB classifier 实现 [Naive_Bayes.ipynb](https://github.com/berrysleaf/berrysleaf.github.io/blob/master/ipynb/NaiveBayes.ipynb)
+简单 NB classifier 实现 [Naive_Bayes.ipynb](https://github.com/gaonagliu/gaonagliu.github.io/blob/master/ipynb/NaiveBayes.ipynb)
 
 具体测试结果与 `sklearn.naive_bayes.MultinomialNB` 效果一致，对[垃圾邮件](https://www.dropbox.com/s/yjiplngoa430rid)筛选处理，都达到了以下结果
 

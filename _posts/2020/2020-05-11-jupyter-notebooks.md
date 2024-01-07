@@ -4,7 +4,7 @@ title: jupyter notebooks
 date: 2020-05-11
 tags: jupyter python
 categories: 
-author: berrysleaf
+author: gaonagliu
 ---
 * content
 {:toc}
@@ -14,7 +14,7 @@ author: berrysleaf
 
 
 
-  [🔗🔗](https://github.com/berrysleaf/berrysleaf.github.io/blob/master/ipynb/itertools.ipynb)
+  [🔗🔗](https://github.com/gaonagliu/gaonagliu.github.io/blob/master/ipynb/itertools.ipynb)
 
   
   

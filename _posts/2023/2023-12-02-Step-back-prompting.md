@@ -4,7 +4,7 @@ title: Step-Back Prompting
 date: 2023-12-02
 tags: prompting llm
 categories: nlp
-author: berrysleaf
+author: gaonagliu
 ---
 * content
 {:toc}

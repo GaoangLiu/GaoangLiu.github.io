@@ -4,7 +4,7 @@ title: Understanding Word2Vec
 date: 2020-04-24
 tags: python word2vec gensim
 categories: machine_learning
-author: berrysleaf
+author: gaonagliu
 ---
 * content
 {:toc}

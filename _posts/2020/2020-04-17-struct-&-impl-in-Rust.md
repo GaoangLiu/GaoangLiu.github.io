@@ -4,7 +4,7 @@ title: struct & impl in Rust
 date: 2020-04-17
 tags: rust impl struct
 categories: rust
-author: berrysleaf
+author: gaonagliu
 ---
 * content
 {:toc}

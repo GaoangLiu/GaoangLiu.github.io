@@ -76,7 +76,7 @@ parser = argparse.ArgumentParser(
          '''))
 ```         
 Produces:
-<img class='center' src='https://raw.githubusercontent.com/berrysleaf/figures/master/2020/images/2019/python-argparse-1.png' width='500px'>
+<img class='center' src='https://raw.githubusercontent.com/gaonagliu/figures/master/2020/images/2019/python-argparse-1.png' width='500px'>
 
 ### add_help
 By default, ArgumentParser objects add an option which simply displays the parser’s help message. For example, consider following code:

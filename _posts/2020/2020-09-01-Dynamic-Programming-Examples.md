@@ -4,7 +4,7 @@ title: Dynamic Programming Examples
 date: 2020-09-01
 tags: dynamic_programming
 categories: algorithm
-author: berrysleaf
+author: gaonagliu
 ---
 * content
 {:toc}

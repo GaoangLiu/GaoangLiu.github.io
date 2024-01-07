@@ -4,7 +4,7 @@ title: Approximating Softmax
 date: 2022-02-01
 tags: embedding
 categories: nlp
-author: berrysleaf
+author: gaonagliu
 ---
 * content
 {:toc}

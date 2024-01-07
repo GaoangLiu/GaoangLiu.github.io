@@ -8,7 +8,7 @@ catagories:
 ---
 
 * `itertools`, Functions creating iterators for efficient looping
-  [🔗🔗](https://github.com/berrysleaf/berrysleaf.github.io/blob/master/ipynb/itertools.ipynb)
+  [🔗🔗](https://github.com/gaonagliu/gaonagliu.github.io/blob/master/ipynb/itertools.ipynb)
 
   
   

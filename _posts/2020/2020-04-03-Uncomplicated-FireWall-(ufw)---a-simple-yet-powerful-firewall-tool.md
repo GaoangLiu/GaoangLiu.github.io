@@ -4,7 +4,7 @@ title: Uncomplicated FireWall (ufw) - a simple yet powerful firewall tool
 date: 2020-04-03
 tags: ufw linux
 categories: linux
-author: berrysleaf
+author: gaonagliu
 ---
 * content
 {:toc}
