@@ -4,7 +4,7 @@ title: Loss Functions
 date: 2022-02-01
 tags: loss
 categories: nlp
-author: gaonagliu
+author: gaoangliu
 ---
 * content
 {:toc}

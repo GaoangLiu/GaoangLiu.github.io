@@ -4,7 +4,7 @@ title: Dimensionality Reduction
 date: 2020-07-28
 tags: machine_learning pca
 categories: machine_learning
-author: gaonagliu
+author: gaoangliu
 ---
 * content
 {:toc}

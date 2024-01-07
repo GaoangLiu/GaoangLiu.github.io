@@ -4,7 +4,7 @@ title: Process images with Python
 date: 2020-04-21
 tags: python image machine_learning
 categories: python
-author: gaonagliu
+author: gaoangliu
 ---
 * content
 {:toc}

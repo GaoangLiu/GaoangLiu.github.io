@@ -4,7 +4,7 @@ title: Rabin-Karp Algorithm
 date: 2020-06-20
 tags: rabin-karp string_search algorithm
 categories: algorithm
-author: gaonagliu
+author: gaoangliu
 ---
 * content
 {:toc}

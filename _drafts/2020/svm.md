@@ -50,7 +50,7 @@ r = \frac{2}{||w||^2}
 \end{aligned}
 $$
 
-<img class='center' src="https://raw.githubusercontent.com/gaonagliu/figures/master/2020/support_vector.png" width="350px">
+<img class='center' src="https://raw.githubusercontent.com/gaoangliu/figures/master/2020/support_vector.png" width="350px">
 
 $$ r = \frac{2}{\|w\|^2} $$ 为超平面距离样本点的最小距离。 
 

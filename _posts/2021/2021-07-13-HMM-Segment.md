@@ -4,7 +4,7 @@ title: HMM Segment
 date: 2021-07-13
 tags: nlp hmm segment
 categories: algorithm
-author: gaonagliu
+author: gaoangliu
 ---
 * content
 {:toc}

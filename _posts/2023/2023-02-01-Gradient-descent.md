@@ -4,7 +4,7 @@ title: Gradient descent
 date: 2023-02-01
 tags: nlp gradient
 categories: nlp
-author: gaonagliu
+author: gaoangliu
 ---
 * content
 {:toc}

@@ -4,7 +4,7 @@ title: Linear Models
 date: 2020-07-05
 tags: linear logistic gradient_descent
 categories: machine_learning
-author: gaonagliu
+author: gaoangliu
 ---
 * content
 {:toc}

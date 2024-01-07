@@ -4,7 +4,7 @@ title: Rust Vectors
 date: 2020-03-24
 tags: rust vector
 categories: 
-author: gaonagliu
+author: gaoangliu
 ---
 * content
 {:toc}

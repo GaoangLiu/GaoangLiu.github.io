@@ -4,7 +4,7 @@ title: Concurrency and Parallelism in Python
 date: 2020-07-26
 tags: python concurrency
 categories: python
-author: gaonagliu
+author: gaoangliu
 ---
 * content
 {:toc}

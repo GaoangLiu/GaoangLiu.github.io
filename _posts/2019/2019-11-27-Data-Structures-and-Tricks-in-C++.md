@@ -4,7 +4,7 @@ title: Data Structures and Tricks in C++
 date: 2019-11-27
 tags: cpp data_structure
 categories: cpp
-author: gaonagliu
+author: gaoangliu
 ---
 * content
 {:toc}

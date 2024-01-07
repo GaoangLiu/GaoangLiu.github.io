@@ -4,7 +4,7 @@ title: Process Control
 date: 2021-10-01
 tags: systemd supervisord
 categories: linux
-author: gaonagliu
+author: gaoangliu
 ---
 * content
 {:toc}

@@ -21,7 +21,7 @@ Basic steps:
 
 # Implementation 
 
-[AdaBoost Classifier Python Implementation](https://github.com/gaonagliu/gaonagliu.github.io/blob/master/codes/mlmodels/adaboost.ipynb)
+[AdaBoost Classifier Python Implementation](https://github.com/gaoangliu/gaoangliu.github.io/blob/master/codes/mlmodels/adaboost.ipynb)
 
 ---
 

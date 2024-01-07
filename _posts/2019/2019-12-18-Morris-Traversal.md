@@ -4,7 +4,7 @@ title: Morris Traversal
 date: 2019-12-18
 tags: tree
 categories: algorithm
-author: gaonagliu
+author: gaoangliu
 ---
 * content
 {:toc}

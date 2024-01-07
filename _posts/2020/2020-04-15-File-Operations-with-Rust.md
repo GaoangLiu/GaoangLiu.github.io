@@ -4,7 +4,7 @@ title: File Operations with Rust
 date: 2020-04-15
 tags: rust file
 categories: rust
-author: gaonagliu
+author: gaoangliu
 ---
 * content
 {:toc}

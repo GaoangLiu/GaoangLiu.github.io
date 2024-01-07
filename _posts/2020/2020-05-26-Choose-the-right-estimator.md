@@ -4,7 +4,7 @@ title: Choose the right estimator
 date: 2020-05-26
 tags: estimator classification regression clustering
 categories: 
-author: gaonagliu
+author: gaoangliu
 ---
 * content
 {:toc}

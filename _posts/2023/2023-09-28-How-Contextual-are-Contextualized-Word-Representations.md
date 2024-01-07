@@ -4,7 +4,7 @@ title: How Contextual are Contextualized Word Representations
 date: 2023-09-28
 tags: elmo bert embedding
 categories: nlp
-author: gaonagliu
+author: gaoangliu
 ---
 * content
 {:toc}

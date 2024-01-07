@@ -4,7 +4,7 @@ title: Skip-gram with negative sampling
 date: 2023-09-30
 tags: skip-gram embedding
 categories: nlp
-author: gaonagliu
+author: gaoangliu
 ---
 * content
 {:toc}

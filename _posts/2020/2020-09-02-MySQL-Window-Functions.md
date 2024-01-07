@@ -4,7 +4,7 @@ title: MySQL Window Functions
 date: 2020-09-02
 tags: mysql window_function
 categories: sql
-author: gaonagliu
+author: gaoangliu
 ---
 * content
 {:toc}

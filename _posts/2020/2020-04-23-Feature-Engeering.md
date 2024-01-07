@@ -4,7 +4,7 @@ title: Feature Engeering
 date: 2020-04-23
 tags: python sklearn countvectorizer
 categories: machine_learning
-author: gaonagliu
+author: gaoangliu
 ---
 * content
 {:toc}

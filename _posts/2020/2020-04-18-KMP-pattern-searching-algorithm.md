@@ -4,7 +4,7 @@ title: KMP pattern searching algorithm
 date: 2020-04-18
 tags: kmp algorithm
 categories: algorithm
-author: gaonagliu
+author: gaoangliu
 ---
 * content
 {:toc}

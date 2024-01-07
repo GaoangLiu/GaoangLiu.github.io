@@ -4,7 +4,7 @@ title: Read command in Bash
 date: 2020-03-20
 tags: linux bash shell
 categories: 
-author: gaonagliu
+author: gaoangliu
 ---
 * content
 {:toc}

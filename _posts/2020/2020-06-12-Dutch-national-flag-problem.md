@@ -4,7 +4,7 @@ title: Dutch national flag problem
 date: 2020-06-12
 tags: sorting algorithm
 categories: 
-author: gaonagliu
+author: gaoangliu
 ---
 * content
 {:toc}

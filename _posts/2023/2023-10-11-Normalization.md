@@ -4,7 +4,7 @@ title: Normalization
 date: 2023-10-11
 tags: normalization
 categories: nlp
-author: gaonagliu
+author: gaoangliu
 ---
 * content
 {:toc}
@@ -86,7 +86,7 @@ BatchNorm 有以下几个优点：
 - 其次，效果对 <span style="color: blue"> batch size 敏感 </span>，如果 batch size 太小，则不具备代表性，添加 BN 反而效果更差。
 
 ## [Python 实现]
-参考参考[Github](https://github.com/gaonagliu/gaonagliu.github.io/blob/master/codes/2023/batchnorm.py)的 Python 实现。
+参考参考[Github](https://github.com/gaoangliu/gaoangliu.github.io/blob/master/codes/2023/batchnorm.py)的 Python 实现。
 
 
 

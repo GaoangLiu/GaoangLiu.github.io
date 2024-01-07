@@ -4,7 +4,7 @@ title: jupyter notebooks
 date: 2020-05-11
 tags: jupyter python
 categories: 
-author: gaonagliu
+author: gaoangliu
 ---
 * content
 {:toc}
@@ -14,7 +14,7 @@ author: gaonagliu
 
 
 
-  [🔗🔗](https://github.com/gaonagliu/gaonagliu.github.io/blob/master/ipynb/itertools.ipynb)
+  [🔗🔗](https://github.com/gaoangliu/gaoangliu.github.io/blob/master/ipynb/itertools.ipynb)
 
   
   

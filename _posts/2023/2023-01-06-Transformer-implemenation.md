@@ -4,7 +4,7 @@ title: Transformer implemenation
 date: 2023-01-06
 tags: nlp transformer
 categories: nlp
-author: gaonagliu
+author: gaoangliu
 ---
 * content
 {:toc}
@@ -104,7 +104,7 @@ class PositionWisefeedForward(torch.nn.Module):
         return self.ffn(x)
 ```
 
-完整实现参考 [transformer.py](https://github.com/gaonagliu/gaonagliu.github.io/blob/master/codes/2023/transformer.py)
+完整实现参考 [transformer.py](https://github.com/gaoangliu/gaoangliu.github.io/blob/master/codes/2023/transformer.py)
 
 
 

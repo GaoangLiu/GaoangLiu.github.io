@@ -4,7 +4,7 @@ title: Data Structures in Python
 date: 2019-11-26
 tags: python3 data_structure heapq ordereddict
 categories: python3 algorithm
-author: gaonagliu
+author: gaoangliu
 ---
 * content
 {:toc}

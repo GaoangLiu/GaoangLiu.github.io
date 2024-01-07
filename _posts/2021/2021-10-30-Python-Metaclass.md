@@ -4,7 +4,7 @@ title: Python Metaclass
 date: 2021-10-30
 tags: metaclass
 categories: python
-author: gaonagliu
+author: gaoangliu
 ---
 * content
 {:toc}

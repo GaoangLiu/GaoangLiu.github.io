@@ -4,7 +4,7 @@ title: Pseudo random number
 date: 2020-07-28
 tags: random_number
 categories: math
-author: gaonagliu
+author: gaoangliu
 ---
 * content
 {:toc}

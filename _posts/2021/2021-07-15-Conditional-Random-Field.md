@@ -4,7 +4,7 @@ title: Conditional Random Field
 date: 2021-07-15
 tags: crf
 categories: algorithm
-author: gaonagliu
+author: gaoangliu
 ---
 * content
 {:toc}

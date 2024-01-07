@@ -39,7 +39,7 @@ def kahn(graph, indegree):
 
 
 ## Topological sort with DFS 
-Another way to conduct Topological sort is [DFS](https://raw.githubusercontent.com/gaonagliu/figures/master/codes/dfs_topological_sort.py) (or BFS). 
+Another way to conduct Topological sort is [DFS](https://raw.githubusercontent.com/gaoangliu/figures/master/codes/dfs_topological_sort.py) (or BFS). 
 
 ```python
 def dfs_topological_sort(arr, n):

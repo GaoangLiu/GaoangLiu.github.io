@@ -4,7 +4,7 @@ title: kNN algorithm
 date: 2020-03-28
 tags: machine_learning knn
 categories: machine_learning
-author: gaonagliu
+author: gaoangliu
 ---
 * content
 {:toc}

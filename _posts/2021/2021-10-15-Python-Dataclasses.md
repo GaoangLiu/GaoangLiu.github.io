@@ -4,7 +4,7 @@ title: Python Dataclasses
 date: 2021-10-15
 tags: dataclass
 categories: python
-author: gaonagliu
+author: gaoangliu
 ---
 * content
 {:toc}

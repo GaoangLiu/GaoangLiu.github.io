@@ -4,7 +4,7 @@ title: Attention With Linear Biases
 date: 2023-10-27
 tags: nlp position-embedding
 categories: nlp
-author: gaonagliu
+author: gaoangliu
 ---
 * content
 {:toc}

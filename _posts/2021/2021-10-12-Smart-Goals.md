@@ -4,7 +4,7 @@ title: Smart Goals
 date: 2021-10-12
 tags: smart
 categories: investment
-author: gaonagliu
+author: gaoangliu
 ---
 * content
 {:toc}
