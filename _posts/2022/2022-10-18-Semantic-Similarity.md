@@ -4,7 +4,7 @@ title: Semantic Similarity
 date: 2022-10-18
 tags: nlp similarity
 categories: nlp
-author: gaoangliu
+author: GaoangLiu
 ---
 * content
 {:toc}

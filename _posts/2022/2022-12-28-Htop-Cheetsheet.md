@@ -4,7 +4,7 @@ title: Htop Cheetsheet
 date: 2022-12-28
 tags: htop linux
 categories: linux
-author: gaoangliu
+author: GaoangLiu
 ---
 * content
 {:toc}

@@ -4,7 +4,7 @@ title: Gemini - The second best AI model in the world
 date: 2023-12-06
 tags: gemini llm deepmind
 categories: nlp
-author: gaoangliu
+author: GaoangLiu
 ---
 * content
 {:toc}

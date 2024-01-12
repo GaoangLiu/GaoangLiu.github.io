@@ -4,7 +4,7 @@ title: K-Mean Clustering
 date: 2020-07-28
 tags: machine_learning k-mean
 categories: machine_learning
-author: gaoangliu
+author: GaoangLiu
 ---
 * content
 {:toc}

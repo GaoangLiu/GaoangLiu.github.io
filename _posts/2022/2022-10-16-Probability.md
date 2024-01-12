@@ -4,7 +4,7 @@ title: Probability
 date: 2022-10-16
 tags: math probability
 categories: math
-author: gaoangliu
+author: GaoangLiu
 ---
 * content
 {:toc}

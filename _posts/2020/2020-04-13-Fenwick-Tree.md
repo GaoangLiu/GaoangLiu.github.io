@@ -4,7 +4,7 @@ title: Fenwick Tree
 date: 2020-04-13
 tags: algorithm fenwick_tree bit
 categories: algorithm
-author: gaoangliu
+author: GaoangLiu
 ---
 * content
 {:toc}

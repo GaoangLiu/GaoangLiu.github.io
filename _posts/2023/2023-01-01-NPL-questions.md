@@ -4,7 +4,7 @@ title: NPL questions
 date: 2023-01-01
 tags: nlp
 categories: nlp
-author: gaoangliu
+author: GaoangLiu
 ---
 * content
 {:toc}

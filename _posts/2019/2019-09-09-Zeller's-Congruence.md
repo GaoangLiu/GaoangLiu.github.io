@@ -4,7 +4,7 @@ title: Zeller's Congruence
 date: 2019-09-09
 tags: algorithm date
 categories: 
-author: gaoangliu
+author: GaoangLiu
 ---
 * content
 {:toc}

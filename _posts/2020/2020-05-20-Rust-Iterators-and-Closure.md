@@ -4,7 +4,7 @@ title: Rust Iterators and Closure
 date: 2020-05-20
 tags: rust iterator
 categories: 
-author: gaoangliu
+author: GaoangLiu
 ---
 * content
 {:toc}

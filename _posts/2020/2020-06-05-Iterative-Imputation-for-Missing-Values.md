@@ -4,7 +4,7 @@ title: Iterative Imputation for Missing Values
 date: 2020-06-05
 tags: imputer missing-value
 categories: machine_learning
-author: gaoangliu
+author: GaoangLiu
 ---
 * content
 {:toc}

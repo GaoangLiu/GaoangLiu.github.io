@@ -4,7 +4,7 @@ title: Algorithm
 date: 2019-06-23
 tags: algorithm
 categories: 
-author: gaoangliu
+author: GaoangLiu
 ---
 * content
 {:toc}

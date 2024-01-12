@@ -4,7 +4,7 @@ title: MySQL Cheat-Sheet
 date: 2020-08-22
 tags: mysql
 categories: sql
-author: gaoangliu
+author: GaoangLiu
 ---
 * content
 {:toc}

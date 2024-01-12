@@ -4,7 +4,7 @@ title: AdaBoost Algorithm
 date: 2020-06-11
 tags: adaboost
 categories: machine_learning
-author: gaoangliu
+author: GaoangLiu
 ---
 * content
 {:toc}

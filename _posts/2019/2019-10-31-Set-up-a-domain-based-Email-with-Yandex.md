@@ -4,7 +4,7 @@ title: Set up a domain-based Email with Yandex
 date: 2019-10-31
 tags: mail yandex
 categories: note
-author: gaoangliu
+author: GaoangLiu
 ---
 * content
 {:toc}

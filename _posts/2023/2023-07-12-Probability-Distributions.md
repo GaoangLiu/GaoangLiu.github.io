@@ -4,7 +4,7 @@ title: Probability Distributions
 date: 2023-07-12
 tags: math distribution
 categories: math
-author: gaoangliu
+author: GaoangLiu
 ---
 * content
 {:toc}

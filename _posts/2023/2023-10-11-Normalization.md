@@ -4,7 +4,7 @@ title: Normalization
 date: 2023-10-11
 tags: normalization
 categories: nlp
-author: gaoangliu
+author: GaoangLiu
 ---
 * content
 {:toc}

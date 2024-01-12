@@ -4,7 +4,7 @@ title: Message Queue
 date: 2021-07-10
 tags: message_queue nsq
 categories: algorithm
-author: gaoangliu
+author: GaoangLiu
 ---
 * content
 {:toc}

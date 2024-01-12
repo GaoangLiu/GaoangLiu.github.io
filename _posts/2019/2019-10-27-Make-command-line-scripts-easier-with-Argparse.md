@@ -4,7 +4,7 @@ title: Make command-line scripts easier with Argparse
 date: 2019-10-27
 tags: python script
 categories: python
-author: gaoangliu
+author: GaoangLiu
 ---
 * content
 {:toc}

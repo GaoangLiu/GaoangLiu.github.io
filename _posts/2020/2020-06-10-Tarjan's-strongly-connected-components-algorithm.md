@@ -4,7 +4,7 @@ title: Tarjan's strongly connected components algorithm
 date: 2020-06-10
 tags: algorithm tarjan
 categories: algorithm
-author: gaoangliu
+author: GaoangLiu
 ---
 * content
 {:toc}

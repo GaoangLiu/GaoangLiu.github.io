@@ -4,7 +4,7 @@ title: Implement Scaled Dot-Product Attention with Keras
 date: 2022-10-07
 tags: nlp transformer
 categories: nlp
-author: gaoangliu
+author: GaoangLiu
 ---
 * content
 {:toc}
