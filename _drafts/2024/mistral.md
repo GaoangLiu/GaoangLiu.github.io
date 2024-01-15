@@ -18,7 +18,7 @@ Q: 大体是怎么实现的？
 Q: router network 是怎么工作的？怎么选择，怎么组合？
 a router network selects two experts to process the current state and combine their outputs. 
 
-Q: 为什么要用router network？
+Q: 为什么要用 router network？
 
 Q: 为什么要用两个expert？
 
@@ -49,6 +49,19 @@ $$G(x)=\text{Softmax}(\text{TopK}(x \cdot W_g))$$
 
 $k$ 做为一个超参数，可以通过平衡效果与计算量来调整。Mistral 8x7B 中使用的是 $k=2$，即只有两个专家参与决策。
 
+# 直接偏好优化
+what, why, how?
+
+直接偏好优化（Direct Perference Optimization,DPO）是一种 LM 偏好对齐算法，最初 Rafailov 等人在 [《Direct Preference Optimization: Your Language Model is Secretly a Reward Model》](https://arxiv.org/abs/2305.18290) 中提出。
+
+在此之前，让LM对人类偏好对齐常用的算法是RLHF，思路是先根据人类偏好拟合一个奖励模型，再用强化学习的方法去微调一个LM，使得LM的输出尽可能的符合奖励模型的输出。
+但RLHF复杂，且不稳定。
+
+优点是什么？
+稳定、效果好、计算量小。
+
+先说稳定。 
+
 
 ### 📝 一些与决策相关的工作 
 - [Unified scaling laws for routed language models](https://arxiv.org/abs/2202.01169)
@@ -61,3 +74,9 @@ Mistral 的 MoE 层结构如下图所示：
     <img src="https://image.ddot.cc/202401/mistral-moe-layer_20240111_1038.png" width=789pt>
     <figcaption style="text-align:center"> Mistral MoE layer 结构图 </figcaption>
 </figure>
+
+那这个 router 是怎么工作的呢？
+
+从上面的结构图里可以知道每一个 router 是一个 gating network，它的输入是 $x$，输出是 $G(x)$，即每个专家的权重。这个 gating network 做为整个模型的一部分，在训练时参数 $W_g$ 也是通过反向传播来更新的。一旦训练完成，推理过程中直接使用 $G(x)$ 的值即可。
+
+
