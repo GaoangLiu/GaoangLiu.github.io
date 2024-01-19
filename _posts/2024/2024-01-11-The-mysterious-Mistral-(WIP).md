@@ -42,6 +42,40 @@ Mistral 7B 中的 window size 是 4096.
 # Grouped Query Attention (GQA)
 目标是在推理时减少计算量。
 
+分组查询注意力（GQA）是在多查询注意力（Multi-Query Attention，MQA）和多头注意力（Multi-Head Attention，MHA）之间找到一个平衡点。其目标是在保持MQA速度的同时实现MHA的质量。
+
+<figure style="text-align: center;">
+    <img src="https://image.ddot.cc/202401/gqa_20240119_1724.png" width=989pt>
+    <figcaption style="text-align:center"> GQA, MQA, MHA 三者的关联 </figcaption>
+</figure>
+
+
+MQA使用单一的键值头，这能加快解码器的推理速度，但可能导致解码质量下降。具体来说，MQA减少了模型在执行注意力操作时可利用的信息量，从而可能导致在处理复杂任务或长序列生成时的性能下降。例如，在文本摘要任务中，MHA允许模型在计算注意力时考虑多个不同的特征组合，从而捕捉更丰富的语言特征。而MQA由于头的限制，可能无法捕获这样的复杂特征，导致生成的摘要可能不够准确。
+
+GQA 将查询头分为 G 组，每个组共享一个键头和值头。
+
+
+GQA 通过减少解码器推理期间所需的内存带宽来提高 LLMs 的效率。
+
+## 常见的实现方法 
+1. 相似性分组查询：根据查询之间的相似性进行分组； 
+2.
+
+
+## 优势 
+相对 MHA 来说，GQA 显著降低 LLM的计算复杂性，从而提高推理速度；对内存的占用也更少，适用于限制内存大小的LLMs。
+
+相对 MQA 来说，GQA 提高了解码质量，但速度稍慢。
+
+支持多GPU并行，有效地利用计算资源。
+
+- 是什么
+- 如何工作的
+- 优势与局限性，怎么实现这个优势的。 
+
+
+- 论文 :https://arxiv.org/pdf/2305.13245.pdf
+
 # Byte-fallback BPE algorithm
 提高 LLM 的 tokenization，提高收敛速度和模型质量。
 
@@ -86,3 +120,6 @@ Mistral 的 MoE 层结构如下图所示：
 理论上$$n$$个专家共同决策，效果更稳定一些（泛化更好），但要平衡计算量和效果，所以只选择了部分专家。Router network 就是这样的一个策略，它决定哪些专家参与决策。
 
 ## 为什么要用两个expert？
+
+# 参考资料
+- [What is Grouped Query Attention (GQA)?, klu.ai](https://klu.ai/glossary/grouped-query-attention)
