@@ -7,20 +7,42 @@ categories:
 - nlp
 ---
 
-Mistral.ai 在 arXiv 上放出来论文 [Mixtral of Experts](https://arxiv.org/pdf/2401.04088.pdf)，整体结构上跟 Mixtral 7B 一样，唯一的区别在于每个层都由 8 个前馈块（即专家）组成。
-
-
+Mistral.ai 在 arXiv 上放出来论文 [Mixtral of Experts](https://arxiv.org/pdf/2401.04088.pdf)，整体结构上跟 Mistral 7B 一样，唯一的区别在于每个层都由 8 个前馈块（即专家）组成。
 
 
 
 
 # Mistral 7B
-论文: https://arxiv.org/pdf/2310.06825.pdf, arXiv 23.10
 
-首先说一下当时这篇工作的亮点：
-1. 在所有基准测试中均优于当时最佳开源模型 Llama 2 13B，在推理、数学和代码生成方面优于 Llama 1 34B。
-2. 利用分组查询注意力（GQA）来实现更快的推理，并结合滑动窗口注意力（SWA）来有效地处理任意长度的序列，同时降低推理成本。
-3. 提供了一个经过指令微调的模型，Mistral 7B-Instruct，在人类和自动化基准测试上都超越了 Llama 2 13B 聊天模型。
+首先聊一下 Mistral 7B（论文链接: https://arxiv.org/pdf/2310.06825.pdf, arXiv 23.10），这篇工作在当时的亮点有：
+- **性能**：
+    - 如下图所示， Mistral 7B 在多项基准测试中都优于当时最佳开源模型 Llama 2 13B，在推理、数学和代码生成方面优于 Llama 1 34B。
+    - 提供了一个经过指令微调的模型，Mistral 7B-Instruct，在 [Chatbot Arena Leaderboard](https://huggingface.co/spaces/lmsys/chatbot-arena-leaderboard) 上得分 1031 分（论文发布时），超过了 Llama 2 13B 的 1012 分。 排行榜上的得分是通过人类对模型生成的对话打分来计算的，分数越高，模型生成的对话越接近人类的对话。
+- **结构特点**： 利用分组查询注意力（GQA）来实现更快的推理，并结合滑动窗口注意力（SWA）来有效地处理任意长度的序列，同时降低推理成本。
+
+
+<figure style="text-align: center;">
+    <img src="https://image.ddot.cc/202401/mixtral7b-performance_20240120_1228.png" width=789pt>
+    <figcaption style="text-align:center"> Mistral 7B 基准测试结果 </figcaption>
+</figure>
+
+
+做为对比，截止到 2024/01/20， Mistral 8x7b instruct 在 Chatbot Arena Leaderboard 仍然排在前十的位置，前一段时间的排名更高，居第4名，仅次于 GPT-4。Mistral 的另一个模型 Mistral medium 效果更好，在 Arena ELO 上排到第 5 名，在 MT-bench 上得分 8.61 分，除了 GPT 4 之外，超过了所有其他模型，但这个模型目前还没有开源。 有意思的是，Claude 的两个新版本 2.0, 2.1 反而一代不如一代。
+
+> 注：[MT-bench](https://arxiv.org/pdf/2306.05685v4.pdf), multi-turn question set, 是一个用于评估模型多轮对话及指令遵循能力的数据集。目前在这个 set 上，能力最强的模型是 GPT-4-Turbo，得分 9.32 分。
+
+<figure style="text-align: center;">
+    <img src="https://image.ddot.cc/202401/mixtral-chatbot-arena_20240120_1239.png" width=789pt>
+    <figcaption style="text-align:center"> Chatbot arena ELO ranking (2024/01/20) </figcaption>
+</figure>
+
+当然，强如 mistral medium，也还是没有通过“鲁迅为什么要打周树人”的幻觉测试。 
+
+<figure style="text-align: center;">
+    <img src="https://image.ddot.cc/202401/mistral-medium-hallunation_20240120_1300.png" width=589pt>
+    <img src="https://image.ddot.cc/202401/luxun-ai_20240120_1307.png" width=489pt height=300pt>
+    <figcaption style="text-align:center"> Mistral medium 幻觉 </figcaption>
+</figure>
 
 
 # Sliding Window Attention (SWA) 
