@@ -20,7 +20,6 @@ Mistral.ai 在 arXiv 上放出来论文 [Mixtral of Experts](https://arxiv.org/p
 
 
 
-
 # Mistral 7B
 论文: https://arxiv.org/pdf/2310.06825.pdf, arXiv 23.10
 
@@ -40,26 +39,17 @@ SWA 最早在 [LongFormer](https://arxiv.org/pdf/2004.05150.pdf)中提出，目�
 Mistral 7B 中的 window size 是 4096.
 
 # Grouped Query Attention (GQA)
-目标是在推理时减少计算量。
-
-分组查询注意力（GQA）是在多查询注意力（Multi-Query Attention，MQA）和多头注意力（Multi-Head Attention，MHA）之间找到一个平衡点。其目标是在保持MQA速度的同时实现MHA的质量。
+分组查询注意力（GQA，论文 :https://arxiv.org/pdf/2305.13245.pdf）是在多查询注意力（Multi-Query Attention，MQA）和多头注意力（Multi-Head Attention，MHA）之间找到一个平衡点，其目标是在保持MQA速度的同时实现MHA的质量。
 
 <figure style="text-align: center;">
     <img src="https://image.ddot.cc/202401/gqa_20240119_1724.png" width=989pt>
     <figcaption style="text-align:center"> GQA, MQA, MHA 三者的关联 </figcaption>
 </figure>
 
+MQA 使用单一的键值头，这能加快解码器的推理速度，但可能导致解码质量下降。具体来说，MQA减少了模型在执行注意力操作时可利用的信息量，从而可能导致在处理复杂任务或长序列生成时的性能下降。例如，在文本摘要任务中，MHA允许模型在计算注意力时考虑多个不同的特征组合，从而捕捉更丰富的语言特征。而MQA由于头的限制，可能无法捕获这样的复杂特征，导致生成的摘要可能不够准确。
 
-MQA使用单一的键值头，这能加快解码器的推理速度，但可能导致解码质量下降。具体来说，MQA减少了模型在执行注意力操作时可利用的信息量，从而可能导致在处理复杂任务或长序列生成时的性能下降。例如，在文本摘要任务中，MHA允许模型在计算注意力时考虑多个不同的特征组合，从而捕捉更丰富的语言特征。而MQA由于头的限制，可能无法捕获这样的复杂特征，导致生成的摘要可能不够准确。
+GQA 将查询头分为 G 组，每个组共享一个键头和值头。GQA 通过减少解码器推理期间所需的内存带宽来提高 LLMs 的效率。
 
-GQA 将查询头分为 G 组，每个组共享一个键头和值头。
-
-
-GQA 通过减少解码器推理期间所需的内存带宽来提高 LLMs 的效率。
-
-## 常见的实现方法 
-1. 相似性分组查询：根据查询之间的相似性进行分组； 
-2.
 
 
 ## 优势 
@@ -69,19 +59,20 @@ GQA 通过减少解码器推理期间所需的内存带宽来提高 LLMs 的效�
 
 支持多GPU并行，有效地利用计算资源。
 
-- 是什么
-- 如何工作的
-- 优势与局限性，怎么实现这个优势的。 
 
-
-- 论文 :https://arxiv.org/pdf/2305.13245.pdf
 
 # Byte-fallback BPE algorithm
-提高 LLM 的 tokenization，提高收敛速度和模型质量。
 
-<!-- https://huggingface.co/blog/moe -->
+
+BPE算法大家应该都比较熟悉，是一种基于统计的分词算法，它将词汇表中的每个单词拆分成子单词，然后将子单词组合成新的单词。这样的话，就可以处理未知词汇，提高模型的泛化能力。
+一开 BPE是做为压缩文本的算法而开发的，后来由 OpenAI 在预训练 GPT 模型时用于标记化。很多Transformer 模型不都有应用，比如  GPT、GPT-2、RoBERTa、BART 和 DeBERTa。
+
+那这里的 byte-fallback 又是什么？我们知道分词器在遇到未知词汇时，会将其标记为 Unk，但这样的话，模型就无法学习到未知词汇的信息。Byte-fallback BPE 算法就是为了解决这个问题而提出的，它把所有 256 个 UTF-8 字节码单元添加到词汇表中，任何未知的 unicode 字符可以被分解为字节码单元，这种方法为单词提供了一种独特且意义更加明确的表达形式。
+
+Mistral 中使用了 byte-fallback BPE 算法，词汇表大小为 32K，其中 256 个字节码单元占了 1K，剩下的 31K 是由 BPE 算法生成的。
 
 # Sparse Mixtures of Experts
+
 给定输入 $$x$$，MoE 模块的输出 $$y=\sum_{i=0}^{n-1} G(x)_i \cdot E_i(x)$$，其中 $$n$$ 是专家网络（下称专家）的个数，$$G(x)$$ 是第$$i$$专家的权重，$$E_i(x)$$ 是第 $$i$$ 个专家的输出。$$G(x)$$ 的每个元素都是一个概率值，且满足 $$\sum_{i=0}^{n-1} G(x)_i = 1$$。
 
 那 SMoE 中的 sparse 是什么意思呢？其实就是指只有少数专家参与决策，即 $$G(x)$$ 中的大部分元素都是 0，只有少部分非零。这样的话，就可以减少计算量。既然只有少数专家参与决策，那就需要一个策略决定哪些专家参与决策，方法有很多种，一种简单高效的方法是对线性层的前K个logits应用softmax函数：
@@ -90,14 +81,9 @@ $$G(x)=\text{Softmax}(\text{TopK}(x \cdot W_g))$$
 
 $$k$$ 做为一个超参数，可以通过平衡效果与计算量来调整。Mistral 8x7B 中使用的是 $$k=2$$，即只有两个专家参与决策。
 
-# 直接偏好优化
-
-直接偏好优化（Direct Perference Optimization,DPO）是一种 LM 偏好对齐算法，最初 Rafailov 等人在 [《Direct Preference Optimization: Your Language Model is Secretly a Reward Model》](https://arxiv.org/abs/2305.18290) 中提出。
-
-在此之前，让LM对人类偏好对齐常用的算法是RLHF，思路是先根据人类偏好拟合一个奖励模型，再用强化学习的方法去微调一个LM，使得LM的输出尽可能奖励最大化。但RLHF复杂，且不稳定。对比基于 Proximal Policy Optimization(PPO) 的 RLHF的方案，DPO优点是稳定、效果好、计算量小。
 
 
-### 📝 一些与决策相关的工作 
+## 📝 一些与决策相关的工作 
 - [Unified scaling laws for routed language models](https://arxiv.org/abs/2202.01169)
 - [Dselect-k: Differentiable selection in the mixture of experts with applications to multi-task learning](https://proceedings.neurips.cc/paper/2021/hash/f5ac21cd0ef1b88e9848571aeb53551a-Abstract.html)
 - [CommonsenseQA: A Question Answering Challenge Targeting Commonsense Knowledge](https://arxiv.org/abs/1811.00937)
@@ -108,6 +94,12 @@ Mistral 的 MoE 层结构如下图所示：
     <img src="https://image.ddot.cc/202401/mistral-moe-layer_20240111_1038.png" width=789pt>
     <figcaption style="text-align:center"> Mistral MoE layer 结构图 </figcaption>
 </figure>
+
+# 直接偏好优化
+
+直接偏好优化（Direct Perference Optimization,DPO）是一种 LM 偏好对齐算法，最初 Rafailov 等人在 [《Direct Preference Optimization: Your Language Model is Secretly a Reward Model》](https://arxiv.org/abs/2305.18290) 中提出。
+
+在此之前，让LM对人类偏好对齐常用的算法是RLHF，思路是先根据人类偏好拟合一个奖励模型，再用强化学习的方法去微调一个LM，使得LM的输出尽可能奖励最大化。但RLHF复杂，且不稳定。对比基于 Proximal Policy Optimization(PPO) 的 RLHF的方案，DPO优点是稳定、效果好、计算量小。
 
 
 # Q & A 环节 
@@ -123,3 +115,5 @@ Mistral 的 MoE 层结构如下图所示：
 
 # 参考资料
 - [What is Grouped Query Attention (GQA)?, klu.ai](https://klu.ai/glossary/grouped-query-attention)
+- [Huggingface Mixtral 介绍](https://huggingface.co/docs/transformers/model_doc/mixtral)
+- [Mixture of Experts Explained](https://huggingface.co/blog/moe)
