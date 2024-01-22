@@ -4,7 +4,7 @@ title: Transformer implemenation
 date: 2023-01-06
 tags: nlp transformer
 categories: nlp
-author: gaoangliu
+author: GaoangLiu
 ---
 * content
 {:toc}

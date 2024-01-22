@@ -4,7 +4,7 @@ title: Deal with imbalanced data with SMOTE
 date: 2020-06-02
 tags: smote over-sampling
 categories: machine_learning
-author: gaoangliu
+author: GaoangLiu
 ---
 * content
 {:toc}

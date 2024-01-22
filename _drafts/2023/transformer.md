@@ -36,7 +36,7 @@ categories:
 ## Scaled Dot-Product Attention
 Scaled Dot-Product Attention(以下简称 SDPA) 是 transformer 中的核心，也是 transformer 的基本组成单元。Scaled Dot-Product Attention 的计算公式如下：
 
-$\text{Attention}(Q, K, V) = \text{softmax}(\frac{QK^T}{\sqrt{d_k}})V $
+$$\text{Attention}(Q, K, V) = \text{softmax}(\frac{QK^T}{\sqrt{d_k}})V $$
 
 SDPA 是计算 attention 权重的一种方式，计算流程大致是，首先计算 query 和 key 的内积，然后除以 $\sqrt{d_k}$，最后通过 softmax 函数得到 attention 权重，再将 attention 权重与 value 相乘得到最终的 attention 输出。这里的 $d_k$ 是 query 和 key 的维度。
 除了 scaled dot production attention 之外，还有很多其他的计算方式，参考[《An Attentive Survey of Attention Models》](https://arxiv.org/pdf/1904.02874.pdf)。
@@ -63,7 +63,7 @@ SDPA 是计算 attention 权重的一种方式，计算流程大致是，首先�
 ## 多头 
 作者发现，与其使用一个 $d_\text{model}$(e.g., 512) 维的单头注意力，不如使用 $h$ 个 $d_k$(e.g., 64) 维的多头注意力，这样可以让**模型同时关注不同位置的信息，从而提高模型的表征能力和学习能力**。多头注意力的计算公式如下：
 
-$\text{MultiHead}(Q, K, V) = \text{Concat}(\text{head}_1, ..., \text{head}_h)W^O$
+$$\text{MultiHead}(Q, K, V) = \text{Concat}(\text{head}_1, ..., \text{head}_h)W^O$$
 
 其中，$\text{head}_i = \text{Attention}(QW_i^Q, KW_i^K, VW_i^V)$，$W_i^Q \in \mathbb{R}^{d_{model} \times d_k}$，$W_i^K \in \mathbb{R}^{d_{model} \times d_k}$，$W_i^V \in \mathbb{R}^{d_{model} \times d_v}$，$W^O \in \mathbb{R}^{hd_v \times d_{model}}$。
 
@@ -72,9 +72,9 @@ $\text{MultiHead}(Q, K, V) = \text{Concat}(\text{head}_1, ..., \text{head}_h)W^O
 ## Positional encoding
 Transformer 没有使用 RNN 或者 CNN，因此无法利用序列中的位置信息。为了利用序列中的位置信息，Transformer 使用了 Positional encoding。Positional encoding 的计算公式如下：
 
-$PE_{(pos, 2i)} = \sin(pos/10000^{2i/d_{model}})$
+$$PE_{(pos, 2i)} = \sin(pos/10000^{2i/d_{model}})$$
 
-$PE_{(pos, 2i+1)} = \cos(pos/10000^{2i/d_{model}})$
+$$PE_{(pos, 2i+1)} = \cos(pos/10000^{2i/d_{model}})$$
 
 之前的文章[《Positional Encoding》]({{site.baseurl}}/2022/09/30/Positional-Encoding/) 稍微详细的介绍了一下 positional encoding，这里就不再赘述了。
 

@@ -4,7 +4,7 @@ title: Attention is all you need - reread
 date: 2022-09-30
 tags: skip-gram embedding
 categories: nlp
-author: gaoangliu
+author: GaoangLiu
 ---
 * content
 {:toc}

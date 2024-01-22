@@ -4,7 +4,7 @@ title: Machine Learning Softwares
 date: 2019-11-01
 tags: machine_learning keras tensorflow seaborn
 categories: machine_learning tools
-author: gaoangliu
+author: GaoangLiu
 ---
 * content
 {:toc}

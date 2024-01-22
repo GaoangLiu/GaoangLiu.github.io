@@ -4,7 +4,7 @@ title: Creating word cloud with Python
 date: 2020-04-21
 tags: python wordcloud
 categories: python
-author: gaoangliu
+author: GaoangLiu
 ---
 * content
 {:toc}

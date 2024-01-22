@@ -4,7 +4,7 @@ title: vim skills
 date: 2021-11-10
 tags: vim
 categories: editor
-author: gaoangliu
+author: GaoangLiu
 ---
 * content
 {:toc}

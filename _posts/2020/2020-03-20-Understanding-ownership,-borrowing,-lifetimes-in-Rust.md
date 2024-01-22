@@ -4,7 +4,7 @@ title: Understanding ownership, borrowing, lifetimes in Rust
 date: 2020-03-20
 tags: rust
 categories: 
-author: gaoangliu
+author: GaoangLiu
 ---
 * content
 {:toc}

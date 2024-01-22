@@ -4,7 +4,7 @@ title: Python Generators
 date: 2020-04-20
 tags: python generator
 categories: python
-author: gaoangliu
+author: GaoangLiu
 ---
 * content
 {:toc}

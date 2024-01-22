@@ -4,7 +4,7 @@ title: Basic Math in Machine Learning
 date: 2019-10-14
 tags: machine_learning math
 categories: machine_learning
-author: gaoangliu
+author: GaoangLiu
 ---
 * content
 {:toc}

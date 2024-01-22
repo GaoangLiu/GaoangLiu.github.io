@@ -4,7 +4,7 @@ title: Extern Crates of Rust
 date: 2020-04-14
 tags: rust extern_crates
 categories: rust
-author: gaoangliu
+author: GaoangLiu
 ---
 * content
 {:toc}

@@ -4,7 +4,7 @@ title: Git Versioning
 date: 2021-09-06
 tags: git
 categories: git
-author: gaoangliu
+author: GaoangLiu
 ---
 * content
 {:toc}

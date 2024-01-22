@@ -4,7 +4,7 @@ title: Transformer Encoder
 date: 2022-10-06
 tags: nlp transformer encoder
 categories: nlp
-author: gaoangliu
+author: GaoangLiu
 ---
 * content
 {:toc}

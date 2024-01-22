@@ -4,7 +4,7 @@ title: Kosaraju's strongly connected components algorithm
 date: 2020-06-11
 tags: algorithm kosaraju scc
 categories: algorithm
-author: gaoangliu
+author: GaoangLiu
 ---
 * content
 {:toc}

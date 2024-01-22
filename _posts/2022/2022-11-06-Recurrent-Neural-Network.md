@@ -4,7 +4,7 @@ title: Recurrent Neural Network
 date: 2022-11-06
 tags: rnn nlp
 categories: nlp
-author: gaoangliu
+author: GaoangLiu
 ---
 * content
 {:toc}

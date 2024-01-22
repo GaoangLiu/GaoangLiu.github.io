@@ -4,7 +4,7 @@ title: Tree of Thoughts
 date: 2023-12-10
 tags: prompt tot
 categories: nlp
-author: gaoangliu
+author: GaoangLiu
 ---
 * content
 {:toc}

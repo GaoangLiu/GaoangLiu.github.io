@@ -4,7 +4,7 @@ title: Support Vector Machine
 date: 2020-07-09
 tags: svm
 categories: machine_learning
-author: gaoangliu
+author: GaoangLiu
 ---
 * content
 {:toc}

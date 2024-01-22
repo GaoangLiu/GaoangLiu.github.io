@@ -4,7 +4,7 @@ title: Naive Bayes Classifier
 date: 2020-04-06
 tags: bayes machine_learning
 categories: machine_learning
-author: gaoangliu
+author: GaoangLiu
 ---
 * content
 {:toc}

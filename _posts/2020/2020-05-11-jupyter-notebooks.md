@@ -4,7 +4,7 @@ title: jupyter notebooks
 date: 2020-05-11
 tags: jupyter python
 categories: 
-author: gaoangliu
+author: GaoangLiu
 ---
 * content
 {:toc}

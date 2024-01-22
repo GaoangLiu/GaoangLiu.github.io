@@ -4,7 +4,7 @@ title: Topological Sort
 date: 2020-06-21
 tags: sort topological
 categories: algorithm
-author: gaoangliu
+author: GaoangLiu
 ---
 * content
 {:toc}

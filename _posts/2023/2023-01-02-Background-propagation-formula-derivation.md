@@ -4,7 +4,7 @@ title: Background propagation formula derivation
 date: 2023-01-02
 tags: nlp gradient bp
 categories: nlp
-author: gaoangliu
+author: GaoangLiu
 ---
 * content
 {:toc}
