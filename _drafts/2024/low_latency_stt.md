@@ -1,5 +1,5 @@
 ---
-layout:     draft
+layout:     post
 title:      faster-whiper 打造语音聊天 bot
 date:       2024-01-22
 tags: [whisper,stt,asr]
@@ -27,7 +27,7 @@ categories:
   <iframe
   width="560" 
   height="315"
-  src="https://www.youtube.com/embed/m2AsSoZ43Xs"
+  src="https://www.youtube.com/embed/8FQJ8_A6O28"
   title="YouTube video player" 
   frameborder="0"
   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
@@ -51,6 +51,11 @@ faster-whiper 是在 whisper 的基础上进行了量化，速度上有 6 倍的
 
 
 但好在 ChatGPT 有较强的 error correction 能力，再结合上下文，还是能理解对话的。 
+
+# 方案二：整句截取 
+思路是借用 [`webrtcvad`](xxx) 监听麦克风输入，当检测到语音输入时，就开始录音，直到检测到有一定的静音时间，比如 0.5 秒，就认为一句话结束，然后输出 wav 文件，然后再调用 faster-whisper 进行转写。
+
+这种方案的好处是可以保证整句的完整性，但缺点是实现起来比较复杂，而且会带来一定的延迟，特别是在一句话比较长时，比如 10 秒以上，这种延迟就会比较明显。
 
 
 
