@@ -1,6 +1,6 @@
 ---
 layout: post
-title: faster-whiper 打造语音聊天 bot
+title: 如何使用 whiper 打造一个语音聊天 bot
 date: 2024-01-22
 tags: whisper stt asr
 categories: nlp
@@ -10,7 +10,8 @@ author: GaoangLiu
 {:toc}
 
 
-如果使用 faster-whiper 结合 ChatGPT 打造一个语音聊天机器人。
+把大象装冰箱里需要三步，使用 whisper 做一个语音聊天 bot 也是如此。
+
 
 
 
@@ -44,8 +45,8 @@ author: GaoangLiu
   style="border-radius: 12px;"></iframe>
 </div>
 
-整体的思路比较直观：
-1. 使用 `pyaudio` 监听麦克风输入，每 30 毫秒采样一次，然后把一定时长的采样数据保存成音频文件； 
+整体的思路比较直观，一录音、二转写、三聊天：
+1. 使用 `pyaudio` 监听麦克风输入，每 30 毫秒采样一次，然后把一定时长的采样数据存储成音频文件； 
 2. 调用 `faster-whisper` 对音频文件进行转写，获取文本；
 3. 将文本发送给 `ChatGPT` 生成回复。重复以上过程，就实现了一个简单的语音聊天模式。
 
@@ -58,14 +59,14 @@ author: GaoangLiu
 
 
 # 低延迟语音转写 
-语音转写底层模型是 OpenAI 开源的 [whisper](https://github.com/openai/whisper)，效果最好的版本是 `large v3`。这个版本的英文字错率在 5% 左右，中文的字错率约在 10% 左右，这个水平勉强够用。实际体验下来，多数情况下都能正确转写，但发音不够清晰时，就可能识别错误，比如“三国演义”转写成“三观演义”。
+语音转写底层模型是 OpenAI 开源的 [whisper](https://github.com/openai/whisper)，效果最好的版本是 `large v3`。这个版本的英文字错率在 5% 左右，中文的字错率约在 10% 左右，这个水平勉强够用。实际体验下来，多数情况下也都能正确转写，但发音不够清晰时，就可能识别错误，比如“三国演义”转写成“三观演义”。
 
-Whisper 本身的转写速度比较慢，一段时长 13 分钟的音频使用  Tesla V100S 大约需要 4m30s，最大显存占用也有 13GB。[Faster-whiper](https://github.com/SYSTRAN/faster-whisper) 模型是在 whisper 的基础上使用 [Ctranslate2](https://github.com/OpenNMT/CTranslate2/) 进行了重写，速度上有 4 倍的提升，内存占用上也有显著减少，比如同样 13 分钟的音频，faster-whisper 的转写时间减少到 50s 左右，显存占用也降至 4.7GB。
+Whisper 的转写效果在开源模型中算是比较好的，但是速度不够快。 一段时长 13 分钟的音频使用  Tesla V100S 大约需要 4m30s，最大显存占用也有 13GB。[Faster-whiper](https://github.com/SYSTRAN/faster-whisper) 模型是在 whisper 的基础上使用 [Ctranslate2](https://github.com/OpenNMT/CTranslate2/) 进行了重写，速度上有 4 倍的提升，内存占用上也有显著减少。比如同样 13 分钟的音频，faster-whisper 的转写时间减少到 50s 左右，显存占用也降至 4.7GB。
 使用 Kaggle 的 T4x2 GPU，实测采用 faster-whisper 去转写一句 10 秒左右的语音，时间约在 0.7 秒以内，这个速度已经可以满足（伪）实时转写的需求了。
 
 如上所述，音频是通过采样得到的，但音频信号的输入是连续的，whisper 只能离线转写，不支持流式。为了模拟流式转写，需要把音频信号转换成一小段一小段的音频，然后再传递给 whisper。
 
-音频的截取考虑了两种方案，一种是按固定时长截断音频输入，另一种是整句截取。前一种延迟有保证，但转写效果差；第二种转写效果好，但延迟不好控制。因为这个项目不是一个严格的实时转写，延迟 2 秒也好，5 秒也好，对体验影响不大，权衡转写效果与延迟，所以最终选择了第二种方案。
+音频的截取考虑了两种方案，一种是按**固定时长截断音频输入**，另一种是**整句截取**。前一种延迟有保证，但转写效果差；第二种转写效果好，但延迟不好控制。因为这个项目不是一个严格的实时转写，延迟 2 秒也好，5 秒也好，对体验影响不大，权衡转写效果与延迟，最终选择了第二种方案。
 
 ## 方案一：按时长截断音频输入 
 使用 `pyaudio` 监听麦克风输入，每 30 毫秒采样一次，如果检测到音频超过预设时长，则截断音频，输出 wav 文件，然后调用 faster-whisper 进行转写。
@@ -87,7 +88,7 @@ Whisper 本身的转写速度比较慢，一段时长 13 分钟的音频使用  
 <div class="video-container">
   <figure style="text-align: center;">
       <img src="https://image.ddot.cc/202401/stream-whisper-flow-v3.gif" width=678pt>
-      <figcaption style="text-align:center"> faster-whisper 伪实时语音转写流程  </figcaption>
+      <figcaption style="text-align:center"> 音频录制及语音转写流程  </figcaption>
   </figure>
 </div>
 
@@ -102,13 +103,13 @@ Whisper 本身的转写速度比较慢，一段时长 13 分钟的音频使用  
 # 语音聊天 bot
 拿到文本之后，后面的事情就简单了，调用聊天 bot 接口传入文本即可。Bot 的智能程度，取决于背后模型的能力，目前 GPT-4 还是当之无愧的 No.1，就是费用上有点高。
 
-这个项目里采用的模型是 ChatGPT，免费且效果佳。将 ChatGPT 转成支持 RESTful API 的服务参考了最近一个 ChatGPT api wrapper 的项目 [pandoranext](https://pandoranext.com/)，这个项目可以将 ChatGPT 背后的 GPT 模型代理成一个 API。可惜的是，鉴于多种原因，项目作者不再准备维护了，后面相关依赖的服务也将本月底关停。
+这个项目里采用的模型是 ChatGPT，免费且效果佳。将 ChatGPT 转成支持 RESTful API 的服务参考了最近比较热门的一个 ChatGPT api wrapper 项目 [pandoranext](https://pandoranext.com/)，这个项目可以将 ChatGPT 背后的 GPT 模型代理成一个 API。可惜的是，由于多种原因，项目作者即将放弃后续维护，依赖的一些服务也将于本月底关停。
 
-如果聊天服务这部分一定要采用开源免费模型，英文模型可以用 [mixtral 7x8b](https://huggingface.co/mistralai/Mixtral-8x7B-v0.1)，中文模型可以考虑零壹万物开源的 [Yi-34B-Chat](https://huggingface.co/01-ai/Yi-34B-Chat)。 截止到 2024/01/29，Yi-34B-Chat 在 LMSYS Chatbot Arena Leaderboard 排行第 13，是中文模型中最好的。
+如果聊天服务这部分一定要采用开源模型，英文模型可以部署 [mixtral 7x8b](https://huggingface.co/mistralai/Mixtral-8x7B-v0.1)，中文模型可以考虑零壹万物开源的 [Yi-34B-Chat](https://huggingface.co/01-ai/Yi-34B-Chat)。 截止到 2024/01/29，Yi-34B-Chat 在 LMSYS Chatbot Arena Leaderboard 排行第 13，是中文模型中最好的。
 
 <figure style="text-align: center;">
     <img src="https://image.ddot.cc/202401/whisper-bot_20240129_1823.png" width=789pt>
-    <figcaption style="text-align:center"> Whisper + GPT 语音聊天 bot 方案 </figcaption>
+    <figcaption style="text-align:center"> Whisper + ChatGPT 语音聊天示意图 </figcaption>
 </figure>
 
 
