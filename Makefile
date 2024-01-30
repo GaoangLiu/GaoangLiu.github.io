@@ -3,7 +3,7 @@ IP=$(shell ifconfig | grep 192.168 | awk '{print $$2}')
 
 dev:
 	@echo "Listen to http://$(IP):4000"
-	@bundle exec jekyll serve --host 0.0.0.0 
+	@bundle exec jekyll serve --host 0.0.0.0 --trace 
 	
 
 update:
