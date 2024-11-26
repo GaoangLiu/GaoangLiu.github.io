@@ -25,5 +25,5 @@ LangChain 有几个核心的模块：
 
 
 # 教程与资料
-- 由 [Harrison Chase](https://dlj.one/8g4dq3) 和 Andrew Ng 联合开发的两门短课程，[https://www.deeplearning.ai/short-courses/langchain-for-llm-application-development/](https://www.deeplearning.ai/short-courses/langchain-for-llm-application-development/)，前者是 LangChain 创始人。
+- 由 [Harrison Chase](https://ioly.cc/8g4dq3) 和 Andrew Ng 联合开发的两门短课程，[https://www.deeplearning.ai/short-courses/langchain-for-llm-application-development/](https://www.deeplearning.ai/short-courses/langchain-for-llm-application-development/)，前者是 LangChain 创始人。
 - [LangChain 中文网](https://www.langchain.asia/getting_started/getting_started)
